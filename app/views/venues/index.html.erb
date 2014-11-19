@@ -1,0 +1,9 @@
+<% content_for(:page_header) {"Where to party..."} %>
+    <ul>
+    <% @venues.each do |venue| %>
+      <li>Venue: <%= venue.name %></li>
+      <p>Address: <a href=<%=venue.mapsify%>, target="_blank"><%= venue.address %></a></p>
+    <% end %>
+  </ul>
+
+<%= link_to 'Back', root_path %>

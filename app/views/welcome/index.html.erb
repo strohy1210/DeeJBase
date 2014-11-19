@@ -1,0 +1,8 @@
+<% content_for(:page_header) {"Find NYC's Rawest Talent"} %>
+    <ul>
+    <% @djs.each do |dj| %>
+      <li><%= dj.name %></li>
+    <% end %>
+  </ul>
+
+<%= link_to 'Venues', venues_path %>
