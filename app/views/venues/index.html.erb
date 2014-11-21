@@ -1,8 +1,8 @@
 <% content_for(:page_header) {"Where to party..."} %>
     <ul>
     <% @venues.each do |venue| %>
-      <li>Venue: <%= venue.name %></li>
-      <p>Address: <a href=<%=venue.mapsify%>, target="_blank"><%= venue.address %></a></p>
+      <li class='venue name'><p><h4><%= venue.name %></h4>
+      <a class='venue address' href=<%=venue.mapsify%>, style="display: none;" target="_blank"><%=venue.name%> @ <%= venue.address %></a></p></li>
     <% end %>
   </ul>
 

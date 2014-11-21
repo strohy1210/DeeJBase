@@ -8,6 +8,7 @@ class DjsController < ApplicationController
   end
 
   def create
+    
     @dj = Dj.new(dj_params)
     if @dj.save
       flash[:success] = 'You\'re signed up!'

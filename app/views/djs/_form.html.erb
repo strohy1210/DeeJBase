@@ -1,3 +1,19 @@
-<%= form_for @dj do |f| %>
+<%= form_for @dj do |f|%>
+  <%= f.label 'Name' %><br>
+  <%= f.text_field :name, class: 'form-control', required: true, placeholder: "Chainsmokers" %><br>
+  <%= f.label 'What\'s your story?' %>
+  <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99.." %><br>
+  <%= f.fields_for :venues do |v_form| %>
+    <%= v_form.label 'Past Venues' %><br>
+    <%= v_form.text_field :venues, class: 'form-control', placeholder: "Santos Party House" %><br>
+   <%= f.fields_for :genres do |g_form| %>
+      <%= render 'genre_fields', f: g_form %>
+    <%end%>
+    <div class="links">
+      <%= link_to_add_association 'add genre', f, :genres %>
+    </div>
 
-<% end %>
+<%= f.submit "Sign Up", class: 'btn btn-primary' %>
+
+  <% end %>
+<%end%>
