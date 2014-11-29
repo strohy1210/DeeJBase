@@ -1,7 +1,28 @@
 <% content_for(:page_header) {"Find NYC's Rawest Talent"} %>
     <ul>
     <% @djs.each do |dj| %>
-      <li><%= dj.name %></li>
+    <div class= "dj-header">
+      <h4><%= link_to dj.name, dj_path(dj) %></h4>
+    
+    </div>
+      <div class="bio">
+        <%= dj.bio %> |
+        Genres: 
+        <% dj.genres.each do |g| %>
+          <%= g.name %>
+        <%end%>
+      </div>
+      <p><div class="index-image">
+        <%= link_to image_tag(dj.image_url), dj_path(dj) %>
+      </div></p>
+      <p><div class="demo-embed">
+        <% if dj.demo %>
+        <%= dj.demo.html_safe %>
+        <%end%>
+      </div></p>
+       917.555.5555 | deejay@gmail.com <br>
+      _______________________________
+      <br><br>
     <% end %>
   </ul>
 

@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require jquery.turbolinks
 //= require cocoon
 //= require venues.js

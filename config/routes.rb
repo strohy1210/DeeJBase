@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
-  resources :genres
+  resources :genres, only: [:new, :create]
 
-  resources :events
+  resources :events, only: [:new, :create, :destroy]
 
-  resources :venues
+  resources :venues, only: [:new, :create, :index]
 
   resources :djs
 
   root 'welcome#index'
+
+  
+  get '/auth/facebook/callback', to: 'sessions#create'
+  get '/auth/facebook', as: 'login'
+  delete '/logout', to: 'sessions#destroy'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

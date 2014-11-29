@@ -6,14 +6,14 @@
   <%= f.fields_for :venues do |v_form| %>
     <%= v_form.label 'Past Venues' %><br>
     <%= v_form.text_field :venues, class: 'form-control', placeholder: "Santos Party House" %><br>
+    <%end%>
    <%= f.fields_for :genres do |g_form| %>
       <%= render 'genre_fields', f: g_form %>
     <%end%>
     <div class="links">
       <%= link_to_add_association 'add genre', f, :genres %>
     </div>
+<br>
+<%= f.submit "Update", class: 'btn btn-primary' %>
 
-<%= f.submit "Sign Up", class: 'btn btn-primary' %>
-
-  <% end %>
 <%end%>

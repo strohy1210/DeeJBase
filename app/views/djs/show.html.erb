@@ -1,0 +1,12 @@
+<% content_for(:page_header) {"Take Off"} %>
+<h2> Wassup <%= @dj.name %> </h2>
+<div class="profile-pic">
+<p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
+</div>
+<p><%= @dj.bio %></p>
+<div class="edit-dj">
+<h3> Click to edit your profile</h3>
+</div>
+<div class="update-form">
+<%= render 'form' %>
+</div>

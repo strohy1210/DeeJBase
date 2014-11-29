@@ -3,17 +3,21 @@
 <head>
   <title>DJbase - Find NY's Rawest DJs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <%= link_to image_tag("logo_white.png"), root_path, class: 'navbar-brand' %>
     </div>
     <ul class="nav navbar-nav">
-      <li><%= link_to 'DJ Sign Up', new_dj_path %></li>
+      <% if !logged_in? %>
+      <li><%= link_to 'Log in with Facebook', '/auth/facebook' %></li>
+      <% else %>
+      <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
+      <% end %>
       <li> <%= link_to 'Venues', venues_path %><li>
     </ul>
 
