@@ -16,6 +16,7 @@
   </div>
   <br>
   <h4> About: </h4><%= @dj.bio %>
+  <h4> Genres: </h4><%= @genres.map {|g| g.name}.join(", ") %>
   <div class = "show-demo">
     <% if @dj.demo %>
       <%= @dj.demo.html_safe %>

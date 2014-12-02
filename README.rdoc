@@ -2,15 +2,11 @@
 Process:
 1. tie venues into djs
 2. make venues and genres, radio collections checkboxes
-3. change font scheme to something sexier or just add theme
-4. change color to djbaseblue
-5. only have a few genres
-7. add image uploader
+7. add image uploader/ability to edit
 8. add default image in case they dont have one or not? maybe they have to have it
 9. hide contact info unless hover or click
-10. add cost/hour
-11. change demo to demo_url
-12. truncate bio
+10. add cost/hour!
+
 
 Image uploader
 https://github.com/thoughtbot/paperclip
