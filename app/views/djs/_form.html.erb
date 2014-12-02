@@ -3,6 +3,8 @@
   <%= f.text_field :name, class: 'form-control', required: true, placeholder: "Chainsmokers" %><br>
   <%= f.label 'What\'s your story?' %>
   <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99.." %><br>
+  <%= f.label 'Soundcloud Embed' %>
+  <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that say "embed", copy the text (Starts with "iframe") into the form below.'%><br>
   <%= f.fields_for :venues do |v_form| %>
     <%= v_form.label 'Past Venues' %><br>
     <%= v_form.text_field :venues, class: 'form-control', placeholder: "Santos Party House" %><br>
@@ -11,9 +13,17 @@
       <%= render 'genre_fields', f: g_form %>
     <%end%>
     <div class="links">
+      <%= check_box_tag(:top_100) %>
+<%= label_tag(:top_100, "top-100") %>
+<%= check_box_tag(:indie) %>
+<%= label_tag(:indie, "indie") %>
+
+
       <%= link_to_add_association 'add genre', f, :genres %>
     </div>
+    <%= options_from_collection_for_select(Genre.all, :id, :name) %>
 <br>
 <%= f.submit "Update", class: 'btn btn-primary' %>
+
 
 <%end%>

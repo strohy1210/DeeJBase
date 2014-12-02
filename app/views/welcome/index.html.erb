@@ -6,7 +6,7 @@
     
     </div>
       <div class="bio">
-        <%= dj.bio %> |
+        <%= truncate(dj.bio, length: 55, separator: " ") %> |
         Genres: 
         <% dj.genres.each do |g| %>
           <%= g.name %>

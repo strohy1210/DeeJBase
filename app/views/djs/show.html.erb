@@ -1,12 +1,33 @@
 <% content_for(:page_header) {"Take Off"} %>
-<h2> Wassup <%= @dj.name %> </h2>
-<div class="profile-pic">
-<p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
+<div id="dj-profile">
+  <div class="container">
+    <div class="row">
+    
+      <div class="col-md-4">
+        <h2> <%= @dj.name %> </h2>
+      </div>
+
+      <div class= "col-md-4 col-md-offset-4">
+        <button class="edit-dj btn-centered btn btn-primary">Edit your profile</button> <br>
+      </div>
+    </div>
+  <div class="profile-pic">
+    <p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
+  </div>
+  <br>
+  <h4> About: </h4><%= @dj.bio %>
+  <div class = "show-demo">
+    <% if @dj.demo %>
+      <%= @dj.demo.html_safe %>
+    <%end%>
+  </div>
+
 </div>
-<p><%= @dj.bio %></p>
-<div class="edit-dj">
-<h3> Click to edit your profile</h3>
 </div>
-<div class="update-form">
-<%= render 'form' %>
+
+<div class="row">
+  <div class="update-form col-md-8">
+  <%= render 'form' %><br>
+<button class="cancel-edit btn-centered btn">Cancel</button> <br>
+  </div>
 </div>

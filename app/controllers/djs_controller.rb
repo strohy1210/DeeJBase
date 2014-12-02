@@ -12,7 +12,9 @@ class DjsController < ApplicationController
   end
 
   def update
-    
+    binding.pry
+    # Dj.find_by(params[:id]).genres
+    # shovel parms for indie etc int genres
     @dj = Dj.find(params[:id])
     @dj.update(dj_params)
     if @dj.save
