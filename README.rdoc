@@ -6,6 +6,10 @@ Process:
 8. add default image in case they dont have one or not? maybe they have to have it
 9. hide contact info unless hover or click
 10. add cost/hour!
+11. fake data from spotify, soundcloud, or any other website, tweet at djs "claim ur site"
+12.add hire me button that send me an email and then has me contact the DJ
+check out rukkus, faked 1 side of their network
+13. scratch academy
 
 
 Image uploader
