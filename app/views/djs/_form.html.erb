@@ -13,7 +13,7 @@
   <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that says "embed", and copy the text (which starts with "iframe") into this form.'%><br>
   <!-- <h4>Choose one or more of the following genres (if you have more specific info, put it in your bio): </h4> -->
 <%= #fields_for :genres, @dj.genres do |genres_fields| %>
-    <!-- Admin?  : <%= genres_fields.check_box :genre_id %> -->
+    <!-- Admin?  : <%=# genres_fields.check_box #:genre_id %> -->
   <%# end %>
       <% #Genre.all.each do |g| %>
         <%= #label_tag(:g, g.name) %>
