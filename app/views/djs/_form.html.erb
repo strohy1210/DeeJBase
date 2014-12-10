@@ -1,13 +1,17 @@
 <%= form_for @dj do |f|%>
   <%= f.label 'Name' %><br>
   <%= f.text_field :name, class: 'form-control', required: true, placeholder: "Chainsmokers" %><br>
+  <%= f.label 'phone' %><br>
+  <%= f.telephone_field :phone, class: 'form-control' %><br>
+  <%= f.label 'email' %><br>
+  <%= f.email_field :email, class: 'form-control', placeholder: "sickdj@email.com" %><br>
   <%= f.label 'What\'s your story?' %>
   <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99.." %><br>
   <%= f.label 'Soundcloud Embed' %>
-  <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that say "embed", copy the text (Starts with "iframe") into the form below.'%><br>
+  <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that says "embed", and copy the text (which starts with "iframe") into this form.'%><br>
   <h4>Choose one or more of the following genres (if you have more specific info, put it in your bio): </h4>
       <% Genre.all.each do |g| %>
-      <%= label_tag(:g, g.name) %>
+        <%= label_tag(:g, g.name) %>
         <input id="<%=g.id%>" name="genres[]" value='<%= g.id %>' type="checkbox"><br>
       <%end%>
 

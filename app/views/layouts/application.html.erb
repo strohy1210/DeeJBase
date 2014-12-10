@@ -18,7 +18,10 @@
       <% else %>
       <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>
-      <li> <%= link_to 'Venues', venues_path %><li>
+      <li> <%= link_to 'Venues', venues_path %></li>
+      <% if @current_user != nil %>
+      <li> <%= link_to "Logged in as " + @current_user.name, dj_path(@current_user) %></li>
+      <%end%>
     </ul>
 
   </div>

@@ -8,7 +8,12 @@
       </div>
 
       <div class= "col-md-4 col-md-offset-4">
-        <button class="edit-dj btn-centered btn btn-primary">Edit your profile</button> <br>
+        <% if @current_user == @dj %>
+        <button class="edit-dj btn-centered btn btn-primary">Edit your profile</button> 
+        <%else%>
+         <button class="hire-dj btn-centered btn btn-info">Contact <%=  @dj.name %></button>
+         <%end%>
+         <br>
       </div>
     </div>
   <div class="profile-pic">
