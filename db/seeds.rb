@@ -16,3 +16,4 @@ Venue.create(JSON.parse('[{"name":"1 Front","address":"One Front Street; Brookly
 # (venues)
 Genre.create([{name: "Indie"},{name: "Deep House"},{name: "Reggae/Dance Hall"}, {name: "Top-40"}, {name: "Latin"}, {name: "Hip Hop"}, {name: "Electronic"}])
 
+Dj.create([{name: "Chainsmokers", demo:'<iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/180881533&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>}', bio: "See them and understand why the sky is blue"}])
