@@ -13,6 +13,7 @@ check out rukkus, faked 1 side of their network
 14. only show edit button if user.id == current_user
 15. build contact button for vneues and contact info form
 16 fix genres so the on youve chosen are selected
+17 soundcloud api/spotify apis
 
 
 Image uploader

@@ -7,6 +7,8 @@
   <%= f.text_field :phone, class: 'form-control' %><br>
   <%= f.label 'email' %><br>
   <%= f.text_field :email, class: 'form-control', placeholder: "sickdj@email.com" %><br>
+  <%= f.label 'Hourly Rate' %><br>
+  <%= f.text_field :rate_per_hour, class: 'form-control', placeholder: "e.g. 100" %><br>
   <%= f.label 'What\'s your story?' %>
   <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99.." %><br>
   <%= f.label 'Soundcloud Embed' %>
@@ -15,10 +17,10 @@
 <%= #fields_for :genres, @dj.genres do |genres_fields| %>
     <!-- Admin?  : <%=# genres_fields.check_box #:genre_id %> -->
   <%# end %>
-      <% #Genre.all.each do |g| %>
-        <%= #label_tag(:g, g.name) %>
-        <!-- <input id="<%=g.id%>" name="genres[]" value='<%= g.id %>' type="checkbox"><br> -->
-      <%#end%>
+      <% Genre.all.each do |g| %>
+        <%= label_tag(:g, g.name) %>
+        <input id="dj_genres_attributes" name="dj[genres_attributes][][name]" value='<%= g.id %>' type="checkbox"><br>
+      <%end%>
 
   
 <br>

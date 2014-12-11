@@ -13,7 +13,7 @@ class DjsController < ApplicationController
 
   def update
     @dj = Dj.find(params[:id])
-    genres=Genre.find(params[:genres])
+    genres= Genre.find(params[:genres])
     @dj.genres = genres
     @dj.save       
     params.select {|k,v| @dj.genres << k if v=="1" && k != "id"}
