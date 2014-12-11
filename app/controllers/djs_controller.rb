@@ -12,11 +12,10 @@ class DjsController < ApplicationController
   end
 
   def update
+binding.pry
     @dj = Dj.find(params[:id])
-    genres= Genre.find(params[:genres])
-    @dj.genres = genres
-    @dj.save       
-    params.select {|k,v| @dj.genres << k if v=="1" && k != "id"}
+    @dj.genres = params["genres"].map {|g| Genre.find(g["id"])}
+
     @dj.update(dj_params)
     if @dj.save
       flash[:success] = 'You\'re profile is updated!'
@@ -38,3 +37,4 @@ class DjsController < ApplicationController
       params.require(:dj).permit!
     end
 end
+

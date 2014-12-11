@@ -1,9 +1,10 @@
 class Dj < ActiveRecord::Base
-  has_many :genres
+  has_many :dj_genres
+  has_many :genres, through: :dj_genres
   has_many :events
   has_many :venues, through: :events
   accepts_nested_attributes_for :venues
-  accepts_nested_attributes_for :genres, :reject_if => :all_blank
+
 
   
   def self.get_user_from_omniauth(auth_hash)
