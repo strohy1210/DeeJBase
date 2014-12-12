@@ -12,7 +12,7 @@ class DjsController < ApplicationController
   end
 
   def update
-binding.pry
+    DjGenre.where(dj_id: params[:id]).destroy_all
     @dj = Dj.find(params[:id])
     @dj.genres = params["genres"].map {|g| Genre.find(g["id"])}
 
