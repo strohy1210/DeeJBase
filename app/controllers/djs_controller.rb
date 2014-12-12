@@ -18,7 +18,7 @@ class DjsController < ApplicationController
 
     @dj.update(dj_params)
     if @dj.save
-      flash[:success] = 'You\'re profile is updated!'
+      flash[:success] = 'Your profile is updated!'
       redirect_to dj_path(@dj)
     else
       render 'new'
@@ -29,6 +29,13 @@ class DjsController < ApplicationController
     @dj= Dj.find(params[:id])
     @genres = @dj.genres
 
+  end
+
+  def send_contact_email
+    @dj = Dj.find(params[:id])
+   ContactDjMailer.contact_dj(@dj).deliver
+   flash[:success] = 'We will be in touch with #{@dj.name} for you.'
+   redirect_to :back
   end
 
   private

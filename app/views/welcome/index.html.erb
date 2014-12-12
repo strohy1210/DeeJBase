@@ -9,9 +9,7 @@
         <%if dj.bio %>
           <%= truncate(dj.bio, length: 55, separator: " ") %> |
           Genres: 
-          <% dj.genres.each do |g| %>
-            <%= g.name %>
-          <%end%>
+            <%= dj.genres.map {|g| g.name}.join(", ") %>
         <%end%>
       </div>
       <p><div class="index-image">

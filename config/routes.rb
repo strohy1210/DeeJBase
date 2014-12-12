@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :djs
 
   root 'welcome#index'
-
+  post :send_contact_email, to: 'djs#send_contact_email', as: :send_contact_email
   
   get '/auth/facebook/callback', to: 'sessions#create'
   get '/auth/facebook', as: 'login'

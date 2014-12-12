@@ -13,9 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
 @import 'bootstrap';
 @import 'bootstrap/theme';
-
+@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
+@import "bootswatch/lumen/bootswatch";
 @import url(http://fonts.googleapis.com/css?family=Hammersmith+One:400,700);
 @import url(http://fonts.googleapis.com/css?family=Muli);
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
@@ -24,6 +26,7 @@
 body { 
 
   font-family: 'Montserrat', sans-serif;
+  background-color: #F0F0F0;
 
 
     -webkit-background-size: 100%;
@@ -37,7 +40,9 @@ body {
     background-size: cover;
  }
 
-
+.container {
+  background-color: #fff
+}
 
 
 h4 a {
@@ -54,10 +59,11 @@ h4 a {
     height: 55px;
     padding-top: 0;
 
+
 }
 
-.navbar {
-  background-color: transparent;
+.navbar .container, .navbar {
+  background-color: transparant;
   border-color: transparent;
 }
 .index-image img {
@@ -74,13 +80,18 @@ h4 a {
 
 }
 
-.edit-dj {
+.edit-dj, .hire-dj {
   margin-top: 20px;
 }
 .show-demo iframe {
     height: 90px;
     width: 80%;
 
+}
+
+
+.edit-or-contact .btn:hover {
+  margin-top: 21px;
 }
 /*.navbar-brand {
   line-height: 40px;

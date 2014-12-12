@@ -10,21 +10,21 @@
   <%= f.label 'Hourly Rate' %><br>
   <%= f.text_field :rate_per_hour, class: 'form-control', placeholder: "e.g. 100" %><br>
   <%= f.label 'What\'s your story?' %>
-  <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99.." %><br>
+  <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99. I love funky disco grooves." %><br>
   <%= f.label 'Soundcloud Embed' %>
   <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that says "embed", and copy the text (which starts with "iframe") into this form.'%><br>
-
+<%= f.label 'Choose the genres you identify most with (put more specific info in the "what\'s your story" section above).' %>: <br><br>
       <% Genre.all.each_with_index do |g,i| %>
         <%= label_tag(:g, g.name) %>
         <% if @dj.genres.include? g %>
-          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox" checked><br>
+          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox" checked>
         <%else%>
-          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox"><br>
+          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox">
         <%end%>
       <%end%>
 
   
-<br>
+<br><br>
 <%= f.submit "Update", class: 'btn btn-primary' %>
 
 

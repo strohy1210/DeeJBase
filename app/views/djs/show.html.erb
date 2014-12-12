@@ -1,17 +1,17 @@
 <% content_for(:page_header) {"Take Off"} %>
 <div id="dj-profile">
-  <div class="container">
+  
     <div class="row">
     
       <div class="col-md-4">
         <h2> <%= @dj.name %> </h2>
       </div>
 
-      <div class= "col-md-4 col-md-offset-4">
+      <div class= "edit-or-contact col-md-4 col-md-offset-4">
         <% if @current_user == @dj %>
         <button class="edit-dj btn-centered btn btn-primary">Edit your profile</button> 
         <%else%>
-         <a href="mailto:strohsm88@gmail.com"><button class="hire-dj btn-centered btn btn-info">Contact <%=  @dj.name %></button></a>
+        <%= button_to "Contact "+@dj.name, send_contact_email_path(id: @dj.id), :class => "hire-dj btn-centered btn btn-info", :method => :post  %>
          <%end%>
          <br>
       </div>
@@ -28,11 +28,11 @@
     <%end%>
   </div>
 
-</div>
+
 </div>
 
 <div class="row">
-  <div class="update-form col-md-8">
+  <div class="update-form col-md-10">
   <%= render 'form' %><br>
 <button class="cancel-edit btn-centered btn">Cancel</button> <br>
   </div>

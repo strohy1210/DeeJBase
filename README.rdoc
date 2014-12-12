@@ -14,6 +14,7 @@ check out rukkus, faked 1 side of their network
 15. build contact button for vneues and contact info form
 16 fix genres so the on youve chosen are selected
 17 soundcloud api/spotify apis
+18. add availability to Djs, planners need to see everything
 
 
 Image uploader
