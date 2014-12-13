@@ -11,17 +11,30 @@
         <% if @current_user == @dj %>
         <button class="edit-dj btn-centered btn btn-primary">Edit your profile</button> 
         <%else%>
-        <%= button_to "Contact "+@dj.name, send_contact_email_path(id: @dj.id), :class => "hire-dj btn-centered btn btn-info", :method => :post  %>
+        <div class="message-form">
+          <%= form_for(@dj, url: send_contact_email_path, method: 'post') do |f| %>
+            <%= f.label :message %><br>
+           <%= f.text_area :message, rows: 3 %><br>
+           <%= f.hidden_field :id %>
+            <%= f.submit "Send message", class: 'btn btn-primary contact' %>
+
+          <%end%>
+        </div>
+        <button class="hire-dj btn-centered btn btn-info">Contact</button> 
+               
          <%end%>
          <br>
       </div>
-    </div>
+  </div>
+
   <div class="profile-pic">
     <p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
   </div>
+    
   <br>
   <h4> About: </h4><%= @dj.bio %>
   <h4> Genres: </h4><%= @genres.map {|g| g.name}.join(", ") %>
+  <h4> Hourly Rate: </h4><%= @dj.rate_per_hour %>
   <div class = "show-demo">
     <% if @dj.demo %>
       <%= @dj.demo.html_safe %>

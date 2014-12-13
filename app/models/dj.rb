@@ -5,7 +5,7 @@ class Dj < ActiveRecord::Base
   has_many :venues, through: :events
   accepts_nested_attributes_for :venues
 
-
+  attr_accessor :message
   
   def self.get_user_from_omniauth(auth_hash)
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)
@@ -18,4 +18,6 @@ class Dj < ActiveRecord::Base
   def self.find_with_omniauth(auth_hash)
     find_by(uid: auth_hash[:uid])
   end
+
+
 end

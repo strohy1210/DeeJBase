@@ -12,4 +12,11 @@ $('.cancel-edit').click(function(){
   $("#dj-profile").toggle();
 })
 
+$(".message-form").hide();
+$('.hire-dj').click(function(){
+  $(".message-form").toggle();
+  // $(".profile-pic").toggle();
+  $(this).toggle();
+})
+
 })
