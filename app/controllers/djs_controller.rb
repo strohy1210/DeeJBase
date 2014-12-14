@@ -11,6 +11,8 @@ class DjsController < ApplicationController
    @dj = Dj.find(params[:id])
   end
 
+  
+
   def update
     DjGenre.where(dj_id: params[:id]).destroy_all
     @dj = Dj.find(params[:id])

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :venues, only: [:new, :create, :index]
 
   resources :djs
+  get 'dj-form', to: 'welcome#dj_form'
+  post 'set-dj', to: 'welcome#set_dj'
 
   root 'welcome#index'
   post :send_contact_email, to: 'djs#send_contact_email', as: :send_contact_email
