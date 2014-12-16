@@ -34,11 +34,11 @@ class DjsController < ApplicationController
   end
 
   def send_contact_email
-
+    @sender = current_user
     @dj = Dj.find(params[:dj][:id])
     @message = params[:dj][:message]
     name = @dj.name
-   ContactDjMailer.contact_dj(@dj, @message).deliver
+   ContactDjMailer.contact_dj(@dj, @message, @sender).deliver
    flash[:success] = 'Message sent to '+name+'.'
    redirect_to :back
   end
