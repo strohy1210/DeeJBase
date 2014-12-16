@@ -15,6 +15,8 @@ check out rukkus, faked 1 side of their network
 21. set default values for hourly rate if nil
 22 add event listenter to "contact", show form
 23 send message button message, modal
+24. use soundcloud followers based on soundcloud demo for rating system!
+25, auto find twitter followesrs
 
 Image uploader
 https://github.com/thoughtbot/paperclip

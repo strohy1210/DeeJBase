@@ -21,6 +21,7 @@ gem 'omniauth'
 gem 'omniauth-facebook', '~> 2.0.0'
 gem 'figaro', '~> 1.0.0'
 gem 'cocoon'
+gem 'soundcloud'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
