@@ -35,7 +35,7 @@
   <br>
   <h4> About: </h4><%= @dj.bio %>
   <h4> Genres: </h4><%= @genres.map {|g| g.name}.join(", ") %>
-  <h4> Hourly Rate: </h4><%= @dj.rate_per_hour %>
+  <h4> Hourly Rate: </h4>$<%= @dj.rate_per_hour %>0
   <div class = "show-demo">
     <% if @dj.demo %>
       <%= @dj.demo.html_safe %>
