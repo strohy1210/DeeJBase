@@ -40,18 +40,20 @@ class Dj < ActiveRecord::Base
       
       #only find ppl where "plan" != "Free", means their serious somewhat
       city = dj.city
-      if dj.description && city && city.downcase.include?("new york") || city.include?("NY") || city.downcase.include?("brooklyn") || city.downcase.include?("bronx") || city.downcase.include?("queens") || city.downcase.include?("staten")   
-        email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
-        if email && dj.plan != "Free"
-          sdcl_followers = dj.followers_count
-          image_url = dj.avatar_url
-          name = dj.username
-          sdcl_id = dj.id
-          bio = dj.description    
-        
-          phone = dj.extract_phone_number(bio)
-        #webpage = dj.description.scan somethign
-          Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone)
+      if city
+        if dj.description && city.downcase.include?("new york") || city.include?("NY") || city.downcase.include?("brooklyn") || city.downcase.include?("bronx") || city.downcase.include?("queens") || city.downcase.include?("staten")   
+          email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
+          if email && dj.plan != "Free"
+            sdcl_followers = dj.followers_count
+            image_url = dj.avatar_url
+            name = dj.username
+            sdcl_id = dj.id
+            bio = dj.description    
+          
+            phone = dj.extract_phone_number(bio)
+          #webpage = dj.description.scan somethign
+            Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone)
+          end
         end
       end
     end
