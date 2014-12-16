@@ -32,9 +32,11 @@ class Dj < ActiveRecord::Base
     # while i < 41
     # i += 1   :offset 
     djs = client.get('/users', :q => 'New York', :limit=> page_size)
-    djs.all.each do |dj|
+    djs.each do |dj|
+      
       #only find ppl where "plan" != "Free", means their serious somewhat
-      if dj.description && dj.city.include? "New York" || dj.city.include? "NY"
+        city = dj.city
+      if dj.description && city.downcase.include? "new york" || city.include? "NY" || city.downcase.include? "brooklyn" || city.downcase.include? "bronx"
      
         email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
         if email
@@ -43,7 +45,7 @@ class Dj < ActiveRecord::Base
           name = dj.username
           sdcl_id = dj.id
           bio = dj.description    
-          city = dj.city
+        
           phone = extract_phone_number(bio)
         #webpage = dj.description.scan somethign
        
@@ -51,8 +53,8 @@ class Dj < ActiveRecord::Base
         end
       end
     end
-
   end
+
   def self.get_demos
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     Dj.where(demo: nil).each do |dj|
