@@ -30,17 +30,17 @@ class Dj < ActiveRecord::Base
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     page_size =200
     # while i < 41
-    # i += 1   :offset 
+    # i += 1   :offset => page_size * 2
     client.get('/users', :q => 'New York', :limit=> page_size)
 
   end
 
   def self.create_sc_djs
-    Dj.get_soundcloud_djs.each do |dj|
+    self.get_soundcloud_djs.each do |dj|
       
       #only find ppl where "plan" != "Free", means their serious somewhat
       city = dj.city
-      if dj.description && city.downcase.include?("new york") || city.include?("NY") || city.downcase.include?("brooklyn") || city.downcase.include?("bronx") || city.downcase.include?("queens") || city.downcase.include?("staten")   
+      if dj.description && city && city.downcase.include?("new york") || city.include?("NY") || city.downcase.include?("brooklyn") || city.downcase.include?("bronx") || city.downcase.include?("queens") || city.downcase.include?("staten")   
         email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
         if email && dj.plan != "Free"
           sdcl_followers = dj.followers_count
