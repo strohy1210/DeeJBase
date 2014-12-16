@@ -8,8 +8,8 @@
       </div>
         <div class="bio">
           <%if dj.bio %>
-            <%= truncate(dj.bio, length: 55, separator: " ") %> |
-            Genres: 
+            |<%= truncate(dj.bio.html_safe, length: 300, separator: " ") %> |
+            
               <%= dj.genres.map {|g| g.name}.join(", ") %>
           <%end%>
         </div>
