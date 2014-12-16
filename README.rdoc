@@ -17,7 +17,8 @@ check out rukkus, faked 1 side of their network
 23 send message button message, modal
 24. use soundcloud followers based on soundcloud demo for rating system!
 25, auto find twitter followesrs
-26. estimate pricing based on spotifyfollowers, maybe map to spotify fllowers
+26. estimate pricing based on sdlcd followers, maybe map to spotify followers but imaginary numbers on spotify?
+27 get email on  fb oauth
 
 Image uploader
 https://github.com/thoughtbot/paperclip
