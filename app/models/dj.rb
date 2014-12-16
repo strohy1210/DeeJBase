@@ -25,29 +25,29 @@ class Dj < ActiveRecord::Base
     end
   end
 
-  def self.get_soundcloud_djs
-    page_size =200
-    client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
-    # while i < 41
-    # i += 1
-    # :offset => page_size then :offset => page_size *2
-    djs = client.get('/users', :q => 'New York', :limit=> page_size)
-    djs.all.each do |dj|
-      #only find ppl where "plan" != "Free", means their serious somewhat
-      if dj.description != nil && dj.city.include? "New York" || dj.city.include? "NY"
-        sdcl_followers = dj.followers_count
-        email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
-        image_url = dj["avatar_url"]
-        name = dj.username
-        sdcl_id = dj.id
-        bio = dj.description
-        phone = extract_phone_number(bio)
-        #webpage = dj.description.scan somethign
-        Dj.create(email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, :sdcl_id: sdcl_id, phone: phone)
-      end
-    end
+  # def self.get_soundcloud_djs
+  #   page_size =200
+  #   client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
+  #   # while i < 41
+  #   # i += 1
+  #   # :offset => page_size then :offset => page_size *2
+  #   djs = client.get('/users', :q => 'New York', :limit=> page_size)
+  #   djs.all.each do |dj|
+  #     #only find ppl where "plan" != "Free", means their serious somewhat
+  #     if dj.description != nil && dj.city.include? "New York" || dj.city.include? "NY"
+  #       sdcl_followers = dj.followers_count
+  #       email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
+  #       image_url = dj["avatar_url"]
+  #       name = dj.username
+  #       sdcl_id = dj.id
+  #       bio = dj.description
+  #       phone = extract_phone_number(bio)
+  #       #webpage = dj.description.scan somethign
+  #       Dj.create(email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, :sdcl_id: sdcl_id, phone: phone)
+  #     end
+  #   end
 
-  end
+  # end
   def self.get_demos
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     Dj.where(demo: nil).each do |dj|
