@@ -31,15 +31,18 @@ class Dj < ActiveRecord::Base
     page_size =200
     # while i < 41
     # i += 1   :offset 
-    djs = client.get('/users', :q => 'New York', :limit=> page_size)
-    djs.each do |dj|
+    client.get('/users', :q => 'New York', :limit=> page_size)
+
+  end
+
+  def self.create_sc_djs
+    Dj.get_soundcloud_djs.each do |dj|
       
       #only find ppl where "plan" != "Free", means their serious somewhat
-        city = dj.city
-      if dj.description && city.downcase.include? "new york" || city.include? "NY" || city.downcase.include? "brooklyn" || city.downcase.include? "bronx"
-     
+      city = dj.city
+      if dj.description && city.downcase.include?("new york") || city.include?("NY") || city.downcase.include?("brooklyn") || city.downcase.include?("bronx") || city.downcase.include?("queens") || city.downcase.include?("staten")   
         email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
-        if email
+        if email && dj.plan != "Free"
           sdcl_followers = dj.followers_count
           image_url = dj.avatar_url
           name = dj.username
@@ -48,7 +51,6 @@ class Dj < ActiveRecord::Base
         
           phone = extract_phone_number(bio)
         #webpage = dj.description.scan somethign
-       
           Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone)
         end
       end
