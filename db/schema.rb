@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214003118) do
+ActiveRecord::Schema.define(version: 20141216135551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20141214003118) do
     t.string   "phone"
     t.float    "rate_per_hour"
     t.boolean  "dj_status"
+    t.integer  "sdcl_followers"
+    t.integer  "sdcl_id"
+    t.string   "city"
   end
 
   create_table "events", force: true do |t|
