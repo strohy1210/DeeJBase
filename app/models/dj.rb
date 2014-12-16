@@ -49,7 +49,7 @@ class Dj < ActiveRecord::Base
           sdcl_id = dj.id
           bio = dj.description    
         
-          phone = extract_phone_number(bio)
+          phone = dj.extract_phone_number(bio)
         #webpage = dj.description.scan somethign
           Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone)
         end
