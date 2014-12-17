@@ -50,7 +50,9 @@ class Dj < ActiveRecord::Base
             sdcl_id = dj.id
             bio = dj.description
             phone = dj.extract_phone_number(bio)
-            Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url)
+            if Dj.find_by(sdcl_id: sdcl_id)==nil
+              Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url)
+            end
           end
         end
       end
@@ -59,7 +61,7 @@ class Dj < ActiveRecord::Base
 
   def self.get_demos
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
-    Dj.where(demo: nil).each do |dj|
+    Dj.where(demo: nil, dj_status: true).each do |dj|
       track = client.get('/tracks', :q => dj.name, :limit=> 1).first.permalink_url
       embed_info = client.get('/oembed', :url => track)
       dj.update(demo: embed_info['html'])
