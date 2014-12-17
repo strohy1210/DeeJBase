@@ -17,7 +17,6 @@ class WelcomeController < ApplicationController
     end
     current_user.update(dj_status: status)
     if current_user.dj_status
-      binding.pry
       @dj=current_user
       redirect_to dj_path(@dj)
     else
