@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   def create
     @dj = Dj.get_user_from_omniauth(auth_hash)
     login(@dj)
-    if @dj.dj_status = nil
+
+    if @dj.dj_status == nil
       redirect_to dj_form_path
     elsif @dj.dj_status = true
       redirect_to dj_path(@dj)

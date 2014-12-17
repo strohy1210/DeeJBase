@@ -4,8 +4,14 @@ class Dj < ActiveRecord::Base
   has_many :events
   has_many :venues, through: :events
   accepts_nested_attributes_for :venues
+  before_save :default_values
+
 
   attr_accessor :message, :demo_title
+
+  def default_values
+    self.bio ||= 'I\'m a DJ in NYC, get in touch'
+  end
   
   def self.get_user_from_omniauth(auth_hash)
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)
