@@ -36,19 +36,21 @@ class Dj < ActiveRecord::Base
     page_size =200
     client.get('/users', :q => 'New York', :limit=> page_size, :offset => (page-1)*page_size)
   end
-
+  #cross-reference fb for emails
   def self.create_sc_djs(page)
     self.get_soundcloud_djs(page).each do |dj|
       city = dj.city
       if city
         if dj.description && (city.downcase.include?("new york") || city.downcase.include?("ny") || city.downcase.include?("brooklyn") || city.downcase.include?("bronx") || city.downcase.include?("queens") || city.downcase.include?("staten"))
           email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
-          if email && dj.plan != "Free"
+          if dj.plan != "Free"
             sdcl_followers = dj.followers_count
             image_url = dj.avatar_url
             name = dj.username
             sdcl_id = dj.id
             bio = dj.description
+            #twit_handle = 
+            #website = 
             phone = dj.extract_phone_number(bio)
             if Dj.find_by(sdcl_id: sdcl_id)==nil
               Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url)
@@ -62,10 +64,13 @@ class Dj < ActiveRecord::Base
   def self.get_demos
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     Dj.where(demo: nil, dj_status: true).each do |dj|
-      track = client.get('/tracks', :q => dj.name, :limit=> 1).first.permalink_url
-      embed_info = client.get('/oembed', :url => track)
-      dj.update(demo: embed_info['html'])
-      dj.demo_title = embed_info['title']
+      track = client.get('/tracks', :q => dj.name, :limit=> 1).first
+      if track
+        track_url= track.permalink_url
+        embed_info = client.get('/oembed', :url => track_url)
+        dj.update(demo: embed_info['html'])
+        dj.demo_title = embed_info['title']
+      end
       # https://developers.soundcloud.com/docs/api/guide#playing
     end
   end
