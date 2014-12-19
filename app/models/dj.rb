@@ -26,50 +26,6 @@ class Dj < ActiveRecord::Base
     find_by(uid: auth_hash[:uid])
   end
 
-  def extract_phone_number(input)
-    if input.gsub(/\D/, "").match(/^1?(\d{3})(\d{3})(\d{4})/)
-      [$1, $2, $3].join("-")
-    end
-  end
-
-  def self.get_soundcloud_djs(page)      
-    client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
-    page_size =200
-    client.get('/users', :q => 'New York', :limit=> page_size, :offset => (page-1)*page_size)
-  end
-
-    def self.get_websites(string)
-    URI.extract(string)
-  end
-
-  def self.get_demos
-    client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
-    Dj.where(demo: nil, dj_status: true).each do |dj|
-      tracks = client.get('/tracks', :q => dj.name)
-      first_track = tracks.first
-      if first_track
-        track_url= first_track.permalink_url
-        embed_info = client.get('/oembed', :url => track_url)
-        dj.update(demo: embed_info['html'])
-      end
-      
-      if first_track && dj.genres.size == 0
-        get_genres(dj, tracks)
-      end
-    end
-  end
-
-  def self.get_genres(dj, tracks)
-    genres = []
-    tracks.each do |track|
-      string = track.tag_list
-      t=Track.new(string)         
-      genres << t.scan_for_genres        
-    end
-    dj.genres = genres.flatten.uniq
-    dj.save   
-  end
-
   def self.create_sc_djs(page)
     self.get_soundcloud_djs(page).each do |dj|
       city = dj.city
@@ -92,14 +48,59 @@ class Dj < ActiveRecord::Base
     end
   end
 
-
-  def self.set_est_rph
-    Dj.where(rate_per_hour: nil, dj_status: true).where.not(sdcl_followers: nil).each do |dj|
-      # dj.sdcl_followers
-      # get average followers
-
+  def self.get_demos_genres
+    client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
+    Dj.where(demo: nil, dj_status: true).each do |dj|
+      tracks = client.get('/tracks', :q => dj.name)
+      first_track = tracks.first if tracks.first
+      get_demos(dj, first_track, client) if first_track
+      get_genres(dj, tracks) if first_track && dj.genres.size == 0
     end
   end
+  
+  private
+    
+    def self.get_soundcloud_djs(page)      
+      client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
+      page_size =200
+      client.get('/users', :q => 'New York', :limit=> page_size, :offset => (page-1)*page_size)
+    end
+    
+    def extract_phone_number(input)
+      if input.gsub(/\D/, "").match(/^1?(\d{3})(\d{3})(\d{4})/)
+        [$1, $2, $3].join("-")
+      end
+    end
+
+      
+    def self.get_demos(dj, first_track, client)
+      track_url= first_track.permalink_url
+      embed_info = client.get('/oembed', :url => track_url)
+      dj.update(demo: embed_info['html']) if embed_info
+    end
+
+    def self.get_genres(dj, tracks)
+      genres = []
+      tracks.each do |track|
+        string = track.tag_list
+        t=Track.new(string)         
+        genres << t.scan_for_genres        
+      end
+      dj.genres = genres.flatten.uniq
+      dj.save   
+    end
+  # def self.get_websites(string)
+  #   URI.extract(string)
+  # end
+
+
+  # def self.set_est_rph
+  #   Dj.where(rate_per_hour: nil, dj_status: true).where.not(sdcl_followers: nil).each do |dj|
+  #     # dj.sdcl_followers
+  #     # get average followers
+
+  #   end
+  # end
 
 
 end
