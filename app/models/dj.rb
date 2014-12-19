@@ -29,20 +29,16 @@ class Dj < ActiveRecord::Base
   def self.create_sc_djs(page)
     self.get_soundcloud_djs(page).each do |dj|
       city = dj.city
-      if city
-        if dj.description && NYC_WORDS.any? { |w| city =~ /#{w}/ }
-          email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
-          if dj.plan != "Free" && email
-            sdcl_followers = dj.followers_count
-            image_url = dj.avatar_url
-            name = dj.username
-            sdcl_id = dj.id
-            bio = dj.description
-            phone = dj.extract_phone_number(bio)
-            if Dj.find_by(sdcl_id: sdcl_id)==nil
-              Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url)
-            end
-          end
+      if city && dj.description && NYC_WORDS.any? { |w| city =~ /#{w}/ }
+        email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
+        if dj.plan != "Free" && email
+          sdcl_followers = dj.followers_count
+          image_url = dj.avatar_url
+          name = dj.username
+          sdcl_id = dj.id
+          bio = dj.description
+          phone = dj.extract_phone_number(bio)
+          Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url) if Dj.find_by(sdcl_id: sdcl_id)==nil
         end
       end
     end
