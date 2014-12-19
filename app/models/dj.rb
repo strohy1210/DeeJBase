@@ -6,12 +6,12 @@ class Dj < ActiveRecord::Base
   accepts_nested_attributes_for :venues
   before_save :default_values
 
+  NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhatten", "bronx", "ny", "bklyn"]
 
   attr_accessor :message, :demo_title
 
   def default_values
     self.bio ||= 'I\'m a DJ in NYC, get in touch'
-    # self.rate_per_hour ||= nil
   end
   
   def self.get_user_from_omniauth(auth_hash)
@@ -37,31 +37,10 @@ class Dj < ActiveRecord::Base
     page_size =200
     client.get('/users', :q => 'New York', :limit=> page_size, :offset => (page-1)*page_size)
   end
-  #cross-reference fb for emails
-  def self.create_sc_djs(page)
-    self.get_soundcloud_djs(page).each do |dj|
-      city = dj.city
-      if city
-        if dj.description && (city.downcase.include?("new york") || city.downcase.include?("ny") || city.downcase.include?("brooklyn") || city.downcase.include?("bronx") || city.downcase.include?("queens") || city.downcase.include?("staten"))
-          email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
-          if dj.plan != "Free"
-            sdcl_followers = dj.followers_count
-            image_url = dj.avatar_url
-            name = dj.username
-            sdcl_id = dj.id
-            bio = dj.description
-            #twit_handle = 
-            #website = 
-            phone = dj.extract_phone_number(bio)
-            if Dj.find_by(sdcl_id: sdcl_id)==nil
-              Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url)
-            end
-          end
-        end
-      end
-    end
-  end
 
+    def self.get_websites(string)
+    URI.extract(string)
+  end
 
   def self.get_demos
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
@@ -90,6 +69,29 @@ class Dj < ActiveRecord::Base
     dj.genres = genres.flatten.uniq
     dj.save   
   end
+
+  def self.create_sc_djs(page)
+    self.get_soundcloud_djs(page).each do |dj|
+      city = dj.city
+      if city
+        if dj.description && NYC_WORDS.any? { |w| city =~ /#{w}/ }
+          email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
+          if dj.plan != "Free" && email
+            sdcl_followers = dj.followers_count
+            image_url = dj.avatar_url
+            name = dj.username
+            sdcl_id = dj.id
+            bio = dj.description
+            phone = dj.extract_phone_number(bio)
+            if Dj.find_by(sdcl_id: sdcl_id)==nil
+              Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url)
+            end
+          end
+        end
+      end
+    end
+  end
+
 
   def self.set_est_rph
     Dj.where(rate_per_hour: nil, dj_status: true).where.not(sdcl_followers: nil).each do |dj|
