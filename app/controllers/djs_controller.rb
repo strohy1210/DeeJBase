@@ -38,9 +38,9 @@ class DjsController < ApplicationController
     @dj = Dj.find(params[:dj][:id])
     @message = params[:dj][:message]
     name = @dj.name
-   ContactDjMailer.contact_dj(@dj, @message, @sender).deliver
-   flash[:success] = 'Message sent to '+name+'.'
-   redirect_to :back
+    ContactDjMailer.contact_dj(@dj, @message, @sender).deliver
+    flash[:success] = 'Message sent to '+name+'.'
+    redirect_to :back
   end
 
   private

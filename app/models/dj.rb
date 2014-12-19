@@ -11,6 +11,7 @@ class Dj < ActiveRecord::Base
 
   def default_values
     self.bio ||= 'I\'m a DJ in NYC, get in touch'
+    # self.rate_per_hour ||= nil
   end
   
   def self.get_user_from_omniauth(auth_hash)
@@ -61,19 +62,43 @@ class Dj < ActiveRecord::Base
     end
   end
 
+
   def self.get_demos
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     Dj.where(demo: nil, dj_status: true).each do |dj|
-      track = client.get('/tracks', :q => dj.name, :limit=> 1).first
-      if track
-        track_url= track.permalink_url
+      tracks = client.get('/tracks', :q => dj.name)
+      first_track = tracks.first
+      if first_track
+        track_url= first_track.permalink_url
         embed_info = client.get('/oembed', :url => track_url)
         dj.update(demo: embed_info['html'])
-        dj.demo_title = embed_info['title']
       end
-      # https://developers.soundcloud.com/docs/api/guide#playing
+      
+      if first_track && dj.genres.size == 0
+        get_genres(dj, tracks)
+      end
     end
   end
+
+  def self.get_genres(dj, tracks)
+    genres = []
+    tracks.each do |track|
+      string = track.tag_list
+      t=Track.new(string)         
+      genres << t.scan_for_genres        
+    end
+    dj.genres = genres.flatten.uniq
+    dj.save   
+  end
+
+  def self.set_est_rph
+    Dj.where(rate_per_hour: nil, dj_status: true).where.not(sdcl_followers: nil).each do |dj|
+      # dj.sdcl_followers
+      # get average followers
+
+    end
+  end
+
 
 end
 
