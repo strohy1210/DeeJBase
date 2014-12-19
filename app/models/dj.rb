@@ -47,13 +47,17 @@ class Dj < ActiveRecord::Base
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     Dj.where(demo: nil, dj_status: true).each do |dj|
+      begin
       tracks = client.get('/tracks', :q => dj.name)
+      rescue Soundcloud::ResponseError => e
+      puts "Error: #{e.message}, Status Code: #{e.response.code}"
+      end
       first_track = tracks.first if tracks
       get_demos(dj, first_track, client) if tracks && first_track
       get_genres(dj, tracks) if tracks && first_track && dj.genres.size == 0
     end
   end
-  
+
   private
     
     def self.get_soundcloud_djs(page)      
