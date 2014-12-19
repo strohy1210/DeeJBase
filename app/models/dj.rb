@@ -89,7 +89,6 @@ class Dj < ActiveRecord::Base
   #   URI.extract(string)
   # end
 
-
   # def self.set_est_rph
   #   Dj.where(rate_per_hour: nil, dj_status: true).where.not(sdcl_followers: nil).each do |dj|
   #     # dj.sdcl_followers
