@@ -48,7 +48,7 @@ class Dj < ActiveRecord::Base
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     Dj.where(demo: nil, dj_status: true).each do |dj|
       tracks = client.get('/tracks', :q => dj.name)
-      first_track = tracks.first if tracks.first
+      first_track = tracks.first if tracks
       get_demos(dj, first_track, client) if first_track
       get_genres(dj, tracks) if first_track && dj.genres.size == 0
     end
