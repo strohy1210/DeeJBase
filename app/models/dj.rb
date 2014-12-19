@@ -49,8 +49,8 @@ class Dj < ActiveRecord::Base
     Dj.where(demo: nil, dj_status: true).each do |dj|
       tracks = client.get('/tracks', :q => dj.name)
       first_track = tracks.first if tracks
-      get_demos(dj, first_track, client) if first_track
-      get_genres(dj, tracks) if first_track && dj.genres.size == 0
+      get_demos(dj, first_track, client) if tracks && first_track
+      get_genres(dj, tracks) if tracks && first_track && dj.genres.size == 0
     end
   end
   
@@ -70,7 +70,7 @@ class Dj < ActiveRecord::Base
 
       
     def self.get_demos(dj, first_track, client)
-      track_url= first_track.permalink_url
+      track_url = first_track.permalink_url
       embed_info = client.get('/oembed', :url => track_url)
       dj.update(demo: embed_info['html']) if embed_info
     end
