@@ -1,10 +1,19 @@
 <% content_for(:page_header) {"Find NYC's Rawest Talent"} %>
   <div class="filter_options_container">
 
+  <% if @genre %>
   <form class="filter_form">
-    <%= select("genre", "genre_id", Genre.all.map {|g| [g.name, g.id] }) %>
-    <input type="submit" value="Filter" />
+    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }, @genre.id)) %>
+    <input type="submit" value="Filter" class='btn btn-info' />
   </form>
+  <% else %>
+  <form class="filter_form">
+    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] })) %>
+    <input type="submit" value="Filter" class='btn btn-info' />
+  </form>
+
+  <%end%>
+
   </div>
 
     <ul>

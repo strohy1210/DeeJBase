@@ -28,6 +28,7 @@ class DjsController < ApplicationController
   end
 
   def show
+ 
     @dj= Dj.find(params[:id])
     @genres = @dj.genres
 
