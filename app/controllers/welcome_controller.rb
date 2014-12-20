@@ -3,8 +3,7 @@ class WelcomeController < ApplicationController
   
   def index
 
-    if params[:genre]
-      
+    if params[:genre]  
       g= Genre.find(params["genre"]["genre_id"])
       @djs = Dj.all.select {|dj| dj.genres.include?(g)}
     else
