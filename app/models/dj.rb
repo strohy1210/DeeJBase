@@ -6,7 +6,7 @@ class Dj < ActiveRecord::Base
   accepts_nested_attributes_for :venues
   before_save :default_values
 
-  NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhatten", "bronx", "ny", "bklyn"]
+  NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhattan", "bronx", "ny", "bklyn"]
 
   attr_accessor :message, :demo_title
 
@@ -28,8 +28,8 @@ class Dj < ActiveRecord::Base
 
   def self.create_sc_djs(page)
     self.get_soundcloud_djs(page).each do |dj|
-      city = dj.city
-      if city && dj.description && NYC_WORDS.any? { |w| city =~ /#{w}/ }
+      city = dj.city.downcase
+      if city && dj.description.downcase && NYC_WORDS.any? { |w| city =~ /#{w}/ }
         email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
         if dj.plan != "Free" && email
           sdcl_followers = dj.followers_count
