@@ -1,4 +1,12 @@
 <% content_for(:page_header) {"Find NYC's Rawest Talent"} %>
+  <div class="filter_options_container">
+
+  <form class="filter_form">
+    <%= select("genre", "genre_id", Genre.all.map {|g| [g.name, g.id] }) %>
+    <input type="submit" value="Filter" />
+  </form>
+  </div>
+
     <ul>
     <% @djs.each do |dj| %>
     <% if dj.dj_status %>

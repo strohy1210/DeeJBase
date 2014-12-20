@@ -1,8 +1,16 @@
 class WelcomeController < ApplicationController
   skip_before_action :authorize
+  
   def index
 
-    @djs = Dj.all
+    if params[:genre]
+      
+      g= Genre.find(params["genre"]["genre_id"])
+      @djs = Dj.all.select {|dj| dj.genres.include?(g)}
+    else
+      @djs = Dj.all
+    end
+
   end
 
   def dj_form
