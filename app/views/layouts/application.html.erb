@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="navbar navbar-default">
-  <div class="container">
+  <div class="container" id="bar">
     <div class="navbar-header">
       <%= link_to image_tag("logo_white.png"), root_path, class: 'navbar-brand' %>
     </div>
@@ -34,11 +34,9 @@
       <%= value %>
     </div>
   <% end %>
-  <div class="page-header">
-    <h1><%= yield :page_header %></h1>
-  </div>
+
   
 <%= yield %>
-
+</div>
 </body>
 </html>

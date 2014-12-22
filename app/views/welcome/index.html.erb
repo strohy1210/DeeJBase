@@ -1,26 +1,29 @@
-<% content_for(:page_header) {"Find NYC's Rawest Talent"} %>
-<div class='row'>
-  <div class="filter_options_container input-group col-md-6">
-  <strong> Genre: </strong>
+  <div class="row page-header">
+    <div class="title col-md-7">
+    <h1> Find NYC's Rawest Talent </h1>
+    </div>
+
+  
   <% if @genre %>
-  <form class="filter_form ">
-    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All", 8], @genre.id)) %>
-    <input type="submit" value="Filter" class='btn btn-info btn-small' />
+  <form class="filter_form pull-right col-md-3">
+   <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All", 8], @genre.id), class: "form-control select-genre") %>
+    <input type="submit" value="Filter Genres" class='btn btn-info btn-small' />
   </form>
   <% else %>
-  <form class="filter_form">
-    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All", 8], 8)) %>
-    <input type="submit" value="Filter" class='btn btn-info btn-small' />
+  <form class="filter_form pull-right col-md-3">
+    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All", 8], 8), class: "form-control select-genre") %>
+    <input type="submit" value="Filter Genres" class='btn btn-info btn-small' />
   </form>
 
   <%end%>
-
   </div>
-</div>
+
 
     <ul>
     <% @djs.each do |dj| %>
+    
     <% if dj.dj_status %>
+    <div class='dj-item'>
       <div class= "dj-header">
         <h3><%= link_to dj.name, dj_path(dj) %></h3>
       
@@ -38,15 +41,15 @@
         <p><div class="index-image">
           <%= link_to image_tag(dj.image_url), dj_path(dj) %>
         </div></p>
-      <div class="sound-cld">
-        Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %>
-      </div>
+        <div class="sound-cld">
+          Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %>
+        </div>
         <p><div class="demo-embed">
           <% if dj.demo %>
           <%= dj.demo.html_safe %>
           <%end%>
         </div></p>
-        _______________________________
+       </div>
        <% end %>
    
         <br><br>
