@@ -1,7 +1,4 @@
 class DjsController < ApplicationController
-  def index
-    redirect_to root_path
-  end
 
   def new
     @dj = Dj.new
@@ -11,7 +8,6 @@ class DjsController < ApplicationController
    @dj = Dj.find(params[:id])
   end
 
-  
 
   def update
     DjGenre.where(dj_id: params[:id]).destroy_all
