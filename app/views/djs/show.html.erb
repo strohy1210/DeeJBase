@@ -34,14 +34,17 @@
       </div>
   
 
-  <div class="profile-pic col-md-4">
-    <p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
+    <div class="profile-pic col-md-4">
+      <p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
+    </div>
   </div>
-   </div> 
+  <div class="sound-cld col-md-4">
+    Sound Cloud Followers: <%= @dj.sdcl_followers if @dj.sdcl_followers %>
+  </div> 
   <br>
-  <div class="dj-info col-md-10"
+  <div class="dj-info col-md-10">
   <h4> About: </h4><%= truncate(@dj.bio.html_safe, length: 900, separator: ".") %>
-  <h4> </h4><%= @genres.map {|g| g.name}.join(", ") %>
+  <h4> Genres: </h4><%= @genres.map {|g| g.name}.join(", ") %>
   <h4> Hourly Rate: </h4>$<%= @dj.rate_per_hour %>0
   <div class = "show-demo">
     <% if @dj.demo %>
