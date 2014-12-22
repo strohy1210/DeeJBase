@@ -3,13 +3,13 @@
 </div>
 <div class="dj-profile">
   
-    <div class="row">
+ 
     
       <div class="col-md-4">
         <h2> <%= @dj.name %> </h2>
       </div>
-
-      <div class= "edit-or-contact col-md-4 col-md-offset-4">
+   <div class="row">
+      <div class= "edit-or-contact col-md-4 pull-right">
         <% if @current_user == @dj %>
         <button class="edit-dj btn-centered btn btn-primary">Edit your profile</button> 
         <%else%>
@@ -28,13 +28,14 @@
          <%end%>
          <br>
       </div>
-  </div>
+  
 
-  <div class="profile-pic">
+  <div class="profile-pic col-md-4">
     <p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
   </div>
-    
+   </div> 
   <br>
+  <div class="dj-info col-md-10"
   <h4> About: </h4><%= truncate(@dj.bio.html_safe, length: 900, separator: ".") %>
   <h4> </h4><%= @genres.map {|g| g.name}.join(", ") %>
   <h4> Hourly Rate: </h4>$<%= @dj.rate_per_hour %>0
@@ -43,9 +44,9 @@
       <%= @dj.demo.html_safe %>
     <%end%>
   </div>
-
-
 </div>
+
+
 
 <div class="row">
   <div class="update-form col-md-10">
@@ -53,3 +54,5 @@
 <button class="cancel-edit btn-centered btn">Cancel</button> <br>
   </div>
 </div>
+</div>
+
