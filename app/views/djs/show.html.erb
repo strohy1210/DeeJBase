@@ -2,16 +2,18 @@
     <h1> Take Off </h1>
 </div>
 <div class="dj-profile">
-  
- 
-    
       <div class="col-md-4">
         <h2> <%= @dj.name %> </h2>
       </div>
+      <br>
    <div class="row">
-      <div class= "edit-or-contact col-md-6 pull-right">
+      <div class= "edit-or-contact col-md-7 pull-right">
         <% if @current_user == @dj %>
-        <button class="edit-dj btn-centered btn btn-primary">Edit your profile</button> 
+        <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
+        <div class="profile-pic col-md-10">
+          <%= hidden_field_tag :id %>
+         </div>
+        <br>
         <%else%>
         <div class="message-form">
           <%= form_for(@dj, url: send_contact_email_path, method: 'post') do |f| %>
