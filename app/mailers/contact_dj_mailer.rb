@@ -5,7 +5,7 @@ class ContactDjMailer < ActionMailer::Base
     @sender = sender
     @dj = dj
     @message = message
-    mail(to: 'strohsm88@gmail.com', subject: @dj.name + 'contact requested')
+    mail(to: 'strohsm88@gmail.com', subject: @dj.name + ' contact requested')
   end
 
 end
