@@ -35,7 +35,9 @@ class DjsController < ApplicationController
   end
 
   def send_contact_email
+    binding.pry
     @sender = current_user
+    @sender.update(current_user_params)
     @dj = Dj.find(params[:dj][:id])
     @message = params[:dj][:message]
     name = @dj.name
@@ -48,6 +50,10 @@ class DjsController < ApplicationController
  
     def dj_params
       params.require(:dj).permit!
+    end
+
+    def current_user_params
+      params.require(:current_user).permit!
     end
 end
 

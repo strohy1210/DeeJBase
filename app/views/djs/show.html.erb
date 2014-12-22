@@ -16,7 +16,8 @@
         <div class="message-form">
           <%= form_for(@dj, url: send_contact_email_path, method: 'post') do |f| %>
             <%= f.label :message %>. <strong>Please leave contact information:</strong><br>
-           <%= f.text_area :message, rows: 3, class: 'form-control', placeholder: "Hey! Are you free on Fri night..." %><br>
+           <%= f.text_area :message, rows: 3, class: 'form-control', placeholder: "Hey! Are you free on Fri night..." %>
+           <%= email_field(:current_user, :email, class: 'form-control', placeholder: "youremail@email.com", required: true) %>
            <%= f.hidden_field :id %>
             <%= f.submit "Send message", class: 'btn btn-primary contact' %>
           <%end%>
