@@ -1,16 +1,13 @@
 class WelcomeController < ApplicationController
   skip_before_action :authorize
   
-  def index
-    
-
+  def index  
     if params[:genre_id] && params[:genre_id] != 'all'
       @genre= Genre.find(params[:genre_id])
       @djs = @genre.djs.paginate(page: params[:page], per_page: 8).order('created_at DESC')
     else
       @djs = Dj.paginate(page: params[:page], per_page: 8).order('created_at DESC')
     end
-
   end
 
   def dj_form
@@ -31,5 +28,8 @@ class WelcomeController < ApplicationController
       redirect_to root_path
     end
   end
+  
+  def about
 
+  end
 end

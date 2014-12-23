@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :djs
   get 'dj-form', to: 'welcome#dj_form'
+  get 'about', to: 'welcome#about'
   post 'set-dj', to: 'welcome#set_dj'
 
   root 'welcome#index'

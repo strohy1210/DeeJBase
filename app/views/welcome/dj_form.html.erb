@@ -1,3 +1,6 @@
+<div class="row page-header">
+<h1>Welcome</h1>
+</div>
 <%= form_for current_user, url: set_dj_path, method: 'post' do |f| %>
 <%= f.radio_button(:dj_status, true) %>
 <%= f.label(:dj_true, "I am a dj. Build my profile.") %><br>
