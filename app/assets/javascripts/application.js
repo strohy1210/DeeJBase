@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+  // $(function(){
+  //   $('#results').pageless({ totalPages: 10
+  //                        , url: '/'
+  //                        , loaderMsg: 'Loading more results'
+  //                        });
+
+  // })()

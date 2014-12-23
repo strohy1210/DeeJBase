@@ -1,3 +1,4 @@
+
   <div class="row page-header">
     <div class="title col-md-7">
     <h1> Find NYC's Rawest Talent </h1>
@@ -18,7 +19,7 @@
   <%end%>
   </div>
 
-
+<div id="results">
 <ul>
 <% @djs.each do |dj| %>
     
@@ -56,6 +57,9 @@
    
         <br><br>
 <% end %>
+<div id="infinite-scrolling">
+  <%= will_paginate @djs %>
+</div>
 </ul>
-
+<div>
 

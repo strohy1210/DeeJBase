@@ -2,12 +2,13 @@ class WelcomeController < ApplicationController
   skip_before_action :authorize
   
   def index
-    # binding.pry
+    
+
     if params[:genre_id] && params[:genre_id] != '8'
       @genre= Genre.find(params[:genre_id])
       @djs = Dj.all.select {|dj| dj.genres.include?(@genre)}
     else
-      @djs = Dj.all 
+      @djs = Dj.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     end
 
   end
