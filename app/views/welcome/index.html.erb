@@ -7,13 +7,13 @@
   
   <% if @genre %>
   <form class="filter_form pull-right col-md-3">
-   <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All", 8], @genre.id), class: "form-control select-genre") %>
-    <input type="submit" value="Filter Genres" class='btn btn-info btn-small' />
+   <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All Genres", 'all'], @genre.id), class: "form-control select-genre",:onchange => 'this.form.submit()') %>
+  
   </form>
   <% else %>
   <form class="filter_form pull-right col-md-3">
-    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All", 8], 8), class: "form-control select-genre") %>
-    <input type="submit" value="Filter Genres" class='btn btn-info btn-small' />
+    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All Genres", 'all'], 'all'), class: "form-control select-genre",:onchange => 'this.form.submit()') %>
+  
   </form>
 
   <%end%>

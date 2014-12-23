@@ -4,11 +4,11 @@ class WelcomeController < ApplicationController
   def index
     
 
-    if params[:genre_id] && params[:genre_id] != '8'
+    if params[:genre_id] && params[:genre_id] != 'all'
       @genre= Genre.find(params[:genre_id])
-      @djs = @genre.djs.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+      @djs = @genre.djs.paginate(page: params[:page], per_page: 8).order('created_at DESC')
     else
-      @djs = Dj.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+      @djs = Dj.paginate(page: params[:page], per_page: 8).order('created_at DESC')
     end
 
   end
