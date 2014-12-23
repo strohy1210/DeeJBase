@@ -27,4 +27,9 @@ $('.cancel-message').click(function(){
     $('.hire-dj').toggle();
 })
 
+$('.contact-form').hide();
+$('.send-contact').click(function(){
+  $('.contact-form').toggle();
+})
+
 })
