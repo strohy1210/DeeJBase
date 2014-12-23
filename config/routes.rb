@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   post :send_contact_email, to: 'djs#send_contact_email', as: :send_contact_email
+  post :contact_us, to: 'welcome#contact_us', as: :contact_us
   
   get '/auth/facebook/callback', to: 'sessions#create'
   get '/auth/facebook', as: 'login'

@@ -31,7 +31,6 @@ class DjsController < ApplicationController
   end
 
   def send_contact_email
- 
     @sender = current_user
     @sender.update(current_user_params)
     @dj = Dj.find(params[:dj][:id])
