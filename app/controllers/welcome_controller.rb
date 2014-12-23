@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
 
     if params[:genre_id] && params[:genre_id] != '8'
       @genre= Genre.find(params[:genre_id])
-      @djs = Dj.all.select {|dj| dj.genres.include?(@genre)}
+      @djs = @genre.djs.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     else
       @djs = Dj.paginate(page: params[:page], per_page: 5).order('created_at DESC')
     end
