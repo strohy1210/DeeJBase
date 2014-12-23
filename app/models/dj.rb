@@ -28,22 +28,29 @@ class Dj < ActiveRecord::Base
 
   def self.create_sc_djs(page)
     self.get_soundcloud_djs(page).each do |dj|
-      city = dj.city.downcase
-      if city && dj.description.downcase && NYC_WORDS.any? { |w| city =~ /#{w}/ }
-        email = dj.description.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
-        if dj.plan != "Free" && email
+      city = dj.city.downcase if dj.city
+      bio = dj.description
+      if city && bio && NYC_WORDS.any? { |w| city =~ /#{w}/ }   
+        phone = dj.extract_phone_number(bio)
+        email = bio.downcase.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
+        if dj.plan != "Free" && (email || phone)
           sdcl_followers = dj.followers_count
           image_url = dj.avatar_url
           name = dj.username
           sdcl_id = dj.id
-          bio = dj.description
-          phone = dj.extract_phone_number(bio)
-          Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url) if Dj.find_by(sdcl_id: sdcl_id)==nil
+          twitter_hdl = dj.extract_twitter_handle(bio)
+          Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url, twitter_hdl: twitter_hdl) if Dj.find_by(sdcl_id: sdcl_id)==nil
         end
       end
     end
   end
-
+  def self.update_twitter
+    Dj.where(twitter_hdl = nil).where.not(bio: nil).each do |dj|
+      bio = dj.bio
+      handle = dj.extract_twitter_handle(bio)
+      dj.update(twitter_hdl: handle)
+    end
+  end
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     Dj.where(demo: nil, dj_status: true).each do |dj|
@@ -59,6 +66,14 @@ class Dj < ActiveRecord::Base
     end
   end
 
+  def extract_twitter_handle(input)
+    input.downcase!
+    poss_handles = input.scan(/@\w+/)
+    emails = input.scan(/@\w+(?=.co)/)
+    handles = poss_handles - emails
+    handles.first
+  end
+
   private
     
     def self.get_soundcloud_djs(page)      
@@ -72,6 +87,8 @@ class Dj < ActiveRecord::Base
         [$1, $2, $3].join("-")
       end
     end
+
+
 
       
     def self.get_demos(dj, first_track, client)
@@ -105,7 +122,8 @@ class Dj < ActiveRecord::Base
   #     # get average followers
 
   #   end
-  # end
+#   # end
+
 
 
 end

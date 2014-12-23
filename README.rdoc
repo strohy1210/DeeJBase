@@ -21,7 +21,10 @@ check out rukkus, faked 1 side of their network
 27 get email on  fb oauth
 
 28, fb followers, spotify followers, fb followers (3, ), 5 tracks on show page
-
+29: put one or two more demos in
+30 . add agent_status
+31. create track table with dj_id so that we can save a few more tracks and display first 3 on show page.
+32. create method to be called in get_demos_genres, where we create new tracks and save them
 Image uploader
 https://github.com/thoughtbot/paperclip
 

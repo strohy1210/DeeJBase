@@ -37,7 +37,7 @@
 
           <%if dj.bio %>
           <h4>
-            <%= truncate(dj.bio.html_safe, length: 80, separator: " ") %></h4>
+            <%= truncate(dj.bio.html_safe, length: 150, separator: " ") %></h4>
           
             Genres: <%= dj.genres.map {|g| g.name}.join(", ") %>
           <%end%>
