@@ -53,7 +53,7 @@ class Dj < ActiveRecord::Base
   end
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
-    Dj.where(demo: nil, dj_status: true).each do |dj|
+    Dj.where(demo: nil, dj_status: true, agent_status: false).each do |dj|
 
       begin
       tracks = client.get('/tracks', :q => dj.name)
