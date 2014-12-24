@@ -45,7 +45,7 @@ class Dj < ActiveRecord::Base
     end
   end
   def self.update_twitter
-    Dj.where(twitter_hdl = nil).where.not(bio: nil).each do |dj|
+    Dj.where(twitter_hdl: nil).where.not(bio: nil).each do |dj|
       bio = dj.bio
       handle = dj.extract_twitter_handle(bio)
       dj.update(twitter_hdl: handle)

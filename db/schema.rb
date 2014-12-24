@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223223834) do
+ActiveRecord::Schema.define(version: 20141223234106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20141223223834) do
     t.integer  "sdcl_id"
     t.string   "city"
     t.string   "twitter_hdl"
+    t.boolean  "agent_status",   default: false
   end
 
   create_table "events", force: true do |t|
