@@ -1,5 +1,6 @@
 class Dj < ActiveRecord::Base
   has_many :dj_genres
+  has_many :tracks
   has_many :genres, through: :dj_genres
   has_many :events
   has_many :venues, through: :events
@@ -66,6 +67,20 @@ class Dj < ActiveRecord::Base
     end
   end
 
+  def save_tracks(tracks, client)
+    i=1
+    while i< 3
+      url = tracks[i].permalink_url if tracks[i]
+      begin
+      embed_info = client.get('/oembed', :url => url)
+      rescue Soundcloud::ResponseError => e
+      puts "Error: #{e.message}, Status Code: #{e.response.code}"
+      end
+      Track.create(url: embed_info['html'], dj_id: self.id ) if embed_info
+      i+1
+    end
+  end
+
   def extract_twitter_handle(input)
     input.downcase!
     poss_handles = input.scan(/@\w+/)
@@ -88,8 +103,6 @@ class Dj < ActiveRecord::Base
       end
     end
 
-
-
       
     def self.get_demos(dj, first_track, client)
       track_url = first_track.permalink_url
@@ -106,7 +119,8 @@ class Dj < ActiveRecord::Base
       genres = []
       tracks.each do |track|
         string = track.tag_list
-        t=Track.new(string)         
+        t=Track.new
+        t.string = string        
         genres << t.scan_for_genres        
       end
       dj.genres = genres.flatten.uniq

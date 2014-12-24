@@ -1,5 +1,5 @@
-class Track
-
+class Track < ActiveRecord::Base
+  belongs_to :dj
   @@indie = Genre.find_by(name: "Indie")
   @@electronic = Genre.find_by(name: "Electronic")
   @@top_40 = Genre.find_by(name: "Top-40")  
@@ -16,11 +16,12 @@ class Track
 
   attr_accessor :string
 
-  def initialize(string)
-    @string=string.downcase
-  end
+  # def initialize(string)
+  #   @string=string.downcase
+  # end
   
   def scan_for_genres #string will be tag_list
+    string.downcase!
     @genres = []
     @genres << @@indie if INDIE.any? { |w| string =~ /#{w}/ }
     @genres << @@electronic if ELECTRONIC.any? { |w| string =~ /#{w}/ }
@@ -30,7 +31,6 @@ class Track
     @genres << @@deep_house if DEEP_HOUSE.any? { |w| string =~ /#{w}/ }  
     @genres
   end
-
 
 
 
