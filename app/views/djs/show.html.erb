@@ -10,9 +10,6 @@
       <div class= "edit-or-contact col-md-7 pull-right">
         <% if @current_user == @dj %>
         <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
-        <div class="profile-pic col-md-10">
-          <%= hidden_field_tag :id %>
-         </div>
         <br>
         <%else%>
 
@@ -21,6 +18,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Contact <%= @dj.name %></h4>
               </div>
               <div class="modal-body">
@@ -60,11 +58,10 @@
     <!-- ///// -->
 
 <!-- ///////////  PROFILE //////////////////////////////// -->
-
+<div id="dj-profile">
     <div class="profile-pic col-md-10">
       <p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
     </div>
-  </div>
   <div class="sound-cld col-md-4">
     Sound Cloud Followers: <%= @dj.sdcl_followers if @dj.sdcl_followers %>
   </div> 
@@ -78,13 +75,14 @@
       <%= @dj.demo.html_safe %>
     <%end%>
   </div>
+  </div>
 </div>
 
 <!-- -->
 
 
 <div class="row">
-  <div class="update-form col-md-10">
+  <div class="update-form col-md-10 col-md-offset-1">
   <%= render 'form' %><br>
 <button class="cancel-edit btn-centered btn">Cancel</button> <br>
   </div>
