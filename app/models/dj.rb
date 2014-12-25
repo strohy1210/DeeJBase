@@ -52,34 +52,38 @@ class Dj < ActiveRecord::Base
       dj.update(twitter_hdl: handle)
     end
   end
+
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
-    Dj.where(demo: nil, dj_status: true, agent_status: false).each do |dj|
-
+    Dj.where(dj_status: true, agent_status: false).each do |dj|
       begin
-      tracks = client.get('/tracks', :q => dj.name)
+        tracks = client.get('/tracks', :q => dj.name)
       rescue Soundcloud::ResponseError => e
-      puts "Error: #{e.message}, Status Code: #{e.response.code}"
+        puts "Error: #{e.message}, Status Code: #{e.response.code}"
       end
-      first_track = tracks.first if tracks
-      get_demos(dj, first_track, client) if tracks && first_track
-      get_genres(dj, tracks) if tracks && first_track && dj.genres.size == 0
+      if tracks
+        first_track = tracks.first
+        get_demos(dj, first_track, client) if first_track && !dj.demo
+        get_genres(dj, tracks) if first_track && dj.genres.size < 1
+        # save_tracks(dj, tracks, client) if first_track && dj.tracks.size < 1
+      end
     end
   end
 
-  def save_tracks(tracks, client)
-    i=1
-    while i< 3
-      url = tracks[i].permalink_url if tracks[i]
-      begin
-      embed_info = client.get('/oembed', :url => url)
-      rescue Soundcloud::ResponseError => e
-      puts "Error: #{e.message}, Status Code: #{e.response.code}"
-      end
-      Track.create(url: embed_info['html'], dj_id: self.id ) if embed_info
-      i+1
-    end
-  end
+  # def self.save_tracks(dj, tracks, client)
+  #   i=1
+  #   binding.pry
+  #   while i < 4
+  #     url = tracks[i].permalink_url if tracks[i]
+  #     begin
+  #     embed_info = client.get('/oembed', :url => url)
+  #     rescue Soundcloud::ResponseError => e
+  #     puts "Error: #{e.message}, Status Code: #{e.response.code}"
+  #     end
+  #     Track.create(url: embed_info['html'], dj_id: dj.id) if embed_info
+  #     i+1
+  #   end
+  # end
 
   def extract_twitter_handle(input)
     input.downcase!
@@ -131,12 +135,12 @@ class Dj < ActiveRecord::Base
   # end
 
   # def self.set_est_rph
-  #   Dj.where(rate_per_hour: nil, dj_status: true).where.not(sdcl_followers: nil).each do |dj|
+  #   Dj.where(rate_per_hour: nil, dj_status: true, agent_status: false).where.not(sdcl_followers: nil).each do |dj|
   #     # dj.sdcl_followers
   #     # get average followers
 
   #   end
-#   # end
+#   end
 
 
 

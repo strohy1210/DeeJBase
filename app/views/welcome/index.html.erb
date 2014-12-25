@@ -23,40 +23,37 @@
 <ul>
 <% @djs.each do |dj| %>
     
-  <% if dj.dj_status %>
-    <div class='dj-item'>
-      <div class= "dj-header">
-        <h3><%= link_to dj.name, dj_path(dj) %></h3>
-      
-      </div>
-      <div class="row">
-        <p><div class="index-image col-md-3">
-          <%= link_to image_tag(dj.image_url), dj_path(dj) %>
-        </div></p>
-        <div class="bio col-md-8">
-
-          <%if dj.bio %>
-          <h4>
-            <%= truncate(dj.bio.html_safe, length: 150, separator: " ") %></h4>
-          
-            Genres: <%= dj.genres.map {|g| g.name}.join(", ") %>
-          <%end%>
-        </div>
-      </div>
-      <br>
-        <div class="sound-cld">
-          Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %>
-        </div>
-        <p><div class="demo-embed">
-          <% if dj.demo %>
-          <%= dj.demo.html_safe %>
-          <%end%>
-        </div></p>
+  <div class='dj-item'>
+    <div class= "dj-header">
+      <h3><%= link_to dj.name, dj_path(dj) %></h3>
+    
     </div>
-  <% end %>
+    <div class="row">
+      <p><div class="index-image col-md-3">
+        <%= link_to image_tag(dj.image_url), dj_path(dj) %>
+      </div></p>
+      <div class="bio col-md-8">
+
+        <%if dj.bio %>
+        <h4>
+          <%= truncate(dj.bio.html_safe, length: 150, separator: " ") %></h4>       
+          Genres: <%= dj.genres.map {|g| g.name}.join(", ") %>
+        <%end%>
+      </div>
+    </div>
+    <br>
+      <div class="sound-cld">
+        Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %>
+      </div>
+      <p><div class="demo-embed">
+        <% if dj.demo %>
+        <%= dj.demo.html_safe %>
+        <%end%>
+      </div></p>
+  </div>
+<% end %>
    
         <br><br>
-<% end %>
 <div id="infinite-scrolling">
   <%= will_paginate @djs %>
 </div>

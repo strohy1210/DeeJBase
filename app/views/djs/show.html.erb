@@ -22,8 +22,8 @@
             <%= f.label :email %>
            <%= email_field(:current_user, :email, class: 'form-control', placeholder: "youremail@email.com", required: true) %>
             <%= f.label :phone %> (Suggested)
-          <%= telephone_field(:current_user, :phone, class: 'form-control', placeholder: "917-555-5555") %>
-           <%= f.hidden_field :id %>
+            <%= telephone_field(:current_user, :phone, class: 'form-control', placeholder: "917-555-5555") %>
+            <%= f.hidden_field :id %>
             <%= f.submit "Send message", class: 'btn btn-primary contact' %>
           <%end%>
          </div>
