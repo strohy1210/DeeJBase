@@ -36,8 +36,10 @@
 
         <%if dj.bio %>
         <h4>
-          <%= truncate(dj.bio.html_safe, length: 150, separator: " ") %></h4>       
-          Genres: <%= dj.genres.map {|g| g.name}.join(", ") %>
+          <%= link_to 'More Info', dj_path(dj) %>
+        
+        </h4>       
+          <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
         <%end%>
       </div>
     </div>

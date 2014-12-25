@@ -1,4 +1,8 @@
 == README
+
+1. call to get price info for a few map to scld followers
+2. get 2 more demos each
+3. cross-reference djs with one other site
 Process:
 1. tie venues into djs
 7. add image uploader/ability to edit

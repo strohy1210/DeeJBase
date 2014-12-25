@@ -1,5 +1,5 @@
 class DjsController < ApplicationController
-
+  skip_before_action :authorize
   def new
     @dj = Dj.new
   end
