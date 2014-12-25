@@ -27,7 +27,7 @@ class DjsController < ApplicationController
  
     @dj= Dj.find(params[:id])
     @genres = @dj.genres
-    @tracks = @dj.tracks
+    # @tracks = @dj.tracks
   end
 
   def send_contact_email
