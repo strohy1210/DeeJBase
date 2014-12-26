@@ -80,7 +80,7 @@
   <div class="tracks">
     <div class = "show-demo track">
     Demo: <%= @tracks.first.title %>
-    <%= @tracks.first.demo.html_safe %><br>
+    <%= @tracks.first.demo.html_safe if @tracks.first.demo %><br>
     Playback Count: <%= @tracks.first.playback_count %><br>
     Favorites Count: <%= @tracks.first.favoritings_count %><br> 
     </div>
