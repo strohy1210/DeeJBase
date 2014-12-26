@@ -63,13 +63,10 @@ class Dj < ActiveRecord::Base
       end
       if tracks
         first_track = tracks.first
-        # get_demos(dj, first_track, client) if first_track && !dj.demo
         get_genres(dj, tracks) if first_track && dj.genres.size < 1
         save_tracks(dj, tracks, client) if dj.tracks.size < 3
       end
-      # dj.destroy unless dj.tracks.size > 0
     end
-
   end
 
   def self.save_tracks(dj, tracks, client)
@@ -101,18 +98,6 @@ class Dj < ActiveRecord::Base
     end
 
       
-    # def self.get_demos(dj, first_track, client)
-    #   track_url = first_track.permalink_url
-    #   begin
-    #   embed_info = client.get('/oembed', :url => track_url)
-    #   rescue Soundcloud::ResponseError => e
-    #   puts "Error: #{e.message}, Status Code: #{e.response.code}"
-    #   end
-    #   Track.get_track_info(dj, first_track, client)
-    #   dj.update(demo: embed_info['html']) if embed_info
-    
-    # end
-
     def self.get_genres(dj, tracks)
       genres = []
       tracks.each do |track|
@@ -124,7 +109,6 @@ class Dj < ActiveRecord::Base
       dj.genres = genres.flatten.uniq
       dj.save   
     end
-
 
 
 end

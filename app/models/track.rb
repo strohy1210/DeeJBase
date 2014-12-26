@@ -53,13 +53,5 @@ class Track < ActiveRecord::Base
       duplicates.each{|double| double.destroy} # duplicates can now be destroyed
     end
   end
-#delete all demos that equal the demo of a track, showvel all therest of the demos into the track array of dj
-  # Dj.all.each do |dj|
-  #   track = dj.tracks.where(demo: dj.demo)
-  #   if dj.demo == track.demo
-  #     dj.demo = nil
-  #   else
-  #     Track.create(demo: dj.demo, dj_id: dj.id)
-  #   end
-  # end
+
 end

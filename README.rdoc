@@ -1,9 +1,9 @@
 == README
 
 1. call to get price info for a few map to scld followers
-2. get 2 more demos each
+2. dj spider with wrong demo?
 3. cross-reference djs with one other site
-4. more filtering options- by price, by followers, average playcount
+4. more filtering options- by price, by followers, average playcount, search funciton
 
 Later:
 1. tweet at djs to claim profile

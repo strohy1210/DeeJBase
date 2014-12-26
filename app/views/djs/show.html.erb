@@ -73,6 +73,7 @@
     <!-- #truncate(@dj.bio.html_safe, length: 40, separator: ".") -->
     <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
     <h4> Hourly Rate: $<%= @dj.rate_per_hour %>0</h4>
+    <h5> located in <%= @dj.city %> </h5>
     </div>
     </div>
   </div>
