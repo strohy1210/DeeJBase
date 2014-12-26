@@ -16,8 +16,9 @@ class Track < ActiveRecord::Base
     track_url = track.permalink_url
     title = track.title
     tag_list = track.tag_list
-    t = Track.create(dj_id: dj.id, playback_count: playback_count, favoritings_count: favoritings_count, title: title, tag_list: tag_list)
-    t.get_embed_info(client, track_url) if dj.tracks.size < 3
+    t = Track.find_by(title: title) || Track.new(title: title, tag_list: tag_list)
+    t.update(dj_id: dj.id, playback_count: playback_count, favoritings_count: favoritings_count)
+    t.get_embed_info(client, track_url)
   end
 
   def get_embed_info(client, track_url)
