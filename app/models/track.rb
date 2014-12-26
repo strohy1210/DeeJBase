@@ -10,6 +10,24 @@ class Track < ActiveRecord::Base
 
   attr_accessor :string
 
+  def self.get_track_info(dj, track, client)
+    playback_count= track.playback_count
+    favoritings_count = track.favoritings_count
+    track_url = track.permalink_url
+    title = track.title
+    tag_list = track.tag_list
+    t = Track.create(dj_id: dj.id, playback_count: playback_count, favoritings_count: favoritings_count, title: title, tag_list: tag_list)
+    t.get_embed_info(client, track_url) if dj.tracks.size < 3
+  end
+
+  def get_embed_info(client, track_url)
+    begin
+    embed_info = client.get('/oembed', :url => track_url)
+    rescue Soundcloud::ResponseError => e
+    puts "Error: #{e.message}, Status Code: #{e.response.code}"
+    end
+    update(demo: embed_info['html']) if embed_info
+  end
   
   def scan_for_genres #string will be tag_list
     string.downcase!
