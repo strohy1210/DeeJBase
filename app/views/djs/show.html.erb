@@ -86,6 +86,7 @@
     Favorites Count: <%= @tracks.first.favoritings_count %><br> 
     <% else %>
     Demo: <%= @dj.demo.html_safe %>
+    <%end%>
     </div>
     <br>
    <%= link_to 'More Tracks', '#', class: 'more-tracks'%>  
