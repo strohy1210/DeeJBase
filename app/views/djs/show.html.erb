@@ -79,14 +79,10 @@
     <br>
   <div class="tracks">
     <div class = "show-demo track">
-    <% if @tracks.first.demo %>
     Demo: <%= @tracks.first.title %>
-    <%= @tracks.first.demo.html_safe if @tracks.first.demo %><br>
+    <%= @tracks.first.demo.html_safe %><br>
     Playback Count: <%= @tracks.first.playback_count %><br>
     Favorites Count: <%= @tracks.first.favoritings_count %><br> 
-    <% else %>
-    Demo: <%= @dj.demo.html_safe %>
-    <%end%>
     </div>
     <br>
    <%= link_to 'More Tracks', '#', class: 'more-tracks'%>  

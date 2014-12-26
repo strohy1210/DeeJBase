@@ -46,9 +46,8 @@
         <!-- Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %> -->
       </div>
       <p><div class="demo-embed">
-        <% if dj.demo %>
-        <%= dj.demo.html_safe %>
-        <%end%>
+        <% track=dj.tracks.where.not(demo: nil).first %>
+        <%= track.demo.html_safe %>
       </div></p>
   </div>
   <br>

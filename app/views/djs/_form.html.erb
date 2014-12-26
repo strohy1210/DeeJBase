@@ -11,8 +11,7 @@
   <%= f.text_field :rate_per_hour, class: 'form-control', placeholder: "e.g. 100" %><br>
   <%= f.label 'What\'s your story?' %>
   <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99. I love funky disco grooves." %><br>
-  <%= f.label 'Soundcloud Embed' %>
-  <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that says "embed", and copy the text (which starts with "iframe") into this form.'%><br>
+
 <%= f.label 'Choose the genres you identify most with (put more specific info in the "what\'s your story" section above).' %>: <br>
       <% Genre.all.each_with_index do |g,i| %>
         <%= label_tag(:g, g.name) %>

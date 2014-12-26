@@ -65,7 +65,7 @@ class Dj < ActiveRecord::Base
         first_track = tracks.first
         # get_demos(dj, first_track, client) if first_track && !dj.demo
         get_genres(dj, tracks) if first_track && dj.genres.size < 1
-        save_tracks(dj, tracks, client) if dj.tracks.size < 5
+        save_tracks(dj, tracks, client) if dj.tracks.size < 3
       end
       # dj.destroy unless dj.tracks.size > 0
     end
