@@ -55,7 +55,7 @@ class Dj < ActiveRecord::Base
 
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
-    Dj.where(dj_status: true, agent_status: false, demo: nil).each do |dj|     
+    Dj.where(dj_status: true, agent_status: false).each do |dj|     
       begin
         tracks = client.get('/tracks', :q => dj.name)
       rescue Soundcloud::ResponseError => e
@@ -63,15 +63,16 @@ class Dj < ActiveRecord::Base
       end
       if tracks
         first_track = tracks.first
-        get_demos(dj, first_track, client) if first_track && !dj.demo
+        # get_demos(dj, first_track, client) if first_track && !dj.demo
         get_genres(dj, tracks) if first_track && dj.genres.size < 1
         save_tracks(dj, tracks, client) if dj.tracks.size < 5
       end
     end
+    dj.destroy unless dj.tracks.size > 0
   end
 
   def self.save_tracks(dj, tracks, client)
-    tracks[1..4].each do |track|
+    tracks[0..4].each do |track|
       Track.get_track_info(dj, track, client)
     end
   end
@@ -99,17 +100,17 @@ class Dj < ActiveRecord::Base
     end
 
       
-    def self.get_demos(dj, first_track, client)
-      track_url = first_track.permalink_url
-      begin
-      embed_info = client.get('/oembed', :url => track_url)
-      rescue Soundcloud::ResponseError => e
-      puts "Error: #{e.message}, Status Code: #{e.response.code}"
-      end
-      Track.get_track_info(dj, first_track, client)
-      dj.update(demo: embed_info['html']) if embed_info
-      dj.destroy unless embed_info
-    end
+    # def self.get_demos(dj, first_track, client)
+    #   track_url = first_track.permalink_url
+    #   begin
+    #   embed_info = client.get('/oembed', :url => track_url)
+    #   rescue Soundcloud::ResponseError => e
+    #   puts "Error: #{e.message}, Status Code: #{e.response.code}"
+    #   end
+    #   Track.get_track_info(dj, first_track, client)
+    #   dj.update(demo: embed_info['html']) if embed_info
+    
+    # end
 
     def self.get_genres(dj, tracks)
       genres = []
