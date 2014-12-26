@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20141225235943) do
     t.integer "playback_count"
     t.integer "favoritings_count"
     t.string  "title"
-    t.string  "tag_list"
+    t.text    "tag_list"
   end
 
   create_table "venues", force: true do |t|
