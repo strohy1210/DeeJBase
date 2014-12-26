@@ -56,7 +56,7 @@ class Dj < ActiveRecord::Base
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
     Dj.where(dj_status: true, agent_status: false).each do |dj|
-      # if dj.tracks.size < 5
+      if dj.tracks.size < 5
         begin
           tracks = client.get('/tracks', :q => dj.name)
         rescue Soundcloud::ResponseError => e
@@ -69,12 +69,12 @@ class Dj < ActiveRecord::Base
           get_genres(dj, tracks) if first_track && dj.genres.size < 1
           save_tracks(dj, tracks, client) 
         end
-      # end
+      end
     end
   end
 
   def self.save_tracks(dj, tracks, client)
-    tracks[2..4].each do |track|
+    tracks[1..4].each do |track|
       Track.get_track_info(dj, track, client)
     end
   end
@@ -125,17 +125,6 @@ class Dj < ActiveRecord::Base
       dj.genres = genres.flatten.uniq
       dj.save   
     end
-  # def self.get_websites(string)
-  #   URI.extract(string)
-  # end
-
-  # def self.set_est_rph
-  #   Dj.where(rate_per_hour: nil, dj_status: true, agent_status: false).where.not(sdcl_followers: nil).each do |dj|
-  #     # dj.sdcl_followers
-  #     # get average followers
-
-  #   end
-#   end
 
 
 

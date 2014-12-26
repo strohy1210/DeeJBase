@@ -24,7 +24,7 @@
 <% @djs.each do |dj| %>
     
   <div class='dj-item'>
-    <div class= "dj-header">
+    <div class= "dj-header text-center">
       <h3><%= link_to dj.name, dj_path(dj) %></h3>
     
     </div>
@@ -42,7 +42,7 @@
     </div>
     <br>
       <div class="sound-cld">
-        Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %>
+        <!-- Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %> -->
       </div>
       <p><div class="demo-embed">
         <% if dj.demo %>
