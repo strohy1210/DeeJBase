@@ -56,7 +56,7 @@ class Dj < ActiveRecord::Base
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
     Dj.where(dj_status: true, agent_status: false).each do |dj|
-      if dj.tracks.size == 0
+      if dj.tracks.size < 3
         begin
           tracks = client.get('/tracks', :q => dj.name)
         rescue Soundcloud::ResponseError => e
@@ -74,7 +74,7 @@ class Dj < ActiveRecord::Base
   end
 
   def self.save_tracks(dj, tracks, client)
-    tracks[1..2].each do |track|
+    tracks[3..4].each do |track|
       Track.get_track_info(dj, track, client)
     end
   end
@@ -109,6 +109,7 @@ class Dj < ActiveRecord::Base
       rescue Soundcloud::ResponseError => e
       puts "Error: #{e.message}, Status Code: #{e.response.code}"
       end
+      Track.get_track_info(dj, first_track, client)
       dj.update(demo: embed_info['html']) if embed_info
       dj.destroy unless embed_info
     end
