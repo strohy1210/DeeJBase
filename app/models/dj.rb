@@ -67,8 +67,9 @@ class Dj < ActiveRecord::Base
         get_genres(dj, tracks) if first_track && dj.genres.size < 1
         save_tracks(dj, tracks, client) if dj.tracks.size < 5
       end
+      # dj.destroy unless dj.tracks.size > 0
     end
-    dj.destroy unless dj.tracks.size > 0
+
   end
 
   def self.save_tracks(dj, tracks, client)
