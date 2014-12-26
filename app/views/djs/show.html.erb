@@ -8,7 +8,8 @@
       <br>
    <div class="row">
       <div class= "edit-or-contact col-md-7 pull-right">
-        <% if @current_user == @dj %>
+ 
+        <% if current_user == @dj %>
         <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
         <br>
         <%else%>
@@ -51,32 +52,47 @@
           </div>
         </a>
    <%end%>
-                 <br>
+        <br>
       </div>
 
-
+  </div>
     <!-- ///// -->
 
 <!-- ///////////  PROFILE //////////////////////////////// -->
 <div id="dj-profile">
-    <div class="profile-pic col-md-10">
-      <p><%= image_tag @dj.image_url, class: 'profile-image' %></p>
+  <div class= 'row'> 
+    <div class="profile-pic col-md-3">
+      <%= image_tag @dj.image_url, class: 'profile-image' %>
     </div>
-  <div class="sound-cld col-md-4">
-    Sound Cloud Followers: <%= @dj.sdcl_followers if @dj.sdcl_followers %>
-  </div> 
-  <br>
-  <div class="dj-info col-md-10">
-  <h4> About:</h4> <%= @dj.name %> is available in <%= @dj.city %>. <%= truncate(@dj.bio.html_safe, length: 40, separator: ".") %>
-  <h4> Genres: </h4><%= @genres.map {|g| g.name}.join(", ") %>
-  <h4> Hourly Rate: </h4>$<%= @dj.rate_per_hour %>0
-  <div class = "show-demo">
-    <% if @dj.demo %>
-      <%= @dj.demo.html_safe %>
-    <%end%>
+    <div class="dj-info col-md-4 col-md-offset-1 vertical-center">
+
+     <div class="sound-cld">
+      <h4>Sound Cloud Followers: <%= @dj.sdcl_followers if @dj.sdcl_followers %></h4>
+    </div>
+    <div class="other-info">
+    <!-- #truncate(@dj.bio.html_safe, length: 40, separator: ".") -->
+    <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
+    <h4> Hourly Rate: $<%= @dj.rate_per_hour %>0</h4>
+    </div>
+    </div>
   </div>
-  <div class = "other-tracks">
-    
+    <br>
+  <div class="tracks">
+    <div class = "show-demo track">
+    Demo: <%= @tracks.first.title %>
+    <%= @tracks.first.demo.html_safe %><br>
+    Playback Count: <%= @tracks.first.playback_count %><br>
+    Favorites Count: <%= @tracks.first.favoritings_count %><br> 
+    </div>
+   <div class = "other-tracks">
+    <% @tracks[1..4].each do |track| %>
+    <div class='track'>
+      <%= track.title %>
+      <%= track.demo.html_safe if track.demo %><br>
+      Playback Count: <%= track.playback_count %><br>
+      Favorites Count: <%= track.favoritings_count %><br>
+    </div>
+    <%end%>
   </div>
   </div>
 </div>

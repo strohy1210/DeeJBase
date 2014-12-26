@@ -56,7 +56,7 @@ class Dj < ActiveRecord::Base
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
     Dj.where(dj_status: true, agent_status: false).each do |dj|
-      if dj.tracks.size < 3
+      if dj.tracks.size == 0
         begin
           tracks = client.get('/tracks', :q => dj.name)
         rescue Soundcloud::ResponseError => e
@@ -67,17 +67,16 @@ class Dj < ActiveRecord::Base
           first_track = tracks.first
           get_demos(dj, first_track, client) if first_track && !dj.demo
           get_genres(dj, tracks) if first_track && dj.genres.size < 1
-          save_tracks(dj, tracks, client)
+          save_tracks(dj, tracks, client) if dj.tracks.size < 1
         end
       end
     end
   end
 
   def self.save_tracks(dj, tracks, client)
-    tracks[3..4].each do |track|
+    tracks[1..4].each do |track|
       Track.get_track_info(dj, track, client)
     end
-      Track.get_track_info(dj, tracks[0], client)
   end
 
   def extract_twitter_handle(input)

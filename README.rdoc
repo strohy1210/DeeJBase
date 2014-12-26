@@ -3,12 +3,17 @@
 1. call to get price info for a few map to scld followers
 2. get 2 more demos each
 3. cross-reference djs with one other site
+4. more filtering options- by price, by followers, average playcount
+
+Later:
+1. tweet at djs to claim profile
+2. rating system
+
+
 Process:
 1. tie venues into djs
 7. add image uploader/ability to edit
-8. add default image in case they dont have one or not? maybe they have to have it
-11. fake data from spotify, soundcloud, or any other website, tweet at djs "claim ur site"
-check out rukkus, faked 1 side of their network
+
 13. scratch academy
 18. add availability to Djs, planners need to see everything
 19. add past venues

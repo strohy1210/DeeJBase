@@ -70,24 +70,25 @@ h4 a {
 .index-image img, .profile-pic img {
     width: 180px;
     height: auto;
-    border-radius: 50px;
+    border-radius: 30px;
 }
 .demo-embed iframe {
     height: 110px;
-     width: 70%;
+    width: 100%;
 }
 .profile-pic img {
     height: 200px;
     width: auto;
-
+    border: 1px solid #ccc
 }
 
 .edit-dj, .hire-dj, .contact, .cancel-message {
   margin-top: 20px;
 }
-.show-demo iframe {
-    height: 90px;
-    width: 80%;
+
+iframe {
+    height: 110px;
+    width: 100%;
 
 }
 
@@ -139,7 +140,7 @@ h4 a {
   background-color: transparant;
 }
 .container {
-background-image: linear-gradient(to bottom, white 0%, #f8f8f8 100%)
+  background-image: linear-gradient(to bottom, white 0%, #f8f8f8 100%)
 }
 
 .select-genre {
@@ -150,8 +151,17 @@ background-image: linear-gradient(to bottom, white 0%, #f8f8f8 100%)
   background-color: #fafafa;
   margin: 10px;
 }
+.dj-info {
+  background: #fff;
+  border-radius: 30px;
+  padding: 10px;
+}
 
-
+.track {
+  border-bottom: 1px solid #b0b0b0;
+  border-radius: 30px;
+  padding: 10px;
+}
 
 
 
