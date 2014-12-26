@@ -89,14 +89,12 @@
    <div class = "other-tracks">
     <%= link_to 'Hide Tracks', '#', class: 'hide-tracks'%>
     <% @tracks[1..4].each do |track| %>
-    <% if track.demo %>
     <div class='track'>
       <%= track.title %>
       <%= track.demo.html_safe %><br>
       Playback Count: <%= track.playback_count %><br>
       Favorites Count: <%= track.favoritings_count %><br>
     </div>
-    <%end%>
     <%end%>
   </div>
   </div>
