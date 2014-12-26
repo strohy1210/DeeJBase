@@ -79,7 +79,7 @@
     <br>
   <div class="tracks">
     <div class = "show-demo track">
-    <% if tracks.first.demo %>
+    <% if @tracks.first.demo %>
     Demo: <%= @tracks.first.title %>
     <%= @tracks.first.demo.html_safe if @tracks.first.demo %><br>
     Playback Count: <%= @tracks.first.playback_count %><br>
