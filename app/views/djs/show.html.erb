@@ -13,7 +13,7 @@
         <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
         <br>
         <%else%>
-
+<!--/////////////////////////// MODAL ////////////////////////////// -->
   <div class="message-form">
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
           <div class="modal-dialog">
@@ -35,11 +35,13 @@
              
                 </div>
               </div>
+
+    <!--////////////////////// model end //////////////////////////////// -->
               <div class="modal-footer">
                 <%= f.submit "Send message", class: 'btn btn-info contact' %>
-                    <button type="button" class="btn btn-default cancel-message" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default cancel-message" data-dismiss="modal">Close</button>
               </div>
-                  <%end%>
+            <%end%>
             </div>
           </div>
         </div>
@@ -54,9 +56,7 @@
    <%end%>
         <br>
       </div>
-
   </div>
-    <!-- ///// -->
 
 <!-- ///////////  PROFILE //////////////////////////////// -->
 <div id="dj-profile">
@@ -84,7 +84,10 @@
     Playback Count: <%= @tracks.first.playback_count %><br>
     Favorites Count: <%= @tracks.first.favoritings_count %><br> 
     </div>
+    <br>
+   <%= link_to 'More Tracks', '#', class: 'more-tracks'%>  
    <div class = "other-tracks">
+    <%= link_to 'Hide', '#', class: 'hide-tracks'%>
     <% @tracks[1..4].each do |track| %>
     <% if track.demo %>
     <div class='track'>
@@ -99,7 +102,7 @@
   </div>
 </div>
 
-<!-- -->
+<!-- ////////////// form-begin ///////////////////////-->
 
 
 <div class="row">

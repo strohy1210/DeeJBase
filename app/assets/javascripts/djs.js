@@ -14,14 +14,16 @@ $('.cancel-edit').click(function(){
   $('.edit-dj').toggle();
 })
 
-// $(".message-form").hide();
-// $('.hire-dj').click(function(){
-//   $(".message-form").toggle();
-//   $('.cancel-message').toggle()
-//   // $(".profile-pic").toggle();
-//   $(this).toggle();
-// })
+$(".other-tracks").hide();
+$('.more-tracks').click(function(){
+  $(".other-tracks").toggle();
+  $(this).toggle();
+})
 
+$('.hide-tracks').click(function(){
+  $(".other-tracks").toggle();
+  $('.more-tracks').toggle();
+})
 // $('.cancel-message').hide();
 // $('.cancel-message').click(function(){
 //   $(".message-form").toggle();
