@@ -19,8 +19,10 @@
       <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>
       <li> <%= link_to 'Venues', venues_path %></li>
-      <% if @current_user != nil && @current_user.dj_status %>
-      <li> <%= link_to "Logged in as " + @current_user.name, dj_path(@current_user) %></li>
+      <% if current_user && current_user.dj_status %>
+      <li> <%= link_to "Logged in as " + current_user.name, dj_path(current_user) %></li>
+      <%elsif current_user && !current_user.dj_status%>
+      <li> <%= link_to "Logged in as " + current_user.name, '#' %></li>
       <%end%>
       <li><%= link_to 'About', about_path%></li>
     </ul>
