@@ -35,7 +35,7 @@
       <div class="bio col-md-8">
 
         <%if dj.bio %>
-<h4>Sound Cloud Followers: <%= @dj.sdcl_followers if @dj.sdcl_followers %></h4>      
+        <h4>Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %></h4>      
           <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
         <%end%>
       </div>
