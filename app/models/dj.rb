@@ -77,6 +77,7 @@ class Dj < ActiveRecord::Base
     tracks[3..4].each do |track|
       Track.get_track_info(dj, track, client)
     end
+      Track.get_track_info(dj, tracks[0], client)
   end
 
   def extract_twitter_handle(input)
