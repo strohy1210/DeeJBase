@@ -27,6 +27,12 @@
       <li><%= link_to 'About', about_path%></li>
     </ul>
 
+    <%= form_tag(search_path, method: 'get', class: "navbar-form navbar-right", role: "search") do %>
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">       
+          <button class="btn btn-default" type="submit">Search Djs <i class="glyphicon glyphicon-search"></i></button>
+      </div>
+      <% end %> 
   </div>
 </div>
 
@@ -40,6 +46,13 @@
 
   
 <%= yield %>
+
+  <div class='footer controls text-center col-md-12'>
+    <%= link_to "Login", '/auth/facebook' %> |
+    <%= link_to "Sign Up", '/auth/facebook' %> |
+    <%= link_to 'Contact', '#', class: 'send-contact'%> |
+    <%= link_to 'Back', root_path %> 
+  </div>
 </div>
 </body>
 </html>

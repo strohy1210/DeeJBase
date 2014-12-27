@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
   skip_before_action :authorize
   
-  def index  
+  def index
+    
     if params[:genre_id] && params[:genre_id] != 'all'
       @genre= Genre.find(params[:genre_id])
       @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('created_at DESC')

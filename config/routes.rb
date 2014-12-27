@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: 'sessions#create'
   get '/auth/facebook', as: 'login'
   delete '/logout', to: 'sessions#destroy'
+  get 'search'  => 'searches#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
