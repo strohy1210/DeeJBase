@@ -1,10 +1,11 @@
 <div class="row page-header title">
-    <h1> Take Off </h1>
+    <h1 class='col-md-5'> Take Off </h1>
 </div>
 <div class="dj-profile">
       <div class="col-md-4">
         <h2> <%= @dj.name %> </h2>
       </div>
+
       <br>
    <div class="row">
       <div class= "edit-or-contact col-md-7 pull-right">
@@ -80,7 +81,7 @@
     <br>
   <div class="tracks">
     <div class = "show-demo track">
-    Demo: <%= @tracks[0].title %>
+    <%= @tracks[0].title %>
     <%= @tracks[0].demo.html_safe %><br>
     Playback Count: <%= @tracks[0].playback_count %><br>
     Favorites Count: <%= @tracks[0].favoritings_count %><br> 

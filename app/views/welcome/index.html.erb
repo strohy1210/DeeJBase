@@ -38,6 +38,7 @@
         <%if dj.bio %>
         <h4>Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %></h4>      
           <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
+           <h5> located in <%= dj.city %> </h5>
         <%end%>
       </div>
     </div>
