@@ -4,19 +4,12 @@
     <h1> Find NYC's Rawest Talent </h1>
     </div>
 
-  
-  <% if @genre %>
-  <form class="filter_form pull-right col-md-3">
-   <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All Genres", 'all'], @genre.id), class: "form-control select-genre",:onchange => 'this.form.submit()') %>
-  
-  </form>
-  <% else %>
-  <form class="filter_form pull-right col-md-3">
-    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All Genres", 'all'], 'all'), class: "form-control select-genre",:onchange => 'this.form.submit()') %>
-  
-  </form>
-
-  <%end%>
+    <%= form_tag(search_path, method: 'get', class: "search-djs pull-right col-md-4", role: "search") do %>
+      <div class="form-group">
+          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">       
+          <button class="btn btn-default" type="submit">Find DJs <i class="glyphicon glyphicon-search"></i></button>
+      </div>
+      <% end %>
   </div>
 
 <div id="results">

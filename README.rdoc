@@ -1,14 +1,15 @@
 == README
 
 1. call to get price info for a few map to scld followers
-2. dj spider with wrong demo?
 3. cross-reference djs with one other site
 4. more filtering options- by price, by followers, average playcount, search funciton
+5. add deejbase rating based on diff metrics
+6. update dj forms
 
 Later:
 1. tweet at djs to claim profile
 2. rating system
-
+3. import contact info from db in csv form
 
 Process:
 1. tie venues into djs

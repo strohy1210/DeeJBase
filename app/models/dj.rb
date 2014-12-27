@@ -6,6 +6,9 @@ class Dj < ActiveRecord::Base
   has_many :venues, through: :events
   accepts_nested_attributes_for :venues
   before_save :default_values
+  # scope :featured, -> { where(:featured => true) }
+  # scope :by_genre, -> genre { where(:genre => genre) }
+  # scope :by_period, -> started_at, ended_at { where("started_at = ? AND ended_at = ?", started_at, ended_at) }
 
   NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhattan", "bronx", "ny", "bklyn"]
 
