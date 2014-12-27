@@ -6,7 +6,8 @@ class Dj < ActiveRecord::Base
   has_many :venues, through: :events
   accepts_nested_attributes_for :venues
   before_save :default_values
-  # scope :featured, -> { where(:featured => true) }
+  # scope :scld_asc, -> { order('sdcl_followers ASC') }
+  # scope :scld_desc, -> { order('sdcl_followers DESC') }
   # scope :by_genre, -> genre { where(:genre => genre) }
   # scope :by_period, -> started_at, ended_at { where("started_at = ? AND ended_at = ?", started_at, ended_at) }
 
