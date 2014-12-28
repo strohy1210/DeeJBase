@@ -4,10 +4,12 @@
     <h1> <strong>Find NYC's Rawest Talent </strong> </h1>
     </div>
 
-    <%= form_tag(search_path, method: 'get', class: "search-djs pull-right col-md-4", role: "search") do %>
-      <div class="form-group">
-          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">       
+    <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">
+          <div class='input-group-btn'>       
           <button class="btn btn-default" type="submit">Find DJs <i class="glyphicon glyphicon-search"></i></button>
+        </div>
       </div>
       <% end %>
   </div>
