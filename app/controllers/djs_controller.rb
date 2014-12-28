@@ -28,6 +28,7 @@ class DjsController < ApplicationController
     @dj= Dj.find(params[:id])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
+    @rating = Rating.where(dj_id: @dj.id)
   end
 
   def send_contact_email  
