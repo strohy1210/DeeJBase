@@ -1,11 +1,12 @@
 class Dj < ActiveRecord::Base
+  has_many :ratings
   has_many :dj_genres
   has_many :tracks
   has_many :genres, through: :dj_genres
   has_many :events
   has_many :venues, through: :events
   accepts_nested_attributes_for :venues
-  before_save :default_values
+  before_save :default_values, :no_tracks
   # scope :scld_asc, -> { order('sdcl_followers ASC') }
   # scope :scld_desc, -> { order('sdcl_followers DESC') }
   # scope :by_genre, -> genre { where(:genre => genre) }
@@ -17,6 +18,14 @@ class Dj < ActiveRecord::Base
 
   def default_values
     self.bio ||= 'I\'m a DJ in NYC, get in touch'
+  end
+
+  def no_tracks
+    update(dj_status: false) if tracks.blank?
+  end
+  
+  def average_rating
+    ratings.sum(:score) / ratings.size
   end
   
   def self.get_user_from_omniauth(auth_hash)
@@ -47,28 +56,24 @@ class Dj < ActiveRecord::Base
           name = dj.username
           sdcl_id = dj.id
           twitter_hdl = dj.extract_twitter_handle(bio)
-          Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url, twitter_hdl: twitter_hdl) if Dj.find_by(sdcl_id: sdcl_id)==nil
+          Dj.create(city: city, email: email, name: name, sdcl_followers: sdcl_followers, bio: bio, dj_status: true, sdcl_id: sdcl_id, phone: phone, image_url: image_url, twitter_hdl: twitter_hdl) if Dj.find_by(sdcl_id: sdcl_id).blank?
         end
       end
     end
   end
-  def self.clear_no_tracks
-    where(dj_status: true, agent_status: false).each do |dj|
-      puts dj.name if dj.tracks.size == 0
-    end
-  end
+
 
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
     Dj.where(dj_status: true, agent_status: false).each do |dj|
-      if dj.tracks.size == 0     
+      if dj.tracks.blank?    
         begin
           tracks = client.get('/tracks', :q => dj.name)
         rescue Soundcloud::ResponseError => e
           puts "Error: #{e.message}, Status Code: #{e.response.code}"
         end
         if tracks
-          get_genres(dj, tracks) if dj.genres.size < 1
+          get_genres(dj, tracks) if dj.genres.blank?
           save_tracks(dj, tracks, client) if dj.tracks.size < 3
         end
       end

@@ -30,20 +30,32 @@
       
       <div class="bio col-md-8">
         <%if dj.bio %>
-        <h4>Sound Cloud Followers: <%= number_with_delimiter(dj.sdcl_followers, :delimiter => ',') if dj.sdcl_followers %></h4>      
+        <h4>Sound Cloud Followers: <%= number_with_delimiter(dj.sdcl_followers, :delimiter => ',') if dj.sdcl_followers %></h4>
+        <% if !dj.genres.blank? %>     
           <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
+        <% end%>
            <h5> located in <%= dj.city %> </h5>
         <%end%>
+        <div class='star'>
+
+        </div>
       </div>
     </div>
     <br>
-      <div class="sound-cld">
-        <!-- Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %> -->
-      </div>
+
       <p><div class="demo-embed">
         <% track=dj.tracks.where.not(demo: nil)[0] %>
         <%= track.demo.html_safe %>
       </div></p>
+
+<script>
+  $('.star').raty({
+    readOnly: true,
+    score: <%= dj.average_rating %>,
+    path: '/assets'
+  });
+</script>
+
   </div>
   <br>
 <% end %>
@@ -53,5 +65,5 @@
   <%= will_paginate @djs %>
 </div>
 </ul>
-<div>
+
 

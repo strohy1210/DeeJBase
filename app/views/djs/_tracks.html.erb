@@ -1,0 +1,19 @@
+<div class = "show-demo track">
+  <%= @tracks[0].title %>
+  <%= @tracks[0].demo.html_safe %><br>
+  Playback Count: <%= @tracks[0].playback_count %> | 
+  Favorites Count: <%= @tracks[0].favoritings_count %><br> 
+</div>
+<br>
+<%= link_to 'More Tracks', '#', class: 'more-tracks'%>  
+<div class = "other-tracks">
+  <%= link_to 'Hide Tracks', '#', class: 'hide-tracks'%>
+  <% @tracks[1..4].each do |track| %>
+    <div class='track'>
+      <%= track.title %>
+      <%= track.demo.html_safe %><br>
+      Playback Count: <%= track.playback_count %> | 
+      Favorites Count: <%= track.favoritings_count %><br>
+    </div>
+  <%end%>
+</div>

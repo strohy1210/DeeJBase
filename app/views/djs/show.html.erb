@@ -15,40 +15,10 @@
         <br>
         <%else%>
 <!--/////////////////////////// MODAL ////////////////////////////// -->
-  <div class="message-form">
-    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Contact <%= @dj.name %></h4>
-              </div>
-              <div class="modal-body">
-               <div class="form-group">
-            <%= form_for(@dj, url: send_contact_email_path, method: 'post') do |f| %>
-            <%= f.label :message %>
-           <%= f.text_area :message, rows: 4, class: 'form-control', placeholder: "Hey! Are you free on Fri night for a gig at my bar..." %>
-            <%= f.label :email %>
-           <%= email_field(:current_user, :email, class: 'form-control', placeholder: "youremail@email.com", required: true) %>
-            <%= f.label :phone %> (Suggested)
-            <%= telephone_field(:current_user, :phone, class: 'form-control', placeholder: "917-555-5555") %>
-            <%= f.hidden_field :id %>
-             
-                </div>
-              </div>
 
-    <!--////////////////////// model end //////////////////////////////// -->
-              <div class="modal-footer">
-                <%= f.submit "Send message", class: 'btn btn-info contact' %>
-                <button type="button" class="btn btn-default cancel-message" data-dismiss="modal">Close</button>
-              </div>
-            <%end%>
-            </div>
-          </div>
-        </div>
-     
-      </div>
-      
+       <%= render 'contact_modal' %>
+   
+    <!--////////////////////// model end //////////////////////////////// -->   
         <a href="#" data-toggle="modal" data-target="#basicModal" >
           <div class="hover-mask bottom-mask mask-orange">
             <h2 class='hire-dj btn-centered btn btn-info pull-right'>Contact</h2>
@@ -80,25 +50,7 @@
   </div>
     <br>
   <div class="tracks">
-    <div class = "show-demo track">
-    <%= @tracks[0].title %>
-    <%= @tracks[0].demo.html_safe %><br>
-    Playback Count: <%= @tracks[0].playback_count %><br>
-    Favorites Count: <%= @tracks[0].favoritings_count %><br> 
-    </div>
-    <br>
-   <%= link_to 'More Tracks', '#', class: 'more-tracks'%>  
-   <div class = "other-tracks">
-    <%= link_to 'Hide Tracks', '#', class: 'hide-tracks'%>
-    <% @tracks[1..4].each do |track| %>
-    <div class='track'>
-      <%= track.title %>
-      <%= track.demo.html_safe %><br>
-      Playback Count: <%= track.playback_count %><br>
-      Favorites Count: <%= track.favoritings_count %><br>
-    </div>
-    <%end%>
-  </div>
+    <%= render 'tracks' %><br>
   </div>
 </div>
 

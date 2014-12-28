@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   resources :genres, only: [:new, :create]
 
   resources :events, only: [:new, :create, :destroy]
-
   resources :venues, only: [:new, :create, :index]
-
+  resources :ratings, only: :update
   resources :djs
   get 'dj-form', to: 'welcome#dj_form'
   get 'about', to: 'welcome#about'
