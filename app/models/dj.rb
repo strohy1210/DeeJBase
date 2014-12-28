@@ -49,6 +49,25 @@ class Dj < ActiveRecord::Base
       end
     end
   end
+
+
+  def self.get_demos_genres
+    client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
+    Dj.where(dj_status: true, agent_status: false).each do |dj|
+      if dj.tracks.size == 0     
+        begin
+          tracks = client.get('/tracks', :q => dj.name)
+        rescue Soundcloud::ResponseError => e
+          puts "Error: #{e.message}, Status Code: #{e.response.code}"
+        end
+        if tracks
+          get_genres(dj, tracks) if dj.genres.size < 1
+          save_tracks(dj, tracks, client) if dj.tracks.size < 3
+        end
+      end
+    end
+  end
+
   def self.update_twitter
     Dj.where(twitter_hdl: nil).where.not(bio: nil).each do |dj|
       bio = dj.bio
@@ -57,37 +76,21 @@ class Dj < ActiveRecord::Base
     end
   end
 
-  def self.get_demos_genres
-    client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
-    Dj.where(dj_status: true, agent_status: false).each do |dj|     
-      begin
-        tracks = client.get('/tracks', :q => dj.name)
-      rescue Soundcloud::ResponseError => e
-        puts "Error: #{e.message}, Status Code: #{e.response.code}"
-      end
-      if tracks
-        first_track = tracks.first
-        get_genres(dj, tracks) if first_track && dj.genres.size < 1
-        save_tracks(dj, tracks, client) if dj.tracks.size < 3
-      end
-    end
-  end
-
-  def self.save_tracks(dj, tracks, client)
-    tracks[0..4].each do |track|
-      Track.get_track_info(dj, track, client)
-    end
-  end
-
-  def extract_twitter_handle(input)
-    input.downcase!
-    poss_handles = input.scan(/@\w+/)
-    emails = input.scan(/@\w+(?=.co)/)
-    handles = poss_handles - emails
-    handles.first
-  end
-
   private
+    def self.save_tracks(dj, tracks, client)
+      tracks[0..4].each do |track|
+        Track.get_track_info(dj, track, client)
+      end
+    end
+
+    def extract_twitter_handle(input)
+      input.downcase!
+      poss_handles = input.scan(/@\w+/)
+      emails = input.scan(/@\w+(?=.co)/)
+      handles = poss_handles - emails
+      handles.first
+    end
+
     
     def self.get_soundcloud_djs(page)      
       client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')

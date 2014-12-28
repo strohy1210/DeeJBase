@@ -21,12 +21,13 @@
 @import url(http://fonts.googleapis.com/css?family=Hammersmith+One:400,700);
 @import url(http://fonts.googleapis.com/css?family=Muli);
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Karla);
 
 
 body { 
-
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(to bottom, #ddd 0%, #BECBD6 100%);
+  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+  background: #ddd;
   padding-top: 70px;
 
     -webkit-background-size: 100%;
@@ -125,6 +126,7 @@ iframe {
 }
 
 .row.page-header {
+  font-family: 'Montserrat', sans-serif;
   margin-left: 30px;
 }
 
@@ -156,8 +158,9 @@ iframe {
   padding: 10px;
 }
 
-
-
+h5, .h5 {
+font-size: 16px;
+}
 
 
 
