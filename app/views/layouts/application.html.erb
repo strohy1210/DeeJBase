@@ -26,30 +26,30 @@
       <% if !logged_in? %>
       <li><%= link_to 'Log in with Facebook', '/auth/facebook' %></li>
       <% else %>
-      <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
+      <li ><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>
       <% if current_user && current_user.dj_status %>
-      <li> <%= link_to "Logged in as " + current_user.name, dj_path(current_user) %></li>
+      <li> <%= link_to "Your Profile", dj_path(current_user) %></li>
       <%elsif current_user && !current_user.dj_status%>
-      <li> <%= link_to "Logged in as " + current_user.name, '#' %></li>
+     
       <%end%>
       <li><%= link_to 'About', about_path%></li>
   <% if @genre %>
-  <li><form class="navbar-form navbar-right">
+  <li><form class="navbar-form navbar-right pull-right">
    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All Genres", 'all'], @genre.id), class: "form-control",:onchange => 'this.form.submit()') %>
   
   </form></li>
   <% else %>
-  <li><form class="navbar-form navbar-right">
+  <li><form class="navbar-form navbar-right pull-right">
     <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All Genres", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
   </form></li>
   <%end%>
   <% if @filter %>
-  <li><form class="navbar-form navbar-right">
+  <li><form class="navbar-form navbar-right pull-right">
     <%= select_tag(:filter, options_for_select([["SoundCloud Followers (least)", :scld_asc], ["SoundCloud Followers (most)", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
   </form></li>
   <%else%>
-      <li><form class="navbar-form navbar-right">
+      <li><form class="navbar-form navbar-right pull-right">
     <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc]], :scld_desc), class: "form-control",:onchange => 'this.form.submit()') %>
   </form></li>
 
@@ -70,12 +70,7 @@
   
 <%= yield %>
 
-  <div class='footer controls text-center col-md-12' id="footer">
-    <%= link_to "Login", '/auth/facebook' %> |
-    <%= link_to "Sign Up", '/auth/facebook' %> |
-    <%= link_to 'Contact', '#', class: 'send-contact'%> |
-    <%= link_to 'Back', root_path %> 
-  </div>
+
 </div>
 </body>
 </html>

@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
       name = params[:name]
       @djs = Dj.where('lower(name) LIKE ?', "%#{name.downcase}%").where(dj_status: true).paginate(page: params[:page], per_page: 6).order('created_at DESC')
       if @djs.size == 0
-        flash[:warning] = 'Sorry, no one by that name!'
+        flash[:warning] = 'Sorry, no one by that name! So here\'s everyone.'
         redirect_to root_path
       else
         flash.now[:success] = @djs.size.to_s + ' result(s) for "' +name+'".'
