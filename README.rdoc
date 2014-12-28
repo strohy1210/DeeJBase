@@ -1,16 +1,17 @@
 == README
 
-1. call to get price info for a few map to scld followers
+1. call to get price info for 20 djs for fri night in jan - figure out correlation to scld followers and average playcount
 3. cross-reference djs with one other site
 4. more filtering options- by price, by followers, average playcount, search funciton
 5. add deejbase rating based on diff metrics
 6. update dj forms
+7. visualize database to delete bad data
 
 Later:
 1. tweet at djs to claim profile
 2. rating system
 3. import contact info from db in csv form
-
+4. beome the dj reviewer!!
 Process:
 1. tie venues into djs
 7. add image uploader/ability to edit

@@ -30,7 +30,10 @@ class Dj < ActiveRecord::Base
   def self.find_with_omniauth(auth_hash)
     find_by(uid: auth_hash[:uid])
   end
-
+  def avg_playback_counts
+    playbacks = dj.tracks.map {|track| track.playback_count}
+    playbacks.inject(0.0) { |sum, el| sum + el } / playbacks.size
+  end
   def self.create_sc_djs(page)
     self.get_soundcloud_djs(page).each do |dj|
       city = dj.city.downcase if dj.city
@@ -49,7 +52,11 @@ class Dj < ActiveRecord::Base
       end
     end
   end
-
+  def self.clear_no_tracks
+    where(dj_status: true, agent_status: false).each do |dj|
+      puts dj.name if dj.tracks.size == 0
+    end
+  end
 
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  

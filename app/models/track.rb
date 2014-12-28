@@ -20,6 +20,7 @@ class Track < ActiveRecord::Base
     t.update(dj_id: dj.id, playback_count: playback_count, favoritings_count: favoritings_count)
     t.get_embed_info(client, track_url)
   end
+  
 
   def get_embed_info(client, track_url)
     begin
@@ -53,5 +54,6 @@ class Track < ActiveRecord::Base
       duplicates.each{|double| double.destroy} # duplicates can now be destroyed
     end
   end
+
 
 end
