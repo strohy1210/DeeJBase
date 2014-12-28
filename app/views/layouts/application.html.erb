@@ -34,7 +34,6 @@
       <li> <%= link_to "Logged in as " + current_user.name, '#' %></li>
       <%end%>
       <li><%= link_to 'About', about_path%></li>
-      <li><%= link_to 'All DJs', root_path%></li>
   <% if @genre %>
   <li><form class="navbar-form navbar-right">
    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All Genres", 'all'], @genre.id), class: "form-control",:onchange => 'this.form.submit()') %>
@@ -47,11 +46,11 @@
   <%end%>
   <% if @filter %>
   <li><form class="navbar-form navbar-right">
-    Sort: <%= select_tag(:filter, options_for_select([["SoundCloud Followers (least)", :scld_asc], ["SoundCloud Followers (most)", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:filter, options_for_select([["SoundCloud Followers (least)", :scld_asc], ["SoundCloud Followers (most)", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
   </form></li>
   <%else%>
       <li><form class="navbar-form navbar-right">
-    Sort: <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc]], :scld_desc), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc]], :scld_desc), class: "form-control",:onchange => 'this.form.submit()') %>
   </form></li>
 
   <%end%>

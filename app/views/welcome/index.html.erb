@@ -1,7 +1,7 @@
 
   <div class="row page-header">
     <div class="title col-md-7">
-    <h1> Find NYC's Rawest Talent </h1>
+    <h1> <strong>Find NYC's Rawest Talent </strong> </h1>
     </div>
 
     <%= form_tag(search_path, method: 'get', class: "search-djs pull-right col-md-4", role: "search") do %>
@@ -27,9 +27,8 @@
       </div></p>
       
       <div class="bio col-md-8">
-
         <%if dj.bio %>
-        <h4>Sound Cloud Followers: <%= dj.sdcl_followers if dj.sdcl_followers %></h4>      
+        <h4>Sound Cloud Followers: <%= number_with_delimiter(dj.sdcl_followers, :delimiter => ',') if dj.sdcl_followers %></h4>      
           <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
            <h5> located in <%= dj.city %> </h5>
         <%end%>
