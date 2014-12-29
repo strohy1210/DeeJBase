@@ -11,8 +11,19 @@
   <%= f.text_field :rate_per_hour, class: 'form-control', placeholder: "e.g. 100" %><br>
   <%= f.label 'What\'s your story?' %>
   <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "Raised in Queens, spinning since 99. I love funky disco grooves." %><br>
+  <div class="panel panel-default">
+    <div class="panel-heading">Tracks</div>
+    <div class="panel-body">
+    <%= f.fields_for :tracks do |tracks_form| %>
+    <%= render 'track_fields', f: tracks_form %>
+    <%end%>
+    <div class="links">
+      <%= link_to_add_association "add_track", f, :tracks %>
+      </div>
+    </div>
+  </div>
 
-<%= f.label 'Choose the genres you identify most with (put more specific info in the "what\'s your story" section above).' %>: <br>
+  <strong><%= f.label 'Choose the genres you identify most with (put more specific info in the "what\'s your story" section above).' %>: </strong> <br>
       <% Genre.all.each_with_index do |g,i| %>
         <%= label_tag(:g, g.name) %>
         <% if @dj.genres.include? g %>

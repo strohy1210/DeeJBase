@@ -1,5 +1,6 @@
 class Track < ActiveRecord::Base
   belongs_to :dj
+ 
 
   INDIE = ['indie', 'disco']
   ELECTRONIC = ["electronic", "progressive", "electro", "techno", "dance", "house", "disco", "trance", "tech", "trap", "edm"]
@@ -9,6 +10,10 @@ class Track < ActiveRecord::Base
   DEEP_HOUSE = ["deep house", "trance", "progressive"]
 
   attr_accessor :string
+
+  def no_demo
+    destroy if demo.blank?
+  end
 
   def self.get_track_info(dj, track, client)
     playback_count= track.playback_count

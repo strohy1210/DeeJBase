@@ -5,9 +5,9 @@ class Dj < ActiveRecord::Base
   has_many :genres, through: :dj_genres
   has_many :events
   has_many :venues, through: :events
-  accepts_nested_attributes_for :venues
-  before_save :default_values, :no_tracks
-  
+  accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
+  before_save :default_values, :remove_empty_tracks, :no_tracks
+
   # scope :scld_asc, -> { order('sdcl_followers ASC') }
   # scope :scld_desc, -> { order('sdcl_followers DESC') }
   # scope :by_genre, -> genre { where(:genre => genre) }
@@ -23,6 +23,12 @@ class Dj < ActiveRecord::Base
 
   def no_tracks
     update(dj_status: false) if tracks.blank?
+  end
+
+  def remove_empty_tracks
+    tracks.each do |track|
+      track.no_demo
+    end
   end
   
   def average_rating

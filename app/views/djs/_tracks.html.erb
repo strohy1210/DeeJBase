@@ -5,6 +5,7 @@
   Favorites Count: <%= number_with_delimiter(@tracks[0].favoritings_count, delimiter: ',') %><br> 
 </div>
 <br>
+<% if @tracks.size >1 %>
 <%= link_to 'More Tracks', '#', class: 'more-tracks'%>  
 <div class = "other-tracks">
   <%= link_to 'Hide Tracks', '#', class: 'hide-tracks'%>
@@ -17,3 +18,4 @@
     </div>
   <%end%>
 </div>
+<%end%>
