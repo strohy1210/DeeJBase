@@ -38,20 +38,20 @@
   <li><form class="navbar-form navbar-right pull-right">
    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All Genres", 'all'], @genre.id), class: "form-control",:onchange => 'this.form.submit()') %>
   
-  </form></li>
+  </li>
   <% else %>
   <li><form class="navbar-form navbar-right pull-right">
     <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All Genres", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
-  </form></li>
+  </li>
   <%end%>
   <% if @filter %>
-  <li><form class="navbar-form navbar-right pull-right">
+  <li class="navbar-form navbar-right pull-right">
     <%= select_tag(:filter, options_for_select([["SoundCloud Followers (least)", :scld_asc], ["SoundCloud Followers (most)", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
-  </form></li>
+  </li></form>
   <%else%>
-      <li><form class="navbar-form navbar-right pull-right">
+      <li class="navbar-form navbar-right pull-right">
     <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc]], :scld_desc), class: "form-control",:onchange => 'this.form.submit()') %>
-  </form></li>
+  </li></form>
 
   <%end%>
     </ul>

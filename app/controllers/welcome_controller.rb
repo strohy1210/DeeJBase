@@ -2,15 +2,18 @@ class WelcomeController < ApplicationController
   skip_before_action :authorize
   
   def index
-    if params[:genre_id] && params[:genre_id] != 'all'
-      @genre= Genre.find(params[:genre_id])
-      @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC')
-    elsif params[:filter]
+    if params[:filter]
       @filter = params[:filter]
-      @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
-      @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
+      if params[:genre_id] && params[:genre_id] != 'all'
+        @genre= Genre.find(params[:genre_id])
+        @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
+        @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
+      else
+        @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
+        @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
+      end
     else
-      @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC')
+      @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('created_at DESC')
     end
   end
 

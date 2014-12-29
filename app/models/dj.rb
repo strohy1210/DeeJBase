@@ -7,6 +7,7 @@ class Dj < ActiveRecord::Base
   has_many :venues, through: :events
   accepts_nested_attributes_for :venues
   before_save :default_values, :no_tracks
+  
   # scope :scld_asc, -> { order('sdcl_followers ASC') }
   # scope :scld_desc, -> { order('sdcl_followers DESC') }
   # scope :by_genre, -> genre { where(:genre => genre) }
@@ -27,7 +28,7 @@ class Dj < ActiveRecord::Base
   def average_rating
     ratings.sum(:score) / ratings.size
   end
-  
+
   def self.get_user_from_omniauth(auth_hash)
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)
   end

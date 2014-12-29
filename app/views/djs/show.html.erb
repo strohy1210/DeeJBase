@@ -46,21 +46,15 @@
     <% if @dj.rate_per_hour != 0.0 %>
     <h4> Hourly Rate: $<%= number_with_delimiter(@dj.rate_per_hour, :delimiter => ',')%>0</h4>
     <%end%>
+    <div class='star'>
+      DJB Rating: 
+    </div>
     <h5> located in <%= @dj.city %> </h5>
     </div>
 
-    <div class='star'>
-DJB Rating: 
-    </div>
 
-<script>
-  $('.star').raty({
-    readOnly: true,
-    score: <%= @dj.average_rating %>,
-    path: '/assets'
-  });
 
-</script>
+
     </div>
   </div>
     <br>
@@ -79,4 +73,11 @@ DJB Rating:
   </div>
 </div>
 </div>
+<script>
+  $('.star').raty({
+    readOnly: true,
+    score: <%= @dj.average_rating %>,
+    path: '/assets'
+  });
 
+</script>
