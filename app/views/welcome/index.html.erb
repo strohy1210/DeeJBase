@@ -36,9 +36,11 @@
         <% end%>
            <h5> located in <%= dj.city %> </h5>
         <%end%>
+        <% if !dj.average_rating.blank? %>
         <div class='star'>
 
         </div>
+        <%end%>
       </div>
     </div>
     <br>
@@ -47,16 +49,15 @@
         <% track=dj.tracks.where.not(demo: nil)[0] %>
         <%= track.demo.html_safe %>
       </div></p>
-<% if dj.average_rating %>
-<script>
 
+<script>
   $('.star').raty({
     readOnly: true,
-    score: <%= dj.average_rating %>,
+    score: <%dj.average_rating%>,
     path: '/assets'
   });
 </script>
-<% end %>
+
 
   </div>
   <br>
