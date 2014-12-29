@@ -8,10 +8,6 @@ class Dj < ActiveRecord::Base
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :default_values, :remove_empty_tracks, :no_tracks
 
-  # scope :scld_asc, -> { order('sdcl_followers ASC') }
-  # scope :scld_desc, -> { order('sdcl_followers DESC') }
-  # scope :by_genre, -> genre { where(:genre => genre) }
-  # scope :by_period, -> started_at, ended_at { where("started_at = ? AND ended_at = ?", started_at, ended_at) }
 
   NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhattan", "bronx", "ny", "bklyn"]
 

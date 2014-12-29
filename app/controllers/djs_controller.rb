@@ -25,6 +25,10 @@ class DjsController < ApplicationController
   end
 
   def show
+    if params[:genre_id]
+      set_params
+      render 'welcome/index'
+    end
     @dj= Dj.find(params[:id])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
