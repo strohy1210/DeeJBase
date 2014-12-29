@@ -43,7 +43,7 @@
     <% if !@genres.blank? %>
     <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
     <%end%>
-    <% if @dj.rate_per_hour != 0.0 %>
+    <% if !@dj.rate_per_hour.blank? %>
     <h4> Hourly Rate: $<%= number_with_delimiter(@dj.rate_per_hour, :delimiter => ',')%>0</h4>
     <%end%>
     <div class='star'>
