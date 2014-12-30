@@ -6,7 +6,7 @@ class Dj < ActiveRecord::Base
   has_many :events
   has_many :venues, through: :events
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
-  before_save :default_values, :remove_empty_tracks, :no_tracks
+  before_save :default_values, :remove_empty_tracks
 
 
   NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhattan", "bronx", "ny", "bklyn"]
