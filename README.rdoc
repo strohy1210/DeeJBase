@@ -2,19 +2,20 @@
 
 1. call to get price info for 20 djs for fri night in jan - figure out correlation to scld followers and average playcount
 3. cross-reference djs with one other site
-4. more filtering options- by price, by followers, average playcount, search funciton
+4. more filtering options- by price, average playcount
 5. add deejbase rating based on diff metrics
-6. update dj forms
-7. visualize database to delete bad data
+7. add LAtin back
 
 Later:
+1. add hover clickability to each dj item
 1. tweet at djs to claim profile
-2. rating system
+2. rating system, i review
 3. import contact info from db in csv form
-4. beome the dj reviewer!!
+5. add user ability to rate djs: http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/
 Process:
 1. tie venues into djs
 7. add image uploader/ability to edit
+8. user model which can have a dj or have a venue?
 
 13. scratch academy
 18. add availability to Djs, planners need to see everything

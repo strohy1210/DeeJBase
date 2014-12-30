@@ -93,6 +93,14 @@ class Dj < ActiveRecord::Base
     end
   end
 
+  def self.update_genres
+    Dj.where(dj_status: true, agent_status: false).each do |dj|
+      tracks = dj.tracks
+      get_genres(dj, tracks)
+    end
+
+  end
+
   private
     def self.save_tracks(dj, tracks, client)
       tracks[0..4].each do |track|
@@ -125,13 +133,15 @@ class Dj < ActiveRecord::Base
     def self.get_genres(dj, tracks)
       genres = []
       tracks.each do |track|
-        string = track.tag_list
-        t=Track.new
-        t.string = string        
-        genres << t.scan_for_genres        
+        if !track.tag_list.blank?
+          string = track.tag_list
+          t=Track.new
+          t.string = string        
+          genres << t.scan_for_genres  
+        end
       end
       dj.genres = genres.flatten.uniq
-      dj.save   
+      dj.save
     end
 
 

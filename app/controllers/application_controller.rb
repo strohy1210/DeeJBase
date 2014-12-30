@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
      redirect_to(root_path)
     end
   end
+
   def set_params
     @filter = params[:filter]
     if params[:genre_id] && params[:genre_id] != 'all'
@@ -39,7 +40,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   helper_method :current_user, :logged_in?, :set_params
-
 end

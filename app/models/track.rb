@@ -8,7 +8,7 @@ class Track < ActiveRecord::Base
   HIP_HOP = ["hip hop", "rap"]
   REGGAE =["reggae", "dancehall", "drum"]
   DEEP_HOUSE = ["deep house", "trance", "progressive"]
-
+  LATIN = ["latin", "musica", "spanish", "dominicano", "reggaeton", "merengue", "salsa", "bachata", "latino"]
   attr_accessor :string
 
   def no_demo
@@ -44,7 +44,8 @@ class Track < ActiveRecord::Base
     @genres << Genre.find_by(name: "Top-40") if TOP_40.any? { |w| string =~ /#{w}/ }
     @genres << Genre.find_by(name: "Hip Hop") if HIP_HOP.any? { |w| string =~ /#{w}/ }
     @genres << Genre.find_by(name: "Reggae/Dance Hall") if REGGAE.any? { |w| string =~ /#{w}/ }
-    @genres << Genre.find_by(name: "Deep House") if DEEP_HOUSE.any? { |w| string =~ /#{w}/ }  
+    @genres << Genre.find_by(name: "Deep House") if DEEP_HOUSE.any? { |w| string =~ /#{w}/ } 
+    @genres << Genre.find_by(name: "Latin") if LATIN.any? { |w| string =~ /#{w}/ } 
     @genres
   end
 
