@@ -7,6 +7,7 @@ class Dj < ActiveRecord::Base
   has_many :venues, through: :events
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :default_values, :remove_empty_tracks
+  after_save :no_tracks
   scope :is_dj, -> { where(dj_status: true, agent_status: false) }
 
 
@@ -53,10 +54,12 @@ class Dj < ActiveRecord::Base
   def self.find_with_omniauth(auth_hash)
     find_by(uid: auth_hash[:uid])
   end
-  def avg_playback_counts
-    playbacks = dj.tracks.map {|track| track.playback_count}
+
+  def avg_playback_count
+    playbacks = tracks.map {|track| track.playback_count}
     playbacks.inject(0.0) { |sum, el| sum + el } / playbacks.size
   end
+
   def self.create_sc_djs(page)
     self.get_soundcloud_djs(page).each do |dj|
       city = dj.city.downcase if dj.city
@@ -94,21 +97,6 @@ class Dj < ActiveRecord::Base
     end
   end
 
-  # def self.update_twitter
-  #   Dj.where(twitter_hdl: nil).where.not(bio: nil).each do |dj|
-  #     bio = dj.bio
-  #     handle = dj.extract_twitter_handle(bio)
-  #     dj.update(twitter_hdl: handle)
-  #   end
-  # end
-
-  # def self.update_genres
-  #   Dj.where(dj_status: true, agent_status: false).each do |dj|
-  #     tracks = dj.tracks
-  #     Dj.get_genres(dj, tracks)
-  #   end
-
-  # end
 
   private
     def self.save_tracks(dj, tracks, client)
@@ -155,4 +143,20 @@ class Dj < ActiveRecord::Base
 
 
 end
+
+  # def self.update_twitter
+  #   Dj.where(twitter_hdl: nil).where.not(bio: nil).each do |dj|
+  #     bio = dj.bio
+  #     handle = dj.extract_twitter_handle(bio)
+  #     dj.update(twitter_hdl: handle)
+  #   end
+  # end
+
+  # def self.update_genres
+  #   Dj.where(dj_status: true, agent_status: false).each do |dj|
+  #     tracks = dj.tracks
+  #     Dj.get_genres(dj, tracks)
+  #   end
+
+  # end
 
