@@ -22,8 +22,10 @@ class Dj < ActiveRecord::Base
   end
 
   def remove_empty_tracks
-    tracks.each do |track|
-      track.no_demo
+    if tracks
+      tracks.each do |track|
+        track.no_demo
+      end
     end
   end
   
