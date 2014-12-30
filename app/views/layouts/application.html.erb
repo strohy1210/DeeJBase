@@ -46,7 +46,7 @@
   <%end%>
   <% if @filter %>
   <li class="navbar-form navbar-right pull-right">
-    <%= select_tag(:filter, options_for_select([["SoundCloud Followers (least)", :scld_asc], ["SoundCloud Followers (most)", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers (most)", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
   <%else%>
       <li class="navbar-form navbar-right pull-right">
