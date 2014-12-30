@@ -7,7 +7,7 @@ class Dj < ActiveRecord::Base
   has_many :venues, through: :events
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :default_values, :remove_empty_tracks
-  after_save :no_tracks
+
   scope :is_dj, -> { where(dj_status: true, agent_status: false) }
 
 
