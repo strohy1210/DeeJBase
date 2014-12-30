@@ -7,6 +7,7 @@ class Dj < ActiveRecord::Base
   has_many :venues, through: :events
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :default_values, :remove_empty_tracks
+  scope :is_dj, -> { where(dj_status: true, agent_status: false) }
 
 
   NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhattan", "bronx", "ny", "bklyn"]
@@ -27,6 +28,14 @@ class Dj < ActiveRecord::Base
         track.no_demo
       end
     end
+  end
+
+  def un_dj
+    Dj.find_by(name: name).update(dj_status: false)
+  end
+
+  def agentfy
+    Dj.find_by(name: name).update(agent_status: true)
   end
   
   def average_rating
@@ -70,7 +79,7 @@ class Dj < ActiveRecord::Base
 
   def self.get_demos_genres
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')  
-    Dj.where(dj_status: true, agent_status: false).each do |dj|
+    Dj.is_dj.each do |dj|
       if dj.tracks.blank?    
         begin
           tracks = client.get('/tracks', :q => dj.name)
@@ -85,21 +94,21 @@ class Dj < ActiveRecord::Base
     end
   end
 
-  def self.update_twitter
-    Dj.where(twitter_hdl: nil).where.not(bio: nil).each do |dj|
-      bio = dj.bio
-      handle = dj.extract_twitter_handle(bio)
-      dj.update(twitter_hdl: handle)
-    end
-  end
+  # def self.update_twitter
+  #   Dj.where(twitter_hdl: nil).where.not(bio: nil).each do |dj|
+  #     bio = dj.bio
+  #     handle = dj.extract_twitter_handle(bio)
+  #     dj.update(twitter_hdl: handle)
+  #   end
+  # end
 
-  def self.update_genres
-    Dj.where(dj_status: true, agent_status: false).each do |dj|
-      tracks = dj.tracks
-      get_genres(dj, tracks)
-    end
+  # def self.update_genres
+  #   Dj.where(dj_status: true, agent_status: false).each do |dj|
+  #     tracks = dj.tracks
+  #     Dj.get_genres(dj, tracks)
+  #   end
 
-  end
+  # end
 
   private
     def self.save_tracks(dj, tracks, client)
