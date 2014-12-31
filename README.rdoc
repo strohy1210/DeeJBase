@@ -2,9 +2,9 @@
 
 1. call to get price info for 20 djs for fri night in jan - figure out correlation to scld followers and average playcount
 3. cross-reference djs with one other site
-4. more filtering options- by price, average playcount
+4. more filtering options- by price, average playcount, has rating
 5. add deejbase rating based on diff metrics
-7. add LAtin back
+
 
 Later:
 1. add hover clickability to each dj item
@@ -15,15 +15,13 @@ Later:
 Process:
 1. tie venues into djs
 7. add image uploader/ability to edit
-8. user model which can have a dj or have a venue?
+8. user model which can have a dj or have a venue? or neither. user signs in with facebook , can find their dj profile through soundcloud and attach name to it or create or find their venue and create.
 
 13. scratch academy
 18. add availability to Djs, planners need to see everything
 19. add past venues
 20. add rating system
-21. set default values for hourly rate if nil
-22. make message a modal
-24. use soundcloud followers based on soundcloud demo for rating system!
+
 25, auto find twitter followesrs
 26. estimate pricing based on sdlcd followers, maybe map to spotify followers 
 27 get email on  fb oauth

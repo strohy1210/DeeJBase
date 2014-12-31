@@ -23,6 +23,12 @@ class Dj < ActiveRecord::Base
     update(dj_status: false) if tracks.blank?
   end
 
+  def self.no_tracks
+    Dj.is_dj.each do |dj|
+      dj.no_tracks
+    end
+  end
+
   def remove_empty_tracks
     if tracks
       tracks.each do |track|
@@ -31,11 +37,11 @@ class Dj < ActiveRecord::Base
     end
   end
 
-  def un_dj
+  def un_dj(name)
     Dj.find_by(name: name).update(dj_status: false)
   end
 
-  def agentfy
+  def agentfy(name)
     Dj.find_by(name: name).update(agent_status: true)
   end
   

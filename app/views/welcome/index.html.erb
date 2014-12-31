@@ -27,7 +27,8 @@
       <p><div class="index-image col-md-3">
         <%= link_to image_tag(dj.image_url), dj_path(dj) %>
       </div></p>
-      
+
+  <%= link_to dj_path(dj) do %>
       <div class="bio col-md-8">
         <%if dj.bio %>
         <h4>Sound Cloud Followers: <%= number_with_delimiter(dj.sdcl_followers, :delimiter => ',') if dj.sdcl_followers %></h4>
@@ -38,10 +39,10 @@
         <%end%>
         <% if !dj.average_rating.blank? %>
         <div class='star'>
-
         </div>
         <%end%>
       </div>
+<% end %>
     </div>
     <br>
 
