@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
   skip_before_action :authorize
 
-  
   def index
     if params[:filter]
       set_params
@@ -37,9 +36,16 @@ class WelcomeController < ApplicationController
   end
 
   def contact_us
-
-    email = params[:email]
-    message = params[:message]
+    email = params["email"]
+    if params[:message]
+      message = params[:message]
+    elsif params[:dj_status] == "true"
+      message = "This person is a dj."
+    elsif params[:agent_status] == "true"
+      message = "This person hires djs."
+    else
+      message = "just wants updates"
+    end
     ContactDjMailer.contact_us(email, message).deliver
     flash[:success] = 'Message sent.'
     redirect_to :back

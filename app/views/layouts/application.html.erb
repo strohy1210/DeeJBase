@@ -23,10 +23,16 @@
       <%= link_to image_tag("logo_white.png"), root_path, class: 'navbar-brand' %>
     </div>
     <ul class="nav navbar-nav">
+      <li><a href="#" data-toggle="modal" data-target="#basicModal" >
+          <div class="hover-mask bottom-mask mask-orange">
+            Sign Up
+          </div>
+        </a>
+       </li>
       <% if !logged_in? %>
-      <li><%= link_to 'Log in with Facebook', '/auth/facebook' %></li>
+      <!-- <li><%= link_to 'Log in with Facebook', '/auth/facebook' %></li> -->
       <% else %>
-      <li ><%= link_to 'Logout', '/logout', method: "delete" %></li>
+      <!-- <li ><%= link_to 'Logout', '/logout', method: "delete" %></li> -->
       <% end %>
       <% if current_user && current_user.dj_status %>
       <li> <%= link_to "Your Profile", dj_path(current_user) %></li>
@@ -70,7 +76,39 @@
   
 <%= yield %>
 
+  <div class="message-form">
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Sign Up For DeeJBase</h4>
+              </div>
+              <div class="modal-body">
+               <div class="form-group">
+           <%= form_tag(contact_us_url, method: "post") do %>
+            <%= label_tag :email %>
+           <%= email_field_tag(:email, "", class: 'form-control', placeholder: "youremail@email.com", required: true) %><br>
+            <%= radio_button_tag(:dj_status, true) %>
+            <%= label_tag(:dj_true, "I am a DJ.") %><br>
+            <%= radio_button_tag(:agent_status, true) %>
+            <%= label_tag(:dj_true, "I hire DJs.") %><br>
+            <%= radio_button_tag(:dj_status, false) %>
+            <%= label_tag(:dj_false, "I just want to know more.") %> <br>
+                </div>
+              </div>
 
+              <div class="modal-footer">
+                <div class='text-center'>
+                </div>
+                <%= submit_tag "Sign Up", class: 'btn btn-info' %>
+              </div>
+            <%end%>
+            </div>
+          </div>
+        </div>
+     
+      </div>
 </div>
 </body>
 </html>
