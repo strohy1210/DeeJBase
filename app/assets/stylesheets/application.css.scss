@@ -23,7 +23,7 @@
 @import url("//fonts.googleapis.com/css?family=Montserrat");
 @import url("//fonts.googleapis.com/css?family=Karla");
 @import url("//fonts.googleapis.com/css?family=Exo+2:400,500");
-@import url("//fonts.googleapis.com/css?family=Permanent+Marker");
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 body { 
   font-family: 'Karla', sans-serif;
@@ -173,7 +173,7 @@ a .bio h4, a .bio h5{
 }
 
 .title h1 {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Permanent Marker', sans-serif;
 }
 
 
