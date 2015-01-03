@@ -1,14 +1,12 @@
 <div class="row page-header title">
-    <h1 class='col-md-5'> Take Off </h1>
+    <h1 class='col-md-5'> <%= @dj.name %>  </h1>
 </div>
 <div class="dj-profile">
-      <div class="col-md-4">
-        <h2> <%= @dj.name %> </h2>
-      </div>
+
 
       <br>
    <div class="row">
-      <div class= "edit-or-contact col-md-7 pull-right">
+      <div class= "edit-or-contact col-md-2 pull-right">
  
         <% if current_user == @dj %>
         <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
@@ -25,11 +23,11 @@
    <%end%>
         <br>
       </div>
-  </div>
+ 
 
 <!-- ///////////  PROFILE //////////////////////////////// -->
 <div id="dj-profile">
-  <div class= 'row'> 
+  
     <div class="profile-pic col-md-3">
       <%= image_tag @dj.image_url, class: 'profile-image' %>
     </div>
@@ -56,12 +54,13 @@
     </div>
   </div>
     <br>
+    </div>
   <div class="tracks">
     <% if !@dj.tracks.blank? %>
     <%= render 'tracks' %><br>
     <%end%>
   </div>
-</div>
+
 
 <!-- ////////////// form-begin ///////////////////////-->
 

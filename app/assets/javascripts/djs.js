@@ -6,12 +6,14 @@ $('.edit-dj').click(function(){
   $(".update-form").toggle();
   $("#dj-profile").toggle();
   $(this).toggle();
+  $('.tracks').toggle();
 })
 
 $('.cancel-edit').click(function(){
   $(".update-form").toggle();
   $("#dj-profile").toggle();
   $('.edit-dj').toggle();
+  $('.tracks').toggle();
 })
 
 $(".other-tracks").hide();
