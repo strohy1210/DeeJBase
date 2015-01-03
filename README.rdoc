@@ -57,3 +57,12 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+☆♥☆ heroku pg:psql
+Your version of git is 2.1.1. Which has serious security vulnerabilities.
+More information here: https://blog.heroku.com/archives/2014/12/23/update_your_git_clients_on_windows_and_os_x
+---> Connecting to HEROKU_POSTGRESQL_YELLOW_URL (DATABASE_URL)
+psql (9.3.5)
+SSL connection (cipher: DHE-RSA-AES256-SHA, bits: 256)
+Type "help" for help.
+
+deejbase::YELLOW=> \copy (SELECT name, email, phone, sdcl_followers, dj_status, agent_status, rate_per_hour FROM djs) TO dj_info.csv DELIMITER ',' CSV HEADER;
