@@ -14,4 +14,11 @@ class ContactDjMailer < ActionMailer::Base
     mail(to: 'strohsm88@gmail.com', subject: 'contact form used!')
   end
 
+  def price_inquiry(email, name)
+    @name=name
+    mail(to: email, subject: 'Booking '+name+ ' NYC.')
+  end
 end
+# Dj.is_dj.each do |dj|
+# ContactDjMailer.price_inquiry(dj.email, dj.name).deliver
+# end

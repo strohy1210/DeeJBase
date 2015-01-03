@@ -35,8 +35,8 @@ class ApplicationController < ActionController::Base
       @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
       @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
     else
-      @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
-      @djs = Dj.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
+      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
+      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
     end
   end
 

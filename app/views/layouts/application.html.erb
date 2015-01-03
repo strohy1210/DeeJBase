@@ -66,16 +66,16 @@
 </div>
 
 
-<div class="container" id="wrap">
-  <% flash.each do |key, value| %>
+  <div class="container" id="wrap">
+    <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>">
       <%= value %>
     </div>
-  <% end %>
+    <% end %>
 
   
 <%= yield %>
-
+<!-- /////////////// MODAL //////////////////////////////////// -->
   <div class="message-form">
     <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">
           <div class="modal-dialog">
@@ -106,9 +106,12 @@
             <%end%>
             </div>
           </div>
-        </div>
-     
+        </div>   
       </div>
-</div>
+  </div>
+<!--///////////  END MODAL /////////////////////// -->
+  <footer class='container'>
+
+  </footer>
 </body>
 </html>
