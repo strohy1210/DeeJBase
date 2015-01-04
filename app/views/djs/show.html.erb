@@ -6,8 +6,8 @@
 
    <div class="row">
       <div class= "edit-or-contact col-md-2 pull-right">
- 
-        <% if current_user && current_user.sdcl_id == @dj.sdcl_id %>
+
+        <% if current_user && current_user.dj_status && current_user.sdcl_id == @dj.sdcl_id %>
         <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
         <br>
         <%else%>
@@ -47,6 +47,9 @@
     DJB Rating: 
     </div>
     <h5> located in <%= @dj.city %> </h5>
+    <% if @dj.can_produce %>
+    <h6> This DJ can provide production equipment on request. </h6>
+    <%end%>
     </div>
 
 

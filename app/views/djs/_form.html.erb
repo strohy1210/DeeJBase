@@ -7,8 +7,11 @@
   <%= f.text_field :phone, class: 'form-control' %>
   <%= f.label 'email' %><br>
   <%= f.text_field :email, class: 'form-control', placeholder: "sickdj@email.com" %><br>
+    <%= f.label 'location' %><br>
+  <%= f.text_field :city, class: 'form-control', placeholder: "Queens" %><br>
   <%= f.label 'Nightly Rate (Roughly 4-5 hours)' %>
-  <%= f.select(:rate, options_for_select([['<$100'],['$100-199'],['$200-299'],['$300-399'],['$400-499'],['$500-749'], ['$750-999'],['$1,000-1,499'],['$1,500-2,999'],['$3,000+']], @dj.rate), class: "form-control") %><br><br>
+  <%= f.select(:rate, options_for_select([['<$100'],['$100-199'],['$200-299'],['$300-399'],['$400-499'],['$500-749'], ['$750-999'],['$1,000-1,499'],['$1,500-2,999'],['$3,000+']], @dj.rate), class: "form-control") %> <br><br> 
+<%= f.label(:can_produce, "I can bring production equipment on request (lights and/or speakers etc.) ") %><%= f.check_box(:can_produce) %><br><br>
   <%= f.label 'What\'s your story?' %>
   <%= f.text_area :bio, rows: 4, class: 'form-control', placeholder: "I've performed at venues such as Ella and Anchor Bar. I live in Queens and love tech house and funky music that puts a smile on your face and a pep in your step." %><br>
 
@@ -37,8 +40,7 @@
   </div>
 
 
-  
-<br><br>
+<br>
 <%= f.submit "Update", class: 'btn btn-primary' %>
 
 
