@@ -1,18 +1,31 @@
 <%= form_for @dj do |f|%>
   <%= f.label 'Name' %><br>
-  <%= f.text_field :name, class: 'form-control', required: true, placeholder: "Chainsmokers" %><br>
-  <%= f.label 'Image URL' %><br>
-  <%= f.text_field :image_url, class: 'form-control', required: true, placeholder: "http:://..." %><br>
-  <%= f.label 'phone' %><br>
-  <%= f.text_field :phone, class: 'form-control' %><br>
+  <%= f.text_field :name, class: 'form-control', required: true, placeholder: "Chainsmokers" %>
+  <%= f.label 'Image URL' %>
+  <%= f.text_field :image_url, class: 'form-control', required: true, placeholder: "http:://..." %>
+  <%= f.label 'phone (optional)' %>
+  <%= f.text_field :phone, class: 'form-control' %>
   <%= f.label 'email' %><br>
   <%= f.text_field :email, class: 'form-control', placeholder: "sickdj@email.com" %><br>
-  <%= f.label 'Hourly Rate' %><br>
-  <%= f.text_field :rate_per_hour, class: 'form-control', placeholder: "e.g. 100" %><br>
+  <%= f.label 'Nightly Rate (Roughly 4-5 hours)' %>
+  <%= f.select(:rate, options_for_select([['<$100'],['$100-199'],['$200-299'],['$300-399'],['$400-499'],['$500-749'], ['$750-999'],['$1,000-1,499'],['$1,500-2,999'],['$3,000+']], @dj.rate), class: "form-control") %><br><br>
   <%= f.label 'What\'s your story?' %>
-  <%= f.text_area :bio, rows: 3, class: 'form-control', placeholder: "I've performed at venues such as Ella and Anchor Bar. I live in Queens and love funky music that puts a smile on your face and a pep in your step." %><br>
+  <%= f.text_area :bio, rows: 4, class: 'form-control', placeholder: "I've performed at venues such as Ella and Anchor Bar. I live in Queens and love tech house and funky music that puts a smile on your face and a pep in your step." %><br>
+
+  <%= f.label 'Choose genres (put more specific info like "tech house, nu disco" in the "What\'s your story?" section above).' %>:<br>
+  <div class='genre-form'>
+      <% Genre.all.each_with_index do |g,i| %>
+        
+        <% if @dj.genres.include? g %>
+          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox" checked>
+        <%else%>
+          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox">
+        <%end%>
+        <%= label_tag(:g, g.name) %> | 
+      <%end%>
+</div><br>
   <div class="panel panel-default">
-    <div class="panel-heading">Tracks</div>
+    <div class="panel-heading"><strong>Add and Remove SoundCloud Tracks</strong></div>
     <div class="panel-body">
     <%= f.fields_for :tracks do |tracks_form| %>
     <%= render 'track_fields', f: tracks_form %>
@@ -23,16 +36,6 @@
     </div>
   </div>
 
-  <strong><%= f.label 'Choose the genres you identify most with (put more specific info in the "what\'s your story" section above).' %>: </strong> <br>
-      <% Genre.all.each_with_index do |g,i| %>
-        <%= label_tag(:g, g.name) %>
-        <% if @dj.genres.include? g %>
-          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox" checked>
-        <%else%>
-          <input id="dj_genres" name="genres[][id]" value='<%= g.id %>' type="checkbox">
-        <%end%>
-        |
-      <%end%>
 
   
 <br><br>

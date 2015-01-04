@@ -4,7 +4,6 @@
 <div class="dj-profile">
 
 
-      <br>
    <div class="row">
       <div class= "edit-or-contact col-md-2 pull-right">
  
@@ -21,7 +20,7 @@
           </div>
         </a>
    <%end%>
-        <br>
+
       </div>
  
 
@@ -41,8 +40,8 @@
     <% if !@genres.blank? %>
     <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
     <%end%>
-    <% if !@dj.rate_per_hour.blank? %>
-    <h4> Hourly Rate: $<%= number_with_delimiter(@dj.rate_per_hour, :delimiter => ',')%>0</h4>
+    <% if !@dj.rate.blank? %>
+    <h4> Rough Nightly Rate: <%= number_with_delimiter(@dj.rate, :delimiter => ',')%></h4>
     <%end%>
     <div class='star'>
     DJB Rating: 
