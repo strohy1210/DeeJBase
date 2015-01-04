@@ -30,14 +30,14 @@
         </a>
        </li>
       <% if !logged_in? %>
-      <!-- <li><%= link_to 'Log in with Facebook', '/auth/facebook' %></li> -->
+      <li><%= link_to 'Log in with Facebook', '/auth/facebook' %></li>
       <% else %>
-      <!-- <li ><%= link_to 'Logout', '/logout', method: "delete" %></li> -->
+      <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>
       <% if current_user && current_user.dj_status %>
       <li> <%= link_to "Your Profile", dj_path(current_user) %></li>
       <%elsif current_user && !current_user.dj_status%>
-     
+      <li> <%= link_to "Your Profile", dj_path(current_user) %></li>
       <%end%>
       <li><%= link_to 'About', about_path%></li>
   <% if @genre %>

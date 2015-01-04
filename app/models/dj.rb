@@ -54,6 +54,10 @@ class Dj < ActiveRecord::Base
     find_by(uid: auth_hash[:uid])
   end
 
+  def self.find_with_sdcl(sdcl_id)
+    find_by(sdcl_id: sdcl_id)
+  end
+
   def avg_playback_count
     playbacks = tracks.map {|track| track.playback_count}
     playbacks.inject(0.0) { |sum, el| sum + el } / playbacks.size

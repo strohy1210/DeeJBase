@@ -5,7 +5,7 @@
 4. more filtering options- by price, average playcount, has rating
 5. add deejbase rating based on diff metrics
 
-
+create user model - if current_user.scld_id == dj.scld_id then we show them stuff
 Later:
 1. add hover clickability to each dj item
 1. tweet at djs to claim profile
@@ -53,6 +53,14 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Can you provide a couple more details?...
+Do you have a location (do I need to provide equipment)? 
+How many people are you expecting? 
+How did you come across our soundcloud page? 
+You're looking for deep house / garage, correct?  
+
+care about people- crowd, they want to have fun , (mid-late 20's)
 
 
 Please feel free to use a different markup language if you do not plan to run

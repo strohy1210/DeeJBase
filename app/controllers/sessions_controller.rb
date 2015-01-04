@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     @dj = Dj.get_user_from_omniauth(auth_hash)
+
     login(@dj)
     
     if @dj.dj_status == nil
