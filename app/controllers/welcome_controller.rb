@@ -17,18 +17,19 @@ class WelcomeController < ApplicationController
     if params["user"]["dj_status"]=="false"
       status=false
     else
-      status = true
+      status=true
     end
     sdcl_id = params["user"]["sdcl_id"].to_i
-    current_user.update(dj_status: status, sdcl_id: sdcl_id)
-    if current_user.dj_status
-      if @dj= Dj.find_by(sdcl_id: current_user.sdcl_id)
+    if status
+      if @dj= Dj.find_by(sdcl_id: sdcl_id)
+        current_user.update(dj_status: status, sdcl_id: sdcl_id)
         redirect_to dj_path(@dj)
       else
-        flash[:danger] = "Incorrect pin. Either re-enter or click 'Sign Up' above and we'll help you out."
+        flash[:danger] = "Incorrect pin. If you're not a DJ, select 'I'm just browsing'. If you are, re-enter the pin or click 'Contact' above and we'll help you out."
         redirect_to :back
       end
     else
+      current_user.update(dj_status: status)
       redirect_to root_path
     end
   end

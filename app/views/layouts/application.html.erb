@@ -25,13 +25,13 @@
     <ul class="nav navbar-nav">
       <li><a href="#" data-toggle="modal" data-target="#contactModal" >
           <div class="hover-mask bottom-mask mask-orange">
-            Sign Up
+            Contact
           </div>
         </a>
        </li>
        <li><%= link_to 'Browse DJs', root_path %></li>
       <% if !logged_in? %>
-      <li><%= link_to 'Log in with Facebook', '/auth/facebook' %></li>
+      <li><%= link_to 'Log In/Sign Up with Facebook', '/auth/facebook' %></li>
       <% else %>
       <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>

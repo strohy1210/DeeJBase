@@ -1,5 +1,5 @@
 class ContactDjMailer < ActionMailer::Base
-  default from: "dj-wanted@djbase.com"
+  default from: "strohsm88.com"
 
   def contact_dj(dj, message, email)
     @email=email
@@ -17,6 +17,14 @@ class ContactDjMailer < ActionMailer::Base
   def price_inquiry(email, name)
     @name=name
     mail(to: email, subject: 'Booking '+name+ ' NYC.')
+  end
+
+  def signup(dj)
+    name=dj.name
+    @sdcl_id =dj.sdcl_id
+    @dj=dj
+    email = @dj.email
+    mail(to: email, subject: name+ ' NYC - DJ booking.')
   end
 end
 # djs = Dj.is_dj.order('sdcl_followers ASC')[1..14]

@@ -6,7 +6,7 @@
 <%= f.radio_button(:dj_status, true) %>
 <%= f.label(:dj_true, "I am a dj. Bring me to my profile.") %><br>
 <%= f.label(:sdcl_id, "Enter the secret pin that was emailed to you.") %><br>
-<%= f.number_field(:sdcl_id, class: 'form-control', required: true, placeholder: "23485442") %>
+<%= f.number_field(:sdcl_id, class: 'form-control', placeholder: "e.g. 23485442") %>
 <br>
 <%= f.radio_button(:dj_status, false) %>
 <%= f.label(:dj_false, "I'm just browsing.") %> <br>
