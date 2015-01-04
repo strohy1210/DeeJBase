@@ -1,9 +1,9 @@
 <div class="nested-fields">
   <div class="form-group">
   <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %><br>
+      <%= f.text_field :title, class: 'form-control',placeholder: 'Live at Unicorn Meat NYC 10-30-14' %><br>
       <%= f.label :demo %>
-      <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that says "embed", and copy the text (which starts with "iframe") into this form.', required: true %><br>
+      <%= f.text_area :demo, rows: 3, class: 'form-control', placeholder: 'Find your soundcloud demo, click on the share link underneath it, go to the tab that says "embed", and copy the text (which starts with "iframe") into this form. Live demos preferred', required: true %><br>
   </div>
   <%= link_to_remove_association "remove track", f %>
 </div>

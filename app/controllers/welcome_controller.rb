@@ -14,15 +14,20 @@ class WelcomeController < ApplicationController
   end
 
   def set_dj
-    if params["dj"]["dj_status"]=="false"
+    if params["user"]["dj_status"]=="false"
       status=false
     else
       status = true
     end
-    current_user.update(dj_status: status)
+    sdcl_id = params["user"]["sdcl_id"].to_i
+    current_user.update(dj_status: status, sdcl_id: sdcl_id)
     if current_user.dj_status
-      @dj=current_user
-      redirect_to dj_path(@dj)
+      if @dj= Dj.find_by(sdcl_id: current_user.sdcl_id)
+        redirect_to dj_path(@dj)
+      else
+        flash[:danger] = "Incorrect pin. Either re-enter or click 'Sign Up' above and we'll help you out."
+        redirect_to :back
+      end
     else
       redirect_to root_path
     end
@@ -50,4 +55,10 @@ class WelcomeController < ApplicationController
     flash[:success] = 'Message sent.'
     redirect_to :back
   end
+
+  private
+
+    def current_user_params
+      params.require(:user).permit!
+    end
 end

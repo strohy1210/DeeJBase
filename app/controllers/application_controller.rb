@@ -9,16 +9,16 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= Dj.find(session[:dj_id]) if session[:dj_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def login(user)
     flash[:info]= "You're logged in!"
-    session[:dj_id] = @dj.id
+    session[:user_id] = @user.id
   end  
 
   def logout
-    session[:dj_id] = nil
+    session[:user_id] = nil
   end
 
   def authorize
@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
       flash[:danger] = "Take two seconds to login above!"
      redirect_to(root_path)
     end
+  end
+
+  def current_dj
+    @dj ||= Dj.find_by(sdcl_id: current_user.sdcl_id) if session[:user_id]
   end
 
   def set_params
@@ -40,5 +44,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_user, :logged_in?, :set_params
+  helper_method :current_user, :logged_in?, :set_params, :current_dj
 end

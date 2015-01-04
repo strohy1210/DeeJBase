@@ -16,7 +16,7 @@ class Dj < ActiveRecord::Base
   attr_accessor :message, :demo_title
 
   def default_values
-    self.bio ||= 'I\'m a DJ in NYC, get in touch'
+    # self.bio ||= 'I\'m a DJ in NYC, get in touch'
   end
 
   def no_tracks
@@ -42,21 +42,6 @@ class Dj < ActiveRecord::Base
     ratings.sum(:score) / ratings.size
   end
 
-  def self.get_user_from_omniauth(auth_hash)
-    self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)
-  end
-
-  def self.create_with_omniauth(auth_hash)    
-    create(uid: auth_hash[:uid], name: auth_hash[:info][:name], image_url: auth_hash[:info][:image])
-  end
-
-  def self.find_with_omniauth(auth_hash)
-    find_by(uid: auth_hash[:uid])
-  end
-
-  def self.find_with_sdcl(sdcl_id)
-    find_by(sdcl_id: sdcl_id)
-  end
 
   def avg_playback_count
     playbacks = tracks.map {|track| track.playback_count}
