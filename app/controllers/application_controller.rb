@@ -38,9 +38,11 @@ class ApplicationController < ActionController::Base
       @genre= Genre.find(params[:genre_id])
       @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
       @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
+      @djs = @genre.djs.where(dj_status: true, agent_status: false).paginate(page: params[:page], per_page: 6).order('updated_at DESC') if @filter=="recent_desc"
     else
       @djs = Dj.is_dj.paginate(page: params[:page], per_page: 6).order('sdcl_followers ASC') if @filter=="scld_asc"
       @djs = Dj.is_dj.paginate(page: params[:page], per_page: 6).order('sdcl_followers DESC') if @filter=="scld_desc"
+      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 6).order('updated_at DESC') if @filter=="recent_desc"
     end
   end
 

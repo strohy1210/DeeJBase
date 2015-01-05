@@ -41,7 +41,7 @@ class Dj < ActiveRecord::Base
   #   (0.2345*int)+180.568727
   # end
   def self.estimate_rates
-    Dj.is_dj.where(rate: nil).each do |dj|
+    Dj.is_dj.where(rate: nil, uid: nil).each do |dj|
       rate = dj.rate_get
       if rate < 200
         dj.update(rate: "$100-199")

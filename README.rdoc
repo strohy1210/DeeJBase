@@ -6,8 +6,8 @@
 5. add deejbase rating based on diff metrics
 6. add venues ratings
 7. change routes for SEO
+8. pricing info box on nav bar- dont display on each person since redundant and iffy
 
-create user model - if current_user.scld_id == dj.scld_id then we show them stuff
 Later:
 1. add hover clickability to each dj item
 1. tweet at djs to claim profile
@@ -76,3 +76,7 @@ SSL connection (cipher: DHE-RSA-AES256-SHA, bits: 256)
 Type "help" for help.
 
 deejbase::YELLOW=> \copy (SELECT name, email, phone, sdcl_followers, dj_status, agent_status, rate_per_hour FROM djs) TO dj_info.csv DELIMITER ',' CSV HEADER;
+
+http://www.had2know.com/academics/regression-calculator-statistics-best-fit.html
+
+http://www.mathsisfun.com/data/grapher-equation.html
