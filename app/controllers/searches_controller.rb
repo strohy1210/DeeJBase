@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
         flash[:warning] = 'Sorry, no one by that name... so here\'s everyone.'
         redirect_to root_path
       else
-        flash.now[:success] = @djs.size.to_s + ' result(s) for "' +name+'" Click on a DJ for more info.'
+        flash.now[:success] = @djs.size.to_s + ' result(s) for "' +name+'." Click for more info.'
         render 'welcome/index'
       end
     elsif params[:genre_id]

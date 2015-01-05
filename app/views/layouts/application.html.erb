@@ -32,7 +32,8 @@
        </li>
        <li><%= link_to 'Browse DJs', root_path %></li>
       <% if !logged_in? %>
-      <li><%= link_to 'Log In/Sign Up with Facebook', '/auth/facebook' %></li>
+      <li><%= link_to 'Log In', '/auth/facebook' %></li>
+      <li><%= link_to 'Sign Up', '/auth/facebook' %></li>
       <% else %>
       <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>

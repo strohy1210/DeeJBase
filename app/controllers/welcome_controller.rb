@@ -22,10 +22,12 @@ class WelcomeController < ApplicationController
     sdcl_id = params["user"]["sdcl_id"].to_i
     if status
       if @dj= Dj.find_by(sdcl_id: sdcl_id)
+        binding.pry
+        @dj.update(uid: current_user.uid)
         current_user.update(dj_status: status, sdcl_id: sdcl_id)
         redirect_to dj_path(@dj)
       else
-        flash[:danger] = "Incorrect pin. If you're not a DJ, select 'I'm just browsing'. If you are, re-enter the pin or click 'Contact' above and we'll help you out."
+        flash[:danger] = "Incorrect pin. If you're not a DJ, select 'I'm just browsing'. If you are, try re-entering the pin or click 'Contact' above, and we'll help you get one."
         redirect_to :back
       end
     else
