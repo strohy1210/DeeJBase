@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DeeJBase - Find NY's Rawest DJs</title>
+  <title>DeeJBase - Find NYC's Rawest DJs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container" id="bar">
     <div class="navbar-header">
-      <%= link_to image_tag("logo_white.png"), root_path, class: 'navbar-brand' %>
+      <%= link_to image_tag("logo_white.png", alt: "Find NYCs Rawest Talent"), root_path, class: 'navbar-brand' %>
     </div>
 
     <ul class="nav navbar-nav">
@@ -53,7 +53,7 @@
   <%end%>
   <% if @filter %>
   <li class="navbar-form navbar-right pull-right">
-    <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers (most)", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
   <%else%>
       <li class="navbar-form navbar-right pull-right">

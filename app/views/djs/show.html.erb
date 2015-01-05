@@ -41,7 +41,7 @@
     <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
     <%end%>
     <% if !@dj.rate.blank? %>
-    <h4> Rough Nightly Rate: <%= number_with_delimiter(@dj.rate, :delimiter => ',')%></h4>
+    <h4> Nightly Rate: <%= @dj.rate%></h4>
     <%end%>
     <div class='star'>
     DJB Rating: 

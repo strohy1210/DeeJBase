@@ -4,6 +4,8 @@
 3. cross-reference djs with one other site
 4. more filtering options- by price, average playcount, has rating
 5. add deejbase rating based on diff metrics
+6. add venues ratings
+7. change routes for SEO
 
 create user model - if current_user.scld_id == dj.scld_id then we show them stuff
 Later:
