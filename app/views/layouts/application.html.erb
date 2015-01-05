@@ -24,13 +24,8 @@
     </div>
 
     <ul class="nav navbar-nav">
-      <li><a href="#" data-toggle="modal" data-target="#contactModal" >
-          <div class="hover-mask bottom-mask mask-orange">
-            Contact
-          </div>
-        </a>
-       </li>
-       <li><%= link_to 'Browse DJs', root_path %></li>
+
+       <li><%= link_to 'DJ List', root_path %></li>
       <% if !logged_in? %>
       <li><%= link_to 'Log In', '/auth/facebook' %></li>
       <li><%= link_to 'Sign Up', '/auth/facebook' %></li>
@@ -42,6 +37,11 @@
       <%elsif current_user && !current_user.dj_status%>
       <%end%>
       <li><%= link_to 'About', about_path%></li>
+      <li><a href="#" data-toggle="modal" data-target="#contactModal" >
+        <div class="hover-mask bottom-mask mask-orange">
+            Contact
+        </div>
+      </a></li>
   <% if @genre %>
   <li><form class="navbar-form navbar-right pull-right">
    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All Genres", 'all'], @genre.id), class: "form-control",:onchange => 'this.form.submit()') %>

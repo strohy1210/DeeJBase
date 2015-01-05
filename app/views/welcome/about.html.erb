@@ -22,8 +22,10 @@
 </div>
 
   <div class='footer controls text-center col-md-12' id="footer">
+    <% if !logged_in? %>
     <%= link_to "Login", '/auth/facebook' %> |
     <%= link_to "Sign Up", '/auth/facebook' %> |
+    <%end%>
     <%= link_to 'Contact', '#', class: 'send-contact'%> |
     <%= link_to 'Back', :back %> 
   </div>
