@@ -185,5 +185,12 @@ a .bio h4, a .bio h5{
   padding: 5px;
 }
 
+@media (max-width : 320px) {
+.navbar-fixed-top {
+        position: relative;
+        top: auto;
+    }
+  
+}
 
 
