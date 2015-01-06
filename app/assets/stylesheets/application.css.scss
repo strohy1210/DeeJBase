@@ -187,8 +187,9 @@ a .bio h4, a .bio h5{
 
 @media (max-width : 320px) {
 .navbar-fixed-top {
-        position: relative;
+        position: absolute;
         top: auto;
+        padding: 100px
     }
   
 }
