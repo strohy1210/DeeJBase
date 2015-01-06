@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104193323) do
+ActiveRecord::Schema.define(version: 20150106194319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150104193323) do
     t.boolean  "agent_status",   default: false
     t.string   "rate"
     t.boolean  "can_produce",    default: false
+    t.string   "slug"
   end
 
   create_table "events", force: true do |t|

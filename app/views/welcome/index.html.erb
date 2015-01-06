@@ -20,15 +20,15 @@
     
   <div class='dj-item'>
     <div class= "dj-header">
-      <h3><%= link_to dj.name, dj_path(dj.name) %></h3>
+      <h3><%= link_to dj.name, dj_path(dj.slugify) %></h3>
     
     </div>
     <div class="row">
       <p><div class="index-image col-md-3">
-        <%= link_to image_tag(dj.image_url), dj_path(dj.name) %>
+        <%= link_to image_tag(dj.image_url), dj_path(dj.slugify) %>
       </div></p>
 
-  <%= link_to dj_path(dj.name) do %>
+  <%= link_to dj_path(dj.slugify) do %>
       <div class="bio col-md-8">
         <%if dj.bio %>
         <% if !dj.genres.blank? %>     
