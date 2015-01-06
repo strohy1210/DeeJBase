@@ -1,4 +1,4 @@
-class AddSlugToDJs < ActiveRecord::Migration
+class AddSlugToDjs < ActiveRecord::Migration
   def change
     add_column :djs, :slug, :string
   end

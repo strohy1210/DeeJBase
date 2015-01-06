@@ -19,12 +19,9 @@ class Dj < ActiveRecord::Base
   #   self.bio ||= 'I\'m a DJ in NYC, get in touch'
   # end
   def slugify
-    name.gsub(" ", "-") 
+    name.gsub(" ", "-").gsub(".", "")
   end
 
-#   Dj.all.each do |dj|
-#  dj.update(slug: dj.slugify)
-# end
 
   def self.no_tracks
     Dj.is_dj.each do |dj|
