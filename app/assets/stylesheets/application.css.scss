@@ -185,16 +185,21 @@ a .bio h4, a .bio h5{
   padding: 5px;
 }
 
-@media (max-width: 400px) {
-.navbar-fixed-top {
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  .navbar-fixed-top {
         position: absolute;
         top: auto;
-
     }
-.body {
+    
+  .body {
     padding-top: 200px;
+  }
+
+
 }
-  
-}
+
+
 
 
