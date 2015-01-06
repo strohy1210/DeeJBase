@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% if @dj %>
+  <title><%= @dj.name %>'s Profile - DeeJBase</title>
+  <% else %>
   <title>DeeJBase - Find NYC's Rawest DJs</title>
+  <%end%>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -50,7 +54,13 @@
 
     <ul class="nav navbar-nav">
 
-       <li><%= link_to 'DJ List', root_path %></li>
+      <li><%= link_to 'DJ List', root_path %></li>
+      <li><%= link_to 'About', about_path%></li>
+      <li><a href="#" data-toggle="modal" data-target="#contactModal" >
+      <div class="hover-mask bottom-mask mask-orange">
+          Contact
+      </div>
+      </a></li>
       <% if !logged_in? %>
       <li><%= link_to 'Log In', '/auth/facebook' %></li>
       <li><%= link_to 'Sign Up', '/auth/facebook' %></li>
@@ -61,28 +71,23 @@
       <li> <%= link_to "Your Profile", dj_path(current_dj) %></li>
       <%elsif current_user && !current_user.dj_status%>
       <%end%>
-      <li><%= link_to 'About', about_path%></li>
-      <li><a href="#" data-toggle="modal" data-target="#contactModal" >
-        <div class="hover-mask bottom-mask mask-orange">
-            Contact
-        </div>
-      </a></li>
+
   <% if @genre %>
-  <li><form class="navbar-form navbar-right pull-right">
+  <li><form class="navbar-form">
    <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] }<< ["All Genres", 'all'], @genre.id), class: "form-control",:onchange => 'this.form.submit()') %>
   
   </li>
   <% else %>
-  <li><form class="navbar-form navbar-right pull-right">
+  <li><form class="navbar-form">
     <%= select_tag(:genre_id, options_for_select(Genre.all.map {|g| [g.name, g.id] } << ["All Genres", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
   </li>
   <%end%>
   <% if @filter %>
-  <li class="navbar-form navbar-right pull-right">
+  <li class="navbar-form">
     <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc],["Most Recent on DeeJBase", :recent_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
   <%else%>
-      <li class="navbar-form navbar-right pull-right">
+      <li class="navbar-form">
     <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc], ["Most Recent on DeeJBase", :recent_desc]], :recent_desc), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
 

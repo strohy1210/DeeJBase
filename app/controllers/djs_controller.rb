@@ -1,13 +1,9 @@
 class DjsController < ApplicationController
   skip_before_action :authorize
-  def new
-    @dj = Dj.new
+  def index
+    render 'welcome/index'
   end
-
-  def edit
-   @dj = Dj.find(params[:id])
-  end
-
+ 
 
   def update
 
@@ -29,7 +25,7 @@ class DjsController < ApplicationController
       set_params
       render 'welcome/index'
     end
-    @dj= Dj.find(params[:id])
+    @dj= Dj.find_by(name: params[:name])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
     @rating = Rating.where(dj_id: @dj.id)

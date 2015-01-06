@@ -1,7 +1,7 @@
 
   <div class="row page-header">
-    <div class="title col-md-7">
-    <h1> <strong>FIND NYC'S RAWEST TALENT </strong> </h1>
+    <div class="title col-md-7 col-sm-12">
+    <h2> <strong>FIND NYC'S RAWEST TALENT </strong> </h2>
     </div>
 
     <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
@@ -20,15 +20,15 @@
     
   <div class='dj-item'>
     <div class= "dj-header">
-      <h3><%= link_to dj.name, dj_path(dj) %></h3>
+      <h3><%= link_to dj.name, dj_path(dj.name) %></h3>
     
     </div>
     <div class="row">
       <p><div class="index-image col-md-3">
-        <%= link_to image_tag(dj.image_url), dj_path(dj) %>
+        <%= link_to image_tag(dj.image_url), dj_path(dj.name) %>
       </div></p>
 
-  <%= link_to dj_path(dj) do %>
+  <%= link_to dj_path(dj.name) do %>
       <div class="bio col-md-8">
         <%if dj.bio %>
         <% if !dj.genres.blank? %>     
