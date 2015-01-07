@@ -23,6 +23,7 @@ class Dj < ActiveRecord::Base
   end
 
 
+
   def self.no_tracks
     Dj.is_dj.each do |dj|
       dj.update(dj_status: false) if dj.tracks.blank?

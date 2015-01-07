@@ -38,13 +38,14 @@ ActiveRecord::Schema.define(version: 20150107184209) do
     t.integer  "sdcl_id"
     t.string   "city"
     t.string   "twitter_hdl"
-    t.boolean  "agent_status",   default: false
+    t.boolean  "agent_status",        default: false
     t.string   "rate"
-    t.boolean  "can_produce",    default: false
+    t.boolean  "can_produce",         default: false
     t.string   "slug"
     t.integer  "fb_likes"
     t.string   "fbpage_id"
     t.text     "fb_bio"
+    t.integer  "talking_about_count"
   end
 
   create_table "events", force: true do |t|
