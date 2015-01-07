@@ -33,10 +33,15 @@ class FbData
       
   end
 
-  def get_description_likes(dj)
-     profile = @graph.get_object(dj.fbpage_id)
-     dj.update(fb_bio: profile["bio"], fb_likes: profile["likes"])
-  end
+  # def get_description_likes(dj)
+  # if profile["bio"]
+  #   fb_bio = profile["bio"]
+  # else
+      # fb_bio = profile["description"]
+    # end
+  #    profile = @graph.get_object(dj.fbpage_id)
+  #    dj.update(fb_bio: fb_bio, fb_likes: profile["likes"], talking_about_count: profile["talking_about_count"], fb_location: profile["current_location"])
+  # end
 
 
   def facebook_searchify(dj)

@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150107184209) do
     t.string   "fbpage_id"
     t.text     "fb_bio"
     t.integer  "talking_about_count"
+    t.string   "fb_location"
   end
 
   create_table "events", force: true do |t|
