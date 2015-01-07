@@ -7,6 +7,7 @@
 6. add venues ratings
 7. change routes for SEO
 8. pricing info box on nav bar- dont display on each person since redundant and iffy
+9. Venue profile and venue ratings? -user ratings, venue ratings
 
 Later:
 1. add hover clickability to each dj item
