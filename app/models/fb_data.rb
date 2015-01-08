@@ -18,7 +18,7 @@ class FbData
     end   
 
   end
-
+#make results an attribute of the fbdata.new that changes with each call of the method
   def get_fbpage_id(dj)
     fbn = facebook_searchify(dj)
     results = @graph.get_object("search?q=#{fbn}&type=page")
@@ -29,6 +29,8 @@ class FbData
         dj.update(fbpage_id: results.second["id"])
       elsif results[3]["category"] == "Musician/band"
         dj.update(fbpage_id: results[3]["id"])
+      elsif results[4]["category"] == "Musician/band"
+        dj.update(fbpage_id: results[4]["id"])
       end
     end
       
