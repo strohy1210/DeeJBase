@@ -10,10 +10,14 @@
                <div class="form-group">
             <%= form_for(@dj, url: send_contact_email_path, method: 'post') do |f| %>
             <%= f.label :message %>
-           <%= f.text_area :message, rows: 4, class: 'form-control', placeholder: "Hey! Are you free on Fri night for a gig at my bar..." %>
+           <%= f.text_area :message, rows: 6, class: 'form-control', placeholder: "Where the party at?" %>
+           <h6>Info to include:<br>
+           1. Are you providing production equipment (lights, speakers) and the what kind (the more specific the better). <br>
+           2. Logistics (time, place, budget). <br>
+           3. Vibe (# and average age of guests, preferred music etc.) <br></h6>
             <%= f.label :email %>
            <%= email_field(:current_user, :email, class: 'form-control', placeholder: "youremail@email.com", required: true) %>
-            <%= f.label :phone %> (Suggested)
+            <%= f.label :phone %> (suggested)
             <%= telephone_field(:current_user, :phone, class: 'form-control', placeholder: "917-555-5555") %>
             <%= f.hidden_field :id %>
              

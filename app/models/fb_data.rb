@@ -16,7 +16,6 @@ class FbData
     Dj.is_dj.where.not(fbpage_id: nil).where(fb_likes: nil).each do |dj|
       fb.get_fb_attributes(dj)    
     end   
-
   end
 #make results an attribute of the fbdata.new that changes with each call of the method
   def get_fbpage_id(dj)
@@ -25,15 +24,14 @@ class FbData
     if results
       if results.first["category"] == "Musician/band"
         dj.update(fbpage_id: results.first["id"])
-      elsif results.second["category"] == "Musician/band"
+      elsif results.second && results.second["category"] == "Musician/band"
         dj.update(fbpage_id: results.second["id"])
-      elsif results[3]["category"] == "Musician/band"
+      elsif results[3] && results[3]["category"] == "Musician/band"
         dj.update(fbpage_id: results[3]["id"])
-      elsif results[4]["category"] == "Musician/band"
+      elsif results[4] && results[4]["category"] == "Musician/band"
         dj.update(fbpage_id: results[4]["id"])
       end
-    end
-      
+    end     
   end
 
   def get_fb_attributes(dj)
