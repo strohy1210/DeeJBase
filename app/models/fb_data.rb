@@ -17,12 +17,13 @@ class FbData
       fb.get_fb_attributes(dj)    
     end   
   end
-#make results an attribute of the fbdata.new that changes with each call of the method
+#make 'results' an attribute of the fbdata.new that changes with each call of the method
+# rescuing errors?
   def get_fbpage_id(dj)
     fbn = facebook_searchify(dj)
     results = @graph.get_object("search?q=#{fbn}&type=page")
     if results
-      if results.first["category"] == "Musician/band"
+      if results.first && results.first["category"] == "Musician/band"
         dj.update(fbpage_id: results.first["id"])
       elsif results.second && results.second["category"] == "Musician/band"
         dj.update(fbpage_id: results.second["id"])
