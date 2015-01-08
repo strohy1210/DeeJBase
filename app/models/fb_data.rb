@@ -5,17 +5,16 @@ class FbData
   end
 
   def self.get_fbpage_ids(token)
-    @graph = Koala::Facebook::API.new(token)
+    fb= FbData.new(token)
     Dj.is_dj.each do |dj|
-      dj.get_fbpage_id
+      fb.get_fbpage_id(dj)
     end
   end
 
-  def self.get_likes_descriptions(token)
-    @graph = Koala::Facebook::API.new(token)
-
+  def self.get_fb_attributes(token)
+    fb= FbData.new(token)
     Dj.is_dj.each do |dj|
-      
+      fb.get_fb_attributes(dj)    
     end   
 
   end
@@ -33,15 +32,15 @@ class FbData
       
   end
 
-  # def get_description_likes(dj)
-  # if profile["bio"]
-  #   fb_bio = profile["bio"]
-  # else
-      # fb_bio = profile["description"]
-    # end
-  #    profile = @graph.get_object(dj.fbpage_id)
-  #    dj.update(fb_bio: fb_bio, fb_likes: profile["likes"], talking_about_count: profile["talking_about_count"], fb_location: profile["current_location"])
-  # end
+  def get_fb_attributes(dj)
+    if profile["bio"]
+      fb_bio = profile["bio"]
+    else
+      fb_bio = profile["description"]
+    end
+    profile = @graph.get_object(dj.fbpage_id)
+    dj.update(fb_bio: fb_bio, fb_likes: profile["likes"], talking_about_count: profile["talking_about_count"], fb_location: profile["current_location"])
+  end
 
 
   def facebook_searchify(dj)
