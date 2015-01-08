@@ -68,7 +68,7 @@
       <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>
       <% if current_user && current_user.dj_status %>
-      <li> <%= link_to "Your Profile", dj_path(current_dj) %></li>
+      <li> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
       <%elsif current_user && !current_user.dj_status%>
       <%end%>
 

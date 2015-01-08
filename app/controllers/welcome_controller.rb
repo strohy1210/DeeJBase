@@ -25,7 +25,7 @@ class WelcomeController < ApplicationController
         binding.pry
         @dj.update(uid: current_user.uid)
         current_user.update(dj_status: status, sdcl_id: sdcl_id)
-        redirect_to dj_path(@dj)
+        redirect_to dj_path(@dj.slugify)
       else
         flash[:danger] = "Incorrect pin. If you're not a DJ, select 'I'm just browsing'. If you are, try re-entering the pin or click 'Contact' above, and we'll help you get one."
         redirect_to :back
