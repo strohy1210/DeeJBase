@@ -6,14 +6,14 @@ class FbData
 
   def self.get_fbpage_ids(token)
     fb= FbData.new(token)
-    Dj.is_dj.each do |dj|
+    Dj.is_dj.where(fbpage_id: nil).each do |dj|
       fb.get_fbpage_id(dj)
     end
   end
 
   def self.get_fb_attributes(token)
     fb= FbData.new(token)
-    Dj.is_dj.each do |dj|
+    Dj.is_dj.where.not(fbpage_id: nil).where(fb_likes: nil).each do |dj|
       fb.get_fb_attributes(dj)    
     end   
 
@@ -22,12 +22,14 @@ class FbData
   def get_fbpage_id(dj)
     fbn = facebook_searchify(dj)
     results = @graph.get_object("search?q=#{fbn}&type=page")
-    if results.first["category"] == "Musician/band"
-      dj.update(fbpage_id: results.first["id"])
-    elsif results.second["category"] == "Musician/band"
-      dj.update(fbpage_id: results.second["id"])
-    elsif results[3]["category"] == "Musician/band"
-      dj.update(fbpage_id: results[3]["id"])
+    if results
+      if results.first["category"] == "Musician/band"
+        dj.update(fbpage_id: results.first["id"])
+      elsif results.second["category"] == "Musician/band"
+        dj.update(fbpage_id: results.second["id"])
+      elsif results[3]["category"] == "Musician/band"
+        dj.update(fbpage_id: results[3]["id"])
+      end
     end
       
   end

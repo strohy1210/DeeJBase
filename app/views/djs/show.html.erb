@@ -35,6 +35,9 @@
      <div class="sound-cld">
       <h4>Sound Cloud Followers: <%= number_with_delimiter(@dj.sdcl_followers, :delimiter => ',') if @dj.sdcl_followers %></h4>
     </div>
+      <% if !@dj.fb_likes.blank? %>
+        <h4>FB Likes: <%= @dj.fb_likes %></h4>
+      <%end>
     <div class="other-info">
     <!-- #truncate(@dj.bio.html_safe, length: 40, separator: ".") -->
     <% if !@genres.blank? %>
