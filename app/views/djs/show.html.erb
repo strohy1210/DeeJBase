@@ -32,7 +32,7 @@
     </div>
     <div class="dj-info col-md-4 col-md-offset-1 vertical-center">
      <% if !@dj.fb_likes.blank? %>
-        <h4>FB Likes: <%= @dj.fb_likes %></h4>
+        <h4>FB Likes: <%= number_with_delimiter(@dj.fb_likes, :delimiter => ',') %></h4>
       <%end%>
      <div class="sound-cld">
       <h4>Sound Cloud Followers: <%= number_with_delimiter(@dj.sdcl_followers, :delimiter => ',') if @dj.sdcl_followers %></h4>
