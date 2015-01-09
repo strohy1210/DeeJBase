@@ -22,7 +22,6 @@ class WelcomeController < ApplicationController
     sdcl_id = params["user"]["sdcl_id"].to_i
     if status
       if @dj= Dj.find_by(sdcl_id: sdcl_id)
-        binding.pry
         @dj.update(uid: current_user.uid)
         current_user.update(dj_status: status, sdcl_id: sdcl_id)
         redirect_to dj_path(@dj.slugify)
