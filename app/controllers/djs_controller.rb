@@ -14,7 +14,7 @@ class DjsController < ApplicationController
     @dj.update(dj_params)
     if @dj.save
       flash[:success] = 'Your profile is updated!'
-      redirect_to dj_path(@dj)
+      redirect_to dj_path(@dj.slugify)
     else
       render 'new'
     end
