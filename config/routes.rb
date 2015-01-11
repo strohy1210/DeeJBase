@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   resources :events, only: [:new, :create, :destroy]
   resources :venues, only: [:new, :create, :index]
-  resources :ratings, only: :update
+  resources :ratings, only: [:update, :destroy, :create]
+  resources :comments, only: :update
+
   resources :djs, only: [:create, :update, :index]
+
   get 'djs/:name', to: 'djs#show'
   get 'dj-form', to: 'welcome#dj_form'
   get 'about', to: 'welcome#about'

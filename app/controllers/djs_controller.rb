@@ -28,7 +28,10 @@ class DjsController < ApplicationController
     @dj= Dj.find_by(slug: params[:name])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
-    @rating = Rating.where(dj_id: @dj.id)
+    if logged_in?
+      @rating = Rating.where(dj_id: @dj.id, user_id: current_user.id).first
+      @rating ||= Rating.create(dj_id: @dj.id, user_id: current_user.id, score: 0)
+    end
   end
 
   def send_contact_email  

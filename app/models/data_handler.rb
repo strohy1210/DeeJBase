@@ -9,7 +9,6 @@ class DataHandler
   end
 
 
-
   def self.slug_djs
     Dj.all.each do |dj|
      dj.update(slug: dj.slugify)

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :comments
   has_many :ratings
+  has_many :comments, through: :ratings
 
   def self.get_user_from_omniauth(auth_hash)
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)

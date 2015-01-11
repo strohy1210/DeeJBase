@@ -11,18 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110234057) do
+ActiveRecord::Schema.define(version: 20150111184752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "dj_id"
-    t.integer  "venue_id"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rating_id"
   end
 
   create_table "dj_genres", force: true do |t|
@@ -80,6 +78,9 @@ ActiveRecord::Schema.define(version: 20150110234057) do
     t.float    "score",      default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.boolean  "seen_live"
   end
 
   add_index "ratings", ["dj_id"], name: "index_ratings_on_dj_id", using: :btree
@@ -102,6 +103,8 @@ ActiveRecord::Schema.define(version: 20150110234057) do
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "phone"
   end
 
   create_table "venues", force: true do |t|

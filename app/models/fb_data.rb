@@ -1,5 +1,7 @@
 class FbData
+
   attr_accessor :graph
+  
   def initialize(token)
     @graph = Koala::Facebook::API.new(token)
   end
