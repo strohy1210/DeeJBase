@@ -218,5 +218,8 @@ a .bio h4, a .bio h5{
   background-color: #fafafa;
 }
 
-
+.bio:hover > .overlay {
+    background-color: #fafafa;
+    opacity: 0.6;
+}
 

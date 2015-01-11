@@ -2,6 +2,7 @@ $(function(){
 
 $(".update-form").hide();
 
+$(".rate-dj").hide();
 
 $('.edit-dj').click(function(){
   $(".update-form").toggle();
@@ -38,7 +39,7 @@ $('.contact-form').hide();
 $('.send-contact').click(function(){
   $('.contact-form').toggle();
 })
-$(".rate-dj").hide();
+
 $('.rate-button').click(function(){
   $(".rate-dj").toggle();
   $('.other-info').toggle();

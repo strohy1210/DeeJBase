@@ -19,6 +19,7 @@
 <% @djs.each do |dj| %>
     
   <div class='dj-item'>
+
     <div class= "dj-header">
       <h3><%= link_to dj.name.titleize, dj_path(dj.slugify) %></h3>
     
@@ -30,6 +31,7 @@
 
   <%= link_to dj_path(dj.slugify) do %>
       <div class="bio col-md-8">
+        <div class='overlay'>
         <%if dj.bio %>
         <% if !dj.genres.blank? %>     
           <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
@@ -49,6 +51,7 @@
 <!--         <div class='star'>
         </div> -->
         <%end%>
+       </div>
       </div>
 <% end %>
     </div>
