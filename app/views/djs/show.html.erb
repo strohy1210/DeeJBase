@@ -31,14 +31,15 @@
       <%= image_tag @dj.image_url, class: 'profile-image' %>
     </div>
     <div class="dj-info col-md-4 col-md-offset-1 vertical-center">
-     <% if !@dj.fb_likes.blank? %>
+     
+
+    <div class="other-info">
+    <% if !@dj.fb_likes.blank? %>
         <h4>FB Likes: <%= number_with_delimiter(@dj.fb_likes, :delimiter => ',') %></h4>
       <%end%>
      <div class="sound-cld">
       <h4>Sound Cloud Followers: <%= number_with_delimiter(@dj.sdcl_followers, :delimiter => ',') if @dj.sdcl_followers %></h4>
     </div>
-
-    <div class="other-info">
     <!-- #truncate(@dj.bio.html_safe, length: 40, separator: ".") -->
     <% if !@genres.blank? %>
     <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
@@ -46,14 +47,40 @@
     <% if !@dj.rate.blank? %>
     <h4> Nightly Rate: <%= @dj.rate%></h4>
     <%end%>
-    <div class='star'>
-    DJB Rating<sup>beta</sup>: 
-    </div>
     <h5> located in <%= @dj.city %> </h5>
+
+ 
     <% if @dj.can_produce %>
     <h6> This DJ can provide production equipment on request. </h6>
     <%end%>
+<!--       <a href="#" data-toggle="modal" data-target="#rateModal" >
+        <div class="hover-mask bottom-mask mask-orange">
+          <div class='rate-button btn-centered btn btn-success'>Rate <%=@dj.name%></div>
+        </div>
+      </a>
+ -->  
     </div>
+    DJB Rating<sup>beta</sup>:
+    <div id='star'>
+   
+    </div>
+ 
+    <div class='rate-button btn-centered btn btn-default'>Rate <%=@dj.name%></div>
+  
+    <div class="rate-dj">
+
+    <div id='star'>
+   
+    </div>
+
+      Your Rating:
+    <div id='user_star'>
+    
+    </div>
+    Everytime you click, your rating is recorded!
+    <%= link_to 'Done Rating', '#', class: 'done-rating'%>
+    </div>
+ 
 
 
     </div>
@@ -79,10 +106,20 @@
 </div>
 </div>
 <script>
-  $('.star').raty({
+  $('#star').raty({
     readOnly: true,
     score: <%= @dj.average_rating %>,
     path: '/assets'
   });
-
+  $('#user_star').raty({
+    score: <%= @rating.score %>,
+    path: '/assets',
+    click: function(score, evt) {
+      $.ajax({
+        url: '/ratings/' + <%= @rating.id %>,
+        type: 'PATCH',
+        data: { score: score }
+      });
+    }
+  });
 </script>

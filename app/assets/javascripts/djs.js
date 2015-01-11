@@ -2,6 +2,7 @@ $(function(){
 
 $(".update-form").hide();
 
+
 $('.edit-dj').click(function(){
   $(".update-form").toggle();
   $("#dj-profile").toggle();
@@ -36,6 +37,18 @@ $('.hide-tracks').click(function(){
 $('.contact-form').hide();
 $('.send-contact').click(function(){
   $('.contact-form').toggle();
+})
+$(".rate-dj").hide();
+$('.rate-button').click(function(){
+  $(".rate-dj").toggle();
+  $('.other-info').toggle();
+  $(this).toggle();
+})
+
+$('.done-rating').click(function(){
+  $(".other-info").toggle();
+  $('.rate-dj').toggle();
+  $('.rate-button').toggle();
 })
 
 
