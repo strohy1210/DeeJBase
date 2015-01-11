@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       @dj = current_dj
       redirect_to dj_path(@dj.slugify)
     else
-      redirect_to root_path
+      redirect_to :back
     end
   end
 

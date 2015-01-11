@@ -66,21 +66,27 @@
     </div>
  
     <div class='rate-button btn-centered btn btn-default'>Rate <%=@dj.name%></div>
-  
+
     <div class="rate-dj">
-
-    <div id='star'>
-   
-    </div>
-
-      Your Rating:
+    <% if logged_in? %> 
+ 
+     <strong>Click on a star to rate <%= @dj.name %>.</strong><br>
+     (Your rating is updated and recorded with every click)
     <div id='user_star'>
     
     </div>
-    Everytime you click, your rating is recorded!
-    <%= link_to 'Done Rating', '#', class: 'done-rating'%>
+
+    <%else%>
+    <div class="alert alert-warning text-center">
+    You must be logged in to add a rating.
+
+    
+    <h4><%= link_to 'Sign in with facebook and make yourself heard.', '/auth/facebook'%></h4>
+      </div>
+     <%end%> 
+     <%= link_to 'Done Rating', '#', class: 'done-rating'%>
     </div>
- 
+   
 
 
     </div>
@@ -111,6 +117,7 @@
     score: <%= @dj.average_rating %>,
     path: '/assets'
   });
+
   $('#user_star').raty({
     score: <%= @rating.score %>,
     path: '/assets',

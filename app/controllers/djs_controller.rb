@@ -31,6 +31,8 @@ class DjsController < ApplicationController
     if logged_in?
       @rating = Rating.where(dj_id: @dj.id, user_id: current_user.id).first
       @rating ||= Rating.create(dj_id: @dj.id, user_id: current_user.id, score: 0)
+    else
+      @rating = Rating.first
     end
   end
 

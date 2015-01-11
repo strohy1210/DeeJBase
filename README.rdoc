@@ -1,4 +1,12 @@
 == README
+Venue profiles, and ratings
+date
+dj with autocomplete
+rating
+comment (thumbnail picture)
+
+DJs
+comments
 
 1. call to get price info for 20 djs for fri night in jan - figure out correlation to scld followers and average playcount
 3. cross-reference djs with one other site
@@ -8,6 +16,7 @@
 7. change routes for SEO
 8. pricing info box on nav bar- dont display on each person since redundant and iffy
 9. Venue profile and venue ratings? -user ratings, venue ratings
+10. update contact info of the peoples who responded
 
 Later:
 1. add hover clickability to each dj item
@@ -15,55 +24,19 @@ Later:
 2. rating system, i review
 3. import contact info from db in csv form
 5. add user ability to rate djs: http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/
+
 Process:
 1. tie venues into djs
 7. add image uploader/ability to edit
 8. user model which can have a dj or have a venue? or neither. user signs in with facebook , can find their dj profile through soundcloud and attach name to it or create or find their venue and create.
 
-13. scratch academy
-18. add availability to Djs, planners need to see everything
-19. add past venues
-20. add rating system
+13. scratch academy, dupspot
 
-25, auto find twitter followesrs
-26. estimate pricing based on sdlcd followers, maybe map to spotify followers 
-27 get email on  fb oauth
 
-28, fb followers, spotify followers, fb followers (3, ), 5 tracks on show page
 
 Image uploader
 https://github.com/thoughtbot/paperclip
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Can you provide a couple more details?...
-Do you have a location (do I need to provide equipment)? 
-How many people are you expecting? 
-How did you come across our soundcloud page? 
-You're looking for deep house / garage, correct?  
-
-care about people- crowd, they want to have fun , (mid-late 20's)
 
 
 Please feel free to use a different markup language if you do not plan to run
@@ -76,7 +49,7 @@ psql (9.3.5)
 SSL connection (cipher: DHE-RSA-AES256-SHA, bits: 256)
 Type "help" for help.
 
-deejbase::YELLOW=> \copy (SELECT name, email, phone, sdcl_followers, dj_status, agent_status, rate_per_hour FROM djs) TO dj_info.csv DELIMITER ',' CSV HEADER;
+deejbase::YELLOW=> \copy (SELECT name, email, phone, sdcl_followers, dj_status, agent_status, rate_per_hour FROM djs) TO djs.csv DELIMITER ',' CSV HEADER;
 
 http://www.had2know.com/academics/regression-calculator-statistics-best-fit.html
 
