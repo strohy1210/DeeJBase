@@ -38,6 +38,16 @@ $('.hide-tracks').click(function(){
 $('.contact-form').hide();
 $('.send-contact').click(function(){
   $('.contact-form').toggle();
+  $('.close-contact').toggle();
+  $(this).toggle();
+})
+
+
+$('.close-contact').hide();
+$('.close-contact').click(function(){
+  $('.contact-form').toggle();
+  $('.send-contact').toggle();
+  $(this).toggle();
 })
 
 $('.rate-button').click(function(){
@@ -51,7 +61,6 @@ $('.done-rating').click(function(){
   $('.rate-dj').toggle();
   $('.rate-button').toggle();
 })
-
 
 
 })
