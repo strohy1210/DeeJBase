@@ -1,7 +1,7 @@
 == README
 Venue profiles, and ratings
 date
-dj with autocomplete
+rate venue with dj autocomplete
 rating
 comment (thumbnail picture)
 
