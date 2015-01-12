@@ -62,8 +62,7 @@
       </div>
       </a></li>
       <% if !logged_in? %>
-      <li><%= link_to 'Log In', '/auth/facebook' %></li>
-      <li><%= link_to 'Sign Up', '/auth/facebook' %></li>
+      <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
       <% else %>
       <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <% end %>

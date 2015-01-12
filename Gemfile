@@ -14,6 +14,7 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'will_paginate', '~> 3.0.5'
 gem 'has_scope'
 gem "koala", "~> 1.11.0rc"
+gem "font-awesome-rails"
 # Use CoffeeScript for .js.coffee assets and views
 # gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

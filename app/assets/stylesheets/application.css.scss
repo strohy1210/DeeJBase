@@ -16,6 +16,8 @@
 @import "bootstrap-sprockets";
 @import 'bootstrap';
 @import 'bootstrap/theme';
+@import "bootstrap-social.css";
+@import "font-awesome";
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
 @import "bootswatch/lumen/bootswatch";
 @import url(http://fonts.googleapis.com/css?family=Hammersmith+One:400,700);
@@ -24,6 +26,7 @@
 @import url("//fonts.googleapis.com/css?family=Karla");
 @import url("//fonts.googleapis.com/css?family=Exo+2:400,500");
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+
 
 body { 
   font-family: 'Karla', sans-serif;
@@ -223,3 +226,6 @@ a .bio h4, a .bio h5{
     opacity: 0.6;
 }
 
+.btn-facebook:hover {
+  margin-top: 0px;
+}
