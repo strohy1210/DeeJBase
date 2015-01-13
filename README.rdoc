@@ -6,6 +6,7 @@ rate venue with dj autocomplete
 rating
 comment (thumbnail picture)
 
+cancel rating button
 Neighborhood table
 
 DJs

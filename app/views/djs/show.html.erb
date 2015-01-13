@@ -64,12 +64,13 @@
    
     </div>
     </div>
-
- 
+    <% if !logged_in? || current_user.sdcl_id != @dj.sdcl_id %>
+    
     <div class='rate-button btn-centered btn btn-default'>Rate <%=@dj.name%></div>
+    <%end%>
 
     <div class="rate-dj text-center">
-    <% if logged_in? %>
+    <% if logged_in? && current_user.sdcl_id != @dj.sdcl_id %>
 
      <p><strong>Click on a star to rate <%= @dj.name %>.</strong><br>
      Your rating is updated and recorded with every click.</p>
@@ -86,7 +87,8 @@
 
         <%= f.submit 'Done Rating', class: 'done-rating btn'%>
       <%end%>
-    <%else%>
+
+    <%elsif !logged_in?%>
     <div class="text-center bg-warning">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
 

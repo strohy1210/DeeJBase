@@ -71,7 +71,7 @@ class Dj < ActiveRecord::Base
   end
   
   def average_rating
-    ratings.sum(:score) / ratings.size
+    ratings.where.not(score: 0).sum(:score) / ratings.size
   end
 
 
