@@ -8,4 +8,6 @@ class RatingsController < ApplicationController
       end
     end
   end
+
+
 end
