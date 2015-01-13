@@ -69,10 +69,12 @@
     <div class='rate-button btn-centered btn btn-default'>Rate <%=@dj.name%></div>
 
     <div class="rate-dj text-center">
-    <% if logged_in? %> 
+    <% if logged_in? %>
+
      <p><strong>Click on a star to rate <%= @dj.name %>.</strong><br>
      Your rating is updated and recorded with every click.</p>
      <p>
+      <%= image_tag(current_user.image_url)%>
     <div id='user_star'>
 
     </div></p>

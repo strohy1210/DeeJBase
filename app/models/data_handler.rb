@@ -15,5 +15,8 @@ class DataHandler
     end
   end
 
+  def self.yelp_search(venue)
+    YELP.search('New York', { term: venue }).businesses.first
+  end
 
 end
