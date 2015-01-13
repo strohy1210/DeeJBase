@@ -8,6 +8,7 @@ class Dj < ActiveRecord::Base
   has_many :comments, through: :ratings
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :remove_empty_tracks#, default_values
+  validates :email, :uniqueness => true
 
   scope :is_dj, -> { where(dj_status: true, agent_status: false) }
 
