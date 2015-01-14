@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get '/auth/facebook', as: 'login'
   delete '/logout', to: 'sessions#destroy'
   get 'search'  => 'searches#index'
+  get '/api', to: 'api#index'
+  get '/api/djs', to: 'api#djs'
+   get '/api/djs/:id', to: 'api#show_dj'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

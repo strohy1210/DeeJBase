@@ -21,6 +21,7 @@ class DjsController < ApplicationController
   end
 
   def show
+
     if params[:genre_id]
       set_params
       render 'welcome/index'
@@ -28,6 +29,10 @@ class DjsController < ApplicationController
     @dj= Dj.find_by(slug: params[:name])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
+    if !@dj.comments.blank?
+      @comments = @dj.comments
+    end
+
     if logged_in?
       @rating = Rating.where(dj_id: @dj.id, user_id: current_user.id).first
       @rating ||= Rating.create(dj_id: @dj.id, user_id: current_user.id, score: 0)

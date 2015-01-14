@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     @user = User.get_user_from_omniauth(auth_hash)
 
     login(@user)
-    
+   
     if @user.dj_status == nil
       redirect_to dj_form_path
     elsif @user.dj_status

@@ -28,7 +28,7 @@
 <div id="dj-profile">
   
     <div class="profile-pic col-md-3">
-      <%= image_tag @dj.image_url, class: 'profile-image' %>
+      <%= link_to image_tag(@dj.image_url), dj_path(@dj.slugify), class: 'profile-image' %>
     </div>
     <div class="dj-info col-md-5 col-md-offset-1 vertical-center">
      
@@ -73,8 +73,7 @@
     <% if logged_in? && current_user.sdcl_id != @dj.sdcl_id %>
 
      <p><strong>Click on a star to rate <%= @dj.name %>.</strong><br>
-     Your rating is updated and recorded with every click.</p>
-     <p>
+
       <div class="user-image">
       <%= image_tag(current_user.image_url)%>
       </div>
@@ -108,11 +107,33 @@
     <br>
     </div>
     <br>
-  <div class="tracks">
+    <% if @comments %>
+    <div class ="row">
+    <div id="comments">
+      <div class= "user-image col-md-2 text-center">
+        <%= image_tag(@dj.comments.first.user.image_url) %><br>
+        <h6><%= @dj.comments.first.user.name %></h6>
+      </div>
+      <div class= "comment col-md-3">
+         gave <%=@dj.name%> a <%= @dj.comments.first.rating.score.to_i %>/5 rating. <br>
+     <br> <%= @dj.comments.first.body %>
+    </div>
+
+  </div>
+    <div class="tracks col-md-7">
     <% if !@dj.tracks.blank? %>
     <%= render 'tracks' %><br>
     <%end%>
   </div>
+
+  </div>
+  <%else%>
+      <div class="tracks col-md-12">
+    <% if !@dj.tracks.blank? %>
+    <%= render 'tracks' %><br>
+    <%end%>
+  </div>
+  <%end%>
 
 
 <!-- ////////////// form-begin ///////////////////////-->
@@ -131,6 +152,7 @@
     score: <%= @dj.average_rating %>,
     path: '/assets'
   });
+
 
   $('#user_star').raty({
     score: <%= @rating.score %>,

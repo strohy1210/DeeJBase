@@ -9,6 +9,7 @@ comment (thumbnail picture)
 cancel rating button
 Neighborhood table
 
+Move application.html.erb content into layouts/djs.html.erb and layouts/welcome.html.erb(that way it will only render in those views' folders )
 DJs
 comments
 
