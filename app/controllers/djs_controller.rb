@@ -29,18 +29,17 @@ class DjsController < ApplicationController
     @dj= Dj.find_by(slug: params[:name])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
-    if !@dj.comments.blank?
-      @comments = @dj.comments
+    if @dj.comments.where.not(body: nil).any?
+      @comments = @dj.comments.where.not(body: nil)
     end
 
     if logged_in?
-      @rating = Rating.where(dj_id: @dj.id, user_id: current_user.id).first
+      @rating = Rating.where(dj_id: @dj.id, user_id: current_user.id).where.not(score: nil).first
       @rating ||= Rating.create(dj_id: @dj.id, user_id: current_user.id, score: 0)
       @comment = Comment.where(rating_id: @rating.id).first
       @comment ||= Comment.create(rating_id: @rating.id)
     else
       @rating = Rating.first
-      @comment =Comment.first
     end
   end
 

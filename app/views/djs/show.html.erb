@@ -74,21 +74,22 @@
 
      <p><strong>Click on a star to rate <%= @dj.name %>.</strong><br>
 
-      <div class="user-image">
-      <%= image_tag(current_user.image_url)%>
-      </div>
+
+  <div class="user-rate">
     <div id='user_star'>
 
     </div></p>
-      <%= form_for(@comment, url: comment_path(@comment), method: "patch", remote: true) do |f| %>
-        <%= f.text_area(:body, class: 'form-control comment', rows: 4, placeholder: "your comment here", required: true)%>
+      <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
+  
+  
+        <%= f.input :body, as: :text, label: "Comment below", hint: false, rows: 6, placeholder: "your comment here (min 60 characters.)", input_html: { minlength: 40 }%>
 
     
     <br>
 
-        <%= f.submit 'Done Rating', class: 'done-rating btn'%>
+        <%= f.button :submit%>
       <%end%>
-
+  </div>
     <%elsif !logged_in?%>
     <div class="text-center bg-warning">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
@@ -106,21 +107,33 @@
   </div>
     <br>
     </div>
-    <br>
-    <% if @comments %>
-    <div class ="row">
+    <br><br>
+     <div class ="row">
+
+   <% if @comments %>
+    <h5 class="comments-title col-md-4">Comments and Ratings</h5>
+    <h5 class="tracks-title col-md-8">SoundCloud Streams</h5>
+  </div>
+    <div class="row">
+
     <div id="comments">
-      <div class= "user-image col-md-2 text-center">
-        <%= image_tag(@dj.comments.first.user.image_url) %><br>
-        <h6><%= @dj.comments.first.user.name %></h6>
+      <br>
+        <% @comments.each do |comment| %>
+      <div class= "user-image col-md-1 text-center">
+        <%= image_tag(comment.user.image_url) %>
+        <h7><%= comment.user.name %></h7>
       </div>
       <div class= "comment col-md-3">
-         gave <%=@dj.name%> a <%= @dj.comments.first.rating.score.to_i %>/5 rating. <br>
-     <br> <%= @dj.comments.first.body %>
+        <div class="user-rating">
+         <strong>Rating: <%= comment.rating.score.to_i %>/5 </strong>
+       </div>
+       <div class="user-comment" id='<%=comment.id%>'>
+     <%= comment.body %>
+        </div>
     </div>
-
+    <%end%>
   </div>
-    <div class="tracks col-md-7">
+    <div class="tracks col-md-8">
     <% if !@dj.tracks.blank? %>
     <%= render 'tracks' %><br>
     <%end%>
@@ -156,6 +169,7 @@
 
   $('#user_star').raty({
     score: <%= @rating.score %>,
+    cancel: true,
     path: '/assets',
     click: function(score, evt) {
       $.ajax({
@@ -167,14 +181,5 @@
   });
 
 
-//   $('.done-rating').click(function(){
 
-//   $.ajax({
-//         url: '/comment/' + <%= @comment.id %>,
-//         type: 'PATCH',
-//         data: { body: body }
-//       });
-
-
-// })
 </script>

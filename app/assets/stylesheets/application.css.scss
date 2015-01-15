@@ -213,7 +213,7 @@ a .bio h4, a .bio h5{
   margin-top: 1px;
 }
 
-#user_star {
+.user-rate {
   border-bottom: 2px solid #ccc;
   border-radius: 20px;
   margin-bottom: 1px;
@@ -236,5 +236,25 @@ li { cursor: pointer; }
   height: 100px;
   width: auto;
   border-radius: 30px;
+  padding: 5px;
+  margin-right: 8px;
 
+}
+
+.user-rating, .user-comment {
+  border-right: 2px solid #ccc;
+  padding: 5px;
+}
+
+.comments-title, .tracks-title {
+  font-weight: bold;
+}
+
+.user-thumbnail img {
+  border-radius: 50%;
+  border: 1px solid white;
+  overflow: hidden;
+  background-color: white;
+  height: 50px;
+  width: auto;
 }

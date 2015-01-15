@@ -20,13 +20,19 @@ $('.cancel-edit').click(function(){
 
 $(".other-tracks").hide();
 $('.more-tracks').click(function(){
-  $(".other-tracks").toggle();
+  $(".other-tracks").slideDown();
   $(this).toggle();
+  $('#comments').toggle();
+  $('.comments-title').toggle();
+  $('.tracks').removeClass('col-md-8');
 })
 
 $('.hide-tracks').click(function(){
   $(".other-tracks").toggle();
   $('.more-tracks').toggle();
+    $('#comments').toggle();
+  $('.comments-title').toggle();
+   $('.tracks').addClass('col-md-8');
 })
 // $('.cancel-message').hide();
 // $('.cancel-message').click(function(){

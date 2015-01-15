@@ -61,15 +61,6 @@
           Contact
       </div>
       </a></li>
-      <% if !logged_in? %>
-      <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
-      <% else %>
-      <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
-      <% end %>
-      <% if current_user && current_user.dj_status %>
-      <li> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
-      <%elsif current_user && !current_user.dj_status%>
-      <%end%>
 
   <% if @genre %>
   <li><form class="navbar-form col-xs-2">
@@ -91,7 +82,23 @@
   </li></form>
 
   <%end%>
+    <% if !logged_in? %>
+      <li class="navbar-right"><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
+      <% else %>
 
+      <% end %>
+      <% if current_user && current_user.dj_status %>
+      <li class="navbar-right"> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
+      <%elsif current_user && !current_user.dj_status%>
+    <%end%>
+  <li class="navbar-right">
+    <% if logged_in? %>
+     <div class="user-thumbnail">
+      <%= image_tag(current_user.image_url)%>
+      </div>
+      <li class="navbar-right pull-right"><%= link_to 'Logout', '/logout', method: "delete" %></li>
+    <%end%>
+  </li>
     </ul>
   </div>
 
