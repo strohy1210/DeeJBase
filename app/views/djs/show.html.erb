@@ -82,7 +82,7 @@
       <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
   
   
-        <%= f.input :body, as: :text, label: "Comment below", hint: false, rows: 6, placeholder: "your comment here (min 60 characters.)", input_html: { minlength: 40 }%>
+        <%= f.input :body, as: :text, label: "Comment below", hint: false, placeholder: "your comment here (min 60 characters.)", input_html: { minlength: 40, rows: 4,  class: "form-control comment" }%>
 
     
     <br>

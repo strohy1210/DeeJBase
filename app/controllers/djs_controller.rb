@@ -1,6 +1,7 @@
 class DjsController < ApplicationController
   skip_before_action :authorize
   def index
+    @djs = Dj.is_dj.paginate(page: params[:page], per_page: 6).order('updated_at DESC')
     render 'welcome/index'
   end
  
@@ -34,10 +35,12 @@ class DjsController < ApplicationController
     end
 
     if logged_in?
-      @rating = Rating.where(dj_id: @dj.id, user_id: current_user.id).where.not(score: nil).first
+
+      @rating = Rating.where(dj_id: @dj.id, user_id: current_user.id).first
       @rating ||= Rating.create(dj_id: @dj.id, user_id: current_user.id, score: 0)
       @comment = Comment.where(rating_id: @rating.id).first
       @comment ||= Comment.create(rating_id: @rating.id)
+  
     else
       @rating = Rating.first
     end
