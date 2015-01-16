@@ -1,7 +1,8 @@
 class VenuesController < ApplicationController
+  
   def index
-
     @venues = Venue.all
-    render :layout => false
+    render :layout => "venues"
   end
+
 end
