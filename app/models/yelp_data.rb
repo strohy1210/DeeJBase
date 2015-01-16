@@ -7,7 +7,7 @@ class YelpData
   end
 
   def self.yelp_venues
-    yelp = Yelp.new
+    yelp = YelpData.new
     Venue.all.each do |venue|
       yelp.yelp_search(venue)
     end
