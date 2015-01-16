@@ -1,5 +1,13 @@
 <div class="row page-header title">
     <h2 class='col-md-5'> <%= @dj.name %>  </h2>
+    <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">
+          <div class='input-group-btn'>       
+          <button class="btn btn-default" type="submit">Find DJs <i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+      <% end %>
 </div>
 <div class="dj-profile">
 
@@ -82,7 +90,7 @@
       <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
   
   
-        <%= f.input :body, as: :text, label: "Comment below", hint: false, placeholder: "your comment here (min 60 characters.)", input_html: { minlength: 40, rows: 4,  class: "form-control comment" }%>
+        <%= f.input :body, as: :text, label: "Comment below", hint: false, placeholder: "your comment here (min 40 characters.)", input_html: { minlength: 40, rows: 4,  class: "form-control comment" }%>
 
     
     <br>
@@ -121,7 +129,7 @@
         <% @comments.each do |comment| %>
       <div class= "user-image col-md-1 text-center">
         <%= image_tag(comment.user.image_url) %>
-        <h7><%= comment.user.name %></h7>
+        <h7><%= comment.user.first_name %></h7>
       </div>
       <div class= "comment col-md-3">
         <div class="user-rating">
