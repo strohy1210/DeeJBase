@@ -1,15 +1,16 @@
 <div id="ember-container" class="navbar navbar-default navbar-fixed-top">
-  <div class= "container">
+  <div class= "container"> 
+    <div class='navbar-header hidden-xs'><a href='/' class='navbar-brand'><img src="assets/logo_white.png" alt="Find NYCs Rawest Talent" ></a></div>
     <ul class="nav navbar-nav">
-      {{#link-to 'index' class='navbar-brand' tagName='li'}}Home{{/link-to}}</li>
-      <li>{{#link-to 'venues'}}Venues{{/link-to}}</li>
-
+    <li>{{#link-to 'index'}}Venue Pages{{/link-to}}</li>
+    <li><a href="/">DJ Pages</a></li>
+    <li>{{#link-to 'venues'}}List{{/link-to}}</li>
     </ul>
         
   </div>
 </div>
 <div class="container">
-<h1>Venues</h1>
+
 {{outlet}}
 </div>
 
