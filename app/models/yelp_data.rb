@@ -2,7 +2,12 @@ class YelpData
 
 
   def yelp_search(venue)
-    yelp_venue = YELP.search('New York', { term: venue.name }).businesses.first
+    begin
+      yelp = YELP.search('New York', { term: venue.name })
+    rescue
+      puts yelp.text
+    end
+    yelp_venue = yelp.businesses.first
     save_attributes(venue, yelp_venue) if yelp_venue
   end
 
@@ -20,7 +25,13 @@ class YelpData
       address = yelp_venue.location.address.first
       latitude = yelp_venue.location.coordinate.latitude
       longitude = yelp_venue.location.coordinate.longitude
-      phone = yelp_venue.phone
+      begin
+        phone = yelp_venue.phone
+      rescue
+        puts "no phone"
+      else
+        phone = yelp_venue.phone
+      end
       yelp_rating = yelp_venue.rating
       image_url = yelp_venue.image_url
       name= yelp_venue.name
