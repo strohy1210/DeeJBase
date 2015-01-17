@@ -8,8 +8,8 @@ class YelpData
 
   def self.yelp_venues
     yelp = YelpData.new
-    Venue.all[5..22].each do |venue|
-      yelp.yelp_search(venue)
+    Venue.all.each do |venue|
+      yelp.yelp_search(venue) if venue.yelp_id == nil
     end
   end
 
