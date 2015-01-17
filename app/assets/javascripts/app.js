@@ -1,9 +1,14 @@
-var App = Ember.Application.create({
-   LOG_TRANSITIONS: true
+window.App = App = Ember.Application.create({
+  rootElement: '#ember-container'
+  // LOG_TRANSITIONS: true
 });
 
-App.ApplicationAdapter =DS.ActiveModelAdapter.extend()
+// if ($('#ember-container').length==0) { 
+//   App.deferReadiness();
+// }
 
+
+App.ApplicationAdapter=DS.ActiveModelAdapter.extend()
 
 App.Router.map(function(){
   this.resource('venues', {path: '/list'}, function(){
