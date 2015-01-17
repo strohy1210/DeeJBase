@@ -21,12 +21,18 @@ class YelpData
 
   def save_attributes(venue, yelp_venue)
     if yelp_venue.location
-      neighborhood = yelp_venue.location.neighborhoods.first
+      begin
+        yelp_venue.location.neighborhoods.first
+      rescue
+        puts "no hood"
+      else
+        neighborhood = yelp_venue.location.neighborhoods.first
+      end
       address = yelp_venue.location.address.first
       latitude = yelp_venue.location.coordinate.latitude
       longitude = yelp_venue.location.coordinate.longitude
       begin
-        phone = yelp_venue.phone
+        yelp_venue.phone
       rescue
         puts "no phone"
       else
