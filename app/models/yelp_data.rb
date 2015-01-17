@@ -8,7 +8,7 @@ class YelpData
 
   def self.yelp_venues
     yelp = YelpData.new
-    Venue.all.each do |venue|
+    Venue.all[5..22].each do |venue|
       yelp.yelp_search(venue)
     end
   end
@@ -20,19 +20,12 @@ class YelpData
       address = yelp_venue.location.address.first
       latitude = yelp_venue.location.coordinate.latitude
       longitude = yelp_venue.location.coordinate.longitude
-      if yelp_venue.location.cross_streets
-        cross_streets = yelp_venue.location.cross_streets
-      else
-        cross_streets = "x"
-      end
+      phone = yelp_venue.phone
+      yelp_rating = yelp_venue.rating
+      image_url = yelp_venue.image_url
+      name= yelp_venue.name
+      venue.update(neighborhood: neighborhood, phone: phone, name: name, yelp_rating: yelp_rating, image_url: image_url, address: address, latitude: latitude, longitude: longitude, yelp_id: yelp_venue.id)
     end
     
-    phone = yelp_venue.phone
-    yelp_rating = yelp_venue.rating
-    image_url = yelp_venue.image_url
-
-    name= yelp_venue.name
-
-    venue.update(cross_streets: cross_streets, neighborhood: neighborhood, phone: phone, name: name, yelp_rating: yelp_rating, image_url: image_url, address: address, latitude: latitude, longitude: longitude, yelp_id: yelp_venue.id)
   end
 end
