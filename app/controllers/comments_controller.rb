@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController  
 
   def update
-
+    # binding.pry
     @comment = Comment.find(params[:id])
     @rating = @comment.rating
     @dj = @rating.dj
