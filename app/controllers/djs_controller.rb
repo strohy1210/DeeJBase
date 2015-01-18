@@ -13,8 +13,9 @@ class DjsController < ApplicationController
     @dj.genres = params["genres"].map {|g| Genre.find(g["id"])}
 
     @dj.update(dj_params)
-    @dj.update(slug: @dj.slugify)
+  
     if @dj.save
+
       flash[:success] = 'Your profile is updated!'
       redirect_to dj_path(@dj.slugify)
     else

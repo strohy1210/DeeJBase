@@ -9,7 +9,7 @@ class Dj < ActiveRecord::Base
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :remove_empty_tracks#, default_values
   validates :email, :uniqueness => true
-
+  before_save :update_slug
   scope :is_dj, -> { where(dj_status: true, agent_status: false) }
 
 
@@ -23,7 +23,9 @@ class Dj < ActiveRecord::Base
   def slugify
     name.gsub(" ", "-").gsub(".", "")
   end
-
+  def update_slug
+    update(slug: slugify) unless slug == slugify
+  end
 
 
   def self.no_tracks
