@@ -80,7 +80,7 @@
     <div class="rate-dj text-center">
     <% if logged_in? && current_user.sdcl_id != @dj.sdcl_id %>
 
-     <p><strong>What'd you think of <%= @dj.name %>.?</strong><br>
+     <p><strong>What'd you think of <%= @dj.name %>?</strong><br>
 
 
   <div class="user-rate">
@@ -90,14 +90,14 @@
       <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
   
   
-        <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2 lines or more as well as a rating.", placeholder: "Sup with this guy? (min 40 characters).", input_html: { minlength: 40, rows: 4,  class: "form-control comment" }%>
+        <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2 sentences as well as a rating.", placeholder: "Where'd you see her? How'd he do? (min 40 characters).", input_html: { minlength: 40, rows: 4,  class: "form-control comment" }%>
 
     
 
         <%= f.button :submit, class: "btn btn-default submit-comment"%>
 
       <%end%>
-      <button class="btn btn-warning done-rating cancel-comment">Cancel</button>
+      <a href="#"><div class="done-rating cancel-comment" style="color: red;">Cancel</div></a>
   </div>
     <%elsif !logged_in?%>
     <div class="text-center bg-warning">
@@ -189,14 +189,15 @@
     }
   });
 
-  // $('.cancel-comment').click(function(){
-  //     $.ajax({
-  //       url: '/ratings/' + <%= @rating.id %>,
-  //       type: 'POST',
-  //       data: { score: score }
-  //     });
+// if ($('#comment_body').text().length >= 40) {
+//   $('.submit-comment.disabled').removeClass('disabled').addClass('enabled')
+// }
 
-  // });
+// if ($('#comment_body').text().length < 40) {
+//   $('.submit-comment.enabled').removeClass('enabled').addClass('disabled')
+// }
+
+
 
 
 
