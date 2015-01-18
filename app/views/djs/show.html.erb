@@ -160,11 +160,10 @@
 
 <!-- ////////////// form-begin ///////////////////////-->
 
-
 <div class="row">
   <div class="update-form col-md-10 col-md-offset-1">
-  <%= render 'form' %><br>
-<button class="cancel-edit btn-centered btn">Cancel</button> <br>
+  <%= render 'form' if current_user && current_user.dj_status && current_user.sdcl_id == @dj.sdcl_id %><br>
+  <button class="cancel-edit btn-centered btn">Cancel</button> <br>
   </div>
 </div>
 </div>
