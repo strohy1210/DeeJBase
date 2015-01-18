@@ -48,7 +48,7 @@
      <div class="sound-cld">
       <h4>Sound Cloud Followers: <%= number_with_delimiter(@dj.sdcl_followers, :delimiter => ',') if @dj.sdcl_followers %></h4>
     </div>
-    <!-- #truncate(@dj.bio.html_safe, length: 40, separator: ".") -->
+    <!-- #truncate(@dj.bio.html_safe, length: 30, separator: ".") -->
     <% if !@genres.blank? %>
     <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
     <%end%>
@@ -90,7 +90,7 @@
       <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
   
   
-        <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2 sentences as well as a rating.", placeholder: "Where'd you see her? How'd he do? (min 40 characters).", input_html: { minlength: 40, rows: 4,  class: "form-control comment" }%>
+        <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2-3 sentences as well as a rating.", placeholder: "Where'd you see her? How'd he do? (min 30 characters).", input_html: { minlength: 30, rows: 4,  class: "form-control comment" }%>
 
     
 
@@ -137,7 +137,7 @@
          <strong>Rating: <%= comment.rating.score.to_i %>/5 </strong>
        </div>
        <div class="user-comment" id='<%=comment.id%>'>
-     <%= comment.body %>
+     <%= truncate(comment.body, length: 200, separator: ".") %>
         </div>
     </div>
     <%end%>
@@ -189,11 +189,11 @@
     }
   });
 
-// if ($('#comment_body').text().length >= 40) {
+// if ($('#comment_body').text().length >= 30) {
 //   $('.submit-comment.disabled').removeClass('disabled').addClass('enabled')
 // }
 
-// if ($('#comment_body').text().length < 40) {
+// if ($('#comment_body').text().length < 30) {
 //   $('.submit-comment.enabled').removeClass('enabled').addClass('disabled')
 // }
 

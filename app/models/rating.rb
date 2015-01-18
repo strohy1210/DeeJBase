@@ -3,8 +3,8 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :venue
   has_one :comment, :dependent => :destroy
-  validates_uniqueness_of :user_id, :scope => :dj_id
+  validates_uniqueness_of :user_id, :scope => :dj_id, on: :update
   # validates_presence_of :score
-  scope :valid_only, -> { where.not(score: 0).select {|r| r.comment.valid?} }
+  scope :valid_only, -> { where.not(score: 0).select {|r| r.comment.valid? && r.comment.is_valid?} }
 
 end

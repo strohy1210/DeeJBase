@@ -1,26 +1,19 @@
 class CommentsController < ApplicationController  
 
   def update
-    # binding.pry
+
     @comment = Comment.find(params[:id])
     @rating = @comment.rating
     @dj = @rating.dj
     @comment.update(comment_params)
-  
-    if @comment.valid? && @rating.valid? && @rating.score > 0 #&& Comment.where(id: params[:id]).any?
+    if @comment.is_valid? && @rating.valid? && @rating.score > 0 #&& Comment.where(id: params[:id]).any?
 
       redirect_to dj_path(@dj.slugify)
 
-    else #@comment.body.size < 40#@rating.score && @rating.score > 0 || !@comment.body.blank?
-      @rating.destroy
-      @comment.destroy
+    else 
+      # @rating.destroy
       flash[:warning] = 'You need to give both a rating and a comment (of more than 40 characters) to leave feedback'
       redirect_to dj_path(@dj.slugify)
-      # respond_to do |format|
-      #   format.js
-      # end
-    # else
-    #   redirect_to dj_path(@dj.slugify)
     end
 
   end
