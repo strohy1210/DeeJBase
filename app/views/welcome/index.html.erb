@@ -87,7 +87,7 @@
     path: '/assets'
   });
 
- $("#star<%=@djs[1].id%>").raty({
+ $("#star<%=@djs[1].id if @djs[1]%>").raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
@@ -95,7 +95,7 @@
     path: '/assets'
   });
 
- $("#star<%=@djs[2].id%>").raty({
+ $("#star<%=@djs[2].id if @djs[2]%>").raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
@@ -103,7 +103,7 @@
     path: '/assets'
   });
 
- $("#star<%=@djs[3].id%>").raty({
+ $("#star<%=@djs[3].id if @djs[3]%>").raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
@@ -111,7 +111,7 @@
     path: '/assets'
   });
 
- $("#star<%=@djs[4].id%>").raty({
+ $("#star<%=@djs[4].id if @djs[4]%>").raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
@@ -119,7 +119,7 @@
     path: '/assets'
   });
 
- $("#star<%=@djs[5].id%>").raty({
+ $("#star<%=@djs[5].id if @djs[5]%>").raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
