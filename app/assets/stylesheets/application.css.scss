@@ -70,6 +70,7 @@ h4 a {
   background-color: transparant;
   border-color: transparent;
 }
+
 .index-image img, .profile-pic img {
     width: 160px;
     height: auto;
@@ -171,7 +172,7 @@ font-size: 16px;
   padding: 20px;
 }
 
-a .bio h4, a .bio h5{
+a .bio h4, a .bio h5, a .djb{
   color: #000;
 }
 
@@ -242,14 +243,16 @@ li { cursor: pointer; }
 
 .comments-title, .tracks-title {
   font-weight: bold;
+  font-variant: small-caps;
 
 
 }
 
-.review, {
+.review {
   background: #fff;
   border-radius: 30px;
   padding: 10px;
+  border-bottom: 1px solid #d0d0d0;
 }
 
 
@@ -266,13 +269,19 @@ li { cursor: pointer; }
     }
 
   .hidden-xs {
-  display: none;
+    display: none;
   }
   .container {
-  width: 100%;
+    width: 100%;
   }
-  .page-header, .error-top {
-  padding-top: 30px;
+  .page-header {
+    padding-top: 30px;
+  }
+  .error-top {
+    padding-top: 80px;
+  }
+  .btn {
+  font-size: 14px;
   }
 }
 

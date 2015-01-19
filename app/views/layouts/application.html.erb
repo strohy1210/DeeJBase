@@ -166,6 +166,8 @@ $('.edit-dj').click(function(){
   $("#dj-profile").toggle();
   $(this).toggle();
   $('.tracks').hide();
+   $('.review').toggle();
+   $('.comments-title').toggle();
 })
 
 $('.cancel-edit').click(function(){
@@ -173,23 +175,23 @@ $('.cancel-edit').click(function(){
   $("#dj-profile").toggle();
   $('.edit-dj').toggle();
   $('.tracks').show();
+  $('.review').toggle();
+  $('.comments-title').toggle();
 })
 
 $(".other-tracks").hide();
 $('.more-tracks').click(function(){
   $(".other-tracks").slideDown();
   $(this).toggle();
-  $('#comments').toggle();
+  $('.review').toggle();
   $('.comments-title').toggle();
-  $('.tracks').removeClass('col-md-8');
 })
 
 $('.hide-tracks').click(function(){
   $(".other-tracks").toggle();
   $('.more-tracks').toggle();
-    $('#comments').toggle();
+    $('.review').toggle();
   $('.comments-title').toggle();
-   $('.tracks').addClass('col-md-8');
 })
 // $('.cancel-message').hide();
 // $('.cancel-message').click(function(){

@@ -33,7 +33,7 @@ class DjsController < ApplicationController
     @dj= Dj.find_by(slug: params[:name])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
-    @comments = @dj.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? }
+    @comments = @dj.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
 
     if logged_in?

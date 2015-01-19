@@ -48,7 +48,8 @@
          <%if !dj.rate.blank? %>
         <h6 style="color: black;"><%= dj.rate %> per night</h6>
         <%end%>
-        <div id='star' data-score=<%= dj.average_rating%>>
+        <div id="star<%=dj.id%>" class="djb" data-score=<%= dj.average_rating%>>
+          Rating<sup>beta</sup>:
         </div>
         <%end%>
        </div>
@@ -78,7 +79,47 @@
 <script>
 
 
- $('#star').raty({
+ $("#star<%=@djs[0].id%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@djs[1].id%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@djs[2].id%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@djs[3].id%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@djs[4].id%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@djs[5].id%>").raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
