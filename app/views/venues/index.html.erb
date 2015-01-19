@@ -1,0 +1,61 @@
+
+  <div class="row page-header">
+    <div class="title col-md-7 col-xs-5">
+    <h2> <strong>FIND NYC'S RAWEST VENUES </strong> </h2>
+    </div>
+
+    <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">
+          <div class='input-group-btn'>       
+          <button class="btn btn-default" type="submit">Find Venues <i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
+<div id="results">
+<ul>
+<% @venues.each do |venue| %>
+    
+  <div class='dj-item'>
+
+    <div class= "dj-header">
+      <h3><%= link_to venue.name.titleize, venue_path(venue) %></h3>
+    
+    </div>
+    <div class="row">
+      <p><div class="index-image col-md-3">
+        <%= link_to image_tag(venue.image_url), venue_path(venue) %>
+      </div></p>
+
+  <%= link_to venue_path(venue) do %>
+      <div class="bio col-md-8">
+        <div class='overlay'>
+        
+        <% if !venue.neighborhood.blank? %>     
+          <h4><%= venue.neighborhood %></h4>
+        <% end%>
+<!--         <div class='star'>
+        </div> -->
+
+       </div>
+      </div>
+
+  <% end %>
+    </div>
+
+
+
+
+  </div>
+  <br>
+<% end %>
+   
+        <br><br>
+<div id="infinite-scrolling">
+  <%= will_paginate @venues %>
+</div>
+</ul>
+
+

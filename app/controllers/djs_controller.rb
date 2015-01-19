@@ -20,7 +20,7 @@ class DjsController < ApplicationController
       redirect_to dj_path(@dj.slugify)
     else
       redirect_to :back
-      flash[:warning] = "Something went wrong."
+      flash[:warning] = "Something went wrong. Sorry, bud."
     end
   end
 

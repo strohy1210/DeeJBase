@@ -48,8 +48,8 @@
          <%if !dj.rate.blank? %>
         <h6 style="color: black;"><%= dj.rate %> per night</h6>
         <%end%>
-<!--         <div class='star'>
-        </div> -->
+        <div id='star' data-score=<%= dj.average_rating%>>
+        </div>
         <%end%>
        </div>
       </div>
@@ -63,11 +63,6 @@
       </div></p>
 
 
-<!--   // $('.star').raty({
-  //   readOnly: true,
-  //   score: <%dj.average_rating%>,
-  //   path: '/assets'
-  // }); -->
 
 
 
@@ -80,5 +75,17 @@
   <%= will_paginate @djs %>
 </div>
 </ul>
+<script>
+
+
+ $('#star').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+</script>
 
 

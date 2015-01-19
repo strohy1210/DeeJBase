@@ -188,27 +188,6 @@ a .bio h4, a .bio h5{
   padding: 5px;
 }
 
-@media (max-device-width : 480px) {
-  .navbar-fixed-top {
-        position: absolute;
-        top: auto;
-        margin-bottom: 100px;
-    }
-  body {
-        padding-top: 0px;
-    }
-
-  .hidden-xs {
-  display: none;
-  }
-  .container {
-  width: 100%;
-  }
-  .page-header{
-  padding-top: 30px;
-  }
-}
-
 .rate-button .btn:hover {
   margin-top: 1px;
 }
@@ -242,14 +221,10 @@ li { cursor: pointer; }
 }
 
 .user-rating, .user-comment {
-  border-right: 2px solid #ccc;
   padding: 5px;
   overflow: hidden;
 }
 
-.comments-title, .tracks-title {
-  font-weight: bold;
-}
 
 .user-thumbnail img {
   border-radius: 50%;
@@ -264,3 +239,40 @@ li { cursor: pointer; }
   padding-right: 30px;
   overflow: hidden;
 }
+
+.comments-title, .tracks-title {
+  font-weight: bold;
+
+
+}
+
+.review, {
+  background: #fff;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+
+
+
+@media (max-device-width : 480px) {
+  .navbar-fixed-top {
+        position: absolute;
+        top: auto;
+        margin-bottom: 100px;
+    }
+  body {
+        padding-top: 0px;
+    }
+
+  .hidden-xs {
+  display: none;
+  }
+  .container {
+  width: 100%;
+  }
+  .page-header, .error-top {
+  padding-top: 30px;
+  }
+}
+

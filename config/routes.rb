@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:new, :create]
 
   resources :events, only: [:new, :create, :destroy]
-  resources :venues, only: [:new, :create, :index]
+  resources :venues, only: [:new, :create, :index, :show]
   resources :ratings, only: [:update, :destroy, :create]
   resources :comments, only: :update
 

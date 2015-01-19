@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
     else 
       # @rating.destroy
-      flash[:warning] = 'You need to give both a rating and a comment (of more than 40 characters) to leave feedback'
+      flash[:warning] = 'You need to give both a rating and a comment (of more than 30 characters) to leave feedback'
       redirect_to dj_path(@dj.slugify)
     end
 

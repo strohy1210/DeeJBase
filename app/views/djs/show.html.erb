@@ -61,12 +61,7 @@
     <% if @dj.can_produce %>
     <h6> This DJ can provide production equipment on request. </h6>
     <%end%>
-<!--       <a href="#" data-toggle="modal" data-target="#rateModal" >
-        <div class="hover-mask bottom-mask mask-orange">
-          <div class='rate-button btn-centered btn btn-success'>Rate <%=@dj.name%></div>
-        </div>
-      </a>
- --> 
+
     DJB Rating<sup>beta</sup>:
     <div id='star'>
    
@@ -117,38 +112,35 @@
     <br>
     </div>
     <br><br>
-     <div class ="row">
 
    <% if @comments %>
-    <h5 class="comments-title col-md-4">Comments and Ratings</h5>
-    <h5 class="tracks-title col-md-8">SoundCloud Streams</h5>
-  </div>
-    <div class="row">
 
-    <div id="comments">
-      <br>
-        <% @comments.each do |comment| %>
-      <div class= "user-image col-md-1 text-center">
-        <%= image_tag(comment.user.image_url) %>
-        <h7><%= comment.user.first_name %></h7>
-      </div>
-      <div class= "comment col-md-3">
-        <div class="user-rating">
-         <strong>Rating: <%= comment.rating.score.to_i %>/5 </strong>
-       </div>
-       <div class="user-comment" id='<%=comment.id%>'>
-     <%= truncate(comment.body, length: 200, separator: ".") %>
+   <h5 class="comments-title">Reviews</h5>
+    <% @comments.each do |comment| %>
+      <div class="row review">
+        <div class= "user-image col-md-2">
+          <%= image_tag(comment.user.image_url) %>
+          <h7 class='text-center'><%= comment.user.first_name %></h7>
         </div>
+        <div class= "comment col-md-10">
+          <div class="user-rating">
+            <strong>Rating: <%= comment.rating.score.to_i %>/5 </strong>
+          </div>
+          <div class="user-comment" id='<%=comment.id%>'>
+            <%= truncate(comment.body, length: 500, separator: ".") %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+<br>
+    <div class="tracks">
+      <h5 class="tracks-title">SoundCloud Streams</h5>
+      <% if !@dj.tracks.blank? %>
+        <%= render 'tracks' %><br>
+      <%end%>
     </div>
-    <%end%>
-  </div>
-    <div class="tracks col-md-8">
-    <% if !@dj.tracks.blank? %>
-    <%= render 'tracks' %><br>
-    <%end%>
-  </div>
 
-  </div>
+
   <%else%>
       <div class="tracks col-md-12">
     <% if !@dj.tracks.blank? %>
