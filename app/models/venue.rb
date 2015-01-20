@@ -3,6 +3,7 @@ class Venue < ActiveRecord::Base
   has_many :djs, through: :events
   has_many :ratings
   has_many :comments, through: :ratings
+  belongs_to :neighborhood
   accepts_nested_attributes_for :events, :reject_if => :all_blank, :allow_destroy => true
   before_create :yelp
   
