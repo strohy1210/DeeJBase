@@ -74,12 +74,14 @@ h4 a {
 .index-image img, .profile-pic img {
     height: 150px;
     width: auto;
+    max-width: 250px;
     border-radius: 30px;
 }
 
 .profile-pic img {
     height: 200px;
     width: auto;
+    max-width: 300px;
     border: 1px solid #ccc
 }
 
