@@ -7,13 +7,14 @@
 <div id="dj-profile">
   
   <div class="profile-pic col-md-3">
-    <%= link_to image_tag(@venue.image_url), venue_path(@venue), class: 'profile-image' %>
+    <%= link_to image_tag(@venue.imageify, alt: @venue.image_url), venue_path(@venue), class: 'profile-image' %>
   </div>
-  <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
+  <div class="dj-info col-md-4 col-md-offset-1 vertical-center">   
     <div class="other-info">
       <h4>Review <%=@venue.name%>'s music.</h4>
       <%= @venue.neighborhood %><br>
       <%= @venue.address %><br>
+  
       DJB Rating<sup>beta</sup>:
       <div id='star'>
    

@@ -3,7 +3,8 @@ class Venue < ActiveRecord::Base
   has_many :djs, through: :events
   has_many :ratings
   has_many :comments, through: :ratings
-  after_create :yelp
+  accepts_nested_attributes_for :events, :reject_if => :all_blank, :allow_destroy => true
+  before_create :yelp
   
   def mapsify
     url = self.address.gsub(';',',').gsub(' ','+')
@@ -23,6 +24,10 @@ class Venue < ActiveRecord::Base
     yelp = YelpData.new
     yelp.yelp_search(self)
     YelpData.remove_bad_data
+  end
+
+  def imageify
+    "http://"+self.name.gsub(" ", "").downcase+"nyc.jpg.to/"
   end
 
 end

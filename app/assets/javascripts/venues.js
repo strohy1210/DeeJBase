@@ -5,11 +5,16 @@
 
 // $(function(){
 //   // $('.venue .address').hide();
-//   $('ul').on('mouseover', 'li', function(){
-//     $(this).find('.address').show()
-//   })
-//     $('ul').on('mouseout', 'li', function(){
-//     $(this).find('.address').hide()
-//   })
+//   // $('ul').on('mouseover', 'li', function(){
+//   //   $(this).find('.address').show()
+//   // })
+//   //   $('ul').on('mouseout', 'li', function(){
+//   //   $(this).find('.address').hide()
+//   // })
+//  debugger;
+// $("img").error(function(){
+
+//         $(this).hide();
+// });
 
 // })

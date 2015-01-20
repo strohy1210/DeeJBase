@@ -1,17 +1,18 @@
 == README
 
-date
+date for events
 rate venue with dj autocomplete
 characters counter
 Neighborhood table
 map widget
 Add message in DJ sign up button
-
 10. update contact info of the peoples who responded
 ADD:
 wythe hotel
-blind barbar
+blind barber
 the box
+DJ huggie bear
+baby blue
 Later:
 1. tweet at djs to claim profile
 2. rating system, i review
