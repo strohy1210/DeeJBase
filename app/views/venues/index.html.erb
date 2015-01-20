@@ -4,9 +4,9 @@
     <h2> <strong>FIND NYC'S RAWEST VENUES </strong> </h2>
     </div>
 
-    <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
+    <%= form_tag(search_venues_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
       <div class="input-group">
-          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">
+          <input type="text" class="form-control" placeholder="Output" name="name">
           <div class='input-group-btn'>       
           <button class="btn btn-default" type="submit">Find Venues <i class="glyphicon glyphicon-search"></i></button>
         </div>
@@ -36,9 +36,9 @@
         <% if !venue.neighborhood.blank? %>     
           <h4><%= venue.neighborhood %></h4>
         <% end%>
-<!--         <div class='star'>
-        </div> -->
-
+        <div id="star<%=venue.id%>" class="djb" data-score=<%= venue.average_rating%>>
+          Rating<sup>beta</sup>:
+        </div>
        </div>
       </div>
 
@@ -57,5 +57,57 @@
   <%= will_paginate @venues %>
 </div>
 </ul>
+<script>
+
+
+ $("#star<%=@venues[0].id%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@venues[1].id if @venues[1]%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@venues[2].id if @venues[2]%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@venues[3].id if @venues[3]%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@venues[4].id if @venues[4]%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+ $("#star<%=@venues[5].id if @venues[5]%>").raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets'
+  });
+
+</script>
 
 

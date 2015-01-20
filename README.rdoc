@@ -1,22 +1,17 @@
 == README
-EMBER
-Venue profiles, and ratings
+
 date
 rate venue with dj autocomplete
-rating
-comment (thumbnail picture)
 characters counter
-cancel rating button
 Neighborhood table
+map widget
+Add message in DJ sign up button
 
-
-Move application.html.erb content into layouts/djs.html.erb and layouts/welcome.html.erb(that way it will only render in those views' folders )
-DJs
-comments
-
-9. Venue profile and venue ratings? -user ratings, venue ratings
 10. update contact info of the peoples who responded
-
+ADD:
+wythe hotel
+blind barbar
+the box
 Later:
 1. tweet at djs to claim profile
 2. rating system, i review

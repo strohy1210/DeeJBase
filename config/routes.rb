@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :destroy]
   resources :venues, only: [:new, :create, :index, :show]
   resources :ratings, only: [:update, :destroy, :create]
-  resources :comments, only: :update
+  resources :comments, only: :update do
+    resources :replies, only: [:create, :destroy]
+  end
 
   resources :djs, only: [:create, :update, :index]
 
@@ -23,9 +25,10 @@ Rails.application.routes.draw do
   get '/auth/facebook', as: 'login'
   delete '/logout', to: 'sessions#destroy'
   get 'search'  => 'searches#index'
+  get 'search_venues' => 'searches#venue_index'
   get '/api', to: 'api#index'
   get '/api/djs', to: 'api#djs'
-   get '/api/djs/:id', to: 'api#show_dj'
+  get '/api/djs/:id', to: 'api#show_dj'
   post 'ratings/:id', to: 'ratings#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,8 +1,9 @@
 <div class="row page-header title">
   <h2 class='col-md-5'> <%= @venue.name %>  </h2>
-
+  <%= render 'venue_search' %>
 </div>
-
+<div class="dj-profile">
+  <div class="row">
 <div id="dj-profile">
   
   <div class="profile-pic col-md-3">
@@ -10,7 +11,8 @@
   </div>
   <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
     <div class="other-info">
-    
+      <%= @venue.neighborhood %><br>
+      <%= @venue.address %><br>
       DJB Rating<sup>beta</sup>:
       <div id='star'>
    
@@ -50,8 +52,18 @@
       | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>   </div>
      <%end%> 
  
-  </div>
+  </div><br>
 </div>
+</div>
+</div>
+    <br><br>
+
+   <% if @comments %>
+     <h5 class="row comments-title">Reviews</h5>
+
+     <%= render 'reviews' %><br>
+
+  <%end%>
 <script>
   $('#star').raty({
     readOnly: true,

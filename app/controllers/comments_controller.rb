@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
     @dj = @rating.dj
     @venue = @rating.venue
     @comment.update(comment_params)
-    if @comment.is_valid? && @rating.valid? && @rating.score > 0 #&& Comment.where(id: params[:id]).any?
+
+    if @comment.is_valid? && @rating.save && @rating.score > 0 #&& Comment.where(id: params[:id]).any?
 
       redirect_to dj_path(@dj.slugify) if @dj
       redirect_to venue_path(@venue) if @venue

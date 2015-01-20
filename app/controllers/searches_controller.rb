@@ -23,4 +23,24 @@ class SearchesController < ApplicationController
       render 'welcome/index'
     end
   end
+
+  def venue_index
+    if params[:name]
+      name = params[:name].strip
+      @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 6).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 6).order('name ASC')
+      if @venues.size == 0
+        flash[:warning] = 'Sorry, no places by that name... so here\'s em all.'
+        redirect_to venues_path
+      elsif @venues.size == 1
+        @venue = @venues.first
+        redirect_to venue_path(@venue)
+      else
+        flash.now[:success] = @venues.size.to_s + ' result(s) for "' +name+'." Click for more info.'
+        render 'venues/index'
+      end
+    else
+      @venues = Venue.paginate(page: params[:page], per_page: 6).order('name ASC')
+    end
+  end
+
 end

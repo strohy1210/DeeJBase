@@ -55,12 +55,13 @@
     <ul class="nav navbar-nav">
 
       <li><%= link_to 'DJ List', root_path %></li>
-      <li><%= link_to 'About', about_path%></li>
       <li><a href="#" data-toggle="modal" data-target="#contactModal" >
       <div class="hover-mask bottom-mask mask-orange">
-          Contact
+       <strong>   DJ Sign Up</strong>
       </div>
       </a></li>
+      <li><%= link_to 'About', about_path%></li>
+   
 
   <% if @genre %>
   <li><form class="navbar-form col-xs-2">
@@ -115,17 +116,21 @@
   
 <%= yield %>
 <!-- /////////////// MODAL //////////////////////////////////// -->
+
+
   <div class="message-form">
     <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
+              <h4 class="modal-title" id="myModalLabel">If You're a DJ, We'll Need to Verify</h4>
               </div>
               <div class="modal-body">
                <div class="form-group">
            <%= form_tag(contact_us_url, method: "post") do %>
+            <%= label_tag :message %>
+           <%= text_area_tag(:message, "", class: 'form-control', rows: 4, placeholder: "If you're a DJ, please add links to your social media, especially SoundCloud.", required: true)%>
             <%= label_tag :email %>
            <%= email_field_tag(:email, "", class: 'form-control', placeholder: "youremail@email.com", required: true) %><br>
             <%= radio_button_tag(:dj_status, true) %>
