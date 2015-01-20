@@ -1,0 +1,19 @@
+    <% if !@dj.fb_likes.blank? %>
+        <h4>FB Likes: <%= number_with_delimiter(@dj.fb_likes, :delimiter => ',') %></h4>
+      <%end%>
+     <div class="sound-cld">
+      <h4>Sound Cloud Followers: <%= number_with_delimiter(@dj.sdcl_followers, :delimiter => ',') if @dj.sdcl_followers %></h4>
+    </div>
+    <!-- #truncate(@dj.bio.html_safe, length: 30, separator: ".") -->
+    <% if !@genres.blank? %>
+    <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
+    <%end%>
+    <% if !@dj.rate.blank? %>
+    <h4> Nightly Rate: <%= @dj.rate%></h4>
+    <%end%>
+    <h5> located in <%= @dj.city %> </h5>
+
+ 
+    <% if @dj.can_produce %>
+    <h6> This DJ can provide production equipment on request. </h6>
+    <%end%>

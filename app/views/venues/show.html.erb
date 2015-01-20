@@ -1,0 +1,78 @@
+<div class="row page-header title">
+  <h2 class='col-md-5'> <%= @venue.name %>  </h2>
+
+</div>
+
+<div id="dj-profile">
+  
+  <div class="profile-pic col-md-3">
+    <%= link_to image_tag(@venue.image_url), venue_path(@venue), class: 'profile-image' %>
+  </div>
+  <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
+    <div class="other-info">
+    
+      DJB Rating<sup>beta</sup>:
+      <div id='star'>
+   
+      </div>
+    </div>
+  
+  <div class='rate-button btn-centered btn btn-default'>Review <%=@venue.name%></div>
+
+  <div class="rate-dj text-center">
+    <% if logged_in? %>
+
+      <p><strong>What'd you think of <%= @venue.name %>'s DJ?</strong><br>
+
+
+      <div class="user-rate">
+        <div id='user_star'>
+
+        </div></p>
+        <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
+    
+    
+          <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2-3 sentences as well as a rating.", placeholder: "How did the DJ do? Transitions, song choice? - let's keep the comments about the music - we don't want to hear about how long you waited in line (min 30 characters).", input_html: { minlength: 30, rows: 4,  class: "form-control comment" }%>
+
+      
+
+          <%= f.button :submit, class: "btn btn-default submit-comment"%>
+
+        <%end%>
+        <a href="#"><div class="done-rating cancel-comment" style="color: red;">Cancel</div></a>
+      </div>
+    <%elsif !logged_in?%>
+      <div class="text-center bg-warning">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
+
+      
+      <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
+      | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>   </div>
+     <%end%> 
+ 
+  </div>
+</div>
+<script>
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @venue.average_rating %>,
+    path: '/assets'
+  });
+
+
+  $('#user_star').raty({
+    score: <%= @rating.score %>,
+    cancel: true,
+    path: '/assets',
+    click: function(score, evt) {
+      $.ajax({
+        url: '/ratings/' + <%= @rating.id %>,
+        type: 'PATCH',
+        data: { score: score }
+      });
+    }
+  });
+
+
+
+</script>

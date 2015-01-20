@@ -1,22 +1,15 @@
 <div class="row page-header title">
-    <h2 class='col-md-5'> <%= @dj.name %>  </h2>
-    <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
-      <div class="input-group">
-          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">
-          <div class='input-group-btn'>       
-          <button class="btn btn-default" type="submit">Find DJs <i class="glyphicon glyphicon-search"></i></button>
-        </div>
-      </div>
-      <% end %>
+  <h2 class='col-md-5'> <%= @dj.name %>  </h2>
+
+  <%= render 'dj_search' %>
+
 </div>
 <div class="dj-profile">
-
-
-   <div class="row">
+  <div class="row">
       <div class= "edit-or-contact col-md-2 pull-right">
 
       <% if current_user && current_user.dj_status && current_user.sdcl_id == @dj.sdcl_id %>
-        <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
+          <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
         <br>
       <%else%>
 
@@ -33,110 +26,77 @@
  
 
 <!-- ///////////  PROFILE //////////////////////////////// -->
-<div id="dj-profile">
+  <div id="dj-profile">
   
     <div class="profile-pic col-md-3">
       <%= link_to image_tag(@dj.image_url), dj_path(@dj.slugify), class: 'profile-image' %>
     </div>
-    <div class="dj-info col-md-5 col-md-offset-1 vertical-center">
+    <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
+      <div class="other-info">
+
+        <%= render 'dj_info' %>
+      
+        DJB Rating<sup>beta</sup>:
+        <div id='star'>
      
-
-    <div class="other-info">
-    <% if !@dj.fb_likes.blank? %>
-        <h4>FB Likes: <%= number_with_delimiter(@dj.fb_likes, :delimiter => ',') %></h4>
-      <%end%>
-     <div class="sound-cld">
-      <h4>Sound Cloud Followers: <%= number_with_delimiter(@dj.sdcl_followers, :delimiter => ',') if @dj.sdcl_followers %></h4>
-    </div>
-    <!-- #truncate(@dj.bio.html_safe, length: 30, separator: ".") -->
-    <% if !@genres.blank? %>
-    <h4> Genres: <%= @genres.map {|g| g.name}.join(", ") %></h4>
-    <%end%>
-    <% if !@dj.rate.blank? %>
-    <h4> Nightly Rate: <%= @dj.rate%></h4>
-    <%end%>
-    <h5> located in <%= @dj.city %> </h5>
-
- 
-    <% if @dj.can_produce %>
-    <h6> This DJ can provide production equipment on request. </h6>
-    <%end%>
-
-    DJB Rating<sup>beta</sup>:
-    <div id='star'>
-   
-    </div>
-    </div>
+        </div>
+      </div>
     <% if !logged_in? || current_user.sdcl_id != @dj.sdcl_id %>
     
     <div class='rate-button btn-centered btn btn-default'>Review <%=@dj.name%></div>
     <%end%>
 
-    <div class="rate-dj text-center">
+  <div class="rate-dj text-center">
     <% if logged_in? && current_user.sdcl_id != @dj.sdcl_id %>
 
-     <p><strong>What'd you think of <%= @dj.name %>?</strong><br>
+      <p><strong>What'd you think of <%= @dj.name %>?</strong><br>
 
 
-  <div class="user-rate">
-    <div id='user_star'>
+      <div class="user-rate">
+        <div id='user_star'>
 
-    </div></p>
-      <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
-  
-  
-        <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2-3 sentences as well as a rating.", placeholder: "Where'd you see her? How'd he do? (min 30 characters).", input_html: { minlength: 30, rows: 4,  class: "form-control comment" }%>
-
+        </div></p>
+        <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
     
+    
+          <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2-3 sentences as well as a rating.", placeholder: "Where'd you see her? How'd he do? (min 30 characters).", input_html: { minlength: 30, rows: 4,  class: "form-control comment" }%>
 
-        <%= f.button :submit, class: "btn btn-default submit-comment"%>
+      
 
-      <%end%>
-      <a href="#"><div class="done-rating cancel-comment" style="color: red;">Cancel</div></a>
-  </div>
+          <%= f.button :submit, class: "btn btn-default submit-comment"%>
+
+        <%end%>
+        <a href="#"><div class="done-rating cancel-comment" style="color: red;">Cancel</div></a>
+      </div>
     <%elsif !logged_in?%>
-    <div class="text-center bg-warning">
-    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
+      <div class="text-center bg-warning">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
 
-    
-    <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
-    | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>   </div>
+      
+      <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
+      | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>   </div>
      <%end%> 
  
-    </div>
-   
-
-
+      </div>
     </div>
   </div>
     <br>
-</div>
+    </div>
     <br><br>
 
    <% if @comments %>
 
    <h5 class="comments-title">Reviews</h5>
-    <% @comments.each do |comment| %>
-      <div class="row review">
-        <div class= "user-image col-md-2">
-          <%= image_tag(comment.user.image_url) %>
-          <h7 class='text-center'><%= comment.user.first_name %></h7>
-        </div>
-        <div class= "comment col-md-10">
-          <div class="user-rating">
-            <strong>Rating: <%= comment.rating.score.to_i %>/5 </strong>
-          </div>
-          <div class="user-comment" id='<%=comment.id%>'>
-            <%= truncate(comment.body, length: 500, separator: ".") %>
-          </div>
-        </div>
-      </div>
-    <%end%>
+
+     <%= render 'reviews' %><br>
 <br>
+    
     <div class="tracks">
       <h5 class="tracks-title">SoundCloud Streams</h5>
       <% if !@dj.tracks.blank? %>
+
         <%= render 'tracks' %><br>
+
       <%end%>
     </div>
 
@@ -144,7 +104,9 @@
   <%else%>
       <div class="tracks col-md-12">
     <% if !@dj.tracks.blank? %>
+
     <%= render 'tracks' %><br>
+
     <%end%>
   </div>
   <%end%>
@@ -152,13 +114,17 @@
 
 <!-- ////////////// form-begin ///////////////////////-->
 
-<div class="row">
-  <div class="update-form col-md-10 col-md-offset-1">
-  <%= render 'form' if current_user && current_user.dj_status && current_user.sdcl_id == @dj.sdcl_id %><br>
-  <button class="cancel-edit btn-centered btn">Cancel</button> <br>
+  <div class="row">
+    <div class="update-form col-md-10 col-md-offset-1">
+
+    <%= render 'form' if current_user && current_user.dj_status && current_user.sdcl_id == @dj.sdcl_id %><br>
+
+    <button class="cancel-edit btn-centered btn">Cancel</button> <br>
+    </div>
   </div>
 </div>
-</div>
+
+
 <script>
   $('#star').raty({
     readOnly: true,
@@ -179,17 +145,6 @@
       });
     }
   });
-
-// if ($('#comment_body').text().length >= 30) {
-//   $('.submit-comment.disabled').removeClass('disabled').addClass('enabled')
-// }
-
-// if ($('#comment_body').text().length < 30) {
-//   $('.submit-comment.enabled').removeClass('enabled').addClass('disabled')
-// }
-
-
-
 
 
 
