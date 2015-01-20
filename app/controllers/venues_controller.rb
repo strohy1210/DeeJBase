@@ -1,7 +1,7 @@
 class VenuesController < ApplicationController
  skip_before_action :authorize
   def index
-    @venues = Venue.paginate(page: params[:page], per_page: 6).order('neighborhood ASC')
+    @venues = Venue.paginate(page: params[:page], per_page: 6).order('updated_at DESC')
 
   end
 
