@@ -11,6 +11,7 @@
   </div>
   <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
     <div class="other-info">
+      <h4>Review <%=@venue.name%>'s music.</h4>
       <%= @venue.neighborhood %><br>
       <%= @venue.address %><br>
       DJB Rating<sup>beta</sup>:
@@ -34,7 +35,7 @@
         <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
     
     
-          <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2-3 sentences as well as a rating.", placeholder: "How did the DJ do? Transitions, song choice? - let's keep the comments about the music - we don't want to hear about how long you waited in line (min 30 characters).", input_html: { minlength: 30, rows: 4,  class: "form-control comment" }%>
+          <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2-3 sentences as well as a rating.", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 30 characters).", input_html: { minlength: 30, rows: 4,  class: "form-control comment" }%>
 
       
 

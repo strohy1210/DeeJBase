@@ -3,6 +3,7 @@ class Venue < ActiveRecord::Base
   has_many :djs, through: :events
   has_many :ratings
   has_many :comments, through: :ratings
+  after_create :yelp
   
   def mapsify
     url = self.address.gsub(';',',').gsub(' ','+')
@@ -18,4 +19,10 @@ class Venue < ActiveRecord::Base
     end
   end
   
+  def yelp
+    yelp = YelpData.new
+    yelp.yelp_search(self)
+    YelpData.remove_bad_data
+  end
+
 end

@@ -3,7 +3,7 @@ class YelpData
   
   def self.remove_bad_data
     yelp = YelpData.new
-    Venue.all.each do |venue|
+    Venue.all.where(category: nil).each do |venue|
       yelp = YELP.search('New York', { term: venue.name })
       if yelp.businesses.first 
         words = yelp.businesses.first.categories.flatten
