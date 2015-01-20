@@ -5,10 +5,14 @@ class YelpData
     yelp = YelpData.new
     Venue.all.each do |venue|
       yelp = YELP.search('New York', { term: venue.name })
-      words = yelp.businesses.first.categories.flatten if yelp.businesses.first    
-      categories = BAR_WORDS & words 
-      venue.update(category: categories.first) if categories.any?
-      venue.destroy unless categories.any?
+      if yelp.businesses.first 
+        words = yelp.businesses.first.categories.flatten
+        if words
+          categories = BAR_WORDS & words 
+          venue.update(category: categories.first) if categories.any?
+          venue.destroy unless categories.any?
+        end
+      end
     end
   end
 
