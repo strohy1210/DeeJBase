@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :venues, only: [:new, :create, :index, :show]
   resources :ratings, only: [:update, :destroy, :create]
   resources :comments, only: :update do
-    resources :replies, only: [:create, :destroy]
+    resources :replies, only: [:create, :destroy, :update]
   end
 
   resources :djs, only: [:create, :update, :index]

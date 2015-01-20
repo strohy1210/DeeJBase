@@ -1,5 +1,16 @@
 class YelpData
-
+  BAR_WORDS = ["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels"]
+  
+  def self.remove_bad_data
+    yelp = YelpData.new
+    Venue.all.each do |venue|
+      yelp = YELP.search('New York', { term: venue.name })
+      words = yelp.businesses.first.categories.flatten if yelp.businesses.first    
+      categories = BAR_WORDS & words 
+      venue.update(category: categories.first) if categories.any?
+      venue.destroy unless categories.any?
+    end
+  end
 
   def yelp_search(venue)
     begin
@@ -34,7 +45,7 @@ class YelpData
         latitude = yelp_venue.location.coordinate.latitude
         longitude = yelp_venue.location.coordinate.longitude
       rescue
-        puts "no addess"
+        puts "no address"
       end
       begin
         yelp_venue.phone
