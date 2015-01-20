@@ -12,7 +12,7 @@
   <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
     <div class="other-info">
       <h4>Review <%=@venue.name%>'s music.</h4>
-      <%= @venue.neighborhood.name %><br>
+      <%= @venue.neighborhood.name if @venue.neighborhood %><br>
       <%= @venue.address %><br>
   
       DJB Rating<sup>beta</sup>:
