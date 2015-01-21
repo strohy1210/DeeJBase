@@ -22,7 +22,8 @@ Later:
 1. tie venues into djs
 7. add image uploader/ability to edit
 13. scratch academy, dupspot
-
+cold emailing:
+http://www.fastcompany.com/3036672/hit-the-ground-running/what-we-learned-from-sending-1000-cold-emails
 
 JQuery UI sortable to change order of blocks -some compatibility issues with ember
 Image uploader

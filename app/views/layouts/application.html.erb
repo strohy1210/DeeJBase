@@ -75,11 +75,11 @@
   <%end%>
   <% if @filter %>
   <li class="navbar-form col-xs-2">
-    <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc],["Most Recent on DeeJBase", :recent_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:filter, options_for_select([["SoundCloud - Fewest Followers", :scld_asc], ["SoundCloud - Most Followers", :scld_desc],["Most Recent", :recent_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
   <%else%>
       <li class="navbar-form col-xs-2">
-    <%= select_tag(:filter, options_for_select([["SoundCloud Followers - Fewest", :scld_asc], ["SoundCloud Followers - Most", :scld_desc], ["Most Recent on DeeJBase", :recent_desc]], :recent_desc), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:filter, options_for_select([["SoundCloud - Fewest Followers", :scld_asc], ["SoundCloud - Most Followers", :scld_desc], ["Most Recent", :recent_desc]], :recent_desc), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
 
   <%end%>
@@ -90,7 +90,6 @@
       <% end %>
       <% if current_user && current_user.dj_status %>
       <li class="navbar-right"> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
-      <%elsif current_user && !current_user.dj_status%>
     <%end%>
   <li class="navbar-right">
     <% if logged_in? && !current_user.dj_status %>

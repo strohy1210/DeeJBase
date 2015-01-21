@@ -61,18 +61,18 @@
       </div>
       </a></li>
       <li><%= link_to 'About', about_path%></li>
-<% @categories = ["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
+<% @categories=["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
   <% if @neighborhood %>
   <li><form class="navbar-form col-xs-2">
-   <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] }<< ["All neighborhoods", 'all'], @neighborhood.id), class: "form-control",:onchange => 'this.form.submit()') %>
+   <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] }<< ["All areas", 'all'], @neighborhood.id), class: "form-control",:onchange => 'this.form.submit()') %>
   
   </li>
   <% else %>
   <li><form class="navbar-form col-xs-2">
-    <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] } << ["All neighborhoods", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] } << ["All areas", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
   </li>
   <%end%>
-  <% if @category %>
+  <% if @category != "all"%>
   <li class="navbar-form col-xs-2">
     <%= select_tag(:category, options_for_select(@categories, @category), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
@@ -91,21 +91,20 @@
       <li class="navbar-right"> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
 
     <%end%>
-  <li class="navbar-right">
-    <% if logged_in? && !current_user.dj_status%>
+<li class="navbar-right">
+    <% if logged_in? && !current_user.dj_status %>
      <div class="user-thumbnail">
       <%= image_tag(current_user.image_url)%>
       </div>
     <%end%>
   </li>
-    <% if logged_in? %>
+  <% if logged_in? %>
       <li class="navbar-right pull-right"><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <%end%>
     </ul>
   </div>
 
 </div>
-
 
   <div class="container" id="wrap">
     <% flash.each do |key, value| %>
