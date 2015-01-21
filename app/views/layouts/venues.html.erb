@@ -72,11 +72,11 @@
     <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] } << ["All areas", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
   </li>
   <%end%>
-  <% if @category != "all"%>
+  <% if @category != "all" && @category != nil%>
   <li class="navbar-form col-xs-2">
     <%= select_tag(:category, options_for_select(@categories, @category), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
-  <%else%>
+  <%elsif @category == nil || @category = "all"%>
   <li class="navbar-form col-xs-2">
     <%= select_tag(:category, options_for_select(@categories, "all"), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>

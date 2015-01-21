@@ -45,14 +45,14 @@ class ApplicationController < ActionController::Base
       @djs = Dj.is_dj.paginate(page: params[:page], per_page: 6).order('updated_at DESC') if @filter=="recent_desc"
     end
   end
-  
+
   def set_venue_params
     @category = params["category"]
     if params["category"] && params["category"] != "all" && params[:neighborhood_id] != "all"
       @neighborhood = Neighborhood.find(params[:neighborhood_id])
       @venues = Venue.where(neighborhood_id: @neighborhood.id, category: @category).paginate(page: params[:page], per_page: 6).order('updated_at DESC')
       if @venues.blank?
-        flash.now[:warning] = "No venues matching both the neighborhood and category."
+        flash.now[:warning] = "No venues matching both the neighborhood and category, so here's the results for the hood."
         @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 6).order('updated_at DESC')
       end
     elsif params["category"] && params["category"] != "all" && params[:neighborhood_id] == "all"
