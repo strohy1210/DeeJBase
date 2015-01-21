@@ -97,9 +97,11 @@
      <div class="user-thumbnail">
       <%= image_tag(current_user.image_url)%>
       </div>
-      <li class="navbar-right pull-right"><%= link_to 'Logout', '/logout', method: "delete" %></li>
     <%end%>
   </li>
+  <% if logged_in? %>
+      <li class="navbar-right pull-right"><%= link_to 'Logout', '/logout', method: "delete" %></li>
+      <%end%>
     </ul>
   </div>
 
