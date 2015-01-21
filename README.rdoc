@@ -5,6 +5,7 @@ rate venue with dj autocomplete
 characters counter
 Neighborhood table
 map widget
+created "rated_at" row in dj table and sort by that (on save of a rating, call update on dj)
 Add message in DJ sign up button
 10. update contact info of the peoples who responded
 ADD:

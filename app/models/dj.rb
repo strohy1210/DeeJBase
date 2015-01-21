@@ -125,6 +125,17 @@ class Dj < ActiveRecord::Base
     end
   end
 
+  def self.recently_rated
+    h = Hash.new
+    Dj.is_dj.each do |dj|
+      h[dj.comments.last.updated_at] = dj if dj.comments.any?
+      h[DateTime.new(2010)]=dj if dj.comments.blank?
+    end
+    times = h.keys.sort!.reverse! #produces times with most recent first
+    times.map do |time|
+      h[time] # returns djs in order of time
+    end
+  end
 
   private
     def self.save_tracks(dj, tracks, client)

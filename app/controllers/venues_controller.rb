@@ -2,7 +2,7 @@ class VenuesController < ApplicationController
  skip_before_action :authorize
   
   def index
-    @categories = ["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] 
+    
     if params["category"] && params["category"] != "all"
       @category = params["category"]
       if params[:neighborhood_id] && params[:neighborhood_id] != "all"
