@@ -17,4 +17,26 @@
 //         $(this).hide();
 // });
 
-// })
+$(function(){
+
+  var first = true;
+  if (first) {
+    $(".index-image a img").error(function(){
+
+      var alt_image= $(this).attr('alt');
+      $(this).attr('src', alt_image);
+      first = false;
+    });
+  }
+  var first = true;
+  if (first) {
+    $(".profile-image img").error(function(){
+
+      var alt_image= $(this).attr('alt');
+      $(this).attr('src', alt_image);
+      first = false;
+    });
+  }
+
+
+});

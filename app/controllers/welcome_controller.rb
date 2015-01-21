@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   skip_before_action :authorize
 
   def index
+
     if params[:filter]
       set_params
     else
@@ -59,7 +60,6 @@ class WelcomeController < ApplicationController
   end
 
   private
-
     def current_user_params
       params.require(:user).permit!
     end

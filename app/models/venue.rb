@@ -31,4 +31,5 @@ class Venue < ActiveRecord::Base
     "http://"+self.name.gsub(" ", "").downcase+"nyc.jpg.to/"
   end
 
+
 end

@@ -1,6 +1,6 @@
 class YelpData
   BAR_WORDS = ["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels"]
-  
+
   def self.remove_bad_data
     yelp = YelpData.new
     Venue.all.where(category: nil).each do |venue|
