@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to dj_form_path
     elsif @user.dj_status
       @dj = current_dj
-      redirect_to dj_path(@dj.slugify)
+      redirect_to :back
     else
       redirect_to :back
     end
