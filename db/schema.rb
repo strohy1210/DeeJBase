@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120223228) do
+ActiveRecord::Schema.define(version: 20150122161801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150120223228) do
     t.text     "fb_bio"
     t.integer  "talking_about_count"
     t.string   "fb_location"
+    t.datetime "rated_at"
   end
 
   create_table "events", force: true do |t|
@@ -135,6 +136,7 @@ ActiveRecord::Schema.define(version: 20150120223228) do
     t.string   "yelp_id"
     t.string   "category"
     t.integer  "neighborhood_id"
+    t.datetime "rated_at"
   end
 
 end
