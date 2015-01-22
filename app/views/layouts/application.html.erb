@@ -49,7 +49,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container" id="bar">
     <div class="navbar-header hidden-xs">
-      <%= link_to image_tag("logo_white.png", alt: "Find NYCs Rawest Talent", title: "For New Yorkers By New Yorkers"), root_path, class: 'navbar-brand hidden-xs' %>
+      <%= link_to image_tag("logo_white.png", alt: "Find NYCs Rawest Talent", title: "For New Yorkers By New Yorkers"), about_path, class: 'navbar-brand hidden-xs' %>
     </div>
 
     <ul class="nav navbar-nav">
@@ -60,7 +60,7 @@
        <strong> DJ Sign Up</strong>
       </div>
       </a></li>
-      <li><%= link_to 'About', about_path%></li>
+      <li><%= link_to 'DJ List', root_path%></li>
    
 
   <% if @genre %>
@@ -159,7 +159,9 @@
 <!--///////////  END MODAL /////////////////////// -->
   <footer>
 <div class="fb-like" data-href="https://www.facebook.com/pages/DeeJBase/361049373981028" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
-<%=link_to "Back", :back, class: "pull-right"%>
+<div class="controlls pull-right">
+
+</div>
   </footer>
   <script>
 
