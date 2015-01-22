@@ -7,7 +7,10 @@
     </div>
     <div class= "comment col-md-10">
       <div class="user-rating">
-        <strong>Rating: <%= comment.rating.score.to_i %>/5 (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y") %>)</strong>
+        <strong>Rating: <%= comment.rating.score.to_i %>/5 
+          <% if comment.event %>
+          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>)</strong>
+          <%end%>
       </div>
       <div class="user-comment" id='<%=comment.id%>'>
         <li><%= truncate(comment.body, length: 500, separator: ".") %></li>

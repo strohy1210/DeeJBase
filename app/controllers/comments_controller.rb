@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @venue = @rating.venue 
     @comment.update(comment_params)
 
-    if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "Pick a Date"
+    if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "Pick a Date" && !params[:date].blank?
       if @venue
         array = params[:date].split("-")
         m=array.first
