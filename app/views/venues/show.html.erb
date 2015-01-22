@@ -37,8 +37,8 @@
     
     
           <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "For your feedback to be recorded, you must give both a comment of ~2-3 sentences as well as a rating.", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 30 characters).", input_html: { minlength: 30, rows: 5,  class: "form-control comment" }%>
-
-      
+          
+            <%= text_field_tag :date, "Pick a Date", {class: "text-center datepicker"} %><br>
 
           <%= f.button :submit, class: "btn btn-default submit-comment"%>
 
@@ -66,6 +66,7 @@
      <%= render 'reviews' %><br>
 
   <%end%>
+
 <script>
   $('#star').raty({
     readOnly: true,
@@ -86,6 +87,7 @@
       });
     }
   });
+
 
 
 

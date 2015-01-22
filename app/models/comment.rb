@@ -3,6 +3,7 @@ class Comment < ActiveRecord::Base
   has_one :user, through: :rating
   has_one :dj, through: :rating
   has_one :venue, through: :rating
+  has_one :event, through: :rating
   # validates :body, :length => { :minimum => 40, maximum: 300 }
   validates :rating_id, presence: :true, on: :update
   before_update :check_rating

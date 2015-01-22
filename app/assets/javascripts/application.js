@@ -17,4 +17,5 @@
 //= require ember
 //= require ember-data
 //= require cocoon
+//= require bootstrap-datepicker
 //= require_tree .

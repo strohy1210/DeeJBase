@@ -38,5 +38,15 @@ $(function(){
     });
   }
 
+    $('.datepicker').datepicker({
+        format: 'mm-dd-yyyy',
+        endDate: '+0d',
+        autoclose: true
+    });
+
+    // $('.submit-comment').click(function(){
+    //   var date = $('.datepicker').attr(value);
+    //   $('.datepicker').attr('type', 'date');
+    // })
 
 });
