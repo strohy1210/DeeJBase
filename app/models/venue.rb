@@ -7,6 +7,12 @@ class Venue < ActiveRecord::Base
   accepts_nested_attributes_for :events, :reject_if => :all_blank, :allow_destroy => true
   before_create :yelp
   
+  def slugify
+    name.gsub(" ", "-").gsub(".", "").downcase
+  end
+#Venue.all.each do |v|
+#v.update(slug: v.slugify)
+#end
   def mapsify
     url = self.address.gsub(';',',').gsub(' ','+')
     'https://www.google.com/maps/place/'+url +'/'

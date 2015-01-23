@@ -33,7 +33,7 @@ class SearchesController < ApplicationController
         redirect_to venues_path
       elsif @venues.size == 1
         @venue = @venues.first
-        redirect_to venue_path(@venue)
+        redirect_to venue_path(@venue.slugify)
       else
         flash.now[:success] = @venues.size.to_s + ' result(s) for "' +name+'." Click for more info.'
         render 'venues/index'

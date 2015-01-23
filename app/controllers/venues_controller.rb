@@ -10,7 +10,8 @@ class VenuesController < ApplicationController
       set_venue_params
       render 'venues/index'
     end
-    @venue = Venue.find(params[:id])
+ 
+    @venue = Venue.find_by(slug: params[:slug])
 
     @comments = @venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?

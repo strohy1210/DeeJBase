@@ -22,15 +22,15 @@
   <div class='dj-item'>
 
     <div class= "dj-header">
-      <h3><%= link_to venue.name.titleize, venue_path(venue) %></h3>
+      <h3><%= link_to venue.name.titleize, venue_path(venue.slugify) %></h3>
     
     </div>
     <div class="row">
       <p><div class="index-image col-md-3">
-        <%= link_to image_tag(venue.imageify, alt: venue.image_url), venue_path(venue) %>
+        <%= link_to image_tag(venue.imageify, alt: venue.image_url), venue_path(venue.slugify) %>
       </div></p>
 
-  <%= link_to venue_path(venue) do %>
+  <%= link_to venue_path(venue.slugify) do %>
       <div class="bio col-md-8 col-md-offset-1">
         <div class='overlay'>
         

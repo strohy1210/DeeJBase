@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :genres, only: [:new, :create]
 
   resources :events, only: [:new, :create, :destroy]
-  resources :venues, only: [:new, :create, :index, :show]
+  get 'venues/:slug', to: 'venues#show', as: :venue
+  resources :venues, only: [:new, :create, :index]
+
   resources :ratings, only: [:update, :destroy, :create]
   resources :comments, only: :update do
     resources :replies, only: [:create, :destroy, :update]
@@ -12,7 +14,8 @@ Rails.application.routes.draw do
 
   resources :djs, only: [:create, :update, :index]
 
-  get 'djs/:name', to: 'djs#show'
+  get 'djs/:slug', to: 'djs#show'
+ 
   get 'dj-form', to: 'welcome#dj_form'
   get 'about', to: 'welcome#about'
   post 'set-dj', to: 'welcome#set_dj'

@@ -16,12 +16,14 @@ class Dj < ActiveRecord::Base
   NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhattan", "bronx", "ny", "bklyn"]
 
   attr_accessor :message, :demo_title
-
+# Dj.all.each do |dj|
+# dj.update(slug: dj.slugify)
+# end
   # def default_values
   #   self.bio ||= 'I\'m a DJ in NYC, get in touch'
   # end
   def slugify
-    name.gsub(" ", "-").gsub(".", "")
+    name.gsub(" ", "-").gsub(".", "").downcase
   end
   def update_slug
     update(slug: slugify) unless slug == slugify
@@ -48,30 +50,30 @@ class Dj < ActiveRecord::Base
   # def rate_get2(int)
   #   (0.2345*int)+180.568727
   # end
-  def self.estimate_rates
-    Dj.is_dj.where(rate: nil, uid: nil).each do |dj|
-      rate = dj.rate_get
-      if rate < 200
-        dj.update(rate: "$100-199")
-      elsif rate < 300
-        dj.update(rate: "$200-299")
-      elsif rate<400
-        dj.update(rate: "$300-399")
-      elsif rate<500
-        dj.update(rate: "$400-499")
-      elsif rate<750
-        dj.update(rate: "$500-749")
-      elsif rate<1000     
-        dj.update(rate: "$750-999")
-      elsif rate<1500     
-        dj.update(rate: "$1,000-1,499")
-      elsif rate<3000 
-        dj.update(rate: "$1,500-2,999")
-      else
-        dj.update(rate: "$3,000+")
-      end
-    end
-  end
+  # def self.estimate_rates
+  #   Dj.is_dj.where(rate: nil, uid: nil).each do |dj|
+  #     rate = dj.rate_get
+  #     if rate < 200
+  #       dj.update(rate: "$100-199")
+  #     elsif rate < 300
+  #       dj.update(rate: "$200-299")
+  #     elsif rate<400
+  #       dj.update(rate: "$300-399")
+  #     elsif rate<500
+  #       dj.update(rate: "$400-499")
+  #     elsif rate<750
+  #       dj.update(rate: "$500-749")
+  #     elsif rate<1000     
+  #       dj.update(rate: "$750-999")
+  #     elsif rate<1500     
+  #       dj.update(rate: "$1,000-1,499")
+  #     elsif rate<3000 
+  #       dj.update(rate: "$1,500-2,999")
+  #     else
+  #       dj.update(rate: "$3,000+")
+  #     end
+  #   end
+  # end
   
   def average_rating
     valid_ratings = ratings.valid_only

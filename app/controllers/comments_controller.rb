@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
         date= date_formated.to_date
         @event = Event.find_by(date: date, venue_id: @venue.id) || @event=Event.create(date: date, venue_id: @venue.id)
         @rating.update(event_id: @event.id)
-        redirect_to venue_path(@venue)
+        redirect_to venue_path(@venue.slugify)
       else
 
       redirect_to dj_path(@dj.slugify) if @dj
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
       # @rating.destroy
       flash[:warning] = 'You need to give a rating and a comment (of more than 30 characters) and choose a date to leave feedback'
       redirect_to dj_path(@dj.slugify) if @dj
-      redirect_to venue_path(@venue) if @venue
+      redirect_to venue_path(@venue.slugify) if @venue
     end
 
   end

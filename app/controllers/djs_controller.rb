@@ -30,7 +30,7 @@ class DjsController < ApplicationController
       set_params
       render 'welcome/index'
     end
-    @dj= Dj.find_by(slug: params[:name])
+    @dj= Dj.find_by(slug: params[:slug])
     @genres = @dj.genres
     @tracks = @dj.tracks.where.not(demo: nil)
     @comments = @dj.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
