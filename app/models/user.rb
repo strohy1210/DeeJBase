@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :comments, through: :ratings
-  validates :email, :uniqueness => true
 
   def self.get_user_from_omniauth(auth_hash)
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)

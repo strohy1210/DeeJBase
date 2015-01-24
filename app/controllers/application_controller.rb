@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def login(user)
-    flash[:info]= "You're logged in!"
+
     session[:user_id] = @user.id
   end  
 

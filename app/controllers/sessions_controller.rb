@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       # redirect_to root_path
     # else
     begin
+      flash[:info]= "You're logged in!"
       redirect_to :back
     rescue ActionController::RedirectBackError
       redirect_to venues_path
