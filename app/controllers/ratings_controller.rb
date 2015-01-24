@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+    skip_before_action :authorize
+
   def update
     @rating = Rating.find(params[:id])
     params[:score] = 0 if params[:score].blank?

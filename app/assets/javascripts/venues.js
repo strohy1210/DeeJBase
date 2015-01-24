@@ -43,6 +43,7 @@ $(function(){
         endDate: '+0d',
         autoclose: true
     });
+    
 
     // $('.submit-comment').click(function(){
     //   var date = $('.datepicker').attr(value);

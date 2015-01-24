@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     login(@user)
    
     if @user.dj_status == nil
-      redirect_to dj_form_path
+      redirect_to :back
     elsif @user.dj_status
       @dj = current_dj
       redirect_to :back

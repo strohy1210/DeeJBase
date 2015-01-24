@@ -10,9 +10,7 @@ class Venue < ActiveRecord::Base
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase
   end
-#Venue.all.each do |v|
-#v.update(slug: v.slugify)
-#end
+
   def mapsify
     url = self.address.gsub(';',',').gsub(' ','+')
     'https://www.google.com/maps/place/'+url +'/'

@@ -16,9 +16,7 @@ class Dj < ActiveRecord::Base
   NYC_WORDS = ["brooklyn", "new york", "staten", "queens", "manhattan", "bronx", "ny", "bklyn"]
 
   attr_accessor :message, :demo_title
-# Dj.all.each do |dj|
-# dj.update(slug: dj.slugify)
-# end
+
   # def default_values
   #   self.bio ||= 'I\'m a DJ in NYC, get in touch'
   # end
