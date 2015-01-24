@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
     self.find_with_omniauth(auth_hash) || self.create_with_omniauth(auth_hash)
   end
 
-  def self.create_with_omniauth(auth_hash)  
-    create(uid: auth_hash[:uid], email: "gmail", name: auth_hash[:info][:name], image_url: auth_hash[:info][:image], first_name: auth_hash[:info][:first_name], gender: auth_hash[:extra]["raw_info"]["gender"])
+  def self.create_with_omniauth(auth_hash)
+    create(uid: auth_hash[:uid], name: auth_hash[:info][:name], image_url: auth_hash[:info][:image])
   end
 
   def self.find_with_omniauth(auth_hash)
