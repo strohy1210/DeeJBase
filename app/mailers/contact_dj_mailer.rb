@@ -26,6 +26,8 @@ class ContactDjMailer < ActionMailer::Base
     email = @dj.email
     mail(to: email, subject: name+ ' NYC - DJ booking.')
   end
+
+
 end
 # djs = Dj.is_dj.order('sdcl_followers ASC')[1..14]
 # Dj.is_dj.each do |dj|

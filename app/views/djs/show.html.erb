@@ -93,7 +93,7 @@
     
     <div class="tracks">
       <h5 class="tracks-title">SoundCloud Streams</h5>
-      <% if !@dj.tracks.blank? %>
+      <% if @dj.tracks.any? %>
 
         <%= render 'tracks' %><br>
 
@@ -103,7 +103,7 @@
 
   <%else%>
       <div class="tracks col-md-12">
-    <% if !@dj.tracks.blank? %>
+    <% if !@dj.tracks.any? %>
 
     <%= render 'tracks' %><br>
 

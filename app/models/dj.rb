@@ -137,7 +137,7 @@ class Dj < ActiveRecord::Base
   #   end
   # end
 
-  private
+
     def self.save_tracks(dj, tracks, client)
       tracks[0..4].each do |track|
         Track.get_track_info(dj, track, client)
