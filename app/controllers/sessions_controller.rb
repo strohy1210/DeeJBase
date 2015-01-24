@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
     login(@user)
    
     if @user.dj_status == nil
-      redirect_to :back
+      redirect_to root_path #dj_form_path
     elsif @user.dj_status
       @dj = current_dj
-      redirect_to :back
+      redirect_to root_path
     else
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
