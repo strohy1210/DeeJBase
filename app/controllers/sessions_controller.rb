@@ -12,8 +12,11 @@ class SessionsController < ApplicationController
     #   @dj = current_dj
       # redirect_to root_path
     # else
+    begin
       redirect_to :back
-    # end
+    rescue ActionController::RedirectBackError
+      redirect_to venues_path
+    end
   end
 
   def destroy
