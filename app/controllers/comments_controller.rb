@@ -9,14 +9,14 @@ class CommentsController < ApplicationController
     @venue = @rating.venue 
     @comment.update(comment_params)
 
-    if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "Pick a Date" && !params[:date].blank?
+    if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "Choose Date" && !params[:date].blank?
       if @venue
         array = params[:date].split("-")
         m=array.first
         d=array.second
         y=array.last
         date_formated = d+"-"+m+"-"+y
-        date= date_formated.to_date
+        date= date_formated.to_date || date = Date.today
         @event = Event.find_by(date: date, venue_id: @venue.id) || @event=Event.create(date: date, venue_id: @venue.id)
         @rating.update(event_id: @event.id)
         redirect_to venue_path(@venue.slugify)
