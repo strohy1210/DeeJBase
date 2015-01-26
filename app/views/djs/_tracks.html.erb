@@ -1,3 +1,4 @@
+<% if @dj.tracks.any? %>
 <div class = "show-demo track">
   <%= @tracks[0].title %>
   <%= @tracks[0].demo.html_safe %><br>
@@ -20,4 +21,5 @@
   <%end%>
 
 </div>
+<%end%>
 <%end%>

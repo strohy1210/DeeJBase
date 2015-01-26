@@ -90,24 +90,20 @@
 
      <%= render 'reviews' %><br>
 <br>
-    
+  <% if !@dj.tracks.any? %>
     <div class="tracks">
       <h5 class="tracks-title">SoundCloud Streams</h5>
-      <% if @dj.tracks.any? %>
 
         <%= render 'tracks' %><br>
 
-      <%end%>
     </div>
-
+  <%end%>
 
   <%else%>
-      <div class="tracks col-md-12">
-    <% if !@dj.tracks.any? %>
+   <div class="tracks col-md-12">
 
     <%= render 'tracks' %><br>
 
-    <%end%>
   </div>
   <%end%>
 

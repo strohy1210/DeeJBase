@@ -1,9 +1,6 @@
 == README
 
-date for events
-rate venue with dj autocomplete
 characters counter
-Neighborhood table
 map widget
 created "rated_at" row in dj table and sort by that (on save of a rating, call update on dj)
 Add message in DJ sign up button
@@ -14,11 +11,11 @@ blind barber
 the box
 DJ huggie bear
 baby blue
+create venue algorithm
 Later:
 1. tweet at djs to claim profile
 2. rating system, i review
 3. import contact info from db in csv form
-5. add user ability to rate djs: http://paweljaniak.co.za/2013/07/25/5-star-ratings-with-rails/
 1. tie venues into djs
 7. add image uploader/ability to edit
 13. scratch academy, dupspot
@@ -39,8 +36,33 @@ psql (9.3.5)
 SSL connection (cipher: DHE-RSA-AES256-SHA, bits: 256)
 Type "help" for help.
 
-deejbase::YELLOW=> \copy (SELECT name, email, phone, sdcl_followers, dj_status, agent_status, rate_per_hour FROM djs) TO djs.csv DELIMITER ',' CSV HEADER;
+deejbase::YELLOW=> \copy (SELECT * FROM venues) TO venues.csv DELIMITER ',' CSV HEADER;
 
 http://www.had2know.com/academics/regression-calculator-statistics-best-fit.html
 
 http://www.mathsisfun.com/data/grapher-equation.html
+
+
+How was your weekend in music?
+
+There's so much talent in NY. Maybe too much. So why do some venues hire awful DJs? And why aren't the talented DJs rewarded with more than $100/night?
+
+DeeJBase's mission is to create more accountability in the NYC music scene. The bars and lounges only care if they know you do.
+
+Go to www.deejbase.com/venues
+
+Search for a bar you've gone to recently to review, log in with facebook, and review the place's music. It's easy - and every week we'll publish the particularly helpful reviews:
+
+Review of the Week:
+
+Bossa Nova Civic Club in Bushwick:
+
+Rating: 5/5 (based on event on Saturday, January 10, 2015)
+Now with GlassLands gone, Bossa Nova is here to comfort our hearts. But don't be fooled, just because it is in Bushwick doesn't mean it is easy to get into. Even in the dead of winter the DJs here are such good quality that there is a line outside. We waited for about half an hour. Once you step inside and it is a really chill vibe, though you may not be able to see 1 foot in front of you because of the intense smoke machine. Would I come here again? Absolutely.
+
+by Tinh
+
+DeeJbase is in beta and you guys are getting this email because you left it in the survey I sent out (or you're one of my close friends and I'm just bugging you). If you have ideas or want to get more involved, please let me know.
+
+Sarah
+

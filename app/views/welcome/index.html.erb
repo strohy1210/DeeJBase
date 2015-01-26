@@ -59,8 +59,10 @@
     <br>
 
       <p><div class="demo-embed">
+        <% if dj.tracks.any? %>
         <% track=dj.tracks.where.not(demo: nil)[0] %>
         <%= track.demo.html_safe %>
+        <% end%>
       </div></p>
 
 
