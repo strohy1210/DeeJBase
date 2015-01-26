@@ -1,13 +1,10 @@
 == README
-
+put validaiton on events, if comments or ratings blank, destroy
 characters counter
-map widget
-created "rated_at" row in dj table and sort by that (on save of a rating, call update on dj)
 Add message in DJ sign up button
 10. update contact info of the peoples who responded
 ADD:
 wythe hotel
-blind barber
 the box
 DJ huggie bear
 baby blue
@@ -47,22 +44,25 @@ How was your weekend in music?
 
 There's so much talent in NY. Maybe too much. So why do some venues hire awful DJs? And why aren't the talented DJs rewarded with more than $100/night?
 
-DeeJBase's mission is to create more accountability in the NYC music scene. The bars and lounges only care if they know you do.
+DeeJBase's mission is to create more accountability in the NYC music scene through a curation system by the people who are paying attention and really care - you and me. So how can you help?
 
 Go to www.deejbase.com/venues
 
-Search for a bar you've gone to recently to review, log in with facebook, and review the place's music. It's easy - and every week we'll publish the particularly helpful reviews:
+Search for a bar you've gone to recently, log in with facebook, and review the place's music. It's easy - every week we'll publish the particularly helpful reviews:
 
 Review of the Week:
 
-Bossa Nova Civic Club in Bushwick:
+Bossa Nova Civic Club - Bushwick:
 
 Rating: 5/5 (based on event on Saturday, January 10, 2015)
 Now with GlassLands gone, Bossa Nova is here to comfort our hearts. But don't be fooled, just because it is in Bushwick doesn't mean it is easy to get into. Even in the dead of winter the DJs here are such good quality that there is a line outside. We waited for about half an hour. Once you step inside and it is a really chill vibe, though you may not be able to see 1 foot in front of you because of the intense smoke machine. Would I come here again? Absolutely.
 
 by Tinh
 
-DeeJbase is in beta and you guys are getting this email because you left it in the survey I sent out (or you're one of my close friends and I'm just bugging you). If you have ideas or want to get more involved, please let me know.
-
+Lets disrupt the industry.
 Sarah
+
+P.S.
+DeeJbase is in beta mode and you guys are getting this email because you left it in the survey I sent out (or you're one of my close friends and I'm just bugging you). If you have ideas or want to get more involved, respond to this email and let me know. Also if you know anyone who many be interested in this, shoot their emails to me as well. DeeJBase can go in so many directions from here.
+
 
