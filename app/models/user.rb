@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :comments, through: :ratings
-  after_create :new_user_email
+  after_create :new_user_email, :update_first_name
 
 
   def self.get_user_from_omniauth(auth_hash)

@@ -4,9 +4,9 @@ characters counter
 Add message in DJ sign up button
 10. update contact info of the peoples who responded
 ADD:
-wythe hotel
+
 the box
-DJ huggie bear
+
 baby blue
 create venue algorithm
 Later:
