@@ -8,7 +8,6 @@ class Dj < ActiveRecord::Base
   has_many :comments, through: :ratings
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :remove_empty_tracks#, default_values
-  validates :email, :uniqueness => true
   before_save :update_slug
   scope :is_dj, -> { where(dj_status: true, agent_status: false) }
 
@@ -45,33 +44,7 @@ class Dj < ActiveRecord::Base
   def rate_get
     29.3447*(sdcl_followers**0.4635)
   end
-  # def rate_get2(int)
-  #   (0.2345*int)+180.568727
-  # end
-  # def self.estimate_rates
-  #   Dj.is_dj.where(rate: nil, uid: nil).each do |dj|
-  #     rate = dj.rate_get
-  #     if rate < 200
-  #       dj.update(rate: "$100-199")
-  #     elsif rate < 300
-  #       dj.update(rate: "$200-299")
-  #     elsif rate<400
-  #       dj.update(rate: "$300-399")
-  #     elsif rate<500
-  #       dj.update(rate: "$400-499")
-  #     elsif rate<750
-  #       dj.update(rate: "$500-749")
-  #     elsif rate<1000     
-  #       dj.update(rate: "$750-999")
-  #     elsif rate<1500     
-  #       dj.update(rate: "$1,000-1,499")
-  #     elsif rate<3000 
-  #       dj.update(rate: "$1,500-2,999")
-  #     else
-  #       dj.update(rate: "$3,000+")
-  #     end
-  #   end
-  # end
+
   
   def average_rating
     valid_ratings = ratings.valid_only
@@ -198,4 +171,30 @@ end
   #   end
 
   # end
-
+  # def rate_get2(int)
+  #   (0.2345*int)+180.568727
+  # end
+  # def self.estimate_rates
+  #   Dj.is_dj.where(rate: nil, uid: nil).each do |dj|
+  #     rate = dj.rate_get
+  #     if rate < 200
+  #       dj.update(rate: "$100-199")
+  #     elsif rate < 300
+  #       dj.update(rate: "$200-299")
+  #     elsif rate<400
+  #       dj.update(rate: "$300-399")
+  #     elsif rate<500
+  #       dj.update(rate: "$400-499")
+  #     elsif rate<750
+  #       dj.update(rate: "$500-749")
+  #     elsif rate<1000     
+  #       dj.update(rate: "$750-999")
+  #     elsif rate<1500     
+  #       dj.update(rate: "$1,000-1,499")
+  #     elsif rate<3000 
+  #       dj.update(rate: "$1,500-2,999")
+  #     else
+  #       dj.update(rate: "$3,000+")
+  #     end
+  #   end
+  # end
