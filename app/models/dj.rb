@@ -98,18 +98,15 @@ class Dj < ActiveRecord::Base
     end
   end
 
-  # def self.recently_rated
-  #   h = Hash.new
-  #   Dj.is_dj.each do |dj|
-  #     h[dj.comments.last.updated_at] = dj if dj.comments.any?
-  #     h[DateTime.new(2010)]=dj if dj.comments.blank?
-  #   end
-  #   times = h.keys.sort!.reverse! #produces times with most recent first
-  #   times.map do |time|
-  #     h[time] # returns djs in order of time
-  #   end
-  # end
-
+  def self.create_adhoc_dj(name)
+    client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
+    dj = client.get('/users', :q => name).first
+    image_url = dj.avatar_url
+    name = dj.username
+    sdcl_followers = dj.followers_count
+    sdcl_id = dj.id
+    Dj.create(name: name, sdcl_followers: sdcl_followers, dj_status: true, sdcl_id: sdcl_id, image_url: image_url) if Dj.find_by(sdcl_id: sdcl_id).blank?
+  end
 
     def self.save_tracks(dj, tracks, client)
       tracks[0..4].each do |track|
@@ -196,5 +193,18 @@ end
   #     else
   #       dj.update(rate: "$3,000+")
   #     end
+  #   end
+  # end
+
+
+  # def self.recently_rated
+  #   h = Hash.new
+  #   Dj.is_dj.each do |dj|
+  #     h[dj.comments.last.updated_at] = dj if dj.comments.any?
+  #     h[DateTime.new(2010)]=dj if dj.comments.blank?
+  #   end
+  #   times = h.keys.sort!.reverse! #produces times with most recent first
+  #   times.map do |time|
+  #     h[time] # returns djs in order of time
   #   end
   # end
