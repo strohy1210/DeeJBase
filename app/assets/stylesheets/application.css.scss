@@ -262,6 +262,12 @@ li { cursor: pointer; }
 }
 
 
+.youtube iframe {
+  width: 420px;
+  height: 315px;
+  }
+
+
 @media (max-device-width : 480px) {
   .navbar-fixed-top {
         position: absolute;

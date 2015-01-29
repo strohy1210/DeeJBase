@@ -37,10 +37,8 @@
           <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
         <% end%>
         <% if !dj.fb_likes.blank? %>
-        <h5>FB Likes: <%= number_with_delimiter(dj.fb_likes, :delimiter => ',') %></h5>
        <%end%>
 
-          <h5>Sound Cloud Followers: <%= number_with_delimiter(dj.sdcl_followers, :delimiter => ',') if dj.sdcl_followers %></h5>
 
            <h5> located in <%= dj.city %> </h5>
         <%end%>

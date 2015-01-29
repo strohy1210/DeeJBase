@@ -2,8 +2,7 @@
 <div class = "show-demo track">
   <%= @tracks[0].title %>
   <%= @tracks[0].demo.html_safe %><br>
-  <h6>Playback Count: <%= number_with_delimiter(@tracks[0].playback_count, delimiter: ',') %> | 
-  Favorites Count: <%= number_with_delimiter(@tracks[0].favoritings_count, delimiter: ',') %><br> </h6>
+
 </div>
 <br>
 <% if @tracks.size >1 %>
@@ -14,8 +13,7 @@
     <div class='track'>
       <%= track.title %>
       <%= track.demo.html_safe %><br>
-      <h6>Playback Count: <%= number_with_delimiter(track.playback_count, delimiter: ',') %> | 
-      Favorites Count: <%= number_with_delimiter(track.favoritings_count, delimiter: ',') %></h6>
+
     </div>
       <br>
   <%end%>

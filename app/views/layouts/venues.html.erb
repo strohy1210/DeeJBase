@@ -84,12 +84,9 @@
   <%end%>
     <% if !logged_in? %>
       <li class="navbar-right"><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
-      <% else %>
-
       <% end %>
-      <% if current_user && current_user.dj_status %>
+    <% if current_user && current_user.dj_status %>
       <li class="navbar-right"> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
-
     <%end%>
 <li class="navbar-right">
     <% if logged_in? && !current_user.dj_status %>

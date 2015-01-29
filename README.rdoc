@@ -48,21 +48,11 @@ DeeJBase's mission is to create more accountability in the NYC music scene throu
 
 Go to www.deejbase.com/venues
 
-Search for a bar you've gone to recently, log in with facebook, and review the place's music. It's easy - every week we'll publish the particularly helpful reviews:
 
-Review of the Week:
+  <!--     <h6>Playback Count:# <%= #number_with_delimiter(track.playback_count, delimiter: ',') %> | 
+      Favorites Count: #<%= #number_with_delimiter(track.favoritings_count, delimiter: ',') %></h6> -->
 
-Bossa Nova Civic Club - Bushwick:
+            <h4>Sound Cloud Followers: <%= number_with_delimiter(@dj.sdcl_followers, :delimiter => ',') if @dj.sdcl_followers %></h4>
 
-Rating: 5/5 (based on event on Saturday, January 10, 2015)
-Now with GlassLands gone, Bossa Nova is here to comfort our hearts. But don't be fooled, just because it is in Bushwick doesn't mean it is easy to get into. Even in the dead of winter the DJs here are such good quality that there is a line outside. We waited for about half an hour. Once you step inside and it is a really chill vibe, though you may not be able to see 1 foot in front of you because of the intense smoke machine. Would I come here again? Absolutely.
-
-by Tinh
-
-Lets disrupt the industry.
-Sarah
-
-P.S.
-DeeJbase is in beta mode and you guys are getting this email because you left it in the survey I sent out (or you're one of my close friends and I'm just bugging you). If you have ideas or want to get more involved, respond to this email and let me know. Also if you know anyone who many be interested in this, shoot their emails to me as well. DeeJBase can go in so many directions from here.
-
-
+            
+        <h5>FB Likes: <%= number_with_delimiter(dj.fb_likes, :delimiter => ',') %></h5>
