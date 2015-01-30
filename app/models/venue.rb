@@ -5,11 +5,17 @@ class Venue < ActiveRecord::Base
   has_many :comments, through: :ratings
   belongs_to :neighborhood
   accepts_nested_attributes_for :events, :reject_if => :all_blank, :allow_destroy => true
-  before_create :yelp
+  after_create :yelp
+  before_save :update_slug
   
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase
   end
+
+  def update_slug
+    update(slug: slugify) unless slug == slugify
+  end
+
 
   def mapsify
     url = self.address.gsub(';',',').gsub(' ','+')
@@ -27,8 +33,8 @@ class Venue < ActiveRecord::Base
   
   def yelp
     yelp = YelpData.new
-    yelp.yelp_search(self)
-    YelpData.remove_bad_data
+    yelp.yelp_search(self) if yelp_id == nil
+    # YelpData.remove_bad_data
   end
 
   def imageify

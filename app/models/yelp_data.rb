@@ -42,7 +42,8 @@ class YelpData
       rescue
         puts "no hood"
       else
-        neighborhood = yelp_venue.location.neighborhoods.first
+        hood = yelp_venue.location.neighborhoods.first
+        neighborhood = Neighborhood.find_by(name: hood)
       end
       begin
         address = yelp_venue.location.address.first     
@@ -75,7 +76,7 @@ class YelpData
       rescue
         puts "no name?"
       end
-      venue.update(neighborhood: neighborhood, phone: phone, name: name, yelp_rating: yelp_rating, image_url: image_url, address: address, latitude: latitude, longitude: longitude, yelp_id: yelp_venue.id)
+      venue.update(hood: hood, neighborhood_id: neighborhood.id, phone: phone, name: name, yelp_rating: yelp_rating, image_url: image_url, address: address, latitude: latitude, longitude: longitude, yelp_id: yelp_venue.id)
     end
     
   end
