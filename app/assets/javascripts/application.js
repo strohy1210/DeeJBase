@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require handlebars
-//= require ember
-//= require ember-data
 //= require cocoon
 //= require bootstrap-datepicker
 //= require_tree .

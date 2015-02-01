@@ -3,13 +3,13 @@
   <%= render 'venue_search' %>
 </div>
 <div class="dj-profile">
-  <div class="row">
+<div class="row">
 <div id="dj-profile">
   
   <div class="profile-pic col-md-3">
     <%= link_to image_tag(@venue.imageify, alt: @venue.image_url), venue_path(@venue.slugify), class: 'profile-image' %>
   </div>
-  <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
+  <div class="dj-info venue-info col-md-5 vertical-center">   
     <div class="other-info">
       <h4>Review <%=@venue.name%>'s music.</h4>
       <%= @venue.neighborhood.name if @venue.neighborhood %><br>
@@ -55,6 +55,15 @@
      <%end%> 
  
   </div><br>
+</div>
+<div class="map col-md-3 vertical-center">
+<iframe
+  width="450"
+  height="500"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCYMVk_CxlrS59DTFNyqz2BypsCyTIhEuE&q=<%=@venue.slugify%>">
+</iframe>
+
 </div>
 </div>
 </div>

@@ -81,7 +81,7 @@ h4 a {
 .profile-pic img {
     height: 200px;
     width: auto;
-    max-width: 300px;
+    max-width: 250px;
     border: 1px solid #ccc
 }
 
@@ -266,6 +266,18 @@ li { cursor: pointer; }
   width: 420px;
   height: 315px;
   }
+
+.map iframe {
+  height: 200px;
+  width: auto;
+  margin-left: 10px;
+  border-radius: 30px;
+
+}
+
+.venue-info {
+  margin-left: 15px;
+}
 
 
 @media (max-device-width : 480px) {
