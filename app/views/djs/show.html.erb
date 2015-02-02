@@ -83,7 +83,37 @@
     <br>
     </div>
     <br><br>
+    <% if @dj.events %>
+    <% @dj.events.each do |event| %>
+      <% event.comments.each do |comment| %>
+        <div class="review">
+        <div class="row">
+          <div class= "user-image col-md-2">
+            <%= image_tag(comment.user.image_url) %>
+        </div>
+          <div class= "comment col-md-10">
+            <div class="user-rating">
+              <strong>Rating: <%= comment.rating.score.to_i %>/5 
+                <% if comment.event %>
+                (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%> at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %>)</strong>
+                <%end%>
+            </div>
+            <div class="user-comment" id='<%=comment.id%>'>
+              <li><%= truncate(comment.body, length: 500, separator: ".") %></li>
+            </div>
+              
+          </div>
+        </div>
+        <div class='row'>
 
+          <span class='col-md-2 text-center first-name'><%= comment.user.first_name if comment.user.first_name %></span>
+          <span class='col-md-10 updated'>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</span>
+        </div>
+        </div>
+      <%end%>
+
+    <%end%>
+    <%end%>
    <% if @comments %>
 
    <h5 class="comments-title">Reviews</h5>

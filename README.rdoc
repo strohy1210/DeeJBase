@@ -4,7 +4,9 @@ characters counter
 Add message in DJ sign up button
 10. update contact info of the peoples who responded
 ADD:
-
+CLAIM THE EVENT
+destroy where ratings are nil
+clean up dj show page
 the box
 
 baby blue

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :genres, only: [:new, :create]
 
   resources :events, only: [:new, :create, :destroy]
+  post :claim_event, to: 'events#claim_event'
   get 'venues/:slug', to: 'venues#show', as: :venue
   resources :venues, only: [:new, :create, :index]
 
