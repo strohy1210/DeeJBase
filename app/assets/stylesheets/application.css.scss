@@ -253,7 +253,7 @@ li { cursor: pointer; }
 .review {
   background: #fff;
   border-radius: 30px;
-  padding: 10px;
+  padding: 5px;
   border-bottom: 1px solid #d0d0d0;
 }
 
@@ -282,8 +282,15 @@ li { cursor: pointer; }
   margin-left: 38px;
 }
 
-.map .btn:hover {
- 
+.claim-event {
+  background: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.updated {
+  font-size: 12px;
 }
 
 
