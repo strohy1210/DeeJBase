@@ -238,9 +238,22 @@ $('.done-rating').click(function(){
   $('.rate-dj').toggle();
   $('.rate-button').toggle();
 })
+var map = $('.map iframe');
+var mapButton = $('.show-map');
+var hideMap = $('.hide-map');
+hideMap.hide();
+map.hide();
+mapButton.click(function(){
+  map.slideToggle();
+  mapButton.toggle();
+  hideMap.toggle();
+})
 
-
-
+hideMap.click(function(){
+  map.slideToggle();
+  hideMap.toggle();
+  mapButton.toggle();
+})
 
 
   </script>
