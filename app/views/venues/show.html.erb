@@ -38,7 +38,7 @@
     
           <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 30 characters).", input_html: { minlength: 30, rows: 5,  class: "form-control comment" }%>
           
-            <%= text_field_tag :date, "Choose Date", {class: "text-center datepicker"} %><br>
+            <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %><br>
 
           <%= f.button :submit, class: "btn btn-default submit-comment"%>
 
@@ -63,9 +63,10 @@
   width="450"
   height="500"
   frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyCYMVk_CxlrS59DTFNyqz2BypsCyTIhEuE&q=<%=@venue.slugify%>+NYC">
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCYMVk_CxlrS59DTFNyqz2BypsCyTIhEuE&q=<%=@venue.mapsify%>,New+York" class="center-block">
 </iframe>
-
+<!-- <img src="http://maps.google.com/maps/api/staticmap?center=<%=@venue.latitude.to_f%>,<%=@venue.longitude.to_f%>&size=255x255&zoom=11&size=200x200p&markers=color:blue|label:A|<%=@venue.mapsify%>,New+York" alt="Static, Marked Map of Chicago, Illinois and Hammond, Indiana with no Center and Zoom"></img>
+ -->
 </div>
 </div>
 </div>

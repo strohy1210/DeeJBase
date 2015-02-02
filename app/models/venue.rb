@@ -18,8 +18,8 @@ class Venue < ActiveRecord::Base
 
 
   def mapsify
-    url = self.address.gsub(';',',').gsub(' ','+')
-    'https://www.google.com/maps/place/'+url +'/'
+    self.name.gsub(';',',').gsub(' ','+')
+    # 'https://www.google.com/maps/place/'+url +'/'
   end
 
   def average_rating
