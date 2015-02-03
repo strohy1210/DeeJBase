@@ -12,6 +12,7 @@ baby blue
 create venue algorithm
 "My Reviews" button on upper right corner
 sink up rating
+Add claim event push notification
 
 Later:
 1. tweet at djs to claim profile

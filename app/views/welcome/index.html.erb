@@ -1,18 +1,18 @@
 
-  <div class="row page-header">
-    <div class="title col-md-7 col-xs-5">
-    <h3> <strong>GO OUT > RATE THE DJ > REPEAT</strong> </h3>
-    </div>
-
-    <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
-      <div class="input-group">
-          <input type="text" class="form-control" placeholder="Chainsmokers" name="name">
-          <div class='input-group-btn'>       
-          <button class="btn btn-default" type="submit">Find DJs <i class="glyphicon glyphicon-search"></i></button>
-        </div>
-      </div>
-      <% end %>
+<div class="row page-header">
+  <div class="title col-md-7 col-xs-5">
+  <h3> <strong>GO OUT > RATE THE DJ > REPEAT</strong> </h3>
   </div>
+
+  <%= form_tag(search_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Chainsmokers" name="name">
+        <div class='input-group-btn'>       
+        <button class="btn btn-default" type="submit">Find DJs <i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+    <% end %>
+</div>
 
 <div id="results">
 <ul>

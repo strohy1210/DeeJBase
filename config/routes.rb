@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   get 'dj-form', to: 'welcome#dj_form'
   get 'about', to: 'welcome#about'
   post 'set-dj', to: 'welcome#set_dj'
-
-  root 'welcome#index'
+  get 'djs', to: 'welcome#index'
+  root 'venues#index'
   post :send_contact_email, to: 'djs#send_contact_email', as: :send_contact_email
   post :contact_us, to: 'welcome#contact_us', as: :contact_us
   

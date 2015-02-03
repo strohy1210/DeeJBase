@@ -32,7 +32,7 @@ class WelcomeController < ApplicationController
       end
     else
       current_user.update(dj_status: status)
-      redirect_to root_path
+      redirect_to djs_path
     end
   end
 

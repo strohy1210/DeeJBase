@@ -15,7 +15,6 @@ class Comment < ActiveRecord::Base
   end
 
   def is_valid?
-
     body.length >= 40 if body
   end
 
