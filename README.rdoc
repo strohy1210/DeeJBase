@@ -2,15 +2,15 @@
 put validaiton on events, if comments or ratings blank, destroy
 characters counter
 Add message in DJ sign up button
-10. update contact info of the peoples who responded
+10. update contact info of the people who responded
 ADD:
-CLAIM THE EVENT
 destroy where ratings are nil
-clean up dj show page
+MANUALY AD DJS TO EVENTS
 the box
-
+make it so you cant claim your own review
 baby blue
 create venue algorithm
+"My Reviews" button on upper right corner
 sink up rating
 
 Later:
