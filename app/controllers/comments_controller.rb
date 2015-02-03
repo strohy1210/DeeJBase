@@ -2,31 +2,29 @@ class CommentsController < ApplicationController
     skip_before_action :authorize
 
   def update
-
     @comment = Comment.find(params[:id])
     @rating = @comment.rating
-    @dj = @rating.dj
-    @venue = @rating.venue 
     @comment.update(comment_params)
+    @event = @comment.event
+    @venue=@event.venue
 
-    if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "Choose Date"
-      if @venue
-        array = params[:date].split("-")
-        m=array.first
-        d=array.second
-        y=array.last
+    if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "mm-dd-yyyy" && params[:date] != ""
+      array = params[:date].split("-")
+      m=array.first
+      d=array.second
+      y=array.last
+      begin
         date_formated = d+"-"+m+"-"+y
-        date= date_formated.to_date || date = Date.today
-        @event = Event.find_by(date: date, venue_id: @venue.id) || @event=Event.create(date: date, venue_id: @venue.id)
-        @rating.update(event_id: @event.id)
-        redirect_to venue_path(@venue.slugify)
-      else
+        date= date_formated.to_date
+      rescue
+        date = Date.today
+      end 
+      @event.update(date: date)
 
-      redirect_to dj_path(@dj.slugify) if @dj
-      end
+      redirect_to venue_path(@venue.slugify)
     else 
-      # @rating.destroy
-      flash[:warning] = 'You need to give a rating and a comment (of more than 30 characters) and choose a date to leave feedback'
+      @rating.update(score: 0)
+      flash[:warning] = 'You need to give a rating and a comment (of more than 40 characters) and choose a date to leave feedback'
       redirect_to dj_path(@dj.slugify) if @dj
       redirect_to venue_path(@venue.slugify) if @venue
     end

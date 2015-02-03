@@ -8,7 +8,7 @@
     <div class= "comment col-md-9">
       <div class="user-rating">
         <strong>Rating: <%= comment.rating.score.to_i %>/5 
-          <% if comment.event %>
+          <% if comment.event && comment.event.date %>
           (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>)</strong>
           <%end%>
       </div>
@@ -17,13 +17,13 @@
       </div>
         
     </div>
-  <%if comment.event.dj %>
+  <%if comment.event && comment.event.dj %>
   <% dj=comment.event.dj%>
     <div class="claim-event user-image col-md-2">
       <%= link_to image_tag(dj.image_url), dj_path(dj.slugify) %>
       <%= link_to dj.name, dj_path(dj.slugify) %> spun
     </div>
-  <%else%>
+  <%elsif comment.event%>
     <div class="claim-event col-md-2">
 
       <h6>Were you the DJ?</h6>

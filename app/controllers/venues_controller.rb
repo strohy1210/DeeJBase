@@ -18,11 +18,12 @@ class VenuesController < ApplicationController
 
     if logged_in?
 
-      @rating = Rating.where(venue_id: @venue.id, user_id: current_user.id).first
-      @rating ||= Rating.create(venue_id: @venue.id, user_id: current_user.id, score: 0)
+      @event = Event.where(venue_id: @venue.id).first || @event = Event.create(venue_id: @venue.id)
+      @rating = @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
+      @rating ||= Rating.create(event_id: @event.id, user_id: current_user.id, score: 0)
       @comment = Comment.where(rating_id: @rating.id).first
       @comment ||= Comment.create(rating_id: @rating.id)
-  
+
     else
       @rating = Rating.first
     end

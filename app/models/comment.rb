@@ -1,9 +1,9 @@
 class Comment < ActiveRecord::Base
   belongs_to :rating
   has_one :user, through: :rating
-  has_one :dj, through: :rating
-  has_one :venue, through: :rating
   has_one :event, through: :rating
+  has_one :dj, through: :event
+  has_one :venue, through: :event
   # validates :body, :length => { :minimum => 40, maximum: 300 }
   validates :rating_id, presence: :true, on: :update
   before_update :check_rating
@@ -15,13 +15,14 @@ class Comment < ActiveRecord::Base
   end
 
   def is_valid?
-    body.length >= 30 if body
+
+    body.length >= 40 if body
   end
 
   def update_rated_at
-    if self.dj && body.size > 30 && rating.score > 0
+    if self.dj && body.size > 40 && rating.score > 0
       dj.update(rated_at: self.updated_at)
-    elsif self.venue && body.size > 30 && rating.score > 0
+    elsif self.venue && body.size > 40 && rating.score > 0
       venue.update(rated_at: self.updated_at)
     end
   end

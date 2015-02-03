@@ -1,7 +1,7 @@
 class Venue < ActiveRecord::Base
   has_many :events
   has_many :djs, through: :events
-  has_many :ratings
+  has_many :ratings, through: :events
   has_many :comments, through: :ratings
   belongs_to :neighborhood
   accepts_nested_attributes_for :events, :reject_if => :all_blank, :allow_destroy => true
@@ -23,9 +23,15 @@ class Venue < ActiveRecord::Base
   end
 
   def average_rating
-    valid_ratings = ratings.valid_only
-    if valid_ratings.any?
-      valid_ratings.map {|r| r.score}.sum / valid_ratings.size
+    if events.any?
+      scores =[]
+      events.each do |e|
+        valid_ratings = e.ratings.valid_only
+        if valid_ratings.any?
+          scores << valid_ratings.map {|r| r.score}.sum / valid_ratings.size
+        end
+      end
+      scores.sum/scores.size.to_f
     else
       0
     end

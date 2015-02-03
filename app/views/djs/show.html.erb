@@ -86,17 +86,4 @@
   });
 
 
-  $('#user_star').raty({
-    score: <%= @rating.score %>,
-    cancel: true,
-    path: '/assets',
-    click: function(score, evt) {
-      $.ajax({
-        url: '/ratings/' + <%= @rating.id %>,
-        type: 'PATCH',
-        data: { score: score }
-      });
-    }
-  });
-
 </script>

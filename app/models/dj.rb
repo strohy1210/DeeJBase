@@ -1,11 +1,13 @@
 class Dj < ActiveRecord::Base
-  has_many :ratings
+
   has_many :dj_genres
   has_many :tracks
   has_many :genres, through: :dj_genres
   has_many :events
+  has_many :ratings, through: :events
   has_many :venues, through: :events
-  has_many :comments, through: :ratings
+  has_many :comments, through: :events
+
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :remove_empty_tracks#, default_values
   before_save :update_slug
