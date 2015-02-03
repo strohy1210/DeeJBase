@@ -21,3 +21,4 @@ class Rating < ActiveRecord::Base
 end
 
 #user cant have more thanthan 1 rating per dj or venue
+
