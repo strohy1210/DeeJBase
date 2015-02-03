@@ -17,7 +17,15 @@
       </div>
         
     </div>
+  <%if comment.event.dj %>
+  <% dj=comment.event.dj%>
+    <div class="claim-event user-image col-md-2">
+      <%= link_to image_tag(dj.image_url), dj_path(dj.slugify) %>
+      <%= link_to dj.name, dj_path(dj.slugify) %> spun
+    </div>
+  <%else%>
     <div class="claim-event col-md-2">
+
       <h6>Were you the DJ?</h6>
       <% if logged_in? && current_user.sdcl_id%>
         <%= button_to "Claim Event", claim_event_path, :class => 'btn-xs btn btn-default', :method => :post, params:{current_user: current_user.id, event: comment.event}  %>
@@ -29,6 +37,7 @@
         </a>
       <%end%>
     </div>
+  <%end%>
   </div>
   <div class='row'>
 

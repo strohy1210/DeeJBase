@@ -22,10 +22,10 @@ class Dj < ActiveRecord::Base
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase
   end
+
   def update_slug
     update(slug: slugify) unless slug == slugify
   end
-
 
   def self.no_tracks
     Dj.is_dj.each do |dj|
@@ -41,11 +41,10 @@ class Dj < ActiveRecord::Base
     end
   end
 
-  def rate_get
-    29.3447*(sdcl_followers**0.4635)
-  end
+  # def rate_get
+  #   29.3447*(sdcl_followers**0.4635)
+  # end
 
-  
   def average_rating
     if events.any?
       scores =[]
@@ -71,7 +70,7 @@ class Dj < ActiveRecord::Base
     self.get_soundcloud_djs(page).each do |dj|
       city = dj.city.downcase if dj.city
       bio = dj.description
-      if city && bio && NYC_WORDS.any? { |w| city =~ /#{w}/ }   
+      if city && bio && NYC_WORDS.any? { |w| city =~ /#{w}/ }
         phone = dj.extract_phone_number(bio)
         email = bio.downcase.scan(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i).first
         if dj.plan != "Free" && (email || phone)
