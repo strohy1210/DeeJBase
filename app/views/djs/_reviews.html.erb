@@ -1,17 +1,17 @@
-    <% @comments.each do |comment| %>
-      <div class="row review">
-        <div class= "user-image col-md-2">
-          <%= image_tag(comment.user.image_url) %>
-          <h7 class='text-center'><%= comment.user.first_name if comment.user.first_name%></h7>
-        </div>
-        <div class= "comment col-md-10">
-          <div class="user-rating">
-            <strong>Rating: <%= comment.rating.score.to_i %>/5 </strong>
-          </div>
-          <div class="user-comment" id='<%=comment.id%>'>
-            <%= truncate(comment.body, length: 500, separator: ".") %>
-          </div><br>
-          <h6>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</h6>
-        </div>
+<% @comments.each do |comment| %>
+  <div class="row review">
+    <div class= "user-image col-md-2">
+      <%= image_tag(comment.user.image_url) %>
+      <h7 class='text-center'><%= comment.user.first_name if comment.user.first_name%></h7>
+    </div>
+    <div class= "comment col-md-10">
+      <div class="user-rating">
+        <strong>Rating: <%= comment.rating.score.to_i %>/5 </strong>
       </div>
-    <%end%>
+      <div class="user-comment" id='<%=comment.id%>'>
+        <%= truncate(comment.body, length: 500, separator: ".") %>
+      </div><br>
+      <h6>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</h6>
+    </div>
+  </div>
+<%end%>

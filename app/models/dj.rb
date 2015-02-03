@@ -47,9 +47,15 @@ class Dj < ActiveRecord::Base
 
   
   def average_rating
-    valid_ratings = ratings.valid_only
-    if valid_ratings.any?
-      valid_ratings.map {|r| r.score}.sum / valid_ratings.size
+    if events.any?
+      scores =[]
+      events.each do |e|
+        valid_ratings = e.ratings.valid_only
+        if valid_ratings.any?
+          scores << valid_ratings.map {|r| r.score}.sum / valid_ratings.size
+        end
+      end
+      scores.sum/scores.size.to_f
     else
       0
     end
