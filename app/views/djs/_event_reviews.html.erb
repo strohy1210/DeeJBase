@@ -1,5 +1,5 @@
 <% @dj.events.each do |event| %>
-  <% event.comments.each do |comment| %>
+  <% event.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}.each do |comment| %>
     <div class="row review">
     <div class="col-md-2">
       <div class= "user-image">
