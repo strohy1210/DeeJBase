@@ -11,6 +11,8 @@ the box
 
 baby blue
 create venue algorithm
+sink up rating
+
 Later:
 1. tweet at djs to claim profile
 2. rating system, i review
