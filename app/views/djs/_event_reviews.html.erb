@@ -1,0 +1,29 @@
+<% @dj.events.each do |event| %>
+  <% event.comments.each do |comment| %>
+    <div class="row review">
+    <div class="col-md-2">
+      <div class= "user-image">
+        <%= image_tag(comment.user.image_url) %>
+      </div>
+      <div class="col-md-1">
+       <h7 class='text-center'><%= comment.user.first_name if comment.user.first_name %></h7>
+     </div>
+    </div>
+      <div class= "comment col-md-9">
+        <div class="user-rating">
+          <strong>Rating: <%= comment.rating.score.to_i %>/5 
+            <% if comment.event %>
+            (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%> at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %>)</strong>
+            <%end%>
+        </div>
+        <div class="user-comment" id='<%=comment.id%>'>
+          <li><%= truncate(comment.body, length: 500, separator: ".") %></li>
+        </div><br>
+          <h6>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</h6>
+      </div>
+    </div>
+
+    <br>
+  <%end%>
+
+<%end%>
