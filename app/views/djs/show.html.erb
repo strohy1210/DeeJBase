@@ -41,72 +41,27 @@
      
         </div>
       </div>
-    <% if !logged_in? || current_user.sdcl_id != @dj.sdcl_id %>
-    
-    <div class='rate-button btn-centered btn btn-default'>Review <%=@dj.name%></div>
-    <%end%>
-
-  <div class="rate-dj text-center">
-    <% if logged_in? && current_user.sdcl_id != @dj.sdcl_id %>
-
-      <p><strong>What'd you think of <%= @dj.name %>?</strong><br>
 
 
-      <div class="user-rate">
-        <div id='user_star'>
-
-        </div></p>
-        <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
-    
-    
-          <%= f.input :body, label: "Click on a star above and comment below.", required: false, hint: "", placeholder: "Where'd you see her? How'd he do? (min 30 characters).", input_html: { minlength: 30, rows: 4,  class: "form-control comment" }%>
-
-      
-
-          <%= f.button :submit, class: "btn btn-default submit-comment"%>
-
-        <%end%>
-        <a href="#"><div class="done-rating cancel-comment" title="To delete your comment, cancel your rating or text body and hit 'update comment' above." style="color: red;">Cancel</div></a>
-      </div>
-    <%elsif !logged_in?%>
-      <div class="text-center bg-warning">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
-
-      
-      <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
-      | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>   </div>
-     <%end%> 
- 
-      </div>
+    <br>
     </div>
   </div>
+</div>
     <br>
-    </div>
-    <br><br>
+    <br>
   <div class="reviews-tracks">
-   <% if @dj.events %>
-   
-   <h5 class="comments-title">Reviews</h5>
-    <%= render 'event_reviews' %>
-   <%end%>
-   <% if @comments %>
+   <% if @dj.events.any? %>
 
-   <h5 class="comments-title">Reviews</h5>
+    <h5 class="comments-title">Reviews</h5>
+      <%= render 'event_reviews' %>
 
-     <%= render 'reviews' %><br>
-    <br>
-  <% if !@dj.tracks.any? %>
     <div class="tracks">
       <h5 class="tracks-title">SoundCloud Streams</h5>
-
-        <%= render 'tracks' %><br>
-
+      <%= render 'tracks' %><br>
     </div>
-  <%end%>
-
   <%else%>
    <div class="tracks col-md-12">
-
+<br>
     <%= render 'tracks' %><br>
 
   </div>
@@ -145,7 +100,5 @@
       });
     }
   });
-
-
 
 </script>
