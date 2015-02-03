@@ -5,14 +5,7 @@
     <h4>
     </div>
 <div class="search-venues">
-    <%= form_tag(search_venues_path, method: 'get', class: "search-djs navbar-form pull-right", role: "search") do %>
-      <div class="input-group">
-          <input type="text" class="form-control" placeholder="Output" name="name">
-          <div class='input-group-btn'>       
-          <button class="btn btn-primary" type="submit">Find Venues <i class="glyphicon glyphicon-search"></i></button>
-        </div>
-      </div>
-      <% end %>
+  <%= render 'venue_search' %>
 </div>
   </div>
 
