@@ -50,58 +50,17 @@
   <%= will_paginate @venues %>
 </div>
 </ul>
-<script>
 
-
- $("#star<%=@venues[0].id%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@venues[1].id if @venues[1]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@venues[2].id if @venues[2]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@venues[3].id if @venues[3]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@venues[4].id if @venues[4]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@venues[5].id if @venues[5]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
-
+<script type="text/javascript">
+  <% @venues.each do |venue| %>
+   $("#star<%=venue.id%>").raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets'
+    });
+  <%end%>
 </script>
 
 

@@ -64,9 +64,6 @@
       </div></p>
 
 
-
-
-
   </div>
   <br>
 <% end %>
@@ -76,69 +73,17 @@
   <%= will_paginate @djs %>
 </div>
 </ul>
-<script>
 
-// for(var i=0; i<5; i++) {
-
-
-//   $("#star"+id).raty({
-//     readOnly: true,
-//     score: function() {
-//       return $(this).attr('data-score');
-//     },
-//     path: '/assets'
-//   });
-
-// }
-
- $("#star<%=@djs[0].id%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@djs[1].id if @djs[1]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@djs[2].id if @djs[2]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@djs[3].id if @djs[3]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@djs[4].id if @djs[4]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
- $("#star<%=@djs[5].id if @djs[5]%>").raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets'
-  });
-
+<script type="text/javascript">
+  <% @djs.each do |dj| %>
+    $("#star<%=dj.id%>").raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets'
+    });
+  <%end%>
 </script>
 
 
