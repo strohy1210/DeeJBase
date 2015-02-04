@@ -4,7 +4,6 @@ characters counter
 Add message in DJ sign up button
 10. update contact info of the people who responded
 ADD:
-destroy where ratings are nil
 MANUALY AD DJS TO EVENTS
 the box
 make it so you cant claim your own review
