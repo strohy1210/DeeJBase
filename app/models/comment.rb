@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   def update_rated_at
     if self.dj && body.size > 40 && rating && rating.score > 0
       dj.update(rated_at: self.updated_at)
-    elsif self.venue && body.size > 40 && rating rating.score > 0
+    elsif self.venue && body.size > 40 && rating && rating.score > 0
       venue.update(rated_at: self.updated_at)
     end
   end
