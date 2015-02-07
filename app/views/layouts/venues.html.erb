@@ -57,10 +57,10 @@
 
       <li><a href="#" data-toggle="modal" data-target="#contactModal" >
       <div class="hover-mask bottom-mask mask-orange">
-         <strong>   DJ Sign Up</strong>
+        DJ Sign Up
       </div>
       </a></li>
-      <li><%= link_to 'Venue List', venues_path%></li>
+
 
 <% @categories=["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
 
@@ -84,20 +84,23 @@
   </li></form>
 
   <%end%>
-        <li class="dropdown">
-        <a id="drop1" href="/implementation" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">More <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-          <li><%=link_to 'DJ Pages', djs_path %></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/about">About</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Search</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#contactModal" >
-      <div class="hover-mask bottom-mask mask-orange">Contact Us</div></a></li>
-          </ul> </li>
+
+      <li class="navbar-form">
+    <%= form_tag(search_venues_path, method: 'get', role: "search") do %>
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Output" name="name">
+          <div class='input-group-btn'>       
+          <button class="btn btn-primary" type="submit"> <i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+      <% end %>
+    </li>
+
   </ul>
   <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to 'All Venues', venues_path%></li>
     <% if !logged_in? %>
-      <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
+      <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in</a></li>
       <% end %>
     <% if current_user && current_user.dj_status %>
       <li> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
@@ -109,9 +112,22 @@
       </div>
     <%end%>
   </li>
-  <% if logged_in? %>
-      <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
-      <%end%>
+
+        <li class="dropdown">
+        <a id="drop1" href="/implementation" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">More <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+          <li><%=link_to 'DJ Pages', djs_path %></li>
+          <li><%= link_to 'Venue Pages', venues_path%></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/about">About</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#contactModal" >
+      <div class="hover-mask bottom-mask mask-orange">Contact Us</div></a></li>
+          <% if logged_in? %>
+       <li role="presentation" class="divider"></li>
+        <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
+          <%end%>
+
+          </ul> </li>
+
     </ul>
   </div>
 
