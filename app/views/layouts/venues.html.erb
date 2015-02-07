@@ -54,14 +54,16 @@
 
     <ul class="nav navbar-nav">
 
-      <li><%= link_to 'DJ Pages', djs_path %></li>
+
       <li><a href="#" data-toggle="modal" data-target="#contactModal" >
       <div class="hover-mask bottom-mask mask-orange">
          <strong>   DJ Sign Up</strong>
       </div>
       </a></li>
       <li><%= link_to 'Venue List', venues_path%></li>
+
 <% @categories=["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
+
   <% if @neighborhood %>
   <li><form class="navbar-form col-xs-2">
    <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] }<< ["All NYC", 'all'], @neighborhood.id), class: "form-control",:onchange => 'this.form.submit()') %>
@@ -82,13 +84,25 @@
   </li></form>
 
   <%end%>
+        <li class="dropdown">
+        <a id="drop1" href="/implementation" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">More <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+          <li><%=link_to 'DJ Pages', djs_path %></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/about">About</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Search</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#contactModal" >
+      <div class="hover-mask bottom-mask mask-orange">Contact Us</div></a></li>
+          </ul> </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
     <% if !logged_in? %>
-      <li class="navbar-right"><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
+      <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a></li>
       <% end %>
     <% if current_user && current_user.dj_status %>
-      <li class="navbar-right"> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
+      <li> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>
     <%end%>
-<li class="navbar-right">
+<li>
     <% if logged_in? && !current_user.dj_status %>
      <div class="user-thumbnail">
       <%= image_tag(current_user.image_url)%>
@@ -96,7 +110,7 @@
     <%end%>
   </li>
   <% if logged_in? %>
-      <li class="navbar-right pull-right"><%= link_to 'Logout', '/logout', method: "delete" %></li>
+      <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
       <%end%>
     </ul>
   </div>
