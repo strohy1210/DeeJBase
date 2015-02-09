@@ -32,13 +32,10 @@
   <%= link_to dj_path(dj.slugify) do %>
       <div class="bio col-md-8">
         <div class='overlay'>
-        <%if dj.bio %>
+        <%if dj.city %>
         <% if !dj.genres.blank? %>     
           <h4>Genres: <%= dj.genres.map {|g| g.name}.join(", ") %></h4>
         <% end%>
-        <% if !dj.fb_likes.blank? %>
-       <%end%>
-
 
            <h5> located in <%= dj.city %> </h5>
         <%end%>
