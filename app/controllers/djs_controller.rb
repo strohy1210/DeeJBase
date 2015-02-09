@@ -1,7 +1,12 @@
 class DjsController < ApplicationController
   skip_before_action :authorize
   def index
-    redirect_to djs_path
+     if params[:filter]
+      set_params
+    else
+      @djs = Dj.is_dj.order('rated_at ASC').paginate(page: params[:page], per_page: 6)
+    end
+    render 'welcome/index'
   end
  
 
