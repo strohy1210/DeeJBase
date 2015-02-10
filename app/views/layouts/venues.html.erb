@@ -108,7 +108,7 @@
 <li>
     <% if logged_in? && !current_user.dj_status %>
      <div class="user-thumbnail">
-      <%= image_tag(current_user.image_url)%>
+      <%= link_to(image_tag(current_user.image_url), user_path(current_user))%>
       </div>
     <%end%>
   </li>

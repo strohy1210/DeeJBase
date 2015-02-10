@@ -1,19 +1,20 @@
 <div class="row page-header title">
-  <h2 class='col-md-5'> <%= @user.name %>'s Reviews </h2>
+  <h2 class='col-md-5'> <%= @user.first_name.titleize %>'s Reviews </h2>
 </div>
-
+<div class= "show-user-image">
+   <%= image_tag(@user.image_url)%>
+</div>
+<br>
+<% if @comments %>
 <% @comments.each do |comment| %>
-  <div class="review">
+  <div class="show-review review">
   <div class="row">
-    <div class= "user-image col-md-1">
-      <%= link_to(image_tag(comment.user.image_url), user_path(comment.user))%>
-  </div>
-    <div class= "comment col-md-9">
+    <div class= "comment">
       <div class="user-rating">
-        <strong>Rating: <%= comment.rating.score.to_i %>/5 
+          <h4>Rating: <%= comment.rating.score.to_i %>/5 for <%=link_to(comment.venue.name, venue_path(comment.venue.slugify)) if comment.venue %>
           <% if comment.event && comment.event.date %>
-          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>)</strong>
-          <%end%>
+          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>)
+          <%end%><h4>
       </div>
       <div class="user-comment" id='<%=comment.id%>'>
         <li><%= truncate(comment.body, length: 500, separator: ".") %></li>
@@ -26,26 +27,13 @@
       <%= link_to image_tag(dj.image_url), dj_path(dj.slugify) %><br>
       <span class="link-dj text-center"><%= link_to dj.name, dj_path(dj.slugify) %> spun<span>
     </div>
-  <%elsif comment.event%>
-    <div class="claim-event col-md-2">
-
-      <h6>Were you the DJ?</h6>
-      <% if logged_in? && current_user.sdcl_id%>
-        <%= button_to "Claim Event", claim_event_path, :class => 'btn-xs btn btn-default', :method => :post, params:{current_user: current_user.id, event: comment.event}  %>
-      <%else%>
-        <a href="#" data-toggle="modal" data-target="#contactModal" >
-        <div class="hover-mask bottom-mask mask-orange">
-        <button class="btn-xs btn btn-default">Claim Event</button>
-        </div>
-        </a>
-      <%end%>
-    </div>
   <%end%>
-  </div>
   <div class='row'>
-
-    <span class='col-md-1 text-center first-name'><%= comment.user.first_name if comment.user.first_name %></span>
     <span class='col-md-10 updated'>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</span>
   </div>
   </div>
+</div>
+<%end%>
+<%else%>
+No Reviews Yet- Go Party with Some DJs, write a review, and come back.
 <%end%>

@@ -299,7 +299,19 @@ li { cursor: pointer; }
 .link-dj {
   font-size: 13px;
 }
+  
+.show-user-image img {
+  height: 200px;
+  width: auto;
+  border-radius: 30px;
+  margin: 35px;
+  margin-bottom: 0px;
+}
 
+.show-review {
+  margin: 20px;
+  padding: 35px;
+}
 
 @media (max-device-width : 480px) {
   .navbar-fixed-top {
