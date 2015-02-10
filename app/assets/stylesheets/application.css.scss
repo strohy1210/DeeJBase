@@ -311,7 +311,7 @@ li { cursor: pointer; }
         padding-top: 0px;
     }
 
-  .hidden-xs {
+  .hidden-xs, .navbar-nav .hidden-xs {
     display: none;
   }
   .container {

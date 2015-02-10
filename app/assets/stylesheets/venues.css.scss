@@ -1,33 +1,3 @@
 // Place all the styles related to the Venues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-@media (max-device-width : 480px) {
-  .navbar-fixed-top {
-        position: absolute;
-        top: auto;
-        margin-bottom: 100px;
-    }
-  body {
-        padding-top: 0px;
-    }
-
-  .hidden-xs, .navbar-nav .hidden-xs {
-    display: none;
-  }
-  .container {
-    width: 100%;
-  }
-  .page-header {
-    padding-top: 30px;
-  }
-  .error-top {
-    padding-top: 80px;
-  }
-  .btn {
-  font-size: 14px;
-  }
-
-
-}
