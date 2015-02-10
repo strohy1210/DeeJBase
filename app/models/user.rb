@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :comments, through: :ratings
+  has_many :events, through: :ratings
   after_create :new_user_email, :update_first_name
 
 

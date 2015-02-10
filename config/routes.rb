@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'ratings/update'
 
   resources :genres, only: [:new, :create]
-
+  resources :users, only: :show
   resources :events, only: [:new, :create, :destroy]
   post :claim_event, to: 'events#claim_event'
   get 'venues/:slug', to: 'venues#show', as: :venue
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/api/djs', to: 'api#djs'
   get '/api/djs/:id', to: 'api#show_dj'
   post 'ratings/:id', to: 'ratings#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
