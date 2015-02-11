@@ -313,6 +313,10 @@ li { cursor: pointer; }
   padding: 35px;
 }
 
+#map {
+  border-radius: 30px;
+}
+
 @media (max-device-width : 480px) {
   .navbar-fixed-top {
         position: absolute;
