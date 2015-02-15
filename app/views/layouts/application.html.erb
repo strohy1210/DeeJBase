@@ -98,7 +98,7 @@
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <% if !logged_in? %>
-      <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in</a></li>
+      <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook hidden-xs"></i> Sign in</a></li>
       <% end %>
     <% if current_user && current_user.dj_status %>
       <li> <%= link_to "Your Profile", dj_path(current_dj.slugify) %></li>

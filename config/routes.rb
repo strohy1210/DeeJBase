@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'ratings/update'
-
   resources :genres, only: [:new, :create]
   resources :users, only: :show
   resources :events, only: [:new, :create, :destroy]
