@@ -62,6 +62,19 @@
       </a></li>
 
 
+    <li class="navbar-form">
+    <%= form_tag(search_venues_path, method: 'get', role: "search") do %>
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Output" name="name">
+          <div class='input-group-btn'>       
+          <button class="btn btn-primary" type="submit"> <i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+      <% end %>
+    </li>
+
+
+
 <% @categories=["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
 
   <% if @neighborhood %>
@@ -84,17 +97,6 @@
   </li></form>
 
   <%end%>
-
-      <li class="navbar-form">
-    <%= form_tag(search_venues_path, method: 'get', role: "search") do %>
-      <div class="input-group">
-          <input type="text" class="form-control" placeholder="Output" name="name">
-          <div class='input-group-btn'>       
-          <button class="btn btn-primary" type="submit"> <i class="glyphicon glyphicon-search"></i></button>
-        </div>
-      </div>
-      <% end %>
-    </li>
 
   </ul>
   <ul class="nav navbar-nav navbar-right">
@@ -133,7 +135,7 @@
 
 </div>
 
-  <div class="container" id="wrap">
+  <div class="container-fluid venue-index" id="wrap">
     <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %> error-top">
       <%= value %>

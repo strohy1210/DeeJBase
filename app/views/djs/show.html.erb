@@ -1,7 +1,8 @@
+<div class= "venue-show container-fluid">
 <div class="row page-header title">
   <h2 class='col-md-5'> <%= @dj.name %>  </h2>
 
-  <%= render 'dj_search' %>
+
 
 </div>
 <div class="dj-profile">
@@ -31,7 +32,7 @@
     <div class="profile-pic col-md-3">
       <%= link_to image_tag(@dj.image_url), dj_path(@dj.slugify), class: 'profile-image' %>
     </div>
-    <div class="dj-info col-md-5 col-md-offset-1 vertical-center">   
+    <div class="dj-info venue-info col-md-5 col-md-offset-1 vertical-center">   
       <div class="other-info">
 
         <%= render 'dj_info' %>

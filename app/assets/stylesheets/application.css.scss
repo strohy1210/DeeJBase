@@ -32,7 +32,9 @@ body {
   font-family: 'Karla', sans-serif;
   font-size: 16px;
   background: #ddd;
-  padding-top: 70px;
+  padding-top: 50px;
+  background-image: linear-gradient(to bottom, #f8f8f8 0%, #ccc 100%);
+
 
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -45,7 +47,7 @@ body {
     background-size: cover;
  }
 
-.container {
+.container-fluid {
   background-color: #ddd;
   border-radius: 20px;
 }
@@ -67,7 +69,7 @@ h4 a {
 }
 
 .navbar .container, .navbar {
-  background-color: transparant;
+  background-color: transparent;
   border-color: transparent;
 }
 
@@ -115,12 +117,24 @@ iframe {
 }
 
 .dj-item {
- 
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #a0a0a0;
   border-radius: 20px;
   margin-bottom: 1px;
-  padding: 25px;
-  background-color: #fafafa;
+  padding: 50px;
+  background-color: transparent;
+  color: #0f0f0f;
+}
+
+
+
+a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header a:hover, .bio h4:hover {
+  text-decoration: none;
+  color: rgba(10, 10, 10, 0.5);
+}
+
+.bio h4 {
+  color: #0f0f0f;
+
 }
 
 .top {
@@ -129,13 +143,8 @@ iframe {
   }
 
 
-.title {
-  margin-left: 20px;
-}
-
 .row.page-header {
   font-family: 'Montserrat', sans-serif;
-  margin-left: 30px;
 }
 
 .container #bar {
@@ -143,19 +152,30 @@ iframe {
 }
 
 .container {
-  background-image: linear-gradient(to bottom, white 0%, #f8f8f8 100%)
+  background-image: linear-gradient(to bottom, #ccc 0%, #f8f8f8 100%);
 }
 
+.venue-index {  
+  background-color: rgba(252, 212, 221, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.venue-list {
+  background-image: linear-gradient(to bottom, #ccc 0%, #ddd 100%);
+}
+.venue-show{
+  background-image: linear-gradient(to bottom, #ccc 0%, #ddd 100%);
+}
 .select-genre {
   margin-right: 5px;
 }
 .dj-profile {
-  padding: 25px;
-  background-color: #fafafa;
+  padding: 40px;
+  background-color: transparent;
   margin: 10px;
 }
 .dj-info {
-  background: #fff;
+  background: #ededed;
   border-radius: 30px;
   padding: 10px;
 }
@@ -174,15 +194,6 @@ font-size: 16px;
   padding: 20px;
 }
 
-a .bio h4, a .bio h5, a .djb{
-  color: #000;
-}
-
-.title h2, .title h3 {
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-   text-shadow: 0 0 3px rgb(21, 103, 255);
-    font-variant: small-caps;
-}
 
 .genre-form {
   background: white;
@@ -203,9 +214,8 @@ a .bio h4, a .bio h5, a .djb{
   background-color: #fafafa;
 }
 
-.bio:hover > .overlay {
-    background-color: #fafafa;
-    opacity: 0.6;
+.bio:hover {
+    color: #bbb
 }
 
 .btn-facebook:hover {
@@ -221,7 +231,6 @@ li { cursor: pointer; }
   padding: 5px;
   margin-right: 8px;
   max-width: 100px;
-
 }
 
 .user-rating, .user-comment {
@@ -247,12 +256,10 @@ li { cursor: pointer; }
 .comments-title, .tracks-title {
   font-weight: bold;
   font-variant: small-caps;
-
-
 }
 
 .review {
-  background: #fff;
+  background: #ededed;
   border-radius: 30px;
   padding: 5px;
   border-bottom: 1px solid #d0d0d0;
@@ -317,6 +324,67 @@ li { cursor: pointer; }
   border-radius: 30px;
 }
 
+.navbar-default {
+  background-image: linear-gradient(to bottom, #ccc 0%, #f8f8f8 100%);
+}
+
+.header {
+  padding: 20px;
+}
+
+.pagination ul:active {
+  background: black;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background: black;
+  border-color: black;
+}
+
+.pagination > li > a:hover, .pagination > li > a {
+  color: black;
+}
+
+btn-primary:hover, .btn-primary:focus, .btn-group.open .dropdown-toggle.btn-primary {
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+
+.header .title {
+  background: transparent;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #ccc;
+  font-family: 'Titillium Web', sans-serif;
+  text-shadow: 1px 1px 5px #333;
+}
+
+.title h2, .title h3 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+   text-shadow: 1px 1px 5px rgb(21, 103, 255);
+    font-variant: small-caps;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+a .bio h5, a .djb{
+  color: #000;
+}
+
+.dj-header a, .dj-item .djb, .dj-item h4 {
+  color: #403D3D;
+
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #403D3D;
+}
+
+
 @media (max-device-width : 480px) {
   .navbar-fixed-top {
         position: absolute;
@@ -340,7 +408,7 @@ li { cursor: pointer; }
     padding-top: 80px;
   }
   .btn {
-  font-size: 14px;
+    font-size: 14px;
   }
 
 
