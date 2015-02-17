@@ -5,7 +5,8 @@ class SearchesController < ApplicationController
       name = params[:name].strip
       @djs = Dj.is_dj.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC') || Dj.is_dj.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC')
       if @djs.size == 0
-        flash[:warning] = 'Sorry, no one by that name... so here\'s everyone.'
+        link = ActionController::Base.helpers.link_to('here', root_path)
+        flash[:warning] = 'Sorry, no one by that name... so here\'s everyone. Search venues ' + link + '.''
         redirect_to djs_path
       elsif @djs.size == 1
         @dj = @djs.first
@@ -29,14 +30,15 @@ class SearchesController < ApplicationController
       name = params[:name].strip
       @venue_results = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").order('name ASC')
       if @venue_results.size == 0
-        flash[:warning] = 'Sorry, no places by that name... so here\'s em all.'
+        link = ActionController::Base.helpers.link_to('here', djs_path)
+        flash[:warning] = "Sorry, no places by that name... so here\'s em all. Search DJs " + link + "."
         redirect_to venues_path
       elsif @venue_results.size == 1
         @venue = @venue_results.first
         redirect_to venue_path(@venue.slugify)
       else
         @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 10).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 10).order('name ASC')
-        flash.now[:success] = @venue_results.size.to_s + ' result(s) for "' +name+'". Click for more info.'
+        flash.now[:success] = @venue_results.size.to_s + ' venue(s) matching "' +name+'". Click for more info.'
         render 'venues/index', layout: "venues"
       end
     else
