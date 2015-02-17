@@ -3,6 +3,7 @@ class SearchesController < ApplicationController
   def index
     if params[:name]
       name = params[:name].strip
+      @dj_results= Dj.is_dj.where('lower(name) LIKE ?', "%#{name.downcase}%") || Dj.is_dj.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%")
       @djs = Dj.is_dj.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC') || Dj.is_dj.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC')
       if @djs.size == 0
         link = ActionController::Base.helpers.link_to('here', root_path)
@@ -12,7 +13,7 @@ class SearchesController < ApplicationController
         @dj = @djs.first
         redirect_to dj_path(@dj.slugify)
       else
-        flash.now[:success] = @djs.size.to_s + ' result(s) for "' +name+'." Click for more info.'
+        flash.now[:success] = @dj_results.size.to_s + ' result(s) for "' +name+'." Click for more info.'
         render 'welcome/index'
       end
     elsif params[:genre_id]

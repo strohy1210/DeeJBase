@@ -32,7 +32,7 @@ body {
   font-family: 'Karla', sans-serif;
   font-size: 16px;
   background: #ddd;
-  padding-top: 50px;
+  padding-top: 60px;
   background-image: linear-gradient(to bottom, #f8f8f8 0%, #ccc 100%);
 
 
@@ -141,7 +141,6 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header a:hover, .bio h4:hover {
   margin-left: 12px;
   display: inline;
   }
-
 
 .row.page-header {
   font-family: 'Montserrat', sans-serif;
@@ -329,7 +328,7 @@ li { cursor: pointer; }
 }
 
 .header {
-  padding: 20px;
+  padding: 15px;
 }
 
 .pagination ul:active {
@@ -353,8 +352,8 @@ btn-primary:hover, .btn-primary:focus, .btn-group.open .dropdown-toggle.btn-prim
 
 .header .title {
   background: transparent;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
   color: #ccc;
   font-family: 'Titillium Web', sans-serif;
   text-shadow: 1px 1px 5px #333;
