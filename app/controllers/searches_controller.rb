@@ -27,19 +27,20 @@ class SearchesController < ApplicationController
   def venue_index
     if params[:name]
       name = params[:name].strip
-      @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 6).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 6).order('name ASC')
-      if @venues.size == 0
+      @venue_results = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").order('name ASC')
+      if @venue_results.size == 0
         flash[:warning] = 'Sorry, no places by that name... so here\'s em all.'
         redirect_to venues_path
-      elsif @venues.size == 1
-        @venue = @venues.first
+      elsif @venue_results.size == 1
+        @venue = @venue_results.first
         redirect_to venue_path(@venue.slugify)
       else
-        flash.now[:success] = @venues.size.to_s + ' result(s) for "' +name+'." Click for more info.'
-        render 'venues/index'
+        @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 10).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 10).order('name ASC')
+        flash.now[:success] = @venue_results.size.to_s + ' result(s) for "' +name+'". Click for more info.'
+        render 'venues/index', layout: "venues"
       end
     else
-      @venues = Venue.paginate(page: params[:page], per_page: 6).order('name ASC')
+     redirect_to venues_path
     end
   end
 
