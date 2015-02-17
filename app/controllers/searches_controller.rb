@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
       @djs = Dj.is_dj.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC') || Dj.is_dj.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC')
       if @djs.size == 0
         link = ActionController::Base.helpers.link_to('here', root_path)
-        flash[:warning] = 'Sorry, no one by that name... so here\'s everyone. Search venues ' + link + '.''
+        flash[:warning] = 'Sorry, no one by that name... so here\'s everyone. Search venues ' + link + '.'
         redirect_to djs_path
       elsif @djs.size == 1
         @dj = @djs.first
