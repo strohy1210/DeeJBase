@@ -25,7 +25,7 @@
 
   <%= link_to venue_path(venue.slugify) do %>
       <div class="bio col-md-8 col-md-offset-1">
-        <div class='overlay'>
+        <div class='overlay-none'>
         
         <% if !venue.neighborhood.blank? %>     
           <h4><%= venue.neighborhood.name %></h4>
