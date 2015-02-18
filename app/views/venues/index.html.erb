@@ -1,7 +1,7 @@
 
   <div class="row header">
     <div class="title">
-    <h3 class="text-center"> Rate the DJ </h3>
+    <h3 class="text-center"> Rate the music today. For a better musical tomorrow. </h3>
     </div>
 <!-- <div class="search-venues">
 
@@ -38,7 +38,7 @@
 <h6>
         <div class="preview col-md-3">
           <% comments = venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if venue.comments.any?  %>
-        <em><%=link_to truncate(comments.first.body, length: 110, separator: " ") if comments && comments.any? %></em>
+        <em><%=link_to truncate(comments.last.body, length: 110, separator: " ") if comments && comments.any? %></em>
       </div>
 </h6>
     </div>
