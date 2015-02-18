@@ -398,6 +398,8 @@ a .bio h5, a .djb{
     position: absolute;
     top: auto;
     margin-bottom: 100px;
+    height: 80px;
+    padding-top: 10px;
     }
 
   body {
@@ -421,10 +423,16 @@ a .bio h5, a .djb{
   }
 
   .header .title {
-    padding-top: 40px;
+    padding-top: 60px;
   }
 
-  .navbar .container { height: 2em; }
+  .col-xs-12 {
+    width: 100%;
+  }
+
+  li .navbar-form {
+    margin: 5px;
+  }
 
 
 }
