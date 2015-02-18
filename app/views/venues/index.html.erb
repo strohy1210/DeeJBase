@@ -1,7 +1,7 @@
 
   <div class="row header">
     <div class="title">
-    <h2 class="text-center"> <strong>PARTY > RATE THE DJ > REPEAT</strong> </h2>
+    <h3 class="text-center"> Rate the DJ </h3>
     </div>
 <!-- <div class="search-venues">
 
@@ -13,23 +13,21 @@
 <% @venues.each do |venue| %>
     
   <div class='dj-item'>
-
-    <div class= "dj-header">
-      <h3><%= link_to venue.name.titleize, venue_path(venue.slugify) %></h3>
-    
-    </div>
     <div class="row">
-      <p><div class="index-image col-md-3">
-        <%= link_to image_tag(venue.imageify, alt: venue.image_url), venue_path(venue.slugify) %>
-      </div></p>
-
-  <%= link_to venue_path(venue.slugify) do %>
-      <div class="bio col-md-8 col-md-offset-1">
-        <div class='overlay-none'>
-        
+    <div class= "dj-header col-md-3">
+      <h2><%= link_to venue.name.titleize, venue_path(venue.slugify) %></h2>
         <% if !venue.neighborhood.blank? %>     
           <h4><%= venue.neighborhood.name %></h4>
         <% end%>
+    
+    </div>
+
+
+  <%= link_to venue_path(venue.slugify) do %>
+      <div class="bio col-md-4 col-md-offset-1">
+        <div class='overlay'>
+        
+<br>
         <div id="star<%=venue.id%>" class="djb" data-score=<%= venue.average_rating%>>
          Music Rating<sup>beta</sup>:
         </div>
@@ -37,6 +35,11 @@
       </div>
 
   <% end %>
+<h6>
+        <div class="preview col-md-3">
+        <em><%=link_to truncate(venue.comments.first.body, length: 110, separator: " ") if venue.comments.any? %></em>
+      </div>
+</h6>
     </div>
 
 

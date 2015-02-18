@@ -39,8 +39,9 @@ class WelcomeController < ApplicationController
   def about
     if params[:genre_id]
       set_params
-      render 'welcome/index'
+      render 'welcome/index', layout: "venues"
     end
+    render layout: "venues"
   end
 
   def contact_us

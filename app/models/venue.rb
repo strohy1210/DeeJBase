@@ -1,6 +1,7 @@
 class Venue < ActiveRecord::Base
   has_many :events
   has_many :djs, through: :events
+  has_many :genres, through: :djs
   has_many :ratings, through: :events
   has_many :comments, through: :ratings
   belongs_to :neighborhood

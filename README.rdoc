@@ -1,5 +1,5 @@
 == README
-put validaiton on events, if comments or ratings blank, destroy
+Add review button to index pages
 characters counter
 Add message in DJ sign up button
 10. update contact info of the people who responded
