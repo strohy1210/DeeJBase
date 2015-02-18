@@ -37,7 +37,8 @@
   <% end %>
 <h6>
         <div class="preview col-md-3">
-        <em><%=link_to truncate(venue.comments.first.body, length: 110, separator: " ") if venue.comments.any? %></em>
+          <% comments = venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if venue.comments.any?  %>
+        <em><%=link_to truncate(comments.first.body, length: 110, separator: " ") if comments && comments.any? %></em>
       </div>
 </h6>
     </div>
