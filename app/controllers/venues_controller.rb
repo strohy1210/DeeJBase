@@ -16,7 +16,6 @@ class VenuesController < ApplicationController
     @comments = nil unless @comments.any?
 
     if logged_in?
-
       @event = current_user.events.where(venue_id: @venue.id).first if current_user.events.any? && current_user.events.where(venue_id: @venue.id)
       @event ||= Event.create(venue_id: @venue.id)
       current_user.events << @event unless current_user.events.include? @event

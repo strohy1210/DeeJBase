@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     skip_before_action :authorize
 
   def update
-    
+
     @comment = Comment.find(params[:id])
     @rating = @comment.rating
     @comment.update(comment_params)
