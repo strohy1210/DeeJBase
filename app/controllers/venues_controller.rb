@@ -12,13 +12,14 @@ class VenuesController < ApplicationController
     end
  
     @venue = Venue.find_by(slug: params[:slug])
-
     @comments = @venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
 
     if logged_in?
 
-      @event = Event.where(venue_id: @venue.id).first || @event = Event.create(venue_id: @venue.id)
+      @event = current_user.events.where(venue_id: @venue.id).first if current_user.events.any? && current_user.events.where(venue_id: @venue.id)
+      @event ||= Event.create(venue_id: @venue.id)
+      current_user.events << @event unless current_user.events.include? @event
       @rating = @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
       @rating ||= Rating.create(event_id: @event.id, user_id: current_user.id, score: 0)
       @comment = Comment.where(rating_id: @rating.id).first
