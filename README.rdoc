@@ -1,4 +1,5 @@
 == README
+add social aspect
 Add review button to index pages
 characters counter
 Add message in DJ sign up button

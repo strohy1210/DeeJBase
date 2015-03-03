@@ -87,7 +87,7 @@
     <%= select_tag(:filter, options_for_select([["SoundCloud - Fewest Followers", :scld_asc], ["SoundCloud - Most Followers", :scld_desc],["Recently Rated", :recent_desc]], @filter), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
   <%else%>
-      <li class="navbar-form col-xs-2">
+      <li class="navbar-form col-xs-2 hidden-xs">
     <%= select_tag(:filter, options_for_select([["SoundCloud - Fewest Followers", :scld_asc], ["SoundCloud - Most Followers", :scld_desc], ["Recently Rated", :recent_desc]], :recent_desc), class: "form-control",:onchange => 'this.form.submit()') %>
   </li></form>
 

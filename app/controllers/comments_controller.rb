@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
         date = Date.today
       end 
       @event.update(date: date)
-
       redirect_to venue_path(@venue.slugify)
     else 
       @rating.update(score: 0)
