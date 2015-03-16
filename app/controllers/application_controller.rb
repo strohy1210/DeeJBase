@@ -50,18 +50,18 @@ class ApplicationController < ActionController::Base
     @category = params["category"]
     if params["category"] && params["category"] != "all" && params[:neighborhood_id] != "all"
       @neighborhood = Neighborhood.find(params[:neighborhood_id])
-      @venues = Venue.where(neighborhood_id: @neighborhood.id, category: @category).paginate(page: params[:page], per_page: 10).order('rated_at ASC')
+      @venues = Venue.where(neighborhood_id: @neighborhood.id, category: @category).paginate(page: params[:page], per_page: 20).order('rated_at ASC')
       if @venues.blank?
         flash.now[:warning] = "No venues matching both the neighborhood and category, so here's the results for the hood."
-        @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 10).order('rated_at ASC')
+        @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 20).order('rated_at ASC')
       end
     elsif params["category"] && params["category"] != "all" && params[:neighborhood_id] == "all"
-      @venues = Venue.where(category: @category).paginate(page: params[:page], per_page: 10).order('rated_at ASC')
+      @venues = Venue.where(category: @category).paginate(page: params[:page], per_page: 20).order('rated_at ASC')
     elsif params["category"] == "all" && params[:neighborhood_id] && params[:neighborhood_id] != "all"
       @neighborhood = Neighborhood.find(params[:neighborhood_id])
-      @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 10).order('rated_at ASC')
+      @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 20).order('rated_at ASC')
     else
-      @venues = Venue.paginate(page: params[:page], per_page: 10).order('rated_at ASC')
+      @venues = Venue.paginate(page: params[:page], per_page: 20).order('rated_at ASC')
     end
 
   end

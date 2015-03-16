@@ -38,7 +38,7 @@ class SearchesController < ApplicationController
         @venue = @venue_results.first
         redirect_to venue_path(@venue.slugify)
       else
-        @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 10).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 10).order('name ASC')
+        @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC')
         flash.now[:success] = @venue_results.size.to_s + ' venue(s) matching "' +name+'". Click for more info.'
         render 'venues/index', layout: "venues"
       end
