@@ -18,8 +18,8 @@
       <h2><%= link_to venue.name.titleize, venue_path(venue.slugify) %></h2>
         <% if !venue.neighborhood.blank? %>     
           <h4><%= venue.neighborhood.name %></h4>
-        <% end%>
-    
+        <% end%>    
+         
     </div>
 
 
@@ -31,6 +31,7 @@
         <div id="star<%=venue.id%>" class="djb" data-score=<%= venue.average_rating%>>
          Music Rating<sup>beta</sup>:
         </div>
+          <h4 style="color:black;"><%= venue.category %></h4> 
        </div>
       </div>
 
