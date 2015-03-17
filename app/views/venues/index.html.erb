@@ -11,11 +11,12 @@
 <div id="results">
 <ul>
 <% @venues.each do |venue| %>
-    
+   
   <div class='dj-item'>
+     <a href="/venues/<%=venue.slugify%>">
     <div class="row">
     <div class= "dj-header col-md-3">
-      <h2><%= link_to venue.name.titleize, venue_path(venue.slugify) %></h2>
+      <h2><%=venue.name.titleize%></h2>
         <% if !venue.neighborhood.blank? %>     
           <h4><%= venue.neighborhood.name %></h4>
         <% end%>    
@@ -23,7 +24,7 @@
     </div>
 
 
-  <%= link_to venue_path(venue.slugify) do %>
+
       <div class="bio col-md-4 col-md-offset-1">
         <div class='overlay'>
         
@@ -35,17 +36,16 @@
        </div>
       </div>
 
-  <% end %>
 <h6>
         <div class="preview col-md-3">
           <% comments = venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if venue.comments.any?  %>
-        <em><%=link_to truncate(comments.last.body, length: 110, separator: " ") if comments && comments.any? %></em>
+        <em><%=truncate(comments.last.body, length: 110, separator: " ") if comments && comments.any? %></em>
       </div>
 </h6>
     </div>
 
 
-  </div>
+  </div></a>
   <br>
 <% end %>
    

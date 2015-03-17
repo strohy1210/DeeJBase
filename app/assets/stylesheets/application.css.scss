@@ -127,7 +127,7 @@ iframe {
 
 
 
-a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header a:hover, .bio h4:hover {
+a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover {
   text-decoration: none;
   color: rgba(10, 10, 10, 0.5);
 }
@@ -374,7 +374,7 @@ a .bio h5, a .djb{
   color: #000;
 }
 
-.dj-header a, .dj-item .djb, .dj-item h4, .preview a {
+.dj-header h2, .dj-item .djb, .dj-item h4, .preview {
   color: #403D3D;
 
 }
