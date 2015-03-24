@@ -44,6 +44,16 @@ $(function(){
         autoclose: true
     });
     
+  var input = $('#comment_body').val();
+  $('.user-rate').on('keyup keypress keydown click input','#comment_body',function() {
+    if ($('#comment_body').val().length > 39) {
+      $('.submit-comment').removeClass('disabled');
+    } 
+    if ($('#comment_body').val().length <= 39) {
+      $('.submit-comment').addClass('disabled');
+    }
+  })
+
 
     // $('.submit-comment').click(function(){
     //   var date = $('.datepicker').attr(value);
