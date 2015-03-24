@@ -1,9 +1,11 @@
 
 <% @comments.each do |comment| %>
+<% @user=comment.user %>
   <div class="review">
   <div class="row">
-    <div class= "user-image col-md-1">
-      <%= link_to(image_tag(comment.user.image_url), user_path(comment.user))%>
+    <div class= "user-image text-center col-md-1">
+      <%= link_to(image_tag(@user.image_url), user_path(@user))%>
+      <%= @user.first_name %>
   </div>
     <div class= "comment col-md-9">
       <div class="user-rating">
@@ -40,9 +42,7 @@
   <%end%>
   </div>
   <div class='row'>
-
-    <span class='col-md-1 text-center first-name'><%= comment.user.first_name if comment.user.first_name %></span>
-    <span class='col-md-10 updated'>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</span>
+    <span class='col-md-10 col-md-offset-1 updated'>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</span>
   </div>
   </div>
 <%end%>
