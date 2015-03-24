@@ -393,7 +393,13 @@ a .bio h5, a .djb{
   background-image: linear-gradient(to bottom, rgb(21, 103, 255) 0%, #265a88 100%);
 }
 
+.navbar-brand {
+  margin-left: 10px;
+}
 
+a#drop1 {
+  margin-right: 15px;
+}
 
 
 @media (max-device-width : 480px) {
