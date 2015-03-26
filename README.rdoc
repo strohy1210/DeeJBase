@@ -1,4 +1,5 @@
 == README
+add photo uploader
 add social aspect
 Add review button to index pages
 characters counter

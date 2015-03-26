@@ -17,9 +17,7 @@ class Dj < ActiveRecord::Base
 
   attr_accessor :message, :demo_title
 
-  # def default_values
-  #   self.bio ||= 'I\'m a DJ in NYC, get in touch'
-  # end
+
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase
   end

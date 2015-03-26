@@ -48,9 +48,11 @@ $(function(){
   $('.user-rate').on('keyup keypress keydown click input','#comment_body',function() {
     if ($('#comment_body').val().length > 39) {
       $('.submit-comment').removeClass('disabled');
+      $('.submit-comment').val("Submit or Update");
     } 
     if ($('#comment_body').val().length <= 39) {
       $('.submit-comment').addClass('disabled');
+      $('.submit-comment').val("Type a few more lines to submit");
     }
   })
 

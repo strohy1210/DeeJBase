@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
         date = Date.today
       end 
       @event.update(date: date)
+      flash[:success]="You can edit your comment by hitting the review button again."
       redirect_to venue_path(@venue.slugify)
     else 
       @rating.update(score: 0)
