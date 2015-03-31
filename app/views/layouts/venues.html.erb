@@ -55,7 +55,7 @@
 
     <ul class="nav navbar-nav">
 
-
+      <li><%= link_to 'All Venues', venues_path%></li>
       <li><a href="#" data-toggle="modal" data-target="#contactModal" >
       <div class="hover-mask bottom-mask mask-orange">
         DJ Sign Up
@@ -101,7 +101,6 @@
 
   </ul>
   <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to 'All Venues', venues_path%></li>
     <% if !logged_in? %>
       <li><a href='/auth/facebook' class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in</a></li>
       <% end %>

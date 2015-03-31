@@ -5,7 +5,7 @@ class AdminNotification < ActionMailer::Base
     mail(to: "strohsm88@gmail.com", subject: user.name + " signed up!")
   end
 
-  def new_review
-    mail(to: "strohsm88@gmail.com", subject: user.name + " signed up!")
+  def new_review(user, resource)
+    mail(to: "strohsm88@gmail.com", subject: "#{user.name} reviewed #{resource.name}")
   end
 end

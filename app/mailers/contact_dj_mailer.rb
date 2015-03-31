@@ -1,5 +1,5 @@
 class ContactDjMailer < ActionMailer::Base
-  default from: "strohsm88.com"
+  default from: "strohsm88.gmail.com"
 
   def contact_dj(dj, message, email)
     @email=email
