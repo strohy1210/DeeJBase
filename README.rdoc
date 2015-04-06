@@ -1,4 +1,8 @@
 == README
+TEST!  spec
+
+
+
 add photo uploader
 add social aspect
 Add review button to index pages
@@ -8,6 +12,7 @@ Add message in DJ sign up button
 ADD:
 MANUALY AD DJS TO EVENTS
 the box
+DJs at Warehouse parties
 make it so you cant claim your own review
 baby blue
 create venue algorithm

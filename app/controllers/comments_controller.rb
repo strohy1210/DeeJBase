@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @rating = @comment.rating
     @comment.update(comment_params)
-    @event = @comment.event
-    @venue=@event.venue
+    @venue = Venue.find(params[:venue_id].to_i)
+    # @event = @comment.event
+    # @venue=@event.venue
 
     if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "mm-dd-yyyy" && params[:date] != ""
       array = params[:date].split("-")
@@ -20,9 +21,12 @@ class CommentsController < ApplicationController
       rescue
         date = Date.today
       end 
-      @event.update(date: date)
+      @event = @rating.event
+      @event.update(date: date) if @event
+      @event ||= Event.create(venue: @venue, date: date)
+      @rating.update(event: @event)
       flash[:success]="You can edit your comment by hitting the review button again."
-      AdminNotification.new_review(current_user, @comment.venue).deliver
+      AdminNotification.new_review(current_user, @venue).deliver if current_user.id != 15
       redirect_to venue_path(@venue.slugify)
     else 
       @rating.update(score: 0)
@@ -36,7 +40,7 @@ class CommentsController < ApplicationController
   private
  
     def comment_params
-      params.require(:comment).permit!
+      params.require(:comment).permit(:body)
     end
 
 end

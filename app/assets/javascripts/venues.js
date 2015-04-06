@@ -46,17 +46,46 @@ $(function(){
     
   var input = $('#comment_body').val();
   $('.user-rate').on('keyup keypress keydown click input','#comment_body',function() {
-    if ($('#comment_body').val().length > 39) {
+    if ($('#comment_body').val().length > 39 && $('#date').val() != "mm-dd-yyyy" ) {
       $('.submit-comment').removeClass('disabled');
-      $('.submit-comment').val("Submit or Update");
+      $('.submit-comment').val("Submit");
     } 
-    if ($('#comment_body').val().length <= 39) {
+    if ($('#comment_body').val().length <= 39 || $('#date').val() === "mm-dd-yyyy") {
       $('.submit-comment').addClass('disabled');
-      $('.submit-comment').val("Type a few more lines to submit");
+      if ($('#comment_body').val().length <= 39) {
+        $('.submit-comment').val("Type a few more lines to submit");
+      }
+      else {
+        $('.submit-comment').val("Choose date to submit");
+      }
     }
   })
 
+  $('#date').click(function() {
+    if ($('#comment_body').val().length > 39) {
+      $('.submit-comment').removeClass('disabled');
+        $('.submit-comment').val("Submit");
+      }
+    })
+  // $('.datepicker').click(function(){
+  //   $('td').click(function(){
+  //     if ($('#comment_body').val().length > 39 && $('#date').val() != "mm-dd-yyyy" ) {
+  //       $('.submit-comment').removeClass('disabled');
+  //       $('.submit-comment').val("Submit");
+  //     }
 
+  //   })
+  // })
+  // $('.datepicker').on('click','#date',function() {
+  //   if ($('#comment_body').val().length > 39 && $('#date').val() != "mm-dd-yyyy" ) {
+  //     $('.submit-comment').removeClass('disabled');
+  //     $('.submit-comment').val("Submit");
+  //   } 
+  //   if ($('#comment_body').val().length <= 39 || $('#date').val() === "mm-dd-yyyy") {
+  //     $('.submit-comment').addClass('disabled');
+  //     $('.submit-comment').val("Choose date and/or type a few more lines to submit");
+  //   }
+  // })
     // $('.submit-comment').click(function(){
     //   var date = $('.datepicker').attr(value);
     //   $('.datepicker').attr('type', 'date');
