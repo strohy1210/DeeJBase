@@ -127,7 +127,7 @@ iframe {
 
 
 
-a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover {
+a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, .preview:hover, .djb:hover {
   text-decoration: none;
   color: rgba(10, 10, 10, 0.5);
 }
@@ -366,7 +366,6 @@ btn-primary:hover, .btn-primary:focus, .btn-group.open .dropdown-toggle.btn-prim
 
 .title h2 {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-   text-shadow: 1px 1px 5px rgb(21, 103, 255);
     font-variant: small-caps;
 }
 
@@ -410,6 +409,9 @@ a#drop1 {
   font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
   color: #DAD9D2;
   }
+  h2{
+   font-variant: small-caps;
+  }
 }
 
 #results .row {
@@ -419,8 +421,8 @@ a#drop1 {
 }
 
 #rate-the-music {
-  color: rgba(252, 212, 221, 0.1);
-  margin: 0px;
+  color: rgba(252, 212, 221, 0.07);
+  margin: -5px;
 }
 
 .preview {
