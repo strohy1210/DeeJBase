@@ -31,10 +31,9 @@
 body { 
   font-family: 'Karla', sans-serif;
   font-size: 16px;
-  background: #ddd;
   padding-top: 60px;
   background-image: linear-gradient(to bottom, #f8f8f8 0%, #ccc 100%);
-
+  background: #241f10;
 
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -48,8 +47,9 @@ body {
  }
 
 .container-fluid {
-  background-color: #ddd;
+  background-color: #241f10;
   border-radius: 20px;
+
 }
 
 
@@ -147,7 +147,7 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover {
 }
 
 .container #bar {
-  background-color: transparant;
+  background-color: transparent;
 }
 
 .container {
@@ -155,15 +155,15 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover {
 }
 
 .venue-index {  
-  background-color: rgba(252, 212, 221, 0.3);
-  background: rgba(0, 0, 0, 0.6);
+  background: #241f10
 }
 
 .venue-list {
-  background-image: linear-gradient(to bottom, #ccc 0%, #ddd 100%);
+  background: rgba(191, 216, 235, 0.3);
 }
+
 .venue-show{
-  background-image: linear-gradient(to bottom, #ccc 0%, #ddd 100%);
+  background-image: linear-gradient(to bottom, #cccccc 0%, #dddddd 100%);
 }
 .select-genre {
   margin-right: 5px;
@@ -327,7 +327,8 @@ li { cursor: pointer; }
 }
 
 .navbar-default {
-  background-image: linear-gradient(to bottom, #ccc 0%, #f8f8f8 100%);
+  background: transparent;
+  background: rgba(191, 216, 235, 0.5);
 }
 
 .header {
@@ -360,6 +361,7 @@ btn-primary:hover, .btn-primary:focus, .btn-group.open .dropdown-toggle.btn-prim
   color: #aaa;
   font-family: 'Titillium Web', sans-serif;
   text-shadow: 1px 1px 5px #333;
+  color: #96967E;
 }
 
 .title h2 {
@@ -378,7 +380,9 @@ a .bio h5, a .djb{
 }
 
 .dj-header h2, .dj-item .djb, .dj-item h4, .preview {
-  color: #403D3D;
+
+  font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
+  color: #DAD9D2;
 
 }
 
@@ -401,52 +405,78 @@ a#drop1 {
   margin-right: 15px;
 }
 
+.venue-list {
+  h2, h3, p {
+  font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
+  color: #DAD9D2;
+  }
+}
 
-@media (max-device-width : 480px) {
-  .navbar-fixed-top {
-    position: absolute;
-    top: auto;
-    margin-bottom: 100px;
-    height: 80px;
-    padding-top: 10px;
+#results .row {
+  height: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#rate-the-music {
+  color: rgba(252, 212, 221, 0.1);
+  margin: 0px;
+}
+
+.preview {
+  margin-top: 2%;
+}
+
+#bar {
+  background: rgba(191, 216, 235, 0.3);
+}
+
+
+  @media (max-device-width : 480px) {
+    .navbar-fixed-top {
+      position: absolute;
+      top: auto;
+      margin-bottom: 100px;
+      height: 80px;
+      padding-top: 10px;
+      }
+
+    body {
+        padding-top: 0px;
+      }
+
+    .hidden-xs, .navbar-nav .hidden-xs {
+      display: none;
+    }
+    .container {
+      width: 100%;
+    }
+    .page-header {
+      padding-top: 30px;
+    }
+    .error-top {
+      padding-top: 80px;
+    }
+    .btn {
+      font-size: 14px;
     }
 
-  body {
-      padding-top: 0px;
+    .header .title {
+      padding-top: 60px;
     }
 
-  .hidden-xs, .navbar-nav .hidden-xs {
-    display: none;
-  }
-  .container {
-    width: 100%;
-  }
-  .page-header {
-    padding-top: 30px;
-  }
-  .error-top {
-    padding-top: 80px;
-  }
-  .btn {
-    font-size: 14px;
-  }
+    .col-xs-12 {
+      width: 100%;
+    }
 
-  .header .title {
-    padding-top: 60px;
-  }
+    li .navbar-form {
+      margin: 5px;
+    }
 
-  .col-xs-12 {
-    width: 100%;
-  }
-
-  li .navbar-form {
-    margin: 5px;
-  }
-
-  .navbar {
-    height: 80px;
-    font-size: 23px;
-  }
+    .navbar {
+      height: 80px;
+      font-size: 23px;
+    }
 
 
 }

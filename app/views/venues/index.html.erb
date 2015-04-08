@@ -1,7 +1,7 @@
 
   <div class="row header">
     <div class="title">
-    <h3 class="text-center"> Rate the music today. For a better musical tomorrow. </h3>
+    <h3 class="text-center" id="rate-the-music"> Rate the music. </h3>
     </div>
 <!-- <div class="search-venues">
 
@@ -15,13 +15,11 @@
   <div class='dj-item'>
      <a href="/venues/<%=venue.slugify%>">
     <div class="row">
-    <div class= "dj-header col-md-3">
+    <div class= "dj-header col-md-4 col-md-offset-1">
       <h2><%=venue.name.titleize%></h2>
         <% if !venue.neighborhood.blank? %>     
           <h4><%= venue.neighborhood.name %></h4>
-        <% end%>             
-    </div>
-      <div class="bio col-md-4 col-md-offset-1">
+        <% end%>
         <div class='overlay'>
         
 <br>
@@ -29,13 +27,12 @@
          DJB Rating<sup></sup>:
         </div>
           <div style="color:#403D3D;"><%= venue.category.singularize if venue.category %></div> 
-       </div>
-      </div>
+       </div>        
+    </div>
 
-<h6>
-        <div class="preview col-md-3">
+        <div class="preview col-md-4 col-md-offset-1">
           <% comments = venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if venue.comments.any?  %>
-        <em><%=truncate(comments.last.body, length: 110, separator: " ") if comments && comments.any? %></em>
+        <em><%=truncate(comments.last.body, length: 300, separator: " ") if comments && comments.any? %></em>
       </div>
 </h6>
     </div>
