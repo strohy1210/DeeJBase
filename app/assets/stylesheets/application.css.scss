@@ -117,7 +117,7 @@ iframe {
 }
 
 .dj-item {
-  border-bottom: 2px solid #a0a0a0;
+  border-bottom: 2px solid #3A3434;
   border-radius: 20px;
   margin-bottom: 1px;
   padding: 50px;
@@ -163,7 +163,7 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
 }
 
 .venue-show{
-  background-image: linear-gradient(to bottom, #cccccc 0%, #dddddd 100%);
+  background: rgba(191, 216, 235, 0.3);
 }
 .select-genre {
   margin-right: 5px;
@@ -177,6 +177,7 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
   background: #ededed;
   border-radius: 30px;
   padding: 10px;
+  background: rgba(252, 212, 221, 0.3);
 }
 
 .track {
@@ -264,7 +265,7 @@ li { cursor: pointer; }
   border-bottom: 1px solid #d0d0d0;
   margin-top: 8px;
   font-size: 15px;
-
+  background:rgba(252, 212, 221, 0.3);
 }
 
 .navbar-form .form-control {
@@ -275,7 +276,7 @@ li { cursor: pointer; }
 .youtube iframe {
   width: 420px;
   height: 315px;
-  }
+}
 
 .map iframe {
   height: 200px;

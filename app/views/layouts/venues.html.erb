@@ -80,12 +80,12 @@
 
   <% if @neighborhood %>
   <li><form class="navbar-form col-xs-2">
-   <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] }<< ["All NYC", 'all'], @neighborhood.id), class: "form-control",:onchange => 'this.form.submit()') %>
+   <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] }<< ["NYC Neighborhoods", 'all'], @neighborhood.id), class: "form-control",:onchange => 'this.form.submit()') %>
   
   </li>
   <% else %>
   <li><form class="navbar-form col-xs-2">
-    <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] } << ["All NYC", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
+    <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] } << ["NYC Neighborhoods", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
   </li>
   <%end%>
   <% if @category != "all" && @category != nil%>
