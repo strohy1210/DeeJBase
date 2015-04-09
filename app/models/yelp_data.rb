@@ -10,7 +10,7 @@ class YelpData
         if words
           categories = BAR_WORDS & words 
           venue.update(category: categories.first) if categories.any?
-          venue.destroy unless categories.any?
+          # venue.destroy unless categories.any?
         end
       end
     end
