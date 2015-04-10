@@ -13,6 +13,11 @@ class VenuesController < ApplicationController
     @venue = Venue.find_by(slug: params[:slug])
     @comments = @venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
+    if @comments
+      @users = @comments.map {|comment| comment.user}
+      comments_by_user = @users.map {|user| user.comments & @comments }
+      @comments_uniq_by_user = comments_by_user.map {|c_array| c_array.last}
+    end
 
     if logged_in?
       @events = @venue.events

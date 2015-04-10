@@ -163,7 +163,7 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
 }
 
 .venue-show{
-  background: rgba(191, 216, 235, 0.3);
+ 
 }
 .select-genre {
   margin-right: 5px;
@@ -260,7 +260,7 @@ li { cursor: pointer; }
 
 .review {
   background: #ededed;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 5px;
   margin-top: 8px;
   font-size: 15px;
@@ -433,6 +433,14 @@ a#drop1 {
   background: rgba(191, 216, 235, 0.3);
 }
 
+.page-header {
+  border-bottom: none;
+}
+
+.navbar .btn {
+  height: 148%;
+  margin-top: -1px;
+}
 
   @media (max-device-width : 480px) {
     .navbar-fixed-top {
