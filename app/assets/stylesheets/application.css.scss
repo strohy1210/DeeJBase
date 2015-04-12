@@ -121,7 +121,7 @@ iframe {
   border-radius: 20px;
   margin-bottom: 1px;
   padding: 50px;
-  background-color: transparent;
+  background-color: rgba(191, 216, 235, 0.3);
   color: #0f0f0f;
 }
 
@@ -159,7 +159,7 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
 }
 
 .venue-list {
-  background: rgba(191, 216, 235, 0.3);
+  background: transparent;
 }
 
 .venue-show{
@@ -381,7 +381,7 @@ a .bio h5, a .djb{
 .dj-header h2, .dj-item .djb, .dj-item h4, .preview {
 
   font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
-  color: #DAD9D2;
+  color: #F3F2EC;
 
 }
 
@@ -407,7 +407,7 @@ a#drop1 {
 .venue-list {
   h2, h3, p {
   font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
-  color: #DAD9D2;
+  color: #F3F2EC;
   }
   h2{
    font-variant: small-caps;
