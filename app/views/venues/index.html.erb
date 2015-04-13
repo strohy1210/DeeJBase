@@ -36,7 +36,11 @@
 
         <div class="preview col-md-5 col-md-offset-1">
           <% comments = venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if venue.comments.any?  %>
-        <em><%=truncate(comments.last.body, length: 300, separator: " ") if comments && comments.any? %></em>
+          <% if comments && comments.any? %>
+        <em><%=truncate(comments.last.body, length: 300, separator: " ") %></em>
+        <%else%>
+          <em>Be the first to review <%venue.name%>'s music.</em>
+        <%end%>
       </div>
 </h6>
     </div>
