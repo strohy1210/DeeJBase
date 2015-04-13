@@ -118,10 +118,9 @@ iframe {
 
 .dj-item {
   border-bottom: 2px solid #3A3434;
-  border-radius: 20px;
-  margin-bottom: 1px;
-  padding: 50px;
-  background-color: rgba(191, 216, 235, 0.3);
+  border-radius: 7px;
+  margin-bottom: -50px;
+  padding: 90px;
   color: #0f0f0f;
 }
 
@@ -440,6 +439,19 @@ a#drop1 {
 .navbar .btn {
   height: 148%;
   margin-top: -1px;
+}
+
+.grey-overlay {
+  background-color: rgba(191, 216, 235, 0.3);
+}
+
+
+.red-overlay {
+  background-color: rgba(252, 212, 221, 0.3);
+}
+
+.brown-overlay {
+  background-color: rgba(251, 232, 201, 0.25);
 }
 
   @media (max-device-width : 480px) {
