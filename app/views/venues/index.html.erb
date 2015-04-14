@@ -39,7 +39,7 @@
           <% if comments && comments.any? %>
         <em><%=truncate(comments.last.body, length: 300, separator: " ") %></em>
         <%else%>
-          <em>Be the first to review <%venue.name%>'s music.</em>
+          <em>Be the first to review <%=venue.name%>'s music.</em>
         <%end%>
       </div>
 </h6>
