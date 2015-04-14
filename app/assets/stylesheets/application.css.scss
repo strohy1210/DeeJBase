@@ -37,7 +37,7 @@ html {
 body { 
   font-family: 'Karla', sans-serif;
   font-size: 16px;
-  padding-top: 80px;
+  padding-top: 70px;
   background-image: linear-gradient(to bottom, #f8f8f8 0%, #ccc 100%);
   background: #241f10;
 
@@ -90,7 +90,6 @@ h4 a {
     height: 200px;
     width: auto;
     max-width: 250px;
-    border: 1px solid #ccc
 }
 
 .edit-dj, .hire-dj, .contact, .cancel-message {
@@ -180,9 +179,12 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
 }
 .dj-info {
   background: #ededed;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 10px;
-  background: rgba(252, 212, 221, 0.3);
+  background: rgba(252, 212, 221, 0.2);
+  color: #F3F2EC;
+  border-bottom: 2px solid #3A3434;
+
 }
 
 .track {
@@ -212,11 +214,11 @@ font-size: 16px;
 }
 
 .user-rate {
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #3A3434;
   border-radius: 20px;
   margin-bottom: 1px;
   padding: 8px;
-  background-color: #fafafa;
+  background-color: #2D2818;
 }
 
 .bio:hover {
@@ -269,7 +271,9 @@ li { cursor: pointer; }
   padding: 5px;
   margin-top: 8px;
   font-size: 15px;
-  background:rgba(252, 212, 221, 0.3);
+  background:rgba(252, 212, 221, 0.2);
+  color: #F3F2EC;
+  border-bottom: 2px solid #3A3434;
 }
 
 .navbar-form .form-control {
@@ -461,7 +465,11 @@ a#drop1 {
 }
 
 .rate-music-header {
-  margin-bottom: -60px;
+  margin-bottom: -30px;
+}
+
+.venue-show .title {
+  color: #F3F2EC
 }
 
   @media (max-device-width : 480px) {
