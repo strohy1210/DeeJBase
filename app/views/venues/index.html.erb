@@ -11,10 +11,13 @@
 <div id="results">
 <% @venues.each_with_index do |venue, i| %>
   <% if i%3 == 0  %>
+  music
     <div class='dj-item grey-overlay'>
   <%elsif i%3 == 1%>
+  love
     <div class='dj-item red-overlay'>
   <%else%>
+  together
     <div class='dj-item brown-overlay'>
   <%end%>
      <a href="/venues/<%=venue.slugify%>">
