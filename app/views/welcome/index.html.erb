@@ -7,7 +7,6 @@
 </div>
 <div class="venue-list container-fluid">
 <div id="results">
-<ul>
 <% @djs.each do |dj| %>
     
   <div class='dj-item'>
@@ -61,7 +60,6 @@
 <div id="infinite-scrolling">
   <%= will_paginate @djs %>
 </div>
-</ul>
 
 <script type="text/javascript">
   <% @djs.each do |dj| %>

@@ -27,11 +27,18 @@
 @import url("//fonts.googleapis.com/css?family=Exo+2:400,500");
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
 
+html { 
+  background: url(logo_white.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 body { 
   font-family: 'Karla', sans-serif;
   font-size: 16px;
-  padding-top: 60px;
+  padding-top: 80px;
   background-image: linear-gradient(to bottom, #f8f8f8 0%, #ccc 100%);
   background: #241f10;
 
@@ -119,8 +126,8 @@ iframe {
 .dj-item {
   border-bottom: 2px solid #3A3434;
   border-radius: 7px;
-  margin-bottom: -50px;
-  padding: 90px;
+  margin-bottom: 15px;
+  padding: 60px;
   color: #0f0f0f;
 }
 
@@ -154,7 +161,7 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
 }
 
 .venue-index {  
-  background: #241f10
+  
 }
 
 .venue-list {
@@ -442,16 +449,20 @@ a#drop1 {
 }
 
 .grey-overlay {
-  background-color: rgba(191, 216, 235, 0.3);
+  background-color: rgba(191, 216, 235, 0.2);
 }
 
 
 .red-overlay {
-  background-color: rgba(252, 212, 221, 0.3);
+  background-color: rgba(252, 212, 221, 0.1);
 }
 
 .brown-overlay {
   background-color: rgba(251, 232, 201, 0.25);
+}
+
+.rate-music-header {
+  margin-bottom: -60px;
 }
 
   @media (max-device-width : 480px) {
