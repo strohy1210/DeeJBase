@@ -1,24 +1,15 @@
-<div class="page-header text-center col-md-6 col-md-offset-3">
-  <h1><stron>Why Does the DJ Suck?</strong></h1>
-</div>
-<div class='content text-center'>
-  <div class="about-djbase col-md-12 row">
-    <h4><p>There are far too many talented DJs running around trying to get a gig for so many venues to get away with DJ mediocrity.</p><p> We're not foodies rating bars -  <br> We're music-lovers, who understand the power of a DJ, who, regardless of the genre they spin, not only makes the party bump, <p> But enhances the rhythms that already ELATE us.</p> <p>It's time we draw back the curtain and reward the people in the industry who do it right.</p> <h3><strong>DeeJBase is a voice for <em>real</em> DJs, the venues who hire them, and the people who love them.</strong></h3>
-  </div>
-  <div class="contact-form row col-md-6 col-md-offset-3">
-    <h2>Let's disrupt the industry.</h2> 
-    <p>Get at us with feedback or whatever, we're happy to hear from you.</p>
-    <%= form_tag(contact_us_path, method: "post") do %>
-      <%= text_area_tag(:message, "", class: 'form-control', rows: 6, placeholder: "your message here", required: true)%>
-      <br>
-      <%= email_field_tag(:email, "", class: 'form-control', placeholder: "youremail@email.com", required: true) %>
-      <% if logged_in? %>
-        <%= hidden_field_tag :current_user, :id %><br>
-      <%end%>
-      <%= submit_tag("Send", class: 'btn btn-small') %>
-    <%end%>
-  </div>>
+<div class="about-djbase">
 
+  <div class="page-header text-center col-md-6 col-md-offset-3">
+    <h2>For the Love of Music . . . </h2>
+  </div>
+  <div class='content text-center'>
+    <div class="col-md-12 row">
+      <h3> We're not foodies rating bars -  <br> We're music-lovers, who understand the power of a DJ, who, regardless of the genre they spin, not only makes the party bump, <p> But enhances the rhythms that already ELATE us.</p> <p>It's time we draw back the curtain and reward the people in the industry who do it right.</p>
+      <h3><strong>DeeJBase is a voice for <em>real</em> DJs, the venues who hire them, and the people who love them.</strong></h3>
+    </div>
+
+  </div>
 </div>
 
   <div class='footer controls text-center col-md-12' id="footer">
