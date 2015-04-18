@@ -476,6 +476,14 @@ a#drop1 {
   color: #EBEBE7;
 }
 
+.datepicker, .bg-warning {
+  color: black;
+}
+
+.alert {
+  margin-top: -1%;
+}
+
   @media (max-device-width : 480px) {
     .navbar-fixed-top {
       position: absolute;
