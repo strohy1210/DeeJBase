@@ -45,6 +45,7 @@ class WelcomeController < ApplicationController
   end
 
   def contact_us
+
     email = params["email"]
     if params[:message]
       message = params[:message]
@@ -52,6 +53,8 @@ class WelcomeController < ApplicationController
       message = "This person is a dj."
     elsif params[:agent_status] == "true"
       message = "This person hires djs."
+    elsif params[:mailing]
+      message = "Sign up for mailing list!"
     else
       message = "just wants updates"
     end

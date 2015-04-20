@@ -1,14 +1,28 @@
 == README
+
+#create party planners
+#VIP members like rotten tomatoes
+#add auto post to facebook for reviews
 TEST!  spec
+hide name button
+
+carmel productions - I feel parties
+cityfox- promoters
+Something different - chromed parties
+Under the sound - parties
 
 
+having ppl find out something exists via the strongest possible usecase
+social proof
+
+some startup used this in this way
+person not affiliated with you to post it
 
 add photo uploader
 add social aspect
 Add review button to index pages
-characters counter
+
 Add message in DJ sign up button
-10. update contact info of the people who responded
 ADD:
 MANUALY AD DJS TO EVENTS
 the box
