@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'promoters/index'
+  get 'promoters/:slug', to: 'promoters#show', as: :promoter
+
   get 'ratings/update'
   resources :genres, only: [:new, :create]
   resources :users, only: :show
@@ -33,6 +36,8 @@ Rails.application.routes.draw do
   get '/api/djs', to: 'api#djs'
   get '/api/djs/:id', to: 'api#show_dj'
   post 'ratings/:id', to: 'ratings#create'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
