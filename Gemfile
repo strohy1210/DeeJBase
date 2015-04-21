@@ -44,7 +44,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry-rails',  :group => :development
 # gem 'sqlite3',  group: :development
-
+gem 'delayed_job_active_record'
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"

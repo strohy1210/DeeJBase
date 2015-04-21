@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'promoters/index'
+  get 'promoters', to: 'promoters#index'
   get 'promoters/:slug', to: 'promoters#show', as: :promoter
 
   get 'ratings/update'

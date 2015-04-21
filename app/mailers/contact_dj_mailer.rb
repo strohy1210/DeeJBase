@@ -27,6 +27,8 @@ class ContactDjMailer < ActionMailer::Base
     mail(to: email, subject: name+ ' NYC - DJ booking.')
   end
 
+  handle_asynchronously :contact_us
+  handle_asynchronously :signup
 
 end
 # djs = Dj.is_dj.order('sdcl_followers ASC')[1..14]

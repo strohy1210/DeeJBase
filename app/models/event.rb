@@ -13,10 +13,8 @@ class Event < ActiveRecord::Base
   end
 
   def update_venue_dj_rated_at
-    if self.dj
-      self.dj.update(rated_at: self.created_at)
-    elsif self.venue
-      self.venue.update(rated_at: self.created_at)
-    end
+    self.dj.update(rated_at: self.created_at) if self.dj
+    self.venue.update(rated_at: self.created_at) if self.venue
   end
+  
 end

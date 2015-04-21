@@ -10,7 +10,7 @@
 <div class="venue-list container-fluid">
 <div id="results">
   <br>
-<% @promoters.each_with_index do |venue, i| %>
+<% @promoters.each_with_index do |promoter, i| %>
   <% if i%3 == 0  %>
     <div class='dj-item grey-overlay'>
   
@@ -53,7 +53,7 @@
 
 
 <script type="text/javascript">
-  <% @promoters.each do |venue| %>
+  <% @promoters.each do |promoter| %>
    $("#star<%=promoter.id%>").raty({
       readOnly: true,
       score: function() {
