@@ -1,1 +1,89 @@
-show.html.erb
+<div class= "venue-show container-fluid">
+<div class="row page-header title">
+  <h2 class='col-md-5'> <%= @promoter.name %>  </h2>
+<!--removed promoter search -->
+</div>
+<div class="dj-profile">
+<div class="row">
+<div id="dj-profile">
+  
+
+  <div class="dj-info venue-info col-md-5 vertical-center">   
+    <div class="other-info">
+      <h4>Review <%=@promoter.name%>'s music.</h4>
+      DJB Rating<sup></sup>:
+      <div id='star'>
+   
+      </div>
+    </div>
+  
+  <div class='rate-button btn-centered btn btn-default'>Review <%=@promoter.name%></div>
+
+  <div class="rate-dj text-center">
+    <% if logged_in? %>
+
+      <p><strong>What'd you think of <%= @promoter.name %>'s DJ?</strong><br>
+
+
+      <div class="user-rate">
+        <div id='user_star'>
+
+        </div></p>
+        <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
+      
+          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 40 characters).", input_html: { minlength: 40, rows: 5,  class: "form-control comment" }%>
+            <%= label_tag :event_date %><br>
+            <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %><br>
+            <%= hidden_field_tag :promoter_id, @promoter.id %>
+
+          <%= f.button :submit, "Submit Comment", class: "disabled btn btn-default submit-comment"%>
+
+        <%end%>
+        <a href="#"><div class="done-rating cancel-comment" title="To delete your comment, cancel your rating or text body and hit 'update comment' above."style="color: red;">Cancel</div></a>
+      </div>
+    <%elsif !logged_in?%>
+      <div class="text-center bg-warning">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
+
+      
+      <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
+      | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>   </div>
+     <%end%> 
+ 
+  </div><br>
+</div>
+
+</div>
+</div>
+    <br><br>
+
+  <% if @comments %>
+     <h5 class="row venue-comments-title">Reviews</h5>
+
+     <%= render 'reviews' %><br>
+
+  <%end%>
+<script>
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @promoter.average_rating %>,
+    path: '/assets'
+  });
+
+
+  $('#user_star').raty({
+    score: <%= @rating.score %>,
+    cancel: true,
+    path: '/assets',
+    click: function(score, evt) {
+      $.ajax({
+        url: '/ratings/' + <%= @rating.id %>,
+        type: 'PATCH',
+        data: { score: score }
+      });
+    }
+  });
+
+
+
+</script>

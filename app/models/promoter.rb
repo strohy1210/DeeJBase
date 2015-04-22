@@ -3,9 +3,14 @@ class Promoter < ActiveRecord::Base
   has_many :djs, through: :events
   has_many :ratings, through: :events
   has_many :comments, through: :ratings
+  before_save :update_slug
 
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase
+  end
+
+  def update_slug
+    update(slug: slugify) unless slug == slugify
   end
 
   def average_rating
