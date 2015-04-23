@@ -1,4 +1,5 @@
 class PromotersController < ApplicationController
+  layout "venues"
   def index
     @promoters = Promoter.all
   end

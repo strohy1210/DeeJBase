@@ -3,7 +3,7 @@
 #create party planners
 #VIP members like rotten tomatoes
 #add auto post to facebook for reviews
-TEST!  spec
+
 hide name button
 
 Promoters/Music Festivals
@@ -32,7 +32,7 @@ So I'm thinking of creating a website that compiles feedback on parties you guys
 Next time you decide what party you want to go to you can just check out the site -thoughts?
 
 add "see more" on reviews
-DJ AUTOCOMPLETE
+AUTOCOMPLETE search form for venues and djs? remote dj source
 
 
 having ppl find out something exists via the strongest possible usecase

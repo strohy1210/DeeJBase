@@ -46,7 +46,6 @@
 </script>
 
 
-
 <div class="navbar navbar-default navbar-fixed-top">
   <div id="bar">
     <div class="navbar-header hidden-xs">
@@ -55,12 +54,8 @@
 
     <ul class="nav navbar-nav">
 
-      <li><%= link_to 'All Venues', venues_path%></li>
-      <li><a href="#" data-toggle="modal" data-target="#contactModal" >
-      <div class="hover-mask bottom-mask mask-orange">
-        DJ Sign Up
-      </div>
-      </a></li>
+      <li><%= link_to 'Venues', venues_path%></li>
+      <li><%= link_to 'Promoters', promoters_path%></li>
 
 
     <li class="navbar-form navbar-collapse">
@@ -73,8 +68,6 @@
       </div>
       <% end %>
     </li>
-
-
 
 <% @categories=["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
 
@@ -187,6 +180,11 @@
 
 <div class="fb-like" data-href="https://www.facebook.com/pages/DeeJBase/361049373981028" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
 <div class="controlls pull-right">
+  <a href="#" data-toggle="modal" data-target="#contactModal" >
+      <span class="hover-mask bottom-mask mask-orange">
+        DJ Sign Up |
+      </span>
+      </a>
   <a href="#" data-toggle="modal" data-target="#contactModal" >
       <span class="hover-mask bottom-mask mask-orange">
        Contact Us | 
