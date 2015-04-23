@@ -11,6 +11,9 @@
         <strong>Rating: <%= comment.rating.score.to_i %>/5 
           <% if comment.event && comment.event.date %>
           (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>)</strong>
+          <%if comment.event.promoter%>
+              thrown by <%= link_to comment.event.promoter.name, promoter_path(comment.event.promoter.slugify) %>)</strong>
+            <%end%>
           <%end%>
       </div>
       <div class="user-comment" id='<%=comment.id%>'>

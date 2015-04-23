@@ -6,6 +6,7 @@
 TEST!  spec
 hide name button
 
+Promoters/Music Festivals
 carmel productions - I feel parties
 cityfox- promoters
 Something different - chromed parties
@@ -13,6 +14,25 @@ Under the sound - parties
 bangOn
 Resolute
 Unicorn meat?
+daybreaker
+Red bull music academy
+uncode
+zigzag
+the fam
+Ebb & Flow
+GovBall
+EDC NY
+Coachella
+Burning Man
+
+HAVE MEMBERS PUT REVIEWS DIRECTLY IN THE FAM WITH #deejbase
+
+So I'm thinking of creating a website that compiles feedback on parties you guys have attended. I think it's hard to keep track of which party planner are better than other - or djs- or venues and this would be away of doing that
+
+Next time you decide what party you want to go to you can just check out the site -thoughts?
+
+add "see more" on reviews
+DJ AUTOCOMPLETE
 
 
 having ppl find out something exists via the strongest possible usecase

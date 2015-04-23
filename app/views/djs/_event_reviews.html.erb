@@ -11,11 +11,12 @@
     </div>
       <div class= "comment col-md-9">
         <div class="user-rating">
-          <strong>Rating: <%= comment.rating.score.to_i %>/5 
+          <strong>Rating: <%= comment.rating.score.to_i %>/5
+          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%> 
             <% if comment.event.venue %>
-            (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%> at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %>)</strong>
+            at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %>)</strong>
             <%elsif comment.event.promoter%>
-              (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%> at <%= link_to comment.event.promoter.name, promoter_path(comment.event.promoter.slugify) %>)</strong>
+              thrown by <%= link_to comment.event.promoter.name, promoter_path(comment.event.promoter.slugify) %>)</strong>
             <%end%>
         </div>
         <div class="user-comment" id='<%=comment.id%>'>
