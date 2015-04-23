@@ -11,7 +11,10 @@
       <div class="user-rating">
         <strong>Rating: <%= comment.rating.score.to_i %>/5 
           <% if comment.event && comment.event.date %>
-          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>)</strong>
+          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%></strong>
+            <% if comment.event.venue %>
+            at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %></strong>
+            <%end%>)
           <%end%>
       </div>
       <div class="user-comment" id='<%=comment.id%>'>
