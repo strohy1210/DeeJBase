@@ -47,7 +47,6 @@ class Venue < ActiveRecord::Base
   def imageify
     "http://"+self.name.gsub(" ", "").downcase+"nyc.jpg.to/"
   end
-  handle_asynchronously :imageify
 
 
 end

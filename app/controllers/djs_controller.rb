@@ -1,12 +1,19 @@
 class DjsController < ApplicationController
   skip_before_action :authorize
   def index
-     if params[:filter]
+    if params[:term]
+      @djs = Dj.is_dj.where('lower(name) LIKE ?', "%#{params[:term].downcase}%")
+    elsif params[:filter]
       set_params
     else
       @djs = Dj.is_dj.order('rated_at ASC').paginate(page: params[:page], per_page: 6)
     end
-    render 'welcome/index'
+    respond_to do |format|  
+      format.html { render 'welcome/index' }
+# Here is where you can specify how to handle the request for "/people.json"
+      format.json { render :json => @djs.map(&:name) }
+    end
+    
   end
  
 
@@ -14,12 +21,8 @@ class DjsController < ApplicationController
 
     DjGenre.where(dj_id: params[:id]).destroy_all
     @dj = Dj.find(params[:id])
-    @dj.genres = params["genres"].map {|g| Genre.find(g["id"])}
-
-    @dj.update(dj_params)
-  
-    if @dj.save
-
+    @dj.genres = params["genres"].map {|g| Genre.find(g["id"])}  
+    if @dj.update(dj_params)
       flash[:success] = 'Your profile is updated!'
       redirect_to dj_path(@dj.slugify)
     else
