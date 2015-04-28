@@ -2,14 +2,13 @@ class CommentsController < ApplicationController
     skip_before_action :authorize
 
   def update
-
     @comment = Comment.find(params[:id])
     @rating = @comment.rating
     @comment.update(comment_params)
     @venue = Venue.find(params[:venue_id].to_i) if params[:venue_id]
     @promoter = Promoter.find(params[:promoter_id].to_i) if params[:promoter_id]
-    # @event = @comment.event
-    # @venue=@event.venue
+    @dj= Dj.find_by(name: params[:dj_name]) if params[:dj_name]
+    @dj||=Dj.create_adhoc_dj(params[:dj_name])
 
     if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "mm-dd-yyyy" && params[:date] != ""
       array = params[:date].split("-")
@@ -24,8 +23,9 @@ class CommentsController < ApplicationController
       end 
       @event = @rating.event
       @event.update(date: date) if @event
-      @event ||= Event.create(venue: @venue, date: date) if @venue
-      @event ||= Event.create(promoter: @promoter, date: date) if @promoter
+      @event ||= Event.new(venue: @venue, date: date) if @venue
+      @event ||= Event.new(promoter: @promoter, date: date) if @promoter
+      @event.update(dj: @dj) if @dj
       @rating.update(event: @event)
       flash[:success]="You can edit your comment by hitting the review button again."
       AdminNotification.new_review(current_user, @venue).deliver if current_user.id != 15 && @venue
