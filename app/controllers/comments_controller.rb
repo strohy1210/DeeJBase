@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
         date = Date.today
       end 
       @event = @rating.event
-      @event.update(date: date) if @event
+      @event.update(date: date) if @event && date
       @event ||= Event.new(venue: @venue, date: date) if @venue
       @event ||= Event.new(promoter: @promoter, date: date) if @promoter
       @event.update(dj: @dj) if @dj
