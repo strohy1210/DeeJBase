@@ -1,5 +1,11 @@
 == README
 
+resident webdeveloper Sarah Stroh is thinking of ideas for a project that might help out the fam
+one idea she had was
+1. compile list of parties and write reviews either here w #famreview or on the site its self
+
+2. some sort of event organizer, a lot of times will comment
+
 #create party planners
 #VIP members like rotten tomatoes
 #add auto post to facebook for reviews

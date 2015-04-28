@@ -1,3 +1,18 @@
+  <script type="text/javascript">
+    $(function() {  
+        $('#select_origin').autocomplete({
+            source: '<%= djs_path(:json) %>'
+          })
+
+        $('.submit-comment').click(function(){
+          var dj_name = $('#select_origin').val();
+          $('#link_dj').val(dj_name);
+        })
+        
+    })
+
+    </script>
+
 <div class= "venue-show container-fluid">
 <div class="row page-header title">
   <h2 class='col-md-5'> <%= @venue.name %>  </h2>
@@ -36,11 +51,19 @@
         </div></p>
         <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
       
-          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 40 characters).", input_html: { minlength: 40, rows: 5,  class: "form-control comment" }%>
+          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
+          <div class="row">
+            <div class="date-select col-md-6">
             <%= label_tag :event_date %><br>
-            <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %><br>
+            <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :venue_id, @venue.id %>
-
+            </div>
+              <div class='col-md-5 dj-autocomplete'>
+              DJ (optional)<br>
+              <input id="select_origin" class="form-control" placeholder="Dj's Soundcloud name here"/>
+            <input id="link_dj" name="dj_name" type="hidden"/>
+          </div>
+        </div><br>
           <%= f.button :submit, "Submit Comment", class: "disabled btn btn-default submit-comment"%>
 
         <%end%>

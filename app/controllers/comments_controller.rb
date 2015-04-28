@@ -2,13 +2,14 @@ class CommentsController < ApplicationController
     skip_before_action :authorize
 
   def update
+
     @comment = Comment.find(params[:id])
     @rating = @comment.rating
     @comment.update(comment_params)
     @venue = Venue.find(params[:venue_id].to_i) if params[:venue_id]
     @promoter = Promoter.find(params[:promoter_id].to_i) if params[:promoter_id]
-    @dj= Dj.find_by(name: params[:dj_name]) if params[:dj_name]
-    @dj||=Dj.create_adhoc_dj(params[:dj_name])
+    @dj= Dj.find_by(name: params[:dj_name]) if params[:dj_name].size > 1
+    @dj||=Dj.create_adhoc_dj(params[:dj_name]) if params[:dj_name].size > 1
 
     if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "mm-dd-yyyy" && params[:date] != ""
       array = params[:date].split("-")
