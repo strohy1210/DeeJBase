@@ -105,11 +105,13 @@ class Dj < ActiveRecord::Base
   def self.create_adhoc_dj(name)
     client = Soundcloud.new(:client_id => 'ed094c22af47eec76cdc9d24005bcdec')
     dj = client.get('/users', :q => name).first
-    image_url = dj.avatar_url
-    name = dj.username
-    sdcl_followers = dj.followers_count
-    sdcl_id = dj.id
-    Dj.create(name: name, sdcl_followers: sdcl_followers, dj_status: true, sdcl_id: sdcl_id, image_url: image_url) if Dj.find_by(sdcl_id: sdcl_id).blank?
+    if dj
+      image_url = dj.avatar_url
+      name = dj.username
+      sdcl_followers = dj.followers_count
+      sdcl_id = dj.id
+      Dj.create(name: name, sdcl_followers: sdcl_followers, dj_status: true, sdcl_id: sdcl_id, image_url: image_url) if Dj.find_by(sdcl_id: sdcl_id).blank?
+    end
   end
 
     def self.save_tracks(dj, tracks, client)
