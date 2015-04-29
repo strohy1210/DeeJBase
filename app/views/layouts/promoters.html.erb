@@ -70,29 +70,6 @@
       <% end %>
     </li>
 
-<% @categories=["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
-
-  <% if @neighborhood %>
-  <li><form class="navbar-form col-xs-2">
-   <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] }<< ["NYC Neighborhoods", 'all'], @neighborhood.id), class: "form-control",:onchange => 'this.form.submit()') %>
-  
-  </li>
-  <% else %>
-  <li><form class="navbar-form col-xs-2">
-    <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] } << ["NYC Neighborhoods", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
-  </li>
-  <%end%>
-  <% if @category != "all" && @category != nil%>
-  <li class="navbar-form col-xs-2 hidden-xs">
-    <%= select_tag(:category, options_for_select(@categories, @category), class: "form-control hidden-xs",:onchange => 'this.form.submit()') %>
-  </li></form>
-  <%elsif @category == nil || @category = "all"%>
-  <li class="navbar-form col-xs-2 hidden-xs">
-    <%= select_tag(:category, options_for_select(@categories, "all"), class: "form-control hidden-xs",:onchange => 'this.form.submit()') %>
-  </li></form>
-
-  <%end%>
-
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <% if !logged_in? %>
