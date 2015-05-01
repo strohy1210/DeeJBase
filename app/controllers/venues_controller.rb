@@ -33,7 +33,6 @@ class VenuesController < ApplicationController
       @rating = Rating.create(user_id: current_user.id, score: 0)
       @comment = Comment.find_by(rating_id: @rating.id)
       @comment ||= Comment.create(rating_id: @rating.id)
-
     else
       @rating = Rating.first
     end
