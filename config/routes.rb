@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'djs', to: 'welcome#index'
+
   get 'promoters', to: 'promoters#index'
   get 'promoters/:slug', to: 'promoters#show', as: :promoter
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :comments, only: :update do
     resources :replies, only: [:create, :destroy, :update]
   end
-
+  get 'djs', to: 'welcome#index'
   resources :djs, only: [:create]
 
   get 'djs/:slug', to: 'djs#show', as: :dj
