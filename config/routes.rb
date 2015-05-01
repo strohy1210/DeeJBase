@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   get 'promoters', to: 'promoters#index'
   get 'promoters/:slug', to: 'promoters#show', as: :promoter
-
   get 'ratings/update'
   resources :genres, only: [:new, :create]
   resources :users, only: :show
@@ -10,19 +9,20 @@ Rails.application.routes.draw do
   post :claim_event, to: 'events#claim_event'
   get 'venues/:slug', to: 'venues#show', as: :venue
   resources :venues, only: [:new, :create, :index]
+
   resources :ratings, only: [:update, :destroy, :create]
   resources :comments, only: :update do
     resources :replies, only: [:create, :destroy, :update]
   end
-  get 'djs', to: 'welcome#index'
-  resources :djs, only: [:create]
 
-  get 'djs/:slug', to: 'djs#show', as: :dj
+  resources :djs, only: [:create, :update, :index]
+
+  get 'djs/:slug', to: 'djs#show'
  
   get 'dj-form', to: 'welcome#dj_form'
   get 'about', to: 'welcome#about'
   post 'set-dj', to: 'welcome#set_dj'
-
+  get 'djs', to: 'welcome#index'
   root 'venues#index'
   post :send_contact_email, to: 'djs#send_contact_email', as: :send_contact_email
   post :contact_us, to: 'welcome#contact_us', as: :contact_us
@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   get '/api/djs', to: 'api#djs'
   get '/api/djs/:id', to: 'api#show_dj'
   post 'ratings/:id', to: 'ratings#create'
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
