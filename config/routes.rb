@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'djs', to: 'welcome#index'
   get 'promoters', to: 'promoters#index'
   get 'promoters/:slug', to: 'promoters#show', as: :promoter
 
@@ -9,20 +10,19 @@ Rails.application.routes.draw do
   post :claim_event, to: 'events#claim_event'
   get 'venues/:slug', to: 'venues#show', as: :venue
   resources :venues, only: [:new, :create, :index]
-
   resources :ratings, only: [:update, :destroy, :create]
   resources :comments, only: :update do
     resources :replies, only: [:create, :destroy, :update]
   end
 
-  resources :djs, only: [:create, :update, :index]
+  resources :djs, only: [:create]
 
-  get 'djs/:slug', to: 'djs#show'
+  get 'djs/:slug', to: 'djs#show', as: :dj
  
   get 'dj-form', to: 'welcome#dj_form'
   get 'about', to: 'welcome#about'
   post 'set-dj', to: 'welcome#set_dj'
-  get 'djs', to: 'welcome#index'
+
   root 'venues#index'
   post :send_contact_email, to: 'djs#send_contact_email', as: :send_contact_email
   post :contact_us, to: 'welcome#contact_us', as: :contact_us
