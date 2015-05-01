@@ -23,14 +23,14 @@ class VenuesController < ApplicationController
       @events = @venue.events
       if @events
         @events.each do |event|
-          @rating = event.ratings.find_by(user: current_user) if event.ratings
+          @ratings = event.ratings.where(user: current_user) if event.ratings
         end
       end
       # @event = current_user.events.where(venue_id: @venue.id).first if current_user.events.any? && current_user.events.where(venue_id: @venue.id)
       # @event ||= Event.create(venue_id: @venue.id)
       # current_user.events << @event unless current_user.events.include? @event
       # @rating = current_user.ratings @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
-      @rating ||= Rating.create(user_id: current_user.id, score: 0)
+      @rating = Rating.create(user_id: current_user.id, score: 0)
       @comment = Comment.find_by(rating_id: @rating.id)
       @comment ||= Comment.create(rating_id: @rating.id)
 
