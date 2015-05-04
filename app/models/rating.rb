@@ -9,15 +9,15 @@ class Rating < ActiveRecord::Base
   # after_update :unique_user_rating
   scope :valid_only, -> { where.not(score: 0).select {|r| r.comment.valid? && r.comment.is_valid?} }
   
-  def unique_user_rating
-    user = self.user
-    dj = self.dj
-    venue = self.venue
-    event = self.event
-    if event && user.ratings.valid_only.size > 1
-      self.destroy
-    end
-  end
+  # def unique_user_rating
+  #   user = self.user
+  #   dj = self.dj
+  #   venue = self.venue
+  #   event = self.event
+  #   if event && user.ratings.valid_only.size > 1
+  #     self.destroy
+  #   end
+  # end
 end
 
 #user cant have more than 1 rating per dj or venue

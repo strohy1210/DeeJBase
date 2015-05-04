@@ -5,6 +5,7 @@ class RatingsController < ApplicationController
     @rating = Rating.find(params[:id])
     params[:score] = 0 if params[:score].blank?
     @dj = @rating.dj
+    @venue = @rating.venue
     if @rating.valid? && @rating.update(score: params[:score])
       respond_to do |format|
         format.js

@@ -12,7 +12,7 @@
     })
 
     </script>
-
+<% @rating = @comment.rating %>
 <div class= "venue-show container-fluid">
 <div class="row page-header title">
   <h2 class='col-md-5'> <%= @venue.name %>  </h2>
@@ -44,7 +44,6 @@
 
       <p><strong>What'd you think of <%= @venue.name %>'s DJ?</strong><br>
 
-
       <div class="user-rate">
         <div id='user_star'>
 
@@ -57,6 +56,7 @@
             <%= label_tag :event_date %><br>
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :venue_id, @venue.id %>
+            <%= hidden_field_tag :rating_id, @new_rating.id %>
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (optional)<br>
@@ -97,6 +97,7 @@
      <%= render 'reviews' %><br>
 
   <%end%>
+
 <script>
   $('#star').raty({
     readOnly: true,
@@ -106,12 +107,12 @@
 
 
   $('#user_star').raty({
-    score: <%= @rating.score %>,
+    score: <%= @new_rating.score %>,
     cancel: true,
     path: '/assets',
     click: function(score, evt) {
       $.ajax({
-        url: '/ratings/' + <%= @rating.id %>,
+        url: '/ratings/' + <%= @new_rating.id %>,
         type: 'PATCH',
         data: { score: score }
       });

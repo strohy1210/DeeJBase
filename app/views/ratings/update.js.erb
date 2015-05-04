@@ -1,8 +1,20 @@
-$('#star').raty({
-  readOnly: true,
-  score: <%= @dj.average_rating %>,
-  path: '/assets'
-});
+<% if @dj %>
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @dj.average_rating %>,
+    path: '/assets'
+  });
+<%end%>
+<% if @venue%>
+
+
+  $('#star').raty({
+    readOnly: true,
+    score: <%= @venue.average_rating %>,
+    path: '/assets'
+  });
+
+<%end%>
 
 $('#user_star').raty({
   score: <%= @rating.score %>,

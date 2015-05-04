@@ -67,6 +67,24 @@ $(function(){
         $('.submit-comment').val("Submit");
       }
     })
+
+
+  $('.other-ratings').hide();
+  $('.less-ratings a').hide();
+  $('.more-ratings').click(function(e){
+     e.preventDefault();
+    $('.other-ratings').slideToggle();
+    $(this).find('a').toggle();
+    $('.less-ratings a').toggle();
+  });
+
+  $('.less-ratings').click(function(e){
+     e.preventDefault();
+    $('.other-ratings').slideToggle();
+    $(this).find('a').toggle();
+    $('.more-ratings a').toggle();
+  })
+
   // $('.datepicker').click(function(){
   //   $('td').click(function(){
   //     if ($('#comment_body').val().length > 39 && $('#date').val() != "mm-dd-yyyy" ) {

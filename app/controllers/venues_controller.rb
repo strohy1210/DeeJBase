@@ -30,9 +30,10 @@ class VenuesController < ApplicationController
       # @event ||= Event.create(venue_id: @venue.id)
       # current_user.events << @event unless current_user.events.include? @event
       # @rating = current_user.ratings @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
-      @rating = Rating.create(user_id: current_user.id, score: 0)
-      @comment = Comment.find_by(rating_id: @rating.id)
-      @comment ||= Comment.create(rating_id: @rating.id)
+      @new_rating = Rating.create(user_id: current_user.id, score: 0)
+      # @comment = Comment.find_by(rating_id: @rating.id)
+      @comment = Comment.create(rating: @new_rating)
+
     else
       @rating = Rating.first
     end

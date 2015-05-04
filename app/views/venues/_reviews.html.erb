@@ -1,6 +1,8 @@
 <% @comments_uniq_by_user.each do |comment| %>
 <% @user=comment.user %>
-  <div class="review">
+<% @rating=comment.rating %>
+<% other_ratings= @venue.ratings.where(user: @user).where.not(id: @rating.id)%>
+<div class="review">
   <div class="row">
     <div class= "user-image text-center col-md-1">
       <%= link_to(image_tag(@user.image_url), user_path(@user))%>
@@ -45,7 +47,42 @@
   </div>
   <div class='row'>
     <span class='col-md-10 col-md-offset-1 updated'>(Updated <%= time_ago_in_words comment.updated_at %> ago.)</span>
-  </div>
+    <%if other_ratings.any? %>
+      <span class='col-md-10 col-md-offset-1 more-ratings'><%= link_to("More", "#")%></span>
+      <span class='col-md-10 col-md-offset-1 less-ratings'><%= link_to("Less", "#")%></span>
+      <div class="other-ratings">
+      <% other_ratings.each do |rating| %>
+        <div class="review row col-md-10 col-md-offset-1">
+        Rating: <%= rating.score.to_i %>/5 
+        <% if rating.event && rating.event.date %>
+          (based on event on <%= rating.event.date.strftime("%A, %B %d, %Y")%></strong>
+          <%if rating.event.promoter%>
+            thrown by <%= link_to rating.event.promoter.name, promoter_path(rating.event.promoter.slugify) %></strong>
+          <%end%>)
+        <%end%>
+
+        <div class="user-comment col-md-10" id='<%=comment.id%>'>
+          <li><%= truncate(rating.comment.body, length: 800, separator: ".") %></li>
+        </div>        
+      <%if rating.event && rating.event.dj %>
+        <% dj=rating.event.dj%>
+        <div class="claim-event user-image col-md-2">
+          <%= link_to image_tag(dj.image_url), dj_path(dj.slugify) %><br>
+          <span class="link-dj text-center"><%= link_to dj.name, dj_path(dj.slugify) %> spun<span>
+        </div>
+      <%end%>
+      </div>
+
+    <%end %>
+
+    </div>
+    </div>
+
+
+    <%end%>
+
+
+
   </div>
 <%end%>
 
