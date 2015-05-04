@@ -73,14 +73,14 @@ $(function(){
   $('.less-ratings a').hide();
   $('.more-ratings').click(function(e){
      e.preventDefault();
-    $('.other-ratings').slideToggle();
+    $('.other-ratings').toggle();
     $(this).find('a').toggle();
     $('.less-ratings a').toggle();
   });
 
   $('.less-ratings').click(function(e){
      e.preventDefault();
-    $('.other-ratings').slideToggle();
+    $('.other-ratings').toggle();
     $(this).find('a').toggle();
     $('.more-ratings a').toggle();
   })

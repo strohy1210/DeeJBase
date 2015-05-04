@@ -62,9 +62,9 @@
     <li class="navbar-form navbar-collapse">
     <%= form_tag(search_venues_path, method: 'get', role: "search") do %>
       <div class="input-group col-sm-12">
-          <input type="text" class="form-control" placeholder="type venue here" name="name">
+          <input type="text" class="form-control" placeholder="venue name here" name="name">
           <div class='input-group-btn'>       
-          <button class="btn" type="submit">Venues <i class="glyphicon glyphicon-search"></i></button>
+          <button class="btn" id="venue-search-btn" type="submit">Venues <i class="glyphicon glyphicon-search"></i></button>
         </div>
       </div>
       <% end %>
