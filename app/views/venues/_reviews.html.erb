@@ -1,6 +1,5 @@
 <% @comments_uniq_by_user.each do |comment| %>
 <% @user=comment.user %>
-<% @rating=comment.rating %>
 <% other_ratings= @venue.ratings.where(user: @user).where.not(id: @rating.id)%>
 <div class="review">
   <div class="row">
