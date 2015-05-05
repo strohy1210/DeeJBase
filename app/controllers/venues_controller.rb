@@ -35,7 +35,7 @@ class VenuesController < ApplicationController
       @comment = Comment.create(rating: @new_rating)
 
     else
-      @rating = Rating.first
+      @new_rating = Rating.first
     end
 
   end
