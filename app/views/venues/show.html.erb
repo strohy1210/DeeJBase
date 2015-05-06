@@ -97,15 +97,17 @@
 
   <%end%>
 
-
- <% content_for :head do %>
-  <!-- <meta property="fb:app_id" content="myid" />  -->
-  <!-- <meta property="og:type"   content="sdff:post" />  -->
-  <!-- <meta property="og:url"    content=""http://sdff.herokuapp.com" />  -->
-  <meta property="og:title"  content="Check out my review of <%=@venue.name%>'s music." /> 
-  <meta property="og:description" content="<%=current_user.ratings.last.comment.body%>"/>
-<!--   <meta property="og:image"  content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" />  -->
-<% end %>
+<%if logged_in?%>
+  <% content_for :head do %>
+    <meta property="og:site_name" content="DeeJBase"/>
+    <meta property="fb:app_id" content="373382026154995" /> 
+    <meta property="og:type" content="sdff:post" /> 
+    <meta property="og:url" content="http://www.deejbase.com/venues/<%=@venue.slugify%>" /> 
+    <meta property="og:title" content="My review of <%=@venue.name%>'s music." /> 
+    <meta property="og:description" content="<%=current_user.ratings.last.comment.body%>"/>
+    <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" /> 
+  <% end %>
+<%end%>
 
 <script>
   $('#star').raty({

@@ -77,12 +77,13 @@
 
     </div>
     </div>
-
-
     <%end%>
-
-
+  <% if logged_in? %>
+    Share your most recent review with your friends
+    <div class="fb-share-button" data-href="http://www.deejbase.com/venues/<%=@venue.slugify%>" data-layout="button_count"></div>
+  <%end%>
   </div>
   </div>
+
 <%end%>
 
