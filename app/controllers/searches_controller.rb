@@ -47,4 +47,25 @@ class SearchesController < ApplicationController
     end
   end
 
+  def promoter_index
+    if params[:name]
+      name = params[:name].strip
+      @promoter_results = Promoter.where('lower(name) LIKE ?', "%#{name.downcase}%").order('name ASC') || Promoter.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").order('name ASC')
+      if @promoter_results.size == 0
+        link = ActionController::Base.helpers.link_to('here', djs_path)
+        flash[:warning] = "Sorry, no places by that name... so here\'s em all. Search DJs " + link + "."
+        redirect_to promoters_path
+      elsif @promoter_results.size == 1
+        @promoter = @promoter_results.first
+        redirect_to promoter_path(@promoter.slugify)
+      else
+        @promoters = Promoter.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC') || Promoter.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC')
+        flash.now[:success] = @promoter_results.size.to_s + ' promoter(s) matching "' +name+'". Click for more info.'
+        render 'promoters/index', layout: "promoters"
+      end
+    else
+     redirect_to promoters_path
+    end
+  end
+
 end

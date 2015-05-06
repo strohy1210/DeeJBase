@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get 'search'  => 'searches#index'
   get 'search_venues' => 'searches#venue_index'
+  get 'search_promoters' => 'searches#promoter_index'
   get '/api', to: 'api#index'
   get '/api/djs', to: 'api#djs'
   get '/api/djs/:id', to: 'api#show_dj'
