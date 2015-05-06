@@ -99,12 +99,12 @@
 
 <%if logged_in?%>
   <% content_for :head do %>
-    <meta property="og:site_name" content="DeeJBase"/>
     <meta property="fb:app_id" content="373382026154995" /> 
-    <meta property="og:type" content="sdff:post" /> 
+    <meta property="og:type" content="post" /> 
     <meta property="og:url" content="http://www.deejbase.com/venues/<%=@venue.slugify%>" /> 
-    <meta property="og:title" content="My review of <%=@venue.name%>'s music." /> 
-    <meta property="og:description" content="<%=current_user.ratings.last.comment.body%>"/>
+    <meta property="og:title" content="My review of <%=@venue.name%>'s music." />
+
+    <meta property="og:description" content="<%=@venue.ratings.where(user: current_user).valid_only.last.comment.body if @venue.ratings.where(user:current_user)%>"/>
     <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" /> 
   <% end %>
 <%end%>
