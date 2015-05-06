@@ -78,7 +78,7 @@
     </div>
     </div>
     <%end%>
-  <% if logged_in? %>
+  <% if logged_in? && current_user.events.where(venue: @venue).any?%>
     Share your most recent review with your friends
     <div class="fb-share-button" data-href="http://www.deejbase.com/venues/<%=@venue.slugify%>" data-layout="button_count"></div>
   <%end%>
