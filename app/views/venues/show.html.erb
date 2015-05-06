@@ -100,12 +100,12 @@
 <%if logged_in?%>
   <% content_for :head do %>
     <meta property="fb:app_id" content="373382026154995" /> 
-    <meta property="og:type" content="post" /> 
     <meta property="og:url" content="http://www.deejbase.com/venues/<%=@venue.slugify%>" /> 
+    <meta property="og:type" contents="article" />
+    <meta property="og:site_name" content="Deejbase" />
     <meta property="og:title" content="My review of <%=@venue.name%>'s music." />
-
-    <meta property="og:description" content="<%=@venue.ratings.where(user: current_user).valid_only.last.comment.body if @venue.ratings.where(user:current_user)%>"/>
-    <meta property="og:image" content="https://fbstatic-a.akamaihd.net/images/devsite/attachment_blank.png" /> 
+    <meta property="og:description" content="<%=@venue.ratings.where(user: current_user).valid_only.last.comment.body if @venue.ratings && @venue.ratings.where(user: current_user).valid_only.last && @venue.ratings.where(user: current_user).valid_only.last.comment %>"/>
+    <meta property="og:image" content="http://honisoit.com/wp-content/uploads/2012/08/popcorn2.jpg" /> 
   <% end %>
 <%end%>
 
