@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
       rescue
         date = Date.today
       end
-      binding.pry
+
       @event = @rating.event
       @event.update(date: date) if @event && date
       @event ||= Event.new(venue: @venue, date: date) if @venue
