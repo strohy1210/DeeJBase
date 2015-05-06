@@ -102,10 +102,12 @@
     <meta property="fb:app_id" content="373382026154995" /> 
     <meta property="og:url" content="http://www.deejbase.com/venues/<%=@venue.slugify%>" /> 
     <meta property="og:site_name" content="Deejbase" />
-    <meta property="og:title" content="My review of <%=@venue.name%>'s music." />
-    <%if logged_in?%>
-      <meta property="og:description" content="<%=@venue.ratings.where(user: current_user).valid_only.last.comment.body if @venue.ratings && @venue.ratings.where(user: current_user).valid_only.last && @venue.ratings.where(user: current_user).valid_only.last.comment %>"/>
+    <% if logged_in?%>
+    <meta property="og:title" content="I rated <%=@venue.name%>'s music <%=@venue.ratings.where(user: current_user).valid_only.last.score%> out of 5 stars." />
+    <%else%>
+    <meta property="og:title" content="I rated <%=@venue.name%>'s music. Check out my review." />
     <%end%>
+    <meta property="og:description" content="<%=@venue.ratings.where(user: current_user).valid_only.last.comment.body if logged_in? && @venue.ratings && @venue.ratings.where(user: current_user).valid_only.last && @venue.ratings.where(user: current_user).valid_only.last.comment %>"/>
     <meta property="og:image" content="http://honisoit.com/wp-content/uploads/2012/08/popcorn2.jpg" /> 
   <% end %>
 
