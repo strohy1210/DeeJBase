@@ -111,6 +111,11 @@
     <meta property="og:image" content="http://honisoit.com/wp-content/uploads/2012/08/popcorn2.jpg" /> 
   <% end %>
 
+  <% if logged_in? && @venue.ratings.where(user: current_user).valid_only.any?%><br>
+  <div class="social-share">
+    Share your most recent review
+    <div class="fb-share-button" data-href="http://www.deejbase.com/venues/<%=@venue.slugify%>" data-layout="button"></div></div>
+  <%end%>
 
 <script>
   $('#star').raty({
