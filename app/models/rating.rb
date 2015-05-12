@@ -7,7 +7,7 @@ class Rating < ActiveRecord::Base
   # validates_uniqueness_of :user_id, :scope => :dj_id, on: :update
   # validates_presence_of :score
   # after_update :unique_user_rating
-  scope :valid_only, -> { where.not(score: 0).select {|r| r.comment.valid? && r.comment.is_valid?} }
+  scope :valid_only, -> { where.not(score: 0).select {|r| r.comment && r.comment.valid? && r.comment.is_valid?} }
   
   # def unique_user_rating
   #   user = self.user
