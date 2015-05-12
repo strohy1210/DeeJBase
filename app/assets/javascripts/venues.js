@@ -85,6 +85,8 @@ $(function(){
     $('.more-ratings a').toggle();
   })
 
+  // $('meta')[6] gets meta description
+
   // $('.datepicker').click(function(){
   //   $('td').click(function(){
   //     if ($('#comment_body').val().length > 39 && $('#date').val() != "mm-dd-yyyy" ) {

@@ -79,7 +79,7 @@
   <li class="navbar-form col-xs-2 hidden-xs">
     <%= select_tag(:category, options_for_select(@categories, @category), class: "form-control hidden-xs",:onchange => 'this.form.submit()') %>
   </li></form>
-  <%elsif @category == nil || @category = "all"%>
+  <%elsif @category == nil || @category == "all"%>
   <li class="navbar-form col-xs-2 hidden-xs">
     <%= select_tag(:category, options_for_select(@categories, "all"), class: "form-control hidden-xs",:onchange => 'this.form.submit()') %>
   </li></form>

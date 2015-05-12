@@ -1,4 +1,4 @@
-require 'csv'
+# require 'csv'
 # namespace :import_all_djs do
 #   task :create_djs => :environment do
 #     csv_text = File.read('ra_djs.csv')

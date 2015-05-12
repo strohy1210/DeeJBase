@@ -1,4 +1,5 @@
 == README
+
 Add user data to html of reviews and fetch that data for fb's use
 resident webdeveloper Sarah Stroh is thinking of ideas for a project that might help out the fam
 one idea she had was
@@ -6,8 +7,10 @@ one idea she had was
 
 2. some sort of event organizer, a lot of times will comment
 
+3. users index page
+
 #create party planners
-#VIP members like rotten tomatoes
+#VIP members like rotten tomatoes********
 #add auto post to facebook for reviews
 #add calandar that cross references bands in town ny
 hide name button
