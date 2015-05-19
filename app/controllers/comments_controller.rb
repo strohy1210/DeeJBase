@@ -43,8 +43,13 @@ class CommentsController < ApplicationController
   end
 
   def fix_comment
-
-    redirect_to :back
+    @comment = Comment.find(params[:comment][:id])
+    if @comment.update(comment_params)
+      flash[:success] =  'Question was successfully updated.'
+    else
+      flash[:warning] = "For some reason that didn't work" 
+      redirect_to :back
+    end
   end
 
   private

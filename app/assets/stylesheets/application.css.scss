@@ -495,6 +495,13 @@ a#drop1 {
   margin-top: -2%;
   color: rgb(154, 141, 141);
 }
+
+.edit_comment {
+  textarea, input {
+    color: black;
+  }
+}
+
   @media (max-device-width : 480px) {
     .navbar-fixed-top {
       position: absolute;

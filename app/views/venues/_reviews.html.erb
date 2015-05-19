@@ -19,15 +19,17 @@
           <%end%>
       </div>
       <div class="user-comment" id='<%=comment.id%>'>
-        <li><%= truncate(comment.body, length: 800, separator: ".") %></li>
+        <%= truncate(comment.body, length: 800, separator: ".") %>
+      </div>
+      <div class="fix-comment">
         <% if logged_in? && comment.user == current_user %>
-        <%= form_for(comment, class: "edit-comment", url: {controller: "comments", action: "fix_comment"}) do |f|%>
-        <%= f.text_area :body %>
+        <%= form_for(comment, class: "fix-comment", url: {controller: "comments", action: "fix_comment"}, remote: true) do |f|%>
+        <%= f.text_area :body, class: "form-control" %>
+        <%= f.hidden_field :id %>
         <%= f.submit "Update" %>
         <%end%>
         <%end%>
-      </div>
-        
+      </div>       
     </div>
   <%if comment.event && comment.event.dj %>
   <% dj=comment.event.dj%>
