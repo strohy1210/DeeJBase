@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
       @event ||= Event.new(promoter: @promoter, date: date) if @promoter
       @event.update(dj: @dj) if @dj
       @rating.update(event: @event)
-      # flash[:success]="You can edit your comment by hitting the review button again."s
       AdminNotification.new_review(current_user, @venue).deliver if current_user.id != 15 && @venue
       AdminNotification.new_review(current_user, @promoter).deliver if current_user.id != 15 && @promoter
       redirect_to venue_path(@venue.slugify) if @venue
@@ -41,6 +40,11 @@ class CommentsController < ApplicationController
       redirect_to promoter_path(@promoter.slugify) if @promoter
     end
 
+  end
+
+  def fix_comment
+
+    redirect_to :back
   end
 
   private

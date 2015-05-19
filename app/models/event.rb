@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :dj
   belongs_to :venue
   belongs_to :promoter
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   has_many :comments, through: :ratings
   has_many :users, through: :ratings
   after_update :check_for_users

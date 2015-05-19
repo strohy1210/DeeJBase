@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  patch :fix_comment, to: 'comments#fix_comment'
   get 'promoters', to: 'promoters#index'
   get 'promoters/:slug', to: 'promoters#show', as: :promoter
   get 'ratings/update'

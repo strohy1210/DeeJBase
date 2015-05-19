@@ -20,6 +20,12 @@
       </div>
       <div class="user-comment" id='<%=comment.id%>'>
         <li><%= truncate(comment.body, length: 800, separator: ".") %></li>
+        <% if logged_in? && comment.user == current_user %>
+        <%= form_for(comment, class: "edit-comment", url: {controller: "comments", action: "fix_comment"}) do |f|%>
+        <%= f.text_area :body %>
+        <%= f.submit "Update" %>
+        <%end%>
+        <%end%>
       </div>
         
     </div>

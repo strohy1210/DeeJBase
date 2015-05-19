@@ -38,7 +38,7 @@ class DjsController < ApplicationController
       render 'welcome/index'
     end
     @dj= Dj.find_by(slug: params[:slug])
-    @genres = @dj.genres
+    @genres = @dj.genres if @dj
     @tracks = @dj.tracks.where.not(demo: nil)
     @comments = @dj.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
