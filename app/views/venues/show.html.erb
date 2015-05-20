@@ -22,7 +22,7 @@
 <div id="dj-profile">
   
   <div class="profile-pic col-md-3">
-    <%= link_to image_tag(@venue.imageify, alt: @venue.image_url), venue_path(@venue.slugify), class: 'profile-image' %>
+    <%= link_to image_tag(@venue.imageify), venue_path(@venue.slugify), class: 'profile-image' %>
   </div>
   <div class="dj-info venue-info col-md-5 vertical-center">   
     <div class="other-info">

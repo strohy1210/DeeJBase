@@ -1,0 +1,9 @@
+
+  <%= link_to "edit", "#", class: "fix-comment-link" %>
+  <div class="fix-comment fix-comment-<%=@comment.id%>">
+  <%= form_for(@comment, class: "fix-comment", url: {controller: "comments", action: "fix_comment"}, remote: true) do |f|%>
+  <%= f.text_area :body, class: "form-control" %>
+  <%= f.hidden_field :id %>
+  <%= f.submit "Update" %>
+  <%end%>
+  </div>

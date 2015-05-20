@@ -85,6 +85,14 @@ $(function(){
     $('.more-ratings a').toggle();
   })
 
+  $('.fix-comment').hide();
+//most use the 'on thing' sot he correct div shows and hides
+  $(".fix-comment-link").click(function(e){
+    e.preventDefault();
+    $('.fix-comment').toggle();
+    $(this).find('a').toggle();
+  })
+
   // $('meta')[6] gets meta description
 
   // $('.datepicker').click(function(){

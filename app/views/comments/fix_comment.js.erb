@@ -1,2 +1,3 @@
 $('#<%=@comment.id%>.user-comment').text("<%=@comment.body.html_safe%>");
-$('.fix-comment').hide();
+$('.fix-comment').toggle();
+$(".fix-comment-link a").toggle();

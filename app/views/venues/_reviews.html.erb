@@ -7,7 +7,7 @@
     <div class= "user-image text-center col-md-1">
       <%= link_to(image_tag(@user.image_url), user_path(@user))%>
       <%= @user.first_name %>
-  </div>
+    </div>
     <div class= "comment col-md-9">
       <div class="user-rating">
         <strong>Rating: <%= comment.rating.score.to_i %>/5 
@@ -21,15 +21,10 @@
       <div class="user-comment" id='<%=comment.id%>'>
         <%= truncate(comment.body, length: 800, separator: ".") %>
       </div>
-      <div class="fix-comment">
-        <% if logged_in? && comment.user == current_user %>
-        <%= form_for(comment, class: "fix-comment", url: {controller: "comments", action: "fix_comment"}, remote: true) do |f|%>
-        <%= f.text_area :body, class: "form-control" %>
-        <%= f.hidden_field :id %>
-        <%= f.submit "Update" %>
-        <%end%>
-        <%end%>
-      </div>       
+      <% if logged_in? && comment.user == current_user %>
+        <% @comment = comment %>   
+            <%= render 'fix_comment' %>
+       <%end%>  
     </div>
   <%if comment.event && comment.event.dj %>
   <% dj=comment.event.dj%>
@@ -39,14 +34,13 @@
     </div>
   <%elsif comment.event%>
     <div class="claim-event col-md-2">
-
       <h6>Were you the DJ?</h6>
       <% if logged_in? && current_user.sdcl_id%>
         <%= button_to "Claim Event", claim_event_path, :class => 'btn-xs btn btn-default', :method => :post, params:{current_user: current_user.id, event: comment.event}  %>
       <%else%>
         <a href="#" data-toggle="modal" data-target="#contactModal" >
         <div class="hover-mask bottom-mask mask-orange">
-        <button class="btn-xs btn btn-default">Claim Event</button>
+          <button class="btn-xs btn btn-default">Claim Event</button>
         </div>
         </a>
       <%end%>
@@ -70,8 +64,13 @@
         <%end%>
 
         <div class="user-comment col-md-10" id='<%=comment.id%>'>
-          <li><%= truncate(rating.comment.body, length: 800, separator: ".") %></li>
-        </div>        
+          <%= truncate(rating.comment.body, length: 800, separator: ".") %>
+        </div>
+        <% if logged_in? && comment.user == current_user %>
+        <% @other_comment = rating.comment %>
+          <%= render 'fix_other_comment' %>
+        <%end%>
+      </div>        
       <%if rating.event && rating.event.dj %>
         <% dj=rating.event.dj%>
         <div class="claim-event user-image col-md-2">
