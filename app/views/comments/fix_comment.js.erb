@@ -1,3 +1,6 @@
 $('#<%=@comment.id%>.user-comment').text("<%=@comment.body.html_safe%>");
 $('.fix-comment').toggle();
 $(".fix-comment-link a").toggle();
+<% if @invalid %>
+  location.reload();
+<%end%>

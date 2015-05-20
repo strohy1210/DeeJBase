@@ -1,5 +1,3 @@
-
-  <%= link_to "edit", "#", class: "fix-comment-link" %>
   <div class="fix-comment fix-comment-<%=@other_comment.id%>">
   <%= form_for(@other_comment, class: "fix-comment", url: {controller: "comments", action: "fix_comment"}, remote: true) do |f|%>
   <%= f.text_area :body, class: "form-control" %>

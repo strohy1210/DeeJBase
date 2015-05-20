@@ -44,11 +44,11 @@ class CommentsController < ApplicationController
 
   def fix_comment
     @comment = Comment.find(params[:comment][:id])
-    if @comment.update(comment_params)
-      flash[:success] =  'Question was successfully updated.'
+    if params[:comment][:body].length > 40
+      @comment.update(comment_params)
     else
-      flash[:warning] = "For some reason that didn't work" 
-      redirect_to :back
+      @invalid = "Comment did not update (must be above 40 characters)"
+      flash[:warning] = "Comment did not update (must be above 40 characters)" 
     end
   end
 

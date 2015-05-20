@@ -23,8 +23,8 @@ $(function(){
   if (first) {
     $(".index-image a img").error(function(){
 
-      var alt_image= $(this).attr('alt');
-      $(this).attr('src', alt_image);
+      // var alt_image= $(this).attr('alt');
+      // $(this).attr('src', alt_image);
       first = false;
     });
   }
@@ -32,8 +32,8 @@ $(function(){
   if (first) {
     $(".profile-image img").error(function(){
 
-      var alt_image= $(this).attr('alt');
-      $(this).attr('src', alt_image);
+      // var alt_image= $(this).attr('alt');
+      // $(this).attr('src', alt_image);
       first = false;
     });
   }
