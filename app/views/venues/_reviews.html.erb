@@ -35,7 +35,7 @@
           
       </div>
       <div class="user-comment" id='<%=comment.id%>'>
-        <%= simple_format(truncate(comment.body, length: 800, separator: ".")) %>
+        <%= simple_format(truncate(comment.body, length: 1500, separator: ".")) %>
       </div>
       <% if logged_in? && comment.user == current_user %>
         <% @comment = comment %>   
@@ -83,7 +83,7 @@
         <%end%>
 
         <div class="user-comment col-md-10" id='<%=rating.comment.id%>'>
-          <%= simple_format(truncate(rating.comment.body, length: 800, separator: ".")) %>
+          <%= simple_format(truncate(rating.comment.body, length: 1500, separator: ".")) %>
         </div>
         <% if logged_in? && comment.user == current_user %>
         <% @other_comment = rating.comment %>
