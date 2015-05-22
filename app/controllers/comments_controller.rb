@@ -46,6 +46,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:comment][:id])
     if params[:comment][:body].length > 40
       @comment.update(comment_params)
+      
     else
       @invalid = "Comment did not update (must be above 40 characters)"
       flash[:warning] = "Comment did not update (must be above 40 characters)" 
@@ -55,7 +56,7 @@ class CommentsController < ApplicationController
   private
  
     def comment_params
-      params.require(:comment).permit(:body)
+      params.require(:comment).permit(:body, :id)
     end
 
 end

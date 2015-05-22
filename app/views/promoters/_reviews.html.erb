@@ -18,7 +18,7 @@
           <%end%>
       </div>
       <div class="user-comment" id='<%=comment.id%>'>
-        <li><%= truncate(comment.body, length: 800, separator: ".") %></li>
+        <li><%= simple_format(truncate(comment.body, length: 800, separator: ".")) %></li>
       </div>
         
     </div>
