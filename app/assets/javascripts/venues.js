@@ -93,6 +93,11 @@ $(function(){
     $(this).find('a').toggle();
   })
 
+  $(".cancel-fix-comment").click(function(e){
+     e.preventDefault();
+     $('.fix-comment').toggle();
+   })();
+
   // $('meta')[6] gets meta description
 
   // $('.datepicker').click(function(){
