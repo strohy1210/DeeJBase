@@ -20,7 +20,9 @@ class VenuesController < ApplicationController
     end
 
     if logged_in?
+      @comment_fbshare = @venue.ratings.where(user: current_user).valid_only.last.comment.body if @venue.ratings && @venue.ratings.where(user: current_user).valid_only.last && @venue.ratings.where(user: current_user).valid_only.last.comment 
       @events = @venue.events
+
       if @events
         @events.each do |event|
           @ratings = event.ratings.where(user: current_user) if event.ratings
