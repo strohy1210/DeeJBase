@@ -14,23 +14,9 @@ class FestivalsController < ApplicationController
     end
 
     if logged_in?
-      @events = @festival.events
-      if @events
-        @events.each do |event|
-          @rating = event.ratings.find_by(user: current_user) if event.ratings
-        end
-      end
-      # @event = current_user.events.where(festival_id: @festival.id).first if current_user.events.any? && current_user.events.where(festival_id: @festival.id)
-      # @event ||= Event.create(festival_id: @festival.id)
-      # current_user.events << @event unless current_user.events.include? @event
-      # @rating = current_user.ratings @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
-      @rating ||= Rating.create(user_id: current_user.id, score: 0)
-      @comment = Comment.find_by(rating_id: @rating.id)
-      @comment ||= Comment.create(rating_id: @rating.id)
-      @comment_fbshare = @festival.ratings.where(user: current_user).valid_only.last.comment.body if @festival.ratings && @festival.ratings.where(user: current_user).valid_only.last && @festival.ratings.where(user: current_user).valid_only.last.comment
-
+      prepare_ratings(@festival)
     else
-      @rating = Rating.first
+      @new_rating = Rating.first
     end
   end
 end

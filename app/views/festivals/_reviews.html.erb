@@ -39,7 +39,7 @@
       </div>
       <% if logged_in? && comment.user == current_user %>
         <% @comment = comment %>   
-            <%= render '../venues/fix_comment' %>
+            <%= render :partial => '/venues/fix_comment' %> 
        <%end%>  
     </div>
   <%if comment.event && comment.event.dj %>
@@ -87,7 +87,7 @@
         </div>
         <% if logged_in? && comment.user == current_user %>
         <% @other_comment = rating.comment %>
-          <%= render '../venues/fix_other_comment' %>
+          <%= render :partial =>'/venues/fix_other_comment' %>
         <%end%>
       </div>        
       <%if rating.event && rating.event.dj %>

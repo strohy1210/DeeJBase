@@ -52,6 +52,7 @@
             <%= label_tag :event_date %><br>
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :promoter_id, @promoter.id %>
+             <%= hidden_field_tag :rating_id, @new_rating.id %>
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (optional)<br>
@@ -118,12 +119,12 @@
 
 
   $('#user_star').raty({
-    score: <%= @rating.score %>,
+    score: <%= @new_rating.score %>,
     cancel: true,
     path: '/assets',
     click: function(score, evt) {
       $.ajax({
-        url: '/ratings/' + <%= @rating.id %>,
+        url: '/ratings/' + <%= @new_rating.id %>,
         type: 'PATCH',
         data: { score: score }
       });

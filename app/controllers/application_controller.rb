@@ -66,5 +66,23 @@ class ApplicationController < ActionController::Base
 
   end
 
-  helper_method :current_user, :logged_in?, :set_params, :current_dj, :set_venue_params
+  def prepare_ratings(resource)
+    @comment_fbshare =resource.ratings.where(user: current_user).valid_only.last.comment.body if resource.ratings && resource.ratings.where(user: current_user).valid_only.last && resource.ratings.where(user: current_user).valid_only.last.comment 
+    @events = resource.events
+
+    if @events
+      @events.each do |event|
+        @ratings = event.ratings.where(user: current_user) if event.ratings
+      end
+    end
+    # @event = current_user.events.where(venue_id: resource.id).first if current_user.events.any? && current_user.events.where(venue_id: @venue.id)
+    # @event ||= Event.create(venue_id: @venue.id)
+    # current_user.events << @event unless current_user.events.include? @event
+    # @rating = current_user.ratings @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
+    @new_rating = Rating.create(user_id: current_user.id, score: 0)
+    # @comment = Comment.find_by(rating_id: @rating.id)
+    @comment = Comment.create(rating: @new_rating)
+  end
+
+  helper_method :current_user, :logged_in?, :set_params, :current_dj, :set_venue_params, :prepare_ratings
 end
