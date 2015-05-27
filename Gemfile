@@ -6,7 +6,7 @@ gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
 
 gem 'pg', group: :production
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'simple_form'
