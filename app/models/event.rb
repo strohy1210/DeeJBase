@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
   belongs_to :dj
   belongs_to :venue
   belongs_to :promoter
+  belongs_to :festival
   has_many :ratings, dependent: :destroy
   has_many :comments, through: :ratings
   has_many :users, through: :ratings
@@ -15,6 +16,8 @@ class Event < ActiveRecord::Base
   def update_venue_dj_rated_at
     self.dj.update(rated_at: self.created_at) if self.dj
     self.venue.update(rated_at: self.created_at) if self.venue
+    self.promoter.update(rated_at: self.created_at) if self.promoter
+    self.festival.update(rated_at: self.created_at) if self.festival
   end
   
 end

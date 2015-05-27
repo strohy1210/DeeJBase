@@ -1,4 +1,5 @@
 class FestivalsController < ApplicationController
+  layout 'promoters'
   def index
     @festivals = Festival.all
   end
