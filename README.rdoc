@@ -9,6 +9,8 @@ one idea she had was
 
 3. users index page
 
+4. Add festivals and images to them and change meta fb share data (and edit info for promoters and festivals)
+
 #create party planners
 #VIP members like rotten tomatoes********
 #add auto post to facebook for reviews

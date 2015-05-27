@@ -15,7 +15,7 @@
 
 <div class= "venue-show container-fluid">
 <div class="row page-header title">
-  <h2 class='col-md-5'> <%= @promoter.name %>  </h2>
+  <h2 class='col-md-5'> <%= @festival.name %>  </h2>
 
 </div>
 <div class="dj-profile">
@@ -24,19 +24,19 @@
 <div id="dj-profile">
   <div class="dj-info promoter-info col-md-6 vertical-center">   
     <div class="other-info">
-      <h4>Review <%=@promoter.name%>'s music.</h4>
+      <h4>Review <%=@festival.name%>'s music.</h4>
       DJB Rating<sup></sup>:
       <div id='star'>
    
       </div>
     </div>
   
-  <div class='rate-button btn-centered btn btn-default'>Review <%=@promoter.name%></div>
+  <div class='rate-button btn-centered btn btn-default'>Review <%=@festival.name%></div>
 
   <div class="rate-dj text-center">
     <% if logged_in? %>
 
-      <p><strong>What'd you think of <%= @promoter.name %>'s DJ?</strong><br>
+      <p><strong>What'd you think of <%= @festival.name %>'s DJ?</strong><br>
 
 
       <div class="user-rate">
@@ -51,7 +51,7 @@
             <div class="date-select col-md-6">
             <%= label_tag :event_date %><br>
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
-            <%= hidden_field_tag :promoter_id, @promoter.id %>
+            <%= hidden_field_tag :festival_id, @festival.id %>
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (optional)<br>
@@ -90,21 +90,21 @@
 
   <% content_for :head do %>
     <meta property="fb:app_id" content="373382026154995" />
-    <meta property="og:url" content="http://www.deejbase.com/promoters/<%=@promoter.slugify%>" /> 
+    <meta property="og:url" content="http://www.deejbase.com/festivals/<%=@festival.slugify%>" /> 
     <meta property="og:site_name" content="Deejbase" />
-    <% if logged_in? && @promoter.ratings.where(user: current_user) && @promoter.ratings.where(user: current_user).valid_only.any? %>
-    <meta property="og:title" content="I rated <%=@promoter.name%> <%=@promoter.ratings.where(user: current_user).valid_only.last.score%> out of 5 stars." />
+    <% if logged_in? && @festival.ratings.where(user: current_user) && @festival.ratings.where(user: current_user).valid_only.any? %>
+    <meta property="og:title" content="I rated <%=@festival.name%> <%=@festival.ratings.where(user: current_user).valid_only.last.score%> out of 5 stars." />
     <%else%>
-    <meta property="og:title" content="I reviewed one of <%=@promoter.name%>'s parties. Check out my review." />
+    <meta property="og:title" content="I reviewed one of <%=@festival.name%>'s parties. Check out my review." />
     <%end%>
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
-    <meta property="og:image" content="<%=@promoter.image_url%>" /> 
+    <meta property="og:image" content="http://honisoit.com/wp-content/uploads/2012/08/popcorn2.jpg" /> 
   <% end %>
 
-  <% if logged_in? && @promoter.ratings.where(user: current_user).valid_only.any?%><br>
+  <% if logged_in? && @festival.ratings.where(user: current_user).valid_only.any?%><br>
   <div class="social-share">
     Share your most recent review
-    <div class="fb-share-button" data-href="http://www.deejbase.com/promoters/<%=@promoter.slugify%>" data-layout="button"></div></div>
+    <div class="fb-share-button" data-href="http://www.deejbase.com/festivals/<%=@festival.slugify%>" data-layout="button"></div></div>
   <%end%>
 
 <br>
@@ -112,7 +112,7 @@
 <script>
   $('#star').raty({
     readOnly: true,
-    score: <%= @promoter.average_rating %>,
+    score: <%= @festival.average_rating %>,
     path: '/assets'
   });
 

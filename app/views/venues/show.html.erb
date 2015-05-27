@@ -106,7 +106,7 @@
     <meta property="og:title" content="I reviewed <%=@venue.name%>. Check out my review." />
     <%end%>
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
-    <meta property="og:image" content="http://honisoit.com/wp-content/uploads/2012/08/popcorn2.jpg" /> 
+    <meta property="og:image" content="<%=@venue.image_url%>" /> 
   <% end %>
 
   <% if logged_in? && @venue.ratings.where(user: current_user).valid_only.any?%><br>

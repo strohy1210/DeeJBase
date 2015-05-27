@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'festivals', to: 'festivals#index'
+  get 'festivals/:slug', to: 'festivals#show', as: :festival
+
   patch :fix_comment, to: 'comments#fix_comment'
   get 'promoters', to: 'promoters#index'
   get 'promoters/:slug', to: 'promoters#show', as: :promoter
