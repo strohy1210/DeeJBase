@@ -4,6 +4,7 @@ class Promoter < ActiveRecord::Base
   has_many :ratings, through: :events
   has_many :comments, through: :ratings
   before_save :update_slug
+  validates_uniqueness_of :name
 
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase

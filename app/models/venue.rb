@@ -8,9 +8,10 @@ class Venue < ActiveRecord::Base
   accepts_nested_attributes_for :events, :reject_if => :all_blank, :allow_destroy => true
   after_create :yelp
   before_save :update_slug
+  validates_uniqueness_of :name
   
   def slugify
-    name.gsub(" ", "-").gsub(".", "").downcase
+    name.gsub(" ", "-").gsub(".", "").gsub("\\", "").downcase
   end
 
   def update_slug
