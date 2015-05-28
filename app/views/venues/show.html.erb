@@ -95,16 +95,11 @@
      <%= render 'reviews' %><br>
   <%end%>
 
-
   <% content_for :head do %>
     <meta property="fb:app_id" content="373382026154995" /> 
     <meta property="og:url" content="http://www.deejbase.com/venues/<%=@venue.slugify%>" /> 
     <meta property="og:site_name" content="Deejbase" />
-    <% if logged_in? && @venue.ratings.where(user: current_user) && @venue.ratings.where(user: current_user).valid_only.any? %>
-    <meta property="og:title" content="I rated <%=@venue.name%> <%=@venue.ratings.where(user: current_user).valid_only.last.score%> out of 5 stars. Check out my review." />
-    <%else%>
-    <meta property="og:title" content="I reviewed <%=@venue.name%>'s music." />
-    <%end%>
+    <meta property="og:title" content="I rated <%=@venue.name%> <%=@rating_fbshare%> out of 5 stars. Check out my review." />
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
     <meta property="og:image" content="<%=@venue.image_url%>" /> 
   <% end %>

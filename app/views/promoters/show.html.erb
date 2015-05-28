@@ -93,11 +93,7 @@
     <meta property="fb:app_id" content="373382026154995" />
     <meta property="og:url" content="http://www.deejbase.com/promoters/<%=@promoter.slugify%>" /> 
     <meta property="og:site_name" content="Deejbase" />
-    <% if logged_in? && @promoter.ratings.where(user: current_user) && @promoter.ratings.where(user: current_user).valid_only.any? %>
-    <meta property="og:title" content="I rated <%=@promoter.name%> <%=@promoter.ratings.where(user: current_user).valid_only.last.score%> out of 5 stars." />
-    <%else%>
-    <meta property="og:title" content="I reviewed one of <%=@promoter.name%>'s parties. Check out my review." />
-    <%end%>
+        <meta property="og:title" content="I rated <%=@promoter.name%> <%=@rating_fbshare%> out of 5 stars. Check out my review." />
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
     <meta property="og:image" content="<%=@promoter.image_url%>" /> 
   <% end %>

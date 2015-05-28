@@ -93,11 +93,7 @@
     <meta property="fb:app_id" content="373382026154995" />
     <meta property="og:url" content="http://www.deejbase.com/festivals/<%=@festival.slugify%>" /> 
     <meta property="og:site_name" content="Deejbase" />
-    <% if logged_in? && @festival.ratings.where(user: current_user) && @festival.ratings.where(user: current_user).valid_only.any? %>
-    <meta property="og:title" content="I rated <%=@festival.name%> <%=@festival.ratings.where(user: current_user).valid_only.last.score%> out of 5 stars." />
-    <%else%>
-    <meta property="og:title" content="I reviewed one of <%=@festival.name%>'s parties. Check out my review." />
-    <%end%>
+    <meta property="og:title" content="I rated <%=@festival.name%> <%=@rating_fbshare%> out of 5 stars. Check out my review." />
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
     <meta property="og:image" content="<%=@festival.image_url%>" /> 
   <% end %>
