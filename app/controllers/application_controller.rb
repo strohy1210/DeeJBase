@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
 
   def prepare_ratings(resource)
     @comment_fbshare =resource.ratings.where(user: current_user).valid_only.last.comment.body if resource.ratings && resource.ratings.where(user: current_user).valid_only.last && resource.ratings.where(user: current_user).valid_only.last.comment 
-    @rating_fbshare= resource.ratings.where(user: current_user).valid_only.last.score..to_i.to_s if resource.ratings && resource.ratings.where(user: current_user).valid_only.any?
+    @rating_fbshare= resource.ratings.where(user: current_user).valid_only.last.score.to_i.to_s if resource.ratings && resource.ratings.where(user: current_user).valid_only.any?
     @events = resource.events
     if @events
       @events.each do |event|
