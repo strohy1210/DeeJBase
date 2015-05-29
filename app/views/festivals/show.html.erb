@@ -104,7 +104,7 @@
 
   <% if logged_in? && @festival.ratings.where(user: current_user).valid_only.any?%><br>
   <div class="social-share">
-    Share your most recent review
+    Share your most recent review of <%=@festival.name%>.
     <div class="fb-share-button" data-href="http://www.deejbase.com/festivals/<%=@festival.slugify%>" data-layout="button"></div></div>
   <%end%>
 
