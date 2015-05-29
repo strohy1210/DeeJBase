@@ -1,7 +1,7 @@
 class FestivalsController < ApplicationController
   layout 'promoters'
   def index
-    @festivals = Festival.all
+    @festivals = Festival.order('rated_at ASC')
   end
 
   def show

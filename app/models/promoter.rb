@@ -7,7 +7,7 @@ class Promoter < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def slugify
-    name.gsub(" ", "-").gsub(".", "").gsub("/", "").downcase
+    name.gsub(" ", "-").gsub(".", "").gsub("/", "-").downcase
   end
 
   def update_slug

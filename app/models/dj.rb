@@ -19,7 +19,7 @@ class Dj < ActiveRecord::Base
 
 
   def slugify
-    name.gsub(" ", "-").gsub(".", "").gsub("/", "").downcase
+    name.gsub(" ", "-").gsub(".", "").gsub("/", "-").downcase
   end
 
   def update_slug
