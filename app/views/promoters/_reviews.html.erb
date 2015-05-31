@@ -28,8 +28,8 @@
         <strong>Rating: <%= comment.rating.score.to_i %>/5 
           <% if comment.event && comment.event.date %>
           (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%></strong>
-            <%if comment.event.promoter%>
-              thrown by <%= link_to comment.event.promoter.name, promoter_path(comment.event.promoter.slugify) %></strong>
+            <%if comment.event.venue%>
+              at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %></strong>
             <%end%>)
           <%end%>
           
