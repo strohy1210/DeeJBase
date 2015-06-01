@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authorize
 
   def create
+    previous_url = request.referrer
     @user = User.get_user_from_omniauth(auth_hash)
 
     login(@user)
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
     #   @dj = current_dj
       # redirect_to djs_path
     # else
-    previous_url = request.referrer
+
     begin
       flash[:info]= "You're logged in!"
       redirect_to :back
