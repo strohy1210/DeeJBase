@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     previous_url = request.referrer
+    
     @user = User.get_user_from_omniauth(auth_hash)
 
     login(@user)
@@ -13,12 +14,13 @@ class SessionsController < ApplicationController
     #   @dj = current_dj
       # redirect_to djs_path
     # else
-
+    
     begin
       flash[:info]= "You're logged in!"
       redirect_to :back
     rescue ActionController::RedirectBackError
       flash[:info]= "Succesfully signed up. You are now ready to write reviews."
+      
       redirect_to previous_url
     end
   end
