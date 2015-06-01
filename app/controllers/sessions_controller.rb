@@ -12,11 +12,13 @@ class SessionsController < ApplicationController
     #   @dj = current_dj
       # redirect_to djs_path
     # else
+    previous_url = request.referrer
     begin
       flash[:info]= "You're logged in!"
       redirect_to :back
     rescue ActionController::RedirectBackError
-      redirect_to venues_path
+      flash[:info]= "Succesfully signed up. You are now ready to write reviews."
+      redirect_to previous_url
     end
   end
 

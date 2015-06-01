@@ -1,4 +1,5 @@
 == README
+AFTER SIGN IN REDIRECT BACK TO REVIEW
 Edit button
 Add user data to html of reviews and fetch that data for fb's use
 resident webdeveloper Sarah Stroh is thinking of ideas for a project that might help out the fam
@@ -11,8 +12,7 @@ one idea she had was
 
 4. Add festivals and images to them and change meta fb share data (and edit info for promoters and festivals)
 
-5. fix bo when editing review with formatting stuff
-
+5. fix problem when editing review with formatting stuff
 
 #VIP members like rotten tomatoes********
 
@@ -60,12 +60,6 @@ Add review button to index pages
 
 Add message in DJ sign up button
 ADD:
-MANUALY AD DJS TO EVENTS
-the box
-DJs at Warehouse parties
-make it so you cant claim your own review
-baby blue
-create venue algorithm
 "My Reviews" button on upper right corner
 sink up rating
 Add claim event push notification
