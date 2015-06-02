@@ -25,11 +25,11 @@
     </div>
     <div class= "comment col-md-9">
       <div class="user-rating">
-        <strong>Rating: <%= comment.rating.score.to_i %>/5 
+        Rating: <%= comment.rating.score.to_i %>/5 
           <% if comment.event && comment.event.date %>
-          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%></strong>
+          (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>
             <%if comment.event.promoter%>
-              thrown by <%= link_to comment.event.promoter.name, promoter_path(comment.event.promoter.slugify) %></strong>
+              thrown by <%= link_to comment.event.promoter.name, promoter_path(comment.event.promoter.slugify) %>
             <%end%>)
           <%end%>
           
@@ -76,9 +76,9 @@
         <div class="review row col-md-10 col-md-offset-1">
         Rating: <%= rating.score.to_i %>/5 
         <% if rating.event && rating.event.date %>
-          (based on event on <%= rating.event.date.strftime("%A, %B %d, %Y")%></strong>
+          (based on event on <%= rating.event.date.strftime("%A, %B %d, %Y")%>
           <%if rating.event.promoter%>
-            thrown by <%= link_to rating.event.promoter.name, promoter_path(rating.event.promoter.slugify) %></strong>
+            thrown by <%= link_to rating.event.promoter.name, promoter_path(rating.event.promoter.slugify) %>
           <%end%>)
         <%end%>
 

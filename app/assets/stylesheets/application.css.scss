@@ -18,14 +18,9 @@
 @import 'bootstrap/theme';
 @import "bootstrap-social.css";
 @import "font-awesome";
-@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
 @import "bootswatch/lumen/bootswatch";
-@import url("fonts.googleapis.com/css?family=Hammersmith+One:400,700");
-@import url("fonts.googleapis.com/css?family=Muli");
-@import url("fonts.googleapis.com/css?family=Montserrat");
-@import url("fonts.googleapis.com/css?family=Karla");
-@import url("fonts.googleapis.com/css?family=Exo+2:400,500");
-@import url("fonts.googleapis.com/css?family=Permanent+Marker");
+@import url("//fonts.googleapis.com/css?family=Hammersmith+One:400,700");
+@import url("//fonts.googleapis.com/css?family=Karla");
 
 html {  
   -webkit-background-size: cover;
@@ -36,6 +31,7 @@ html {
 
 body { 
   font-family: 'Karla', sans-serif;
+  font-weight: 300;
   font-size: 16px;
   padding-top: 70px;
   background-image: linear-gradient(to bottom, #f8f8f8 0%, #ccc 100%);
@@ -245,6 +241,9 @@ li { cursor: pointer; }
   overflow: hidden;
 }
 
+.user-rating {
+  color: rgb(197, 194, 192);
+}
 
 .user-thumbnail img {
   border-radius: 50%;
@@ -272,8 +271,9 @@ li { cursor: pointer; }
   margin-top: 8px;
   font-size: 15px;
   background:rgba(252, 212, 221, 0.2);
-  color: #EBEBE7;
+  color: #F6F6F2;
   border-bottom: 2px solid #3A3434;
+  font-weight: 300;
 }
 
 .navbar-form .form-control {
@@ -391,11 +391,13 @@ a .bio h5, a .djb{
 
   font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
   color: #EBEBE7;
+  font-weight: 300;
 
 }
 
 .navbar-default .navbar-nav > li > a {
   color: #403D3D;
+  font-weight: 400;
 }
 .navbar-brand > img {
   margin-top: 5px;
@@ -415,7 +417,7 @@ a#drop1 {
 
 .venue-list {
   h2, h3, p {
-  font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
+  /*font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;*/
   color: #EBEBE7;
   }
   h2{

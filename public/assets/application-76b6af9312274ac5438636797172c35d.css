@@ -598,13 +598,8 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 @import url(bootstrap-social.css);
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
-@import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
-@import url("fonts.googleapis.com/css?family=Hammersmith+One:400,700");
-@import url("fonts.googleapis.com/css?family=Muli");
-@import url("fonts.googleapis.com/css?family=Montserrat");
-@import url("fonts.googleapis.com/css?family=Karla");
-@import url("fonts.googleapis.com/css?family=Exo+2:400,500");
-@import url("fonts.googleapis.com/css?family=Permanent+Marker");
+@import url("//fonts.googleapis.com/css?family=Hammersmith+One:400,700");
+@import url("//fonts.googleapis.com/css?family=Karla");
 /* line 9, /Users/flatironstudent/.rvm/gems/ruby-2.1.2/gems/bootstrap-sass-3.3.1.0/assets/stylesheets/bootstrap/_normalize.scss */
 html {
   font-family: sans-serif;
@@ -12427,7 +12422,7 @@ label {
   color: #333333;
 }
 
-/* line 31, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 26, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -12435,9 +12430,10 @@ html {
   background-size: cover;
 }
 
-/* line 38, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 33, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 body {
   font-family: 'Karla', sans-serif;
+  font-weight: 300;
   font-size: 16px;
   padding-top: 70px;
   background-image: linear-gradient(to bottom, #f8f8f8 0%, #cccccc 100%);
@@ -12452,13 +12448,13 @@ body {
   background-size: cover;
 }
 
-/* line 56, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 52, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .container-fluid {
   background-color: #241f10;
   border-radius: 20px;
 }
 
-/* line 63, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 59, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 h4 a {
   color: #1375FF;
   font-family: 'Hammersmith+One', sans-serif;
@@ -12466,7 +12462,7 @@ h4 a {
   font-size: 18px;
 }
 
-/* line 72, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 68, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .navbar-brand,
 .navbar-nav li a {
   line-height: 55px;
@@ -12474,13 +12470,13 @@ h4 a {
   padding-top: 0;
 }
 
-/* line 78, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 74, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .navbar .container, .navbar {
   background-color: transparent;
   border-color: transparent;
 }
 
-/* line 83, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 79, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .index-image img, .profile-pic img {
   height: 150px;
   width: auto;
@@ -12488,30 +12484,30 @@ h4 a {
   border-radius: 30px;
 }
 
-/* line 90, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 86, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .profile-pic img {
   height: 200px;
   width: auto;
   max-width: 250px;
 }
 
-/* line 96, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 92, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .edit-dj, .hire-dj, .contact, .cancel-message {
   margin-top: 20px;
 }
 
-/* line 100, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 96, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 iframe {
   height: 130px;
   width: 100%;
 }
 
-/* line 105, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 101, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .edit-or-contact .btn:hover {
   margin-top: 21px;
 }
 
-/* line 110, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 106, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .edit-or-contact {
   margin-right: 20px;
 }
@@ -12520,13 +12516,13 @@ iframe {
   line-height: 40px;
   height: 100px;
 }*/
-/* line 120, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 116, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .search-djs {
   margin-top: 25px;
   margin-right: 25px;
 }
 
-/* line 125, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 121, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .dj-item {
   border-bottom: 2px solid #3A3434;
   border-radius: 7px;
@@ -12535,56 +12531,56 @@ iframe {
   color: #0f0f0f;
 }
 
-/* line 135, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 131, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, .preview:hover, .djb:hover {
   text-decoration: none;
   color: rgba(10, 10, 10, 0.5);
 }
 
-/* line 140, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 136, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .bio h4 {
   color: #0f0f0f;
 }
 
-/* line 145, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 141, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .top {
   margin-left: 12px;
   display: inline;
 }
 
-/* line 150, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 146, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .row.page-header {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* line 154, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 150, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .container #bar {
   background-color: transparent;
 }
 
-/* line 158, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 154, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .container {
   background-image: linear-gradient(to bottom, #cccccc 0%, #f8f8f8 100%);
 }
 
-/* line 166, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 162, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .venue-list {
   background: transparent;
 }
 
-/* line 173, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 169, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .select-genre {
   margin-right: 5px;
 }
 
-/* line 176, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 172, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .dj-profile {
   padding: 40px;
   background-color: transparent;
   margin: 10px;
 }
 
-/* line 181, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 177, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .dj-info {
   background: #ededed;
   border-radius: 10px;
@@ -12594,24 +12590,24 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
   border-bottom: 2px solid #3A3434;
 }
 
-/* line 191, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 187, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .track {
   border-bottom: 1px solid #b0b0b0;
   border-radius: 30px;
   padding: 10px;
 }
 
-/* line 197, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 193, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 h5, .h5 {
   font-size: 16px;
 }
 
-/* line 201, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 197, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .footer {
   padding: 20px;
 }
 
-/* line 206, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 202, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .genre-form {
   background: white;
   border: 1px solid #ccc;
@@ -12619,12 +12615,12 @@ h5, .h5 {
   padding: 5px;
 }
 
-/* line 213, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 209, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .rate-button .btn:hover {
   margin-top: 1px;
 }
 
-/* line 217, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 213, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .user-rate {
   border-bottom: 2px solid #3A3434;
   border-radius: 20px;
@@ -12633,22 +12629,22 @@ h5, .h5 {
   background-color: #2D2818;
 }
 
-/* line 225, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 221, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .bio:hover {
   color: #bbbbbb;
 }
 
-/* line 229, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 225, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .btn-facebook:hover {
   margin-top: 0px;
 }
 
-/* line 233, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 229, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 li {
   cursor: pointer;
 }
 
-/* line 235, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 231, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .user-image img {
   height: 100px;
   width: auto;
@@ -12658,13 +12654,18 @@ li {
   max-width: 100px;
 }
 
-/* line 244, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 240, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .user-rating, .user-comment {
   padding: 5px;
   overflow: hidden;
 }
 
-/* line 250, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 245, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+.user-rating {
+  color: #c5c2c0;
+}
+
+/* line 249, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .user-thumbnail img {
   border-radius: 50%;
   border: 1px solid white;
@@ -12674,19 +12675,19 @@ li {
   width: auto;
 }
 
-/* line 259, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 258, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .user-comment {
   padding-right: 30px;
   overflow: hidden;
 }
 
-/* line 264, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 263, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .comments-title, .tracks-title {
   font-weight: bold;
   font-variant: small-caps;
 }
 
-/* line 269, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 268, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .review {
   background: #ededed;
   border-radius: 10px;
@@ -12694,8 +12695,9 @@ li {
   margin-top: 8px;
   font-size: 15px;
   background: rgba(252, 212, 221, 0.2);
-  color: #EBEBE7;
+  color: #F6F6F2;
   border-bottom: 2px solid #3A3434;
+  font-weight: 300;
 }
 
 /* line 280, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
@@ -12832,125 +12834,154 @@ a .bio h5, a .djb {
 .dj-header h2, .dj-item .djb, .dj-item h4, .preview {
   font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
   color: #EBEBE7;
+  font-weight: 300;
 }
 
-/* line 398, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 399, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .navbar-default .navbar-nav > li > a {
   color: #403D3D;
+  font-weight: 400;
 }
 
-/* line 401, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 403, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .navbar-brand > img {
   margin-top: 5px;
 }
 
-/* line 404, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 406, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .btn-primary {
   background-color: #1567ff;
   background-image: linear-gradient(to bottom, #1567ff 0%, #265a88 100%);
 }
 
-/* line 409, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 411, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .navbar-brand {
   margin-left: 10px;
 }
 
-/* line 413, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 415, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 a#drop1 {
   margin-right: 15px;
 }
 
-/* line 418, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 420, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .venue-list h2, .venue-list h3, .venue-list p {
-  font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;
+  /*font-family: 'HelveticaNeueLT-MediumCond', Helvetica, Arial,sans-serif;*/
   color: #EBEBE7;
 }
-/* line 422, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 424, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .venue-list h2 {
   font-variant: small-caps;
 }
 
-/* line 427, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 429, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 #results .row {
   height: 150px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* line 433, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 435, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 #rate-the-music {
   color: rgba(252, 212, 221, 0.07);
   margin: -5px;
 }
 
-/* line 438, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 440, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .preview {
   margin-top: 2%;
 }
 
-/* line 442, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 444, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 #bar {
   background: rgba(191, 216, 235, 0.3);
 }
 
-/* line 446, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 448, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .page-header {
   border-bottom: none;
 }
 
-/* line 450, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 452, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .navbar .btn {
   height: 148%;
   margin-top: -1px;
 }
 
-/* line 455, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 457, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .grey-overlay {
   background-color: rgba(191, 216, 235, 0.2);
 }
 
-/* line 459, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 461, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .red-overlay {
   background-color: rgba(252, 212, 221, 0.1);
 }
 
-/* line 463, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 465, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .brown-overlay {
   background-color: rgba(251, 232, 201, 0.25);
 }
 
-/* line 467, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 469, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .rate-music-header {
   margin-bottom: -30px;
 }
 
-/* line 471, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 473, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .venue-show .title {
   color: #f3f2ec;
 }
 
-/* line 475, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 477, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .about-djbase {
   color: #EBEBE7;
 }
 
-/* line 479, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 481, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .datepicker, .bg-warning, .dj-autocomplete input {
   color: black;
 }
 
-/* line 483, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 485, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .alert {
   margin-top: -1%;
 }
 
-/* line 487, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+/* line 489, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
 .dj-autocomplete {
   margin-top: 1%;
 }
 
+/* line 493, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+#venue-search-btn {
+  height: 155%;
+}
+
+/* line 497, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+.social-share {
+  margin-top: -2%;
+  color: #9a8d8d;
+}
+
+/* line 503, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+.edit_comment textarea, .edit_comment input {
+  color: black;
+}
+
+/* line 508, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+.edit-comment-carrot {
+  margin-right: 15px;
+}
+
+/* line 512, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+.dropdown-menu-comment {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 @media (max-device-width: 480px) {
-  /* line 492, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 518, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .navbar-fixed-top {
     position: absolute;
     top: auto;
@@ -12959,52 +12990,52 @@ a#drop1 {
     padding-top: 10px;
   }
 
-  /* line 500, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 526, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   body {
     padding-top: 0px;
   }
 
-  /* line 504, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 530, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .hidden-xs, .navbar-nav .hidden-xs {
     display: none;
   }
 
-  /* line 507, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 533, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .container {
     width: 100%;
   }
 
-  /* line 510, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 536, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .page-header {
     padding-top: 30px;
   }
 
-  /* line 513, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 539, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .error-top {
     padding-top: 80px;
   }
 
-  /* line 516, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 542, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .btn {
     font-size: 14px;
   }
 
-  /* line 520, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 546, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .header .title {
     padding-top: 60px;
   }
 
-  /* line 524, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 550, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .col-xs-12 {
     width: 100%;
   }
 
-  /* line 528, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 554, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   li .navbar-form {
     margin: 5px;
   }
 
-  /* line 532, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
+  /* line 558, /Users/flatironstudent/deejbase/app/assets/stylesheets/application.css.scss */
   .navbar {
     height: 80px;
     font-size: 23px;
