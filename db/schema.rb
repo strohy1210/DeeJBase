@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527201023) do
+ActiveRecord::Schema.define(version: 20150603013949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 20150527201023) do
     t.integer  "neighborhood_id"
     t.datetime "rated_at"
     t.string   "slug"
+    t.integer  "priority"
   end
 
 end

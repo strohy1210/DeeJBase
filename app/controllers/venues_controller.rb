@@ -18,7 +18,7 @@ class VenuesController < ApplicationController
       comments_by_user = @users.map {|user| user.comments & @comments }
       @comments_uniq_by_user = comments_by_user.map {|c_array| c_array.last}.uniq
     end
-
+    
     if logged_in?
       prepare_ratings(@venue)
     else
