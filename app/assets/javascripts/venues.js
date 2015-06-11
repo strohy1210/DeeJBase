@@ -98,6 +98,8 @@ $(function(){
      $('.fix-comment').toggle();
    })();
 
+
+
   // $('meta')[6] gets meta description
 
   // $('.datepicker').click(function(){
@@ -124,4 +126,20 @@ $(function(){
     //   $('.datepicker').attr('type', 'date');
     // })
 
+});
+
+$(window).scroll(
+    {
+        previousTop: 0
+    }, 
+    function () {
+    var currentTop = $(window).scrollTop();
+    if (currentTop < this.previousTop) {
+        $(".sidebar em").text("Up"); /* optional for demo */
+        $(".navbar").show();
+    } else {
+        $(".sidebar em").text("Down");
+        $(".navbar").hide();
+    }
+    this.previousTop = currentTop;
 });
