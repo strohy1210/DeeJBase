@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   get '/api/djs/:id', to: 'api#show_dj'
   post 'ratings/:id', to: 'ratings#create'
 
+  get 'cheer-up-kennedy', to: 'api#justin'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
