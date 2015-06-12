@@ -49,18 +49,18 @@ class ApplicationController < ActionController::Base
     @category = params["category"]
     if params["category"] && params["category"] != "all" && params[:neighborhood_id] != "all"
       @neighborhood = Neighborhood.find(params[:neighborhood_id])
-      @venues = Venue.where(neighborhood_id: @neighborhood.id, category: @category).paginate(page: params[:page], per_page: 40).order('rated_at ASC')
+      @venues = Venue.where(neighborhood_id: @neighborhood.id, category: @category).paginate(page: params[:page], per_page: 40).order('priority').order('rated_at ASC')
       if @venues.blank?
         flash.now[:warning] = "No venues matching both the neighborhood and category, so here's the results for the hood."
-        @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 40).order('rated_at ASC')
+        @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 40).order('priority').order('rated_at ASC')
       end
     elsif params["category"] && params["category"] != "all" && params[:neighborhood_id] == "all"
-      @venues = Venue.where(category: @category).paginate(page: params[:page], per_page: 40).order('rated_at ASC')
+      @venues = Venue.where(category: @category).paginate(page: params[:page], per_page: 40).order('priority').order('rated_at ASC')
     elsif params["category"] == "all" && params[:neighborhood_id] && params[:neighborhood_id] != "all"
       @neighborhood = Neighborhood.find(params[:neighborhood_id])
-      @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 40).order('rated_at ASC')
+      @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 40).order('priority').order('rated_at ASC')
     else
-      @venues = Venue.paginate(page: params[:page], per_page: 40).order('rated_at ASC')
+      @venues = Venue.paginate(page: params[:page], per_page: 40).order('priority').order('rated_at ASC')
     end
 
   end
@@ -73,10 +73,8 @@ class ApplicationController < ActionController::Base
       @events.each do |event|
         @ratings = event.ratings.where(user: current_user) if event.ratings
       end
-    end
-    
+    end   
     @new_rating = Rating.create(user_id: current_user.id, score: 0)
-    # @comment = Comment.find_by(rating_id: @rating.id)
     @comment = Comment.create(rating: @new_rating)
   end
 
