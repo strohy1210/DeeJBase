@@ -96,7 +96,7 @@ $(function(){
   $(".cancel-fix-comment").click(function(e){
      e.preventDefault();
      $('.fix-comment').toggle();
-   })();
+   })
 
 
 

@@ -10,7 +10,7 @@ class DjsController < ApplicationController
     end
     respond_to do |format|  
       format.html { render 'welcome/index' }
-# Here is where you can specify how to handle the request for "/people.json"
+# Here is where you can specify how to handle the request for "/djs.json"
       format.json { render :json => @djs.map(&:name) }
     end
     
