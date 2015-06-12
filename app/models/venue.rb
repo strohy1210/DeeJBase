@@ -6,9 +6,13 @@ class Venue < ActiveRecord::Base
   has_many :comments, through: :ratings
   belongs_to :neighborhood
   accepts_nested_attributes_for :events, :reject_if => :all_blank, :allow_destroy => true
-  after_create :yelp
+  after_create :yelp, :default_values
   before_save :update_slug
   validates_uniqueness_of :name
+
+  def default_values
+    update(rated_at: 6.months.ago)
+  end
   
   def slugify
     name.gsub(" ", "-").gsub(".", "").gsub("\\", "").downcase
