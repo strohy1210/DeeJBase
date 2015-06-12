@@ -77,9 +77,9 @@
         Rating: <%= rating.score.to_i %>/5 
         <% if rating.event && rating.event.date %>
           (based on event on <%= rating.event.date.strftime("%A, %B %d, %Y")%>
-          <%if rating.event.promoter%>
-            thrown by <%= link_to rating.event.promoter.name, promoter_path(rating.event.promoter.slugify) %>
-          <%end%>)
+            <%if comment.event.venue%>
+              at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %>
+            <%end%>)
         <%end%>
 
         <div class="user-comment col-md-10" id='<%=rating.comment.id%>'>
