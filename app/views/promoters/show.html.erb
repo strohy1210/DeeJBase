@@ -99,7 +99,7 @@
       <meta property="og:title" content="I reviewed one of <%=@promoter.name%>'s parties. Check it out." />
     <%end%>
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
-    <meta property="og:image" content="<%=@promoter.image_url%>" /> 
+    
   <% end %>
 
   <% if logged_in? && @promoter.ratings.where(user: current_user).valid_only.any?%><br>

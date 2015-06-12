@@ -4,7 +4,7 @@ Edit button
 Add user data to html of reviews and fetch that data for fb's use
 resident webdeveloper Sarah Stroh is thinking of ideas for a project that might help out the fam
 one idea she had was
-1. compile list of parties and write reviews either here w #famreview or on the site its self
+1. image uploader
 
 2. some sort of event organizer, a lot of times will comment
 
