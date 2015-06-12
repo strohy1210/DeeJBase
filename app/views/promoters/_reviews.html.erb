@@ -77,8 +77,8 @@
         Rating: <%= rating.score.to_i %>/5 
         <% if rating.event && rating.event.date %>
           (based on event on <%= rating.event.date.strftime("%A, %B %d, %Y")%>
-            <%if comment.event.venue%>
-              at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %>
+            <%if rating.event.venue%>
+              at <%= link_to rating.event.venue.name, venue_path(rating.event.venue.slugify) %>
             <%end%>)
         <%end%>
 
