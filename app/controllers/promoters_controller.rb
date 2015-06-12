@@ -1,7 +1,7 @@
 class PromotersController < ApplicationController
 
   def index
-    @promoters = Promoter.order('rated_at ASC')
+    @promoters = Promoter.order('rated_at DESC')
   end
 
   def show
