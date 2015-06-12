@@ -15,6 +15,7 @@ class PromotersController < ApplicationController
     end
     if logged_in?
       prepare_ratings(@promoter)
+      @comment_fbshare =resource.ratings.where(user: current_user).valid_only.last.comment.body if resource.ratings && resource.ratings.where(user: current_user).valid_only.last && resource.ratings.where(user: current_user).valid_only.last.comment
     else
       @new_rating = Rating.first
     end
