@@ -10,6 +10,7 @@ class Dj < ActiveRecord::Base
   accepts_nested_attributes_for :tracks, :reject_if => :all_blank, :allow_destroy => true
   before_save :remove_empty_tracks#, default_values
   before_save :update_slug
+  after_create :default_values
   scope :is_dj, -> { where(dj_status: true, agent_status: false) }
 
 
@@ -17,6 +18,9 @@ class Dj < ActiveRecord::Base
 
   attr_accessor :message, :demo_title
 
+  def default_values
+    update(rated_at: 6.months.ago)
+  end
 
   def slugify
     name.gsub(" ", "-").gsub(".", "").gsub("/", "-").downcase
