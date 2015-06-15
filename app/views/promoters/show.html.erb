@@ -22,6 +22,10 @@
 
 <div class="row">
 <div id="dj-profile">
+
+  <div class="profile-pic col-md-3">
+    <%= image_tag @promoter.photo.url, class: "profile-image" %>
+  </div>
   <div class="dj-info promoter-info col-md-6 vertical-center">   
     <div class="other-info">
       <h4>Review <%=@promoter.name%>'s music.</h4>
@@ -44,7 +48,7 @@
 
         </div></p>
 
-        <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
+        <%= simple_form_for(@comment, url: comment_path(@comment),:html => { :multipart => true }, method: "patch") do |f| %>
       
           <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
           <div class="row">
@@ -53,6 +57,9 @@
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :promoter_id, @promoter.id %>
              <%= hidden_field_tag :rating_id, @new_rating.id %>
+             <% if current_user.id==15 || current_user.id ==7 %>
+              <%= file_field_tag :photo, as: :file %>
+              <%end%>
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (optional)<br>
@@ -75,6 +82,7 @@
      <%end%> 
  
   </div><br>
+  
 </div>
 
 </div>

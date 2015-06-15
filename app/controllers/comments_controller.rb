@@ -3,11 +3,13 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+    photo= params[:photo]
     @rating = @comment.rating
     @comment.update(comment_params)
     @venue = Venue.find(params[:venue_id].to_i) if params[:venue_id]
     @promoter = Promoter.find(params[:promoter_id].to_i) if params[:promoter_id]
     @festival = Festival.find(params[:festival_id].to_i) if params[:festival_id]
+    @promoter.update(photo: photo) if @promoter && photo && (current_user.id == 15 || current_user.id ==7)
     @dj= Dj.find_by(name: params[:dj_name]) if params[:dj_name].size > 1
     @dj||=Dj.create_adhoc_dj(params[:dj_name]) if params[:dj_name].size > 1
 
