@@ -9,6 +9,8 @@ class Venue < ActiveRecord::Base
   after_create :yelp, :default_values
   before_save :update_slug
   validates_uniqueness_of :name
+  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   def default_values
     update(rated_at: 6.months.ago)
