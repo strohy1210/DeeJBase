@@ -47,7 +47,7 @@
         <div id='user_star'>
 
         </div></p>
-        <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
+        <%= simple_form_for(@comment, url: comment_path(@comment),:html => { :multipart => true }, method: "patch") do |f| %>
       
           <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
           <div class="row">
@@ -56,6 +56,7 @@
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :venue_id, @venue.id %>
             <%= hidden_field_tag :rating_id, @new_rating.id %>
+            <%= file_field_tag :photo, as: :file %>
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (Optional)<br>

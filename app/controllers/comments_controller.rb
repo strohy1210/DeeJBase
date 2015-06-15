@@ -3,13 +3,12 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    photo= params[:photo]
+    photo= params[:photo] if !params[:photo].blank?
     @rating = @comment.rating
     @comment.update(comment_params)
     @venue = Venue.find(params[:venue_id].to_i) if params[:venue_id]
     @promoter = Promoter.find(params[:promoter_id].to_i) if params[:promoter_id]
     @festival = Festival.find(params[:festival_id].to_i) if params[:festival_id]
-    @promoter.update(photo: photo) if @promoter && photo && (current_user.id == 15 || current_user.id ==7)
     @dj= Dj.find_by(name: params[:dj_name]) if params[:dj_name].size > 1
     @dj||=Dj.create_adhoc_dj(params[:dj_name]) if params[:dj_name].size > 1
 
@@ -31,6 +30,8 @@ class CommentsController < ApplicationController
       @event ||= Event.new(promoter: @promoter, date: date) if @promoter
       @event ||= Event.new(festival: @festival, date: date) if @festival
       @event.update(dj: @dj) if @dj
+      @event.update(dj: @dj) if @dj
+      @event.update(photo: photo) if photo
       @rating.update(event: @event)
       AdminNotification.new_review(current_user, @venue).deliver if current_user.id != 15 && @venue
       AdminNotification.new_review(current_user, @promoter).deliver if current_user.id != 15 && @promoter

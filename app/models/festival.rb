@@ -5,8 +5,6 @@ class Festival < ActiveRecord::Base
   has_many :comments, through: :ratings
   before_save :update_slug
   validates_uniqueness_of :name
-  has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase

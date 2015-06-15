@@ -24,7 +24,7 @@
 <div id="dj-profile">
 
   <div class="profile-pic col-md-3">
-    <%= image_tag @promoter.photo.url, class: "profile-image" %>
+    <%= image = image_tag (@image), class: "profile-image" %>
   </div>
   <div class="dj-info promoter-info col-md-6 vertical-center">   
     <div class="other-info">
@@ -56,10 +56,11 @@
             <%= label_tag :event_date %><br>
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :promoter_id, @promoter.id %>
-             <%= hidden_field_tag :rating_id, @new_rating.id %>
-             <% if current_user.id==15 || current_user.id ==7 %>
+             <%= hidden_field_tag :rating_id, @new_rating.id %><br><br>
+            <div class="upload-photo">
+              Upload photo of event (optional) <br>
               <%= file_field_tag :photo, as: :file %>
-              <%end%>
+            </div>
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (optional)<br>
@@ -107,6 +108,7 @@
       <meta property="og:title" content="I reviewed one of <%=@promoter.name%>'s parties. Check it out." />
     <%end%>
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
+    <meta property="og:image" content="<%=@image%>"/>
     
   <% end %>
 

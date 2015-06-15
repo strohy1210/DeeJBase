@@ -84,6 +84,10 @@ ActiveRecord::Schema.define(version: 20150615182703) do
     t.datetime "updated_at"
     t.integer  "promoter_id"
     t.integer  "festival_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "festivals", force: true do |t|
@@ -93,10 +97,6 @@ ActiveRecord::Schema.define(version: 20150615182703) do
     t.datetime "updated_at"
     t.string   "image_url"
     t.datetime "rated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
   create_table "genres", force: true do |t|
@@ -119,10 +119,6 @@ ActiveRecord::Schema.define(version: 20150615182703) do
     t.text     "description"
     t.string   "image_url"
     t.datetime "rated_at"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
   create_table "ratings", force: true do |t|
@@ -182,10 +178,6 @@ ActiveRecord::Schema.define(version: 20150615182703) do
     t.datetime "rated_at"
     t.string   "slug"
     t.integer  "priority"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
 end
