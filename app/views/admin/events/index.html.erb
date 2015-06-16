@@ -17,10 +17,10 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.venue_id %></td>
-        <td><%= event.dj_id %></td>
-        <td><%= event.promoter_id %></td>
-        <td><%= image = image_tag (event.photo.url(:medium)) %></td>
+        <td><%= event.venue.name if @event.venue %></td> | 
+        <td><%= event.dj_id %></td> | 
+        <td><%= event.promoter.name if @event.promoter %></td> | 
+        <td><%= image = image_tag (event.photo.url(:medium)) %></td> | 
         <td><%= event.date %></td>
         <td><%= link_to 'Show', admin_event_path(event) %></td>
         <td><%= link_to 'Edit', edit_admin_event_path(event) %></td>
