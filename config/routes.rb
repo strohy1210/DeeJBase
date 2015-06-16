@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :events, only: [:show, :edit, :update, :index]
+  end
   get 'festivals', to: 'festivals#index'
   get 'festivals/:slug', to: 'festivals#show', as: :festival
 
@@ -42,6 +45,7 @@ Rails.application.routes.draw do
   post 'ratings/:id', to: 'ratings#create'
 
   get 'cheer-up-kennedy', to: 'api#justin'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

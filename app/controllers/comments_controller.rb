@@ -31,9 +31,9 @@ class CommentsController < ApplicationController
       @event ||= Event.new(festival: @festival, date: date) if @festival
       @event.update(dj: @dj, photo: photo) if @dj
       @rating.update(event: @event)
-      AdminNotification.new_review(current_user, @venue).deliver if current_user.id != 15 && @venue
-      AdminNotification.new_review(current_user, @promoter).deliver if current_user.id != 15 && @promoter
-      AdminNotification.new_review(current_user, @festival).deliver if current_user.id != 15 && @festival
+      AdminNotification.new_review(current_user, @venue).deliver if current_user.id != 15 && current_user.id !=7 && @venue
+      AdminNotification.new_review(current_user, @promoter).deliver if current_user.id != 15 && current_user.id !=7 && @promoter
+      AdminNotification.new_review(current_user, @festival).deliver if current_user.id != 15 && current_user.id !=7 && @festival
       redirect_to venue_path(@venue.slugify) if @venue
       redirect_to promoter_path(@promoter.slugify) if @promoter
       redirect_to festival_path(@festival.slugify) if @festival

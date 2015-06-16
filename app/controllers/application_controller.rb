@@ -31,6 +31,13 @@ class ApplicationController < ActionController::Base
     @dj ||= Dj.find_by(sdcl_id: current_user.sdcl_id) if session[:user_id]
   end
 
+  def verify_admin
+    unless current_user && (current_user.id == 15 || current_user.id == 7)
+      flash[:alert] = "You must be an administrator to access this section"
+      redirect_to root_path # halts request cycle
+    end    
+  end
+
   def set_params
     @filter = params[:filter]
     if params[:genre_id] && params[:genre_id] != 'all'
