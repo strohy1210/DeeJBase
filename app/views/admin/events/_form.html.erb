@@ -11,6 +11,21 @@
     </div>
   <% end %>
 
+    <strong>Venue:</strong>
+  <%= @event.venue.name if @event.venue %>
+</p>
+
+<p>
+  <strong>Dj:</strong>
+  <%= @event.dj.name if @event.dj %>
+</p>
+
+<p>
+  <strong>Promoter:</strong>
+  <%= @event.promoter.name if @event.promoter %>
+</p>
+
+
   <div class="field">
     <%= f.label :venue_id %><br>
     <%= f.number_field :venue_id %>

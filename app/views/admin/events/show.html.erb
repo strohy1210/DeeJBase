@@ -1,16 +1,16 @@
 <p>
   <strong>Venue:</strong>
-  <%= @event.venue_id %>
+  <%= @event.venue.name if @event.venue %>
 </p>
 
 <p>
   <strong>Dj:</strong>
-  <%= @event.dj_id %>
+  <%= @event.dj.name if @event.dj %>
 </p>
 
 <p>
   <strong>Promoter:</strong>
-  <%= @event.promoter_id %>
+  <%= @event.promoter.name if @event.promoter %>
 </p>
 
 <p>
