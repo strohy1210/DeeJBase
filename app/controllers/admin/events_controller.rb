@@ -1,7 +1,6 @@
 class Admin::EventsController < ApplicationController
   before_action :verify_admin
   before_action :set_event, only: [:show, :edit, :update]
-  layout 'admin'
 
   # GET /events
   # GET /events.json
@@ -68,6 +67,6 @@ class Admin::EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :priority, :number, :num_right, :category, :difficulty_level, :gender, :min_age, :max_age, :smoking, :weight, :link, :is_mma, answers_attributes: [:id, :name, :explanation, :is_right, :_destroy])
+      params.require(:event).permit!
     end
 end
