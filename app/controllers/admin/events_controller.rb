@@ -38,7 +38,6 @@ class Admin::EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        @event.update(photo: photo)
         format.html { redirect_to admin_event_path(@event), notice: 'event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
