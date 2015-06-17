@@ -43,17 +43,17 @@ class DjsController < ApplicationController
     @comments = @dj.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
 
-    if logged_in?
+    # if logged_in?
 
-      @event = Event.where(dj_id: @dj.id).first || @event = Event.create(venue_id: @dj.id)
-      @rating = @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
-      @rating ||= Rating.create(event_id: @event.id, user_id: current_user.id, score: 0)
-      @comment = Comment.where(rating_id: @rating.id).first
-      @comment ||= Comment.create(rating_id: @rating.id)
+    #   # @event = Event.where(dj_id: @dj.id).first || @event = Event.create(venue_id: @dj.id)
+    #   # @rating = @event.ratings.where(user_id: current_user.id).first if @event.ratings.where(user_id: current_user.id).any?
+    #   # @rating ||= Rating.create(event_id: @event.id, user_id: current_user.id, score: 0)
+    #   # @comment = Comment.where(rating_id: @rating.id).first
+    #   # @comment ||= Comment.create(rating_id: @rating.id)
   
-    else
+    # else
       @rating = Rating.first
-    end
+    # end
   end
 
   def send_contact_email  

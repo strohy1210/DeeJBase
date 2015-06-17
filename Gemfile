@@ -52,6 +52,7 @@ gem 'traceroute'
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
+  gem "bullet"
 end
 
 
