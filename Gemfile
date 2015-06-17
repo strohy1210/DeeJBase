@@ -47,7 +47,7 @@ gem 'pry-rails',  :group => :development
 # gem 'sqlite3',  group: :development
 gem 'delayed_job_active_record'
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 group :test, :development do
   gem "rspec-rails"

@@ -39,8 +39,8 @@
     <%= f.number_field :promoter_id %>
   </div>
   <div class="field">
- Upload photo of event (optional) <br>
-  <%= file_field_tag :photo, as: :file %>
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
   </div>
 
   <div class="actions">
