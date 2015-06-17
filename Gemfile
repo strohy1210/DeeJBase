@@ -46,7 +46,9 @@ gem 'spring',        group: :development
 gem 'pry-rails',  :group => :development
 # gem 'sqlite3',  group: :development
 gem 'delayed_job_active_record'
-gem "paperclip", "~> 4.2"
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
