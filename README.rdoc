@@ -1,5 +1,9 @@
 == README
-AFTER SIGN IN REDIRECT BACK TO REVIEW
+A place where people can review your LIVE performance, not soundcloud and fb likes, it's about how you do in-person.  Y
+
+Retweet and chance to win a free ticket to something good
+Like facebook page? - chance to win something
+
 Edit button
 Add user data to html of reviews and fetch that data for fb's use
 resident webdeveloper Sarah Stroh is thinking of ideas for a project that might help out the fam
@@ -113,3 +117,10 @@ Go to www.deejbase.com/venues
 
             
         <h5>FB Likes: <%= number_with_delimiter(dj.fb_likes, :delimiter => ',') %></h5>
+<!-- 
+      <p><div class="demo-embed"> -->
+      <!--  <% #if dj.tracks.any? %>
+        <% #track=dj.tracks.where.not(demo: nil)[0] %>
+        <%= #track.demo.html_safe %>
+        <% #end%> -->
+      <!-- </div></p> -->
