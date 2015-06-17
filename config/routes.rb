@@ -10,19 +10,18 @@ Rails.application.routes.draw do
   get 'promoters', to: 'promoters#index'
   get 'promoters/:slug', to: 'promoters#show', as: :promoter
   get 'ratings/update'
-  resources :genres, only: [:new, :create]
   resources :users, only: :show
-  resources :events, only: [:show]
+  # resources :events, only: [:show]
   post :claim_event, to: 'events#claim_event'
   get 'venues/:slug', to: 'venues#show', as: :venue
   resources :venues, only: :index
 
-  resources :ratings, only: [:update, :destroy, :create]
+  resources :ratings, only: [:update, :create]
   resources :comments, only: :update #do
     # resources :replies, only: [:create, :destroy, :update]
   # end
 
-  resources :djs, only: [:create, :update, :index]
+  resources :djs, only: [:update, :index]
 
   get 'djs/:slug', to: 'djs#show'
  
