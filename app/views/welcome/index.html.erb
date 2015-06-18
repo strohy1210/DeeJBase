@@ -7,7 +7,7 @@
 </div>
 <div class="venue-list container-fluid">
 <div id="results">
-<% @djs.each do |dj| %>
+<% @djs.includes([:events, :genres]).each do |dj| %>
     
   <div class='dj-item'>
 

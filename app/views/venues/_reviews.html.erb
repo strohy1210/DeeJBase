@@ -1,7 +1,7 @@
 <% @comments_uniq_by_user.each do |comment| %>
 <% @user=comment.user %>
 <% first_rating = comment.rating%>
-<% other_ratings= @venue.ratings.where(user: @user).where.not(id: first_rating.id).valid_only%>
+<% other_ratings= @venue.ratings.where(user: @user).where.not(id: first_rating.id).includes(:event).valid_only%>
 <div class="review">
   <div class="row">
     <% if logged_in? && comment.user == current_user %>

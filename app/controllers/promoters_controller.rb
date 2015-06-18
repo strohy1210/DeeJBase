@@ -6,7 +6,7 @@ class PromotersController < ApplicationController
 
   def show
     @promoter = Promoter.find_by(slug: params[:slug])
-    @comments = @promoter.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
+    @comments = @promoter.comments.includes([:rating, :user, event: [:venue, :dj]]).select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
     @image = @promoter.events.where.not(photo_file_name: nil).last.photo.url if @promoter.events.where.not(photo_file_name: nil).any?
     @image ||= @promoter.imageify

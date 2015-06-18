@@ -11,7 +11,7 @@ class VenuesController < ApplicationController
       render 'venues/index'
     end
     @venue = Venue.find_by(slug: params[:slug])
-    @comments = @venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
+    @comments = @venue.comments.includes([:rating, :user, event: [:promoter, :dj]]).select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
     if @comments
       @users = @comments.map {|comment| comment.user}

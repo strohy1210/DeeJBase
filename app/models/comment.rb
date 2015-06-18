@@ -2,8 +2,9 @@ class Comment < ActiveRecord::Base
   belongs_to :rating
   has_one :user, through: :rating
   has_one :event, through: :rating
-  has_one :dj, through: :event
-  has_one :venue, through: :event
+  has_one :dj, through: :event#, counter_cache: true
+  has_one :venue, through: :event#, counter_cache: true
+  has_one :promoter, through: :event#, counter_cache: true
   # validates :body, :length => { :minimum => 40, maximum: 300 }
   validates :rating_id, presence: :true, on: :update
   # before_update :check_rating

@@ -10,7 +10,7 @@
 <div class="venue-list container-fluid">
 <div id="results">
   <br>
-<% @promoters.each_with_index do |promoter, i| %>
+<% @promoters.includes([:events, :comments]).each_with_index do |promoter, i| %>
   <% if i%3 == 0  %>
     <div class='dj-item grey-overlay'>
   
