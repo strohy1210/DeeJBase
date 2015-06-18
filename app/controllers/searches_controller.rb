@@ -31,8 +31,8 @@ class SearchesController < ApplicationController
       name = params[:name].strip
       @venue_results = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").order('name ASC')
       if @venue_results.size == 0
-        link = ActionController::Base.helpers.link_to('here', djs_path)
-        flash[:warning] = "Sorry, no places by that name... so here\'s em all. Search DJs " + link + "."
+        link = ActionController::Base.helpers.link_to('here', promoters_path)
+        flash[:warning] = "Sorry, no places by that name... so here\'s em all. Or search promoters " + link + "."
         redirect_to venues_path
       elsif @venue_results.size == 1
         @venue = @venue_results.first
@@ -52,8 +52,8 @@ class SearchesController < ApplicationController
       name = params[:name].strip
       @promoter_results = Promoter.where('lower(name) LIKE ?', "%#{name.downcase}%").order('name ASC') || Promoter.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").order('name ASC')
       if @promoter_results.size == 0
-        link = ActionController::Base.helpers.link_to('here', djs_path)
-        flash[:warning] = "Sorry, no places by that name... so here\'s em all. Search DJs " + link + "."
+        link = ActionController::Base.helpers.link_to('here', venues_path)
+        flash[:warning] = "Sorry, no parties by that name... so here\'s em all. Or search venues " + link + "."
         redirect_to promoters_path
       elsif @promoter_results.size == 1
         @promoter = @promoter_results.first
