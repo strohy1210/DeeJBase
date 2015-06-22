@@ -13,6 +13,8 @@ class VenuesController < ApplicationController
     @venue = Venue.find_by(slug: params[:slug])
     @comments = @venue.comments.includes([:rating, :user, event: [:promoter, :dj]]).select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
+    @image = @venue.events.where.not(photo_file_name: nil).last.photo.url if @venue.events.where.not(photo_file_name: nil).any?
+    @image ||= @venue.image_url
     if @comments
       @users = @comments.map {|comment| comment.user}
       comments_by_user = @users.map {|user| user.comments & @comments }
