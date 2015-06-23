@@ -53,6 +53,7 @@
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :festival_id, @festival.id %>
              <%= hidden_field_tag :rating_id, @new_rating.id %>
+              <%= file_field_tag :photo, as: :file %>
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (optional)<br>

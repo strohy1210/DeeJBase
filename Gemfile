@@ -48,11 +48,11 @@ gem 'pry-rails',  :group => :development
 gem 'delayed_job_active_record'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
-gem 'traceroute'
+# gem 'traceroute'
 group :test, :development do
   gem "rspec-rails"
   gem "capybara"
-  gem "bullet"
+  # gem "bullet"
 end
 
 
