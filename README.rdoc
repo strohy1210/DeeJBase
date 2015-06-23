@@ -1,4 +1,6 @@
 == README
+ It represents the percentage of professional critic reviews that are positive for a given film or television show.
+create a user called "critic-review"
 A place where people can review your LIVE performance, not soundcloud and fb likes, it's about how you do in-person.  Y
 
 Retweet and chance to win a free ticket to something good
