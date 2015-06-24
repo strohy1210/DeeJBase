@@ -53,12 +53,11 @@
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :festival_id, @festival.id %>
              <%= hidden_field_tag :rating_id, @new_rating.id %>
-              <%= file_field_tag :photo, as: :file %>
+
             </div>
               <div class='col-md-5 dj-autocomplete'>
               DJ (optional)<br>
-               <input id="select_origin" class="form-control" placeholder="Dj's Soundcloud name here"/>
-            <input id="link_dj" name="dj_name" type="hidden"/>
+              <%= file_field_tag :photo, as: :file %>
           </div>
         </div><br>
           <%= f.button :submit, "Submit Comment", class: "disabled btn btn-default submit-comment"%>
