@@ -44,7 +44,7 @@
 
         </div></p>
 
-        <%= simple_form_for(@comment, url: comment_path(@comment), method: "patch") do |f| %>
+       <%= simple_form_for(@comment, url: comment_path(@comment),:html => { :multipart => true }, method: "patch") do |f| %>
       
           <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
           <div class="row">
