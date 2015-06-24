@@ -5,8 +5,9 @@
   </div>
   <div class='content text-center'>
     <div class="col-md-12 row">
-      <h3> We're not foodies rating bars -  <br> We're music-lovers, who understand the power of a DJ, who, regardless of the genre they spin, not only makes the party bump, <p> But enhances the rhythms that already ELATE us.</p> <p>It's time we draw back the curtain and reward the people in the industry who do it right.</p>
+      <h3> We're not foodies rating bars -  <br> We're music-lovers, who understand the power of a DJ, who not only makes the party bump, <p> But enhances the rhythms that already ELATE us.</p> <p>It's time we draw back the curtain and reward the people in the industry who do it right.</p>
       <h3><strong>DeeJBase is a voice for <em>real</em> DJs, the venues who hire them, and the people who love them.</strong></h3>
+      <h3>We encourage you to contribute by writing HONEST reviews, or just sit back and enjoy the content</h3>
     </div>
 
   </div>
@@ -19,14 +20,13 @@
     <%end%>
     </div>
     <div class="col-md-4 col-md-offset-4 text-center">
-    Get a weekly email about the best NYC underground parties
       <div class="form-group">
        <%= form_tag(contact_us_url, method: "post") do %>
        <%= email_field_tag(:email, "", class: 'form-control', placeholder: "youremail@email.com", required: true) %>
         <%= hidden_field_tag(:mailing, true) %>
 
 
-        <%= submit_tag "Sign Up", class: 'btn btn-info' %>
+        <%= submit_tag "Send me a weekly email about NYC parties", class: 'btn btn-info listserve-btn' %>
         <%end%>
         </div>
   </div>
