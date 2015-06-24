@@ -100,6 +100,8 @@ $(function(){
 
 
 
+
+
   // $('meta')[6] gets meta description
 
   // $('.datepicker').click(function(){
