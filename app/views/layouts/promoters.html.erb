@@ -50,7 +50,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
   <div id="bar">
     <div class="navbar-header hidden-xs">
-      <%= link_to image_tag("logo_white.png", alt: "Find NYCs Rawest Talent", title: "For New Yorkers By New Yorkers"), about_path, class: 'navbar-brand hidden-xs' %>
+      <%= link_to image_tag("logo_white.png", alt: "Find NYCs Rawest Talent", title: "For New Yorkers By New Yorkers"), promoters_path, class: 'navbar-brand hidden-xs' %>
     </div>
 
     <ul class="nav navbar-nav">
@@ -163,7 +163,7 @@
         <%= hidden_field_tag(:mailing, true) %>
 
 
-        <%= submit_tag "Send me a weekly email about NYC parties", class: 'btn btn-info listserve-btn' %>
+        <%= submit_tag "Send me a weekly email about nyc underground parties", class: 'btn listserve-btn' %>
         <%end%>
       </div>
     </div>

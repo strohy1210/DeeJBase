@@ -15,11 +15,9 @@
  */
 @import "bootstrap-sprockets";
 @import 'bootstrap';
-@import 'bootstrap/theme';
 @import "bootstrap-social.css";
 @import "font-awesome";
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
-@import "bootswatch/lumen/bootswatch";
 @import url("fonts.googleapis.com/css?family=Hammersmith+One:400,700");
 @import url("fonts.googleapis.com/css?family=Muli");
 @import url("fonts.googleapis.com/css?family=Montserrat");
@@ -451,11 +449,6 @@ a#drop1 {
   border-bottom: none;
 }
 
-.navbar .btn {
-  height: 148%;
-  margin-top: -1px;
-}
-
 .grey-overlay {
   background-color: rgba(191, 216, 235, 0.2);
 }
@@ -492,9 +485,6 @@ a#drop1 {
   margin-top: 1%;
 }
 
-#venue-search-btn {
-  height: 152%; 
-}
 
 .social-share {
   margin-top: -2%;
