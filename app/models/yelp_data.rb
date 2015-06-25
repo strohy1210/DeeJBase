@@ -76,7 +76,7 @@ class YelpData
       rescue
         puts "no name?"
       end
-      venue.update(hood: hood, neighborhood_id: neighborhood.id, phone: phone, name: name, yelp_rating: yelp_rating, image_url: image_url, address: address, latitude: latitude, longitude: longitude, yelp_id: yelp_venue.id)
+      venue.update!(hood: hood, neighborhood_id: neighborhood.id, phone: phone, name: name, yelp_rating: yelp_rating, image_url: image_url, address: address, latitude: latitude, longitude: longitude, yelp_id: yelp_venue.id)
     end
     
   end

@@ -46,7 +46,7 @@ class Venue < ActiveRecord::Base
   def yelp
     yelp = YelpData.new
     yelp.yelp_search(self) if yelp_id == nil
-    YelpData.remove_bad_data
+    # YelpData.remove_bad_data
   end
 
   def imageify
