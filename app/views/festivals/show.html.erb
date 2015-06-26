@@ -36,7 +36,7 @@
   <div class="rate-dj text-center">
     <% if logged_in? %>
 
-      <p><strong>What'd you think of <%= @festival.name %>'s DJ?</strong><br>
+      <p><strong>What'd you think of <%= @festival.name %>?</strong><br>
 
 
       <div class="user-rate">
@@ -46,7 +46,7 @@
 
        <%= simple_form_for(@comment, url: comment_path(@comment),:html => { :multipart => true }, method: "patch") do |f| %>
       
-          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How did the DJ do? Transitions, song choice? - we don't want to hear how long you waited in line or how shitty the bartender was (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
+          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How were the DJ's/performers, production quality, and overall vibes? (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
           <div class="row">
             <div class="date-select col-md-6">
             <%= label_tag :event_date %><br>
