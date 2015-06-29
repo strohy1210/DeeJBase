@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
     if params[:filter]
       set_params
     else
-      @djs = Dj.is_dj.order('rated_at ASC').paginate(page: params[:page], per_page: 6)
+      @djs = Dj.is_dj.order('rated_at DESC').paginate(page: params[:page], per_page: 10)
     end
   end
 
