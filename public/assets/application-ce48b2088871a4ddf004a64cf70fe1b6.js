@@ -15898,115 +15898,45 @@ return jQuery;
 }(jQuery));
 
 
-// $(function(){
-
-// $(".update-form").hide();
-
-// $(".rate-dj").hide();
-
-// $('.edit-dj').click(function(){
-//   $(".update-form").toggle();
-//   $("#dj-profile").toggle();
-//   $(this).toggle();
-//   $('.tracks').hide();
-// })
-
-// $('.cancel-edit').click(function(){
-//   $(".update-form").toggle();
-//   $("#dj-profile").toggle();
-//   $('.edit-dj').toggle();
-//   $('.tracks').show();
-// })
-
-// $(".other-tracks").hide();
-// $('.more-tracks').click(function(){
-//   $(".other-tracks").slideDown();
-//   $(this).toggle();
-//   $('#comments').toggle();
-//   $('.comments-title').toggle();
-//   $('.tracks').removeClass('col-md-8');
-// })
-
-// $('.hide-tracks').click(function(){
-//   $(".other-tracks").toggle();
-//   $('.more-tracks').toggle();
-//     $('#comments').toggle();
-//   $('.comments-title').toggle();
-//    $('.tracks').addClass('col-md-8');
-// })
-// // $('.cancel-message').hide();
-// // $('.cancel-message').click(function(){
-// //   $(".message-form").toggle();
-// //     $(this).toggle();
-// //     $('.hire-dj').toggle();
-// // })
-
-// $('.contact-form').hide();
-// $('.send-contact').click(function(){
-//   $('.contact-form').toggle();
-//   $('.close-contact').toggle();
-//   $(this).toggle();
-// })
-
-
-// $('.close-contact').hide();
-// $('.close-contact').click(function(){
-//   $('.contact-form').toggle();
-//   $('.send-contact').toggle();
-//   $(this).toggle();
-// })
-
-// $('.rate-button').click(function(){
-//   $(".rate-dj").toggle();
-//   $('.other-info').toggle();
-//   $(this).toggle();
-// })
-
-// $('.done-rating').click(function(){
-//   $(".other-info").toggle();
-//   $('.rate-dj').toggle();
-//   $('.rate-button').toggle();
-// })
-
-
-// })
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
 ;
-(function() {
+// (function() {
 
-  $.get("/api/djs", function(response) {
-    var first = true;
-    for (var key in response.data) {
-      if (!isNaN(key))
-      {
+//   $.get("/api/djs", function(response) {
+//     var first = true;
+//     for (var key in response.data) {
+//       if (!isNaN(key))
+//       {
 
-        var dj = response.data[key];
+//         var dj = response.data[key];
 
-        if (first) {
-          var html = '<tr>';
-          for (var label in dj) {
-            html += '<th>' + label + '</th>';
-          }
-          html += '</tr>';
-          first = false;
-          $(".gui").append(html);
-        }
+//         if (first) {
+//           var html = '<tr>';
+//           for (var label in dj) {
+//             html += '<th>' + label + '</th>';
+//           }
+//           html += '</tr>';
+//           first = false;
+//           $(".gui").append(html);
+//         }
 
-        var html = '<tr>'
-        for (var thing in dj) {
-          html += '<td>' + dj[thing] + '</td>';
-        }
-        html += '</tr>';
-        $(".gui").append(html);
-      }
-    }
-  });
+//         var html = '<tr>'
+//         for (var thing in dj) {
+//           html += '<td>' + dj[thing] + '</td>';
+//         }
+//         html += '</tr>';
+//         $(".gui").append(html);
+//       }
+//     }
+//   });
 
-/*
-  $.get("/api/djs/78", function(response) {
-    console.log(response);
-  });
-*/
-}());
+// /*
+//   $.get("/api/djs/78", function(response) {
+//     console.log(response);
+//   });
+// */
+// }());
 /*! jQuery UI - v1.11.4 - 2015-04-23
 * http://jqueryui.com
 * Includes: core.js, widget.js, mouse.js, position.js, draggable.js, droppable.js, resizable.js, selectable.js, sortable.js, accordion.js, autocomplete.js, button.js, datepicker.js, dialog.js, menu.js, progressbar.js, selectmenu.js, slider.js, spinner.js, tabs.js, tooltip.js, effect.js, effect-blind.js, effect-bounce.js, effect-clip.js, effect-drop.js, effect-explode.js, effect-fade.js, effect-fold.js, effect-highlight.js, effect-puff.js, effect-pulsate.js, effect-scale.js, effect-shake.js, effect-size.js, effect-slide.js, effect-transfer.js
@@ -31737,24 +31667,24 @@ eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
 
 $(function(){
 
-  var first = true;
-  if (first) {
-    $(".index-image a img").error(function(){
+  // var first = true;
+  // if (first) {
+  //   $(".index-image a img").error(function(){
 
-      // var alt_image= $(this).attr('alt');
-      // $(this).attr('src', alt_image);
-      first = false;
-    });
-  }
-  var first = true;
-  if (first) {
-    $(".profile-image img").error(function(){
+  //     // var alt_image= $(this).attr('alt');
+  //     // $(this).attr('src', alt_image);
+  //     first = false;
+  //   });
+  // }
+  // var first = true;
+  // if (first) {
+  //   $(".profile-image img").error(function(){
 
-      // var alt_image= $(this).attr('alt');
-      // $(this).attr('src', alt_image);
-      first = false;
-    });
-  }
+  //     // var alt_image= $(this).attr('alt');
+  //     // $(this).attr('src', alt_image);
+  //     first = false;
+  //   });
+  // }
 
     $('.datepicker').datepicker({
         format: 'mm-dd-yyyy',
@@ -31811,6 +31741,15 @@ $(function(){
     $(this).find('a').toggle();
   })
 
+  $(".cancel-fix-comment").click(function(e){
+     e.preventDefault();
+     $('.fix-comment').toggle();
+   })
+
+
+
+
+
   // $('meta')[6] gets meta description
 
   // $('.datepicker').click(function(){
@@ -31837,6 +31776,25 @@ $(function(){
     //   $('.datepicker').attr('type', 'date');
     // })
 
+});
+
+$(window).scroll(
+    {
+        previousTop: 0
+    }, 
+    function () {
+    var currentTop = $(window).scrollTop();
+    if (currentTop <= this.previousTop) {
+        // $(".sidebar em").text("Up"); /* optional for demo */
+        $(".navbar").show();
+    } else if ($(window).scrollTop() > 30) {
+        // $(".sidebar em").text("Down");
+        $(".navbar").hide();
+    }
+    this.previousTop = currentTop;
+    // if ($(window).scrollTop() < 30){
+    //   $(".navbar").show();
+    // }
 });
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.

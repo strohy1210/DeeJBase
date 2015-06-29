@@ -1,4 +1,5 @@
 == README
+
  It represents the percentage of professional critic reviews that are positive for a given film or television show.
 create a user called "critic-review"
 A place where people can review your LIVE performance, not soundcloud and fb likes, it's about how you do in-person.  Y
@@ -10,7 +11,7 @@ Edit button
 Add user data to html of reviews and fetch that data for fb's use
 resident webdeveloper Sarah Stroh is thinking of ideas for a project that might help out the fam
 one idea she had was
-1. image uploader
+1. pick venue for promoters page
 
 2. some sort of event organizer, a lot of times will comment
 

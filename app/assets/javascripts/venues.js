@@ -19,24 +19,24 @@
 
 $(function(){
 
-  var first = true;
-  if (first) {
-    $(".index-image a img").error(function(){
+  // var first = true;
+  // if (first) {
+  //   $(".index-image a img").error(function(){
 
-      // var alt_image= $(this).attr('alt');
-      // $(this).attr('src', alt_image);
-      first = false;
-    });
-  }
-  var first = true;
-  if (first) {
-    $(".profile-image img").error(function(){
+  //     // var alt_image= $(this).attr('alt');
+  //     // $(this).attr('src', alt_image);
+  //     first = false;
+  //   });
+  // }
+  // var first = true;
+  // if (first) {
+  //   $(".profile-image img").error(function(){
 
-      // var alt_image= $(this).attr('alt');
-      // $(this).attr('src', alt_image);
-      first = false;
-    });
-  }
+  //     // var alt_image= $(this).attr('alt');
+  //     // $(this).attr('src', alt_image);
+  //     first = false;
+  //   });
+  // }
 
     $('.datepicker').datepicker({
         format: 'mm-dd-yyyy',
@@ -136,12 +136,15 @@ $(window).scroll(
     }, 
     function () {
     var currentTop = $(window).scrollTop();
-    if (currentTop < this.previousTop) {
-        $(".sidebar em").text("Up"); /* optional for demo */
+    if (currentTop <= this.previousTop) {
+        // $(".sidebar em").text("Up"); /* optional for demo */
         $(".navbar").show();
-    } else {
-        $(".sidebar em").text("Down");
+    } else if ($(window).scrollTop() > 30) {
+        // $(".sidebar em").text("Down");
         $(".navbar").hide();
     }
     this.previousTop = currentTop;
+    // if ($(window).scrollTop() < 30){
+    //   $(".navbar").show();
+    // }
 });

@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # before_action :authorize
+  # before_action :prepare_for_mobile
+
 
   def logged_in?
    !!current_user
@@ -73,7 +75,7 @@ class ApplicationController < ActionController::Base
   end
 
   def prepare_ratings(resource)
-    @comment_fbshare =resource.ratings.where(user: current_user).valid_only.last.comment.body if resource.ratings && resource.ratings.where(user: current_user).valid_only.last && resource.ratings.where(user: current_user).valid_only.last.comment 
+    @comment_fbshare = resource.ratings.where(user: current_user).valid_only.last.comment.body if resource.ratings && resource.ratings.where(user: current_user).valid_only.last && resource.ratings.where(user: current_user).valid_only.last.comment 
     @rating_fbshare= resource.ratings.where(user: current_user).valid_only.last.score.to_i.to_s if resource.ratings && resource.ratings.where(user: current_user).valid_only.any?
     @events = resource.events
     if @events
@@ -85,5 +87,22 @@ class ApplicationController < ActionController::Base
     @comment = Comment.create(rating: @new_rating)
   end
 
-  helper_method :current_user, :logged_in?, :set_params, :current_dj, :set_venue_params, :prepare_ratings
+
+  private
+
+    def mobile_device?
+      # if session[:mobile_param]
+      #   session[:mobile_param] == "1"
+      # else
+        request.user_agent =~ /Mobile|webOS/
+      # end
+    end
+
+    def prepare_for_mobile
+      session[:mobile_param] = params[:mobile] if params[:mobile]
+      request.format = :mobile if mobile_device?
+    end
+
+
+  helper_method :current_user, :logged_in?, :set_params, :current_dj, :set_venue_params, :prepare_ratings, :mobile_device?
 end
