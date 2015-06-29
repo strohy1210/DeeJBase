@@ -137,14 +137,9 @@ $(window).scroll(
     function () {
     var currentTop = $(window).scrollTop();
     if (currentTop <= this.previousTop) {
-        // $(".sidebar em").text("Up"); /* optional for demo */
         $(".navbar").show();
     } else if ($(window).scrollTop() > 30) {
-        // $(".sidebar em").text("Down");
         $(".navbar").hide();
     }
     this.previousTop = currentTop;
-    // if ($(window).scrollTop() < 30){
-    //   $(".navbar").show();
-    // }
 });
