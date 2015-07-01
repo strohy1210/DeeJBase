@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :comments, through: :ratings
   has_many :users, through: :ratings
-  after_update :check_for_users, :update_venue_dj_rated_at
+  after_update :check_for_users
+  after_save :update_venue_dj_rated_at
   has_attached_file :photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
