@@ -9,8 +9,8 @@ class CommentsController < ApplicationController
     @venue = Venue.find(params[:venue_id].to_i) if params[:venue_id]
     @promoter = Promoter.find(params[:promoter_id].to_i) if params[:promoter_id]
     @festival = Festival.find(params[:festival_id].to_i) if params[:festival_id]
-    @dj= Dj.find_by(name: params[:dj_name]) if params[:dj_name].size > 1
-    @dj||=Dj.create_adhoc_dj(params[:dj_name]) if params[:dj_name].size > 1
+    @dj= Dj.find_by(name: params[:dj_name]) if params[:dj_name] && params[:dj_name].size > 1
+    @dj||=Dj.create_adhoc_dj(params[:dj_name]) if params[:dj_name] && params[:dj_name].size > 1
 
     if @comment.is_valid? && @rating.save && @rating.score > 0 && params[:date] != "mm-dd-yyyy" && params[:date] != ""
       array = params[:date].split("-")

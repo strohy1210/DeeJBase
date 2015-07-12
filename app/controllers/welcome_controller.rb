@@ -41,6 +41,8 @@ class WelcomeController < ApplicationController
       set_params
       render 'welcome/index', layout: "venues"
     end
+    @user = User.find_by(id: 15)
+    @user ||= User.find(7)
     render layout: "venues"
   end
 

@@ -1,18 +1,16 @@
 <div class="about-djbase">
 
-  <div class="page-header text-center col-md-6 col-md-offset-3">
-    <h2>For the Love of Music . . . </h2>
-  </div>
-  <div class='content text-center'>
     <div class="col-md-12 row">
-      <h3> We're not foodies rating bars -  <br> We're music-lovers, who understand the power of a DJ, who not only makes the party bump, <p> But enhances the rhythms that already ELATE us.</p> <p>It's time we draw back the curtain and reward the people in the industry who do it right.</p>
-      <h3><strong>DeeJBase is a voice for <em>real</em> DJs, the venues who hire them, and the people who love them.</strong></h3>
-      <h3>We encourage you to contribute by writing HONEST reviews, or just sit back and enjoy the content</h3>
+      <h3>DeeJBase is a voice for <em>real</em> musicians, the venues and promoters who hire them, and the people who love them.</h3>
+      <h3>We encourage you to contribute by writing HONEST reviews of music and music-focused events... or just sit back and enjoy the content</h3>
     </div>
-
+    <div>
+      <%= link_to(image_tag(@user.image_url), user_path(@user))%><br>
+      <br><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Sarah Stroh // coder // BK-resident // electronic-music fiend
+    </div>
   </div>
-</div>
 
+<br><Br>
   <div class='footer controls text-center col-md-12' id="footer">
     <% if !logged_in? %>
     <%= link_to "Login", '/auth/facebook' %> |
