@@ -9,13 +9,9 @@
       <br><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Sarah Stroh // coder // BK-resident // electronic-music fiend
     </div>
 
-    <% if !logged_in? %>
-    <%= link_to "Login", '/auth/facebook' %> |
-    <%= link_to "Sign Up", '/auth/facebook' %>
-    <%end%>
 
 <br><br>
-
+  <div class="row">
       <div class="form-group col-md-3 about-listserve">
        <%= form_tag(contact_us_url, method: "post") do %>
        <%= email_field_tag(:email, "", class: 'form-control', placeholder: "youremail@email.com", required: true) %>
@@ -24,6 +20,12 @@
         <%end%>
 
     </div>
+</div>
+
+    <% if !logged_in? %>
+    <%= link_to "Login", '/auth/facebook' %> |
+    <%= link_to "Sign Up", '/auth/facebook' %>
+    <%end%>
   </div>
 
 <br><br><br>
