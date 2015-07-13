@@ -525,6 +525,8 @@ a#drop1 {
 
 .listserve-btn {
   width: 100%;
+  border-radius: 0px;
+  text-align: left;
 }
 
 .about-listserve {
@@ -534,10 +536,17 @@ a#drop1 {
   margin-left: -1%;
  }
 
- .sarah-image {
+.sarah-image {
   margin-top: 1%;
- }
+}
 
+.about-djbase {
+  padding-left: 2%;
+}
+
+#email {
+  border-radius: 0px;
+}
 
   @media (max-device-width : 480px) {
     .navbar-fixed-top {
