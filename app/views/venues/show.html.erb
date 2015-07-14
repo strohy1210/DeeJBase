@@ -19,13 +19,12 @@
 <div class="dj-profile">
 <div class="row">
 <div id="dj-profile">
-  
-  <div class="profile-pic col-md-3">
+<!--   
+  <div class="profile-pic col-md-2">
   <%= image = image_tag (@image), class: "profile-image" %>
-  </div>
-  <div class="dj-info venue-info col-md-5 vertical-center">   
+  </div> -->
+  <div class="dj-info venue-info col-md-6">   
     <div class="other-info">
-      <h4>Review <%=@venue.name%>'s music.</h4>
       <%= @venue.neighborhood.name if @venue.neighborhood %><br>
       <%= @venue.address %><br>
       <%= @venue.category %><br>
@@ -35,9 +34,9 @@
       </div>
     </div>
   
-  <div class='rate-button btn-centered btn btn-default'>Review <%=@venue.name%></div>
+  <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@venue.name%></div>
 
-  <div class="rate-dj text-center">
+  <div class="rate-dj">
     <% if logged_in? %>
 
       <p><strong>What'd you think of <%= @venue.name %>'s music?</strong><br>
@@ -66,6 +65,7 @@
           <%= f.button :submit, "Submit Comment", class: "disabled btn btn-default submit-comment"%>
 
         <%end%>
+        <br>
         <a href="#"><div class="done-rating cancel-comment" title="To delete your comment, cancel your rating or text body and hit 'update comment' above."style="color: red;">Cancel</div></a>
       </div>
     <%elsif !logged_in?%>
