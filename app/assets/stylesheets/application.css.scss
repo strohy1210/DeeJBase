@@ -180,10 +180,8 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
   margin: 10px;
 }
 .dj-info {
-  background: #ededed;
   border-radius: 10px;
   padding: 10px;
-  background: rgba(252, 212, 221, 0.2);
   color: #EBEBE7;
   border-bottom: 2px solid #3A3434;
 
@@ -268,15 +266,15 @@ li { cursor: pointer; }
 }
 
 .review {
-  background: #ededed;
   border-radius: 10px;
   padding: 5px;
   margin-top: 8px;
   font-size: 15px;
-  background:rgba(252, 212, 221, 0.2);
+  background: rgba(26, 22, 11, 0.77);
   color: #EBEBE7;
-  border-bottom: 2px solid #3A3434;
+  border: 1px solid #231616;
 }
+
 
 .navbar-form .form-control {
   max-width: 170px
