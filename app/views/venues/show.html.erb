@@ -105,7 +105,7 @@
       <meta property="og:title" content="A review of <%=@venue.name%>'s music." />
     <%end%>
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
-    <meta property="og:image" content="<%=@image%>"/>
+    <!-- <meta property="og:image" content="<%=@image%>"/> -->
   <% end %>
 
   <% if logged_in? && @venue.ratings.where(user: current_user).valid_only.any?%><br>

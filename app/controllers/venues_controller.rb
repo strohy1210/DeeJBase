@@ -11,13 +11,13 @@ class VenuesController < ApplicationController
       render 'venues/index'
     end
     @venue = Venue.find_by(slug: params[:slug])
-    @comments = @venue.comments.includes([:rating, :user, event: [:promoter, :dj]]).select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
+    @comments = @venue.comments.order('created_at DESC').includes([:rating, :user, event: [:promoter, :dj]]).select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
     @image = @venue.events.where.not(photo_file_name: nil).last.photo.url if @venue.events.where.not(photo_file_name: nil).any?
     @image ||= @venue.image_url
     if @comments
       @users = @comments.map {|comment| comment.user}
-      comments_by_user = @users.map {|user| user.comments & @comments }
+      comments_by_user = @users.map {|user| user.comments.order('created_at DESC') & @comments }
       @comments_uniq_by_user = comments_by_user.map {|c_array| c_array.last}.uniq
     end
     
