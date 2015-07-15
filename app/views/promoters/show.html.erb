@@ -23,12 +23,9 @@
 <div class="row">
 <div id="dj-profile">
 
-  <div class="profile-pic col-md-3">
-    <%= image = image_tag (@image), class: "profile-image" %>
-  </div>
+
   <div class="dj-info promoter-info col-md-6 vertical-center">   
     <div class="other-info">
-      <h4>Review <%=@promoter.name%>'s music.</h4>
       DJB Rating<sup></sup>:
       <div id='star'>
    
@@ -87,9 +84,12 @@
 </div>
 
 </div>
+<!--   <div class="profile-pic col-md-3">
+    <%= image = image_tag (@image), class: "profile-image" %>
+  </div> -->
 </div>
 <br>
-<br>
+
   <% if @comments %>
      <h5 class="row venue-comments-title">Reviews</h5>
 
