@@ -357,7 +357,7 @@ li { cursor: pointer; }
   color: black;
 }
 
-btn-primary:hover, .btn-primary:focus, .btn-group.open .dropdown-toggle.btn-primary {
+.btn-primary:hover, .btn-primary:focus, .btn-group.open .dropdown-toggle.btn-primary {
   background-color: #337ab7;
   border-color: #2e6da4;
 }
@@ -543,6 +543,10 @@ a#drop1 {
 
 #email {
   border-radius: 0px;
+}
+
+.btn {
+  cursor: pointer;
 }
 
   @media (max-device-width : 480px) {

@@ -14,7 +14,6 @@
 <div class= "venue-show container-fluid">
 <div class="row page-header title">
   <h2 class='col-md-5'> <%= @venue.name %>  </h2>
-<!--removed venue search -->
 </div>
 <div class="dj-profile">
 <div class="row">
@@ -111,7 +110,8 @@
   <% if logged_in? && @venue.ratings.where(user: current_user).valid_only.any?%><br>
   <div class="social-share">
     Reviewed <%= @venue.name %>? Share that shit.
-    <div class="fb-share-button" data-href="http://www.deejbase.com/venues/<%=@venue.slugify%>" data-layout="button"></div></div>
+    <div class="fb-share-button" data-href="http://www.deejbase.com/venues/<%=@venue.slugify%>" data-layout="button"></div>
+  </div>
   <%end%>
 
 <script>
