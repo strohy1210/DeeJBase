@@ -88,8 +88,8 @@
         <% if logged_in? && comment.user == current_user %>
         <% @other_comment = rating.comment %>
           <%= render 'fix_other_comment' %>
-        <%end%>
-      </div>        
+        </div>
+        <%end%>        
       <%if rating.event && rating.event.dj %>
         <% dj=rating.event.dj%>
         <div class="claim-event user-image col-md-2">

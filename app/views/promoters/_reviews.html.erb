@@ -48,16 +48,14 @@
       <%= link_to image_tag(dj.image_url), dj_path(dj.slugify) %><br>
       <span class="link-dj text-center"><%= link_to dj.name, dj_path(dj.slugify) %> spun<span>
     </div>
-    <div class="col-md-1">
 
-    </div>
   <%elsif comment.event%>
     <div class="claim-event col-md-2">
       <h6>Were you the DJ?</h6>
       <% if logged_in? && current_user.sdcl_id%>
         <%= button_to "Claim Event", claim_event_path, :class => 'btn-xs btn btn-default', :method => :post, params:{current_user: current_user.id, event: comment.event}  %>
       <%else%>
-        <a href="#" data-toggle="modal" data-target="#contactModal" >
+        <a href="#" data-toggle="modal" data-target="#contactModal">
         <div class="hover-mask bottom-mask mask-orange">
           <button class="btn-xs btn btn-default">Claim Event</button>
         </div>
@@ -88,8 +86,8 @@
         <% if logged_in? && comment.user == current_user %>
         <% @other_comment = rating.comment %>
           <%= render :partial =>'/venues/fix_other_comment' %>
-        <%end%>
-      </div>        
+        </div> 
+        <%end%>       
       <%if rating.event && rating.event.dj %>
         <% dj=rating.event.dj%>
         <div class="claim-event user-image col-md-2">

@@ -68,12 +68,13 @@
         <a href="#"><div class="done-rating cancel-comment" title="To delete your comment, cancel your rating or text body and hit 'update comment' above."style="color: red;">Cancel</div></a>
       </div>
     <%elsif !logged_in?%>
-      <div class="text-center bg-warning">
+      <div class="bg-warning">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
 
       
       <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
-      | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>   </div>
+      | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>
+      </div>
      <%end%> 
  
   </div><br>
