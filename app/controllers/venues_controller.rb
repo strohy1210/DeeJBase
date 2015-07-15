@@ -18,7 +18,7 @@ class VenuesController < ApplicationController
     if @comments
       @users = @comments.map {|comment| comment.user}
       comments_by_user = @users.map {|user| user.comments.order('created_at DESC') & @comments }
-      @comments_uniq_by_user = comments_by_user.map {|c_array| c_array.last}.uniq
+      @comments_uniq_by_user = comments_by_user.map {|c_array| c_array.first}.uniq
     end
     
     if logged_in?
