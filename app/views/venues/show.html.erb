@@ -12,12 +12,9 @@
 
     </script>
 <div class= "venue-show container-fluid">
-<div class="row page-header title">
-  <h2> <%= @venue.name %>  </h2>
-        <div id='star'>
-   
-      </div>
-</div>
+<!-- <div class="row page-header title">
+
+</div> -->
 <div class="dj-profile">
 <div class="row">
 <div id="dj-profile">
@@ -27,9 +24,13 @@
   </div> -->
   <div class="dj-info venue-info col-md-6">   
     <div class="other-info">
+        <h2> <%= @venue.name %>  </h2>
+        <div id='star'>
+   
+      </div>
       <span class="hood"><%= @venue.neighborhood.name if @venue.neighborhood %><br></span>
       <span class="address"><%= @venue.address %><br></span>
-      <%= @venue.category %><br>
+      <span class="category"><%= @venue.category %><br></span>
 
     </div>
   
@@ -80,6 +81,7 @@
   </div><br>
 </div>
 <div class="map col-md-3 col-md-offset-2">
+  <br>
 <!--   <button class="show-map btn btn-xs btn-info btn-block center-block">Show map</button>
   <button class='hide-map btn-xs btn btn-info btn-block center-block'>Hide Map</button> -->
   <div id="map" style="height: 200px; width: 280px; border-radius: 30px; margin-left:20px;" data-lat="<%= @venue.latitude %>" data-lng="<%= @venue.longitude %>"></div>
