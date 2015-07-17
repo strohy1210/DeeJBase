@@ -15,9 +15,12 @@
 
 <div class= "venue-show container-fluid">
 <div class="row page-header title">
-  <h2 class='col-md-5'> <%= @promoter.name %>  </h2>
-
+  <h2> <%= @promoter.name %>  </h2>
+        <div id='star'>
+   
 </div>
+
+      </div>
 <div class="dj-profile">
 
 <div class="row">
@@ -26,10 +29,7 @@
 
   <div class="dj-info promoter-info col-md-6 vertical-center">   
     <div class="other-info">
-      DJB Rating<sup></sup>:
-      <div id='star'>
-   
-      </div>
+
     </div>
   
   <div class='rate-button btn-centered btn-lg btn-default col-md-6'>Review <%=@promoter.name%></div>
@@ -124,6 +124,7 @@
   $('#star').raty({
     readOnly: true,
     score: <%= @promoter.average_rating %>,
+    size: 40,
     path: '/assets'
   });
 

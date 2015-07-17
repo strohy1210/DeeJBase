@@ -444,6 +444,7 @@ a#drop1 {
 
 .page-header {
   border-bottom: none;
+  padding-left: 3.5%;
 }
 
 .grey-overlay {
@@ -547,6 +548,14 @@ a#drop1 {
 
 .btn {
   cursor: pointer;
+}
+
+.address {
+  color: #59513E;
+}
+
+.hood {
+  color: beige;
 }
 
   @media (max-device-width : 480px) {
