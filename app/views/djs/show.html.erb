@@ -14,16 +14,15 @@
       <% if current_user && current_user.dj_status && current_user.sdcl_id == @dj.sdcl_id %>
           <button class="edit-dj pull-right btn btn-primary">Edit your profile</button>
         <br>
-      <%else%>
-
-       <%= render 'contact_modal' %>
-   
-        <a href="#" data-toggle="modal" data-target="#basicModal" >
-          <div class="hover-mask bottom-mask mask-orange">
-            <h2 class='hire-dj btn-centered btn btn-info pull-right'>Contact</h2>
-          </div>
-        </a>
       <%end%>
+
+       <% #render 'contact_modal' %>
+   
+        <!-- <a href="#" data-toggle="modal" data-target="#basicModal"> -->
+          <!-- <div class="hover-mask bottom-mask mask-orange"> -->
+            <!-- <h2 class='hire-dj btn-centered btn btn-info pull-right'>Contact</h2> -->
+          <!-- </div> -->
+        <!-- </a> -->
 
       </div>
  
