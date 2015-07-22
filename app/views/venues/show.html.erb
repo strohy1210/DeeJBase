@@ -13,7 +13,6 @@
     </script>
 <div class= "venue-show container-fluid">
 <!-- <div class="row page-header title">
-
 </div> -->
 <div class="dj-profile">
 <div class="row">
@@ -38,41 +37,11 @@
 
   <div class="rate-dj">
     <% if logged_in? %>
-
-      <p><strong>What'd you think of <%= @venue.name %>'s music?</strong><br>
-
-      <div class="user-rate">
-        <div id='user_star'>
-
-        </div></p>
-        <%= simple_form_for(@comment, url: comment_path(@comment),:html => { :multipart => true }, method: "patch") do |f| %>
-      
-          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How was your music experience? Write about the artist, the production quality, and overall vibes. This is not the place to review food, drinks, or the hot bartender - go to Yelp for that (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
-          <div class="row">
-            <div class="date-select col-md-6">
-            <%= label_tag :event_date %><br>
-            <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
-            <%= hidden_field_tag :venue_id, @venue.id %>
-            <%= hidden_field_tag :rating_id, @new_rating.id %>
-            <%= file_field_tag :photo, as: :file %>
-            </div>
-              <div class='col-md-5 dj-autocomplete'>
-              DJ (Optional)<br>
-              <input id="select_origin" class="form-control" placeholder="Dj's Soundcloud name here"/>
-            <input id="link_dj" name="dj_name" type="hidden"/>
-          </div>
-        </div><br>
-          <%= f.button :submit, "Submit Comment", class: "disabled btn btn-default submit-comment"%>
-
-        <%end%>
-        <br>
-        <a href="#"><div class="done-rating cancel-comment" title="To delete your comment, cancel your rating or text body and hit 'update comment' above."style="color: red;">Cancel</div></a>
-      </div>
+      <% @resource = @venue %>
+      <%= render 'review_form' %> 
     <%elsif !logged_in?%>
       <div class="bg-warning">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
-
-      
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>      
       <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
       | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>
       </div>

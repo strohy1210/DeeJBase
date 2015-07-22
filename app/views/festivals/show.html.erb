@@ -35,36 +35,8 @@
 
   <div class="rate-dj text-center">
     <% if logged_in? %>
-
-      <p><strong>What'd you think of <%= @festival.name %>?</strong><br>
-
-
-      <div class="user-rate">
-        <div id='user_star'>
-
-        </div></p>
-
-       <%= simple_form_for(@comment, url: comment_path(@comment),:html => { :multipart => true }, method: "patch") do |f| %>
-      
-          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How were the DJ's/performers, production quality, and overall vibes? (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
-          <div class="row">
-            <div class="date-select col-md-6">
-            <%= label_tag :event_date %><br>
-            <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
-            <%= hidden_field_tag :festival_id, @festival.id %>
-             <%= hidden_field_tag :rating_id, @new_rating.id %>
-
-            </div>
-              <div class='col-md-5 dj-autocomplete'>
-              DJ (optional)<br>
-   j           <%= file_field_tag :photo, as: :file %>
-          </div>
-        </div><br>
-          <%= f.button :submit, "Submit Comment", class: "disabled btn btn-default submit-comment"%>
-
-        <%end%>
-        <a href="#"><div class="done-rating cancel-comment" title="To delete your comment, cancel your rating or text body and hit 'update comment' above."style="color: red;">Cancel</div></a>
-      </div>
+      <% @resource = @festival %>
+      <%= render :partial => '/venues/review_form' %>
     <%elsif !logged_in?%>
       <div class="text-center bg-warning">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>
