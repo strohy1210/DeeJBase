@@ -1,7 +1,7 @@
 <% @comments_uniq_by_user.each do |comment| %>
 <% @user=comment.user %>
 <% first_rating = comment.rating%>
-<% other_ratings= @venue.ratings.where(user: @user).where.not(id: first_rating.id).includes(:event).valid_only%>
+<% other_ratings= @resource.ratings.where(user: @user).where.not(id: first_rating.id).includes(:event).valid_only%>
 <div class="review">
   <div class="row">
     <% if logged_in? && comment.user == current_user %>
@@ -28,8 +28,10 @@
         Rating: <%= comment.rating.score.to_i %>/5 
           <% if comment.event && comment.event.date %>
           (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>
-            <%if comment.event.promoter%>
+            <%if @resource.instance_of?(Venue) && comment.event.promoter%>
               thrown by <%= link_to comment.event.promoter.name, promoter_path(comment.event.promoter.slugify) %>
+            <%elsif @resource.instance_of?(Promoter) && comment.event.venue%>
+                at <%= link_to comment.event.venue.name, venue_path(comment.event.venue.slugify) %>
             <%end%>)
           <%end%>
           
@@ -39,7 +41,7 @@
       </div>
       <% if logged_in? && comment.user == current_user %>
         <% @comment = comment %>   
-            <%= render 'fix_comment' %>
+             <%= render :partial => '/venues/fix_comment' %> 
        <%end%>  
     </div>
   <%if comment.event && comment.event.dj %>
@@ -77,8 +79,10 @@
         Rating: <%= rating.score.to_i %>/5 
         <% if rating.event && rating.event.date %>
           (based on event on <%= rating.event.date.strftime("%A, %B %d, %Y")%>
-          <%if rating.event.promoter%>
+          <%if @resource.instance_of?(Venue) && rating.event.promoter%>
             thrown by <%= link_to rating.event.promoter.name, promoter_path(rating.event.promoter.slugify) %>
+          <%elsif @resource.instance_of?(Promoter) && rating.event.venue%>
+            at <%= link_to rating.event.venue.name, venue_path(rating.event.venue.slugify) %>
           <%end%>)
         <%end%>
 
@@ -87,7 +91,7 @@
         </div>
         <% if logged_in? && comment.user == current_user %>
         <% @other_comment = rating.comment %>
-          <%= render 'fix_other_comment' %>
+            <%= render :partial =>'/venues/fix_other_comment' %>
         </div>
         <%end%>        
       <%if rating.event && rating.event.dj %>

@@ -11,6 +11,7 @@
     })
 
     </script>
+  <% @resource = @venue %>
 <div class= "venue-show container-fluid">
 <!-- <div class="row page-header title">
 </div> -->
@@ -36,8 +37,8 @@
   <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@venue.name%></div>
 
   <div class="rate-dj">
+
     <% if logged_in? %>
-      <% @resource = @venue %>
       <%= render 'review_form' %> 
     <%elsif !logged_in?%>
       <div class="bg-warning">

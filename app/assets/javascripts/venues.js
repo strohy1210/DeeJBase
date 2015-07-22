@@ -99,7 +99,7 @@ $(function(){
    })
 
 
-  $("#select_origin").tooltip();
+  // $("#select_origin").tooltip();
 
 
   // $('meta')[6] gets meta description

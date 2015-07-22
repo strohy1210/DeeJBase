@@ -12,7 +12,7 @@
     })
 
     </script>
-
+<% @resource = @promoter %>
 <div class= "venue-show container-fluid">
 <div class="row page-header title">
   <h2> <%= @promoter.name %>  </h2>
@@ -35,8 +35,8 @@
   <div class='rate-button btn-centered btn-lg btn-default col-md-6'>Review <%=@promoter.name%></div>
 
   <div class="rate-dj">
+
     <% if logged_in? %>
-      <% @resource = @promoter %>
      <%= render :partial => '/venues/review_form' %> 
     <%elsif !logged_in?%>
       <div class="text-center bg-warning">
@@ -61,7 +61,7 @@
   <% if @comments %>
      <h5 class="row venue-comments-title">Reviews</h5>
 
-     <%= render 'reviews' %>
+      <%= render :partial => '/venues/reviews' %>
 
   <%end%>
 </div>
