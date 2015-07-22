@@ -21,5 +21,6 @@ class PromotersController < ApplicationController
     else
       @new_rating = Rating.first
     end
+    render 'venues/show'
   end
 end

@@ -11,7 +11,9 @@
     })
 
     </script>
-  <% @resource = @venue %>
+  <% @resource = @venue if @venue %>
+  <% @resource = @promoter if @promoter %>
+  <% @resource = @festival if @festival %>
 <div class= "venue-show container-fluid">
 <!-- <div class="row page-header title">
 </div> -->
@@ -24,22 +26,23 @@
   </div> -->
   <div class="dj-info venue-info col-md-6">   
     <div class="other-info">
-        <h2> <%= @venue.name %>  </h2>
+        <h2> <%= @resource.name %>  </h2>
         <div id='star'>
    
       </div>
-      <span class="hood"><%= @venue.neighborhood.name if @venue.neighborhood %><br></span>
-      <span class="address"><%= @venue.address %><br></span>
-      <span class="category"><%= @venue.category %><br></span>
-
+      <% if @resource.instance_of?(Venue) %>
+        <span class="hood"><%= @resource.neighborhood.name if @resource.neighborhood %><br></span>
+        <span class="address"><%= @resource.address %><br></span>
+        <span class="category"><%= @resource.category %><br></span>
+      <%end%>
     </div>
   
-  <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@venue.name%></div>
+  <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@resource.name%></div>
 
   <div class="rate-dj">
 
     <% if logged_in? %>
-      <%= render 'review_form' %> 
+         <%= render :partial => '/venues/review_form' %> 
     <%elsif !logged_in?%>
       <div class="bg-warning">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>      
@@ -50,6 +53,7 @@
  
   </div><br>
 </div>
+<% if @resource.instance_of?(Venue) %>
 <div class="map col-md-3 col-md-offset-2">
   <br>
 <!--   <button class="show-map btn btn-xs btn-info btn-block center-block">Show map</button>
@@ -58,39 +62,40 @@
 
 
 </div>
+<%end%>
 </div>
 </div>
     <br><br>
 
   <% if @comments %>
      <h5 class="row venue-comments-title">Reviews</h5>
-     <%= render 'reviews' %><br>
+    <%= render :partial => '/venues/reviews' %>
   <%end%>
 
   <% content_for :head do %>
     <meta property="fb:app_id" content="373382026154995" /> 
-    <meta property="og:url" content="http://www.deejbase.com/venues/<%=@venue.slugify%>" /> 
+    <meta property="og:url" content="http://www.deejbase.com/<%=@resource.class.name.downcase%>s/<%=@resource.slugify%>" /> 
     <meta property="og:site_name" content="Deejbase" />
     <% if @rating_fbshare %>
-      <meta property="og:title" content="I rated <%=@venue.name%> <%=@rating_fbshare%> out of 5 stars. Check out my review." />
+      <meta property="og:title" content="I rated <%=@resource.name%> <%=@rating_fbshare%> out of 5 stars. Check out my review." />
     <%else%>
-      <meta property="og:title" content="A review of <%=@venue.name%>'s music." />
+      <meta property="og:title" content="A review of <%=@resource.name%>'s music." />
     <%end%>
     <meta property="og:description" content="<%=@comment_fbshare%>"/>
     <meta property="og:image" content="<%=@image%>"/>
   <% end %>
 
-  <% if logged_in? && @venue.ratings.where(user: current_user).valid_only.any?%><br>
+  <% if logged_in? && @resource.ratings.where(user: current_user).valid_only.any?%><br>
   <div class="social-share">
-    Reviewed <%= @venue.name %>? Share that shit.
-    <div class="fb-share-button" data-href="http://www.deejbase.com/venues/<%=@venue.slugify%>" data-layout="button"></div>
+    Reviewed <%= @resource.name %>? Share that shit.
+    <div class="fb-share-button" data-href="http://www.deejbase.com/<%=@resource.class.name.downcase%>s/<%=@resource.slugify%>" data-layout="button"></div>
   </div>
   <%end%>
 
 <script>
   $('#star').raty({
     readOnly: true,
-    score: <%= @venue.average_rating %>,
+    score: <%= @resource.average_rating %>,
     path: '/assets'
   });
 
