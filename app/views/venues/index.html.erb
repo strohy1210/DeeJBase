@@ -23,7 +23,7 @@
     <div class= "dj-header col-md-4 col-md-offset-1">
       <h2><%=venue.name.titleize%></h2>
         <% if !venue.neighborhood.blank? %>     
-          <h4><%= venue.neighborhood.name %></h4>
+          <h4 class="hood"><%= venue.neighborhood.name %></h4>
         <% end%>
         <div class='overlay'>
         <div style="color:#2A2222;"><%= venue.category.singularize if venue.category %></div> 
