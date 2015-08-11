@@ -43,7 +43,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
   <div id="bar">
     <div class="navbar-header hidden-xs">
-      <%= link_to image_tag("logo_white.png", alt: "Find NYCs Rawest Talent", title: "For New Yorkers By New Yorkers"), venues_path, class: 'navbar-brand hidden-xs' %>
+      <%= link_to image_tag("logo_white.png", alt: "Find NYCs Rawest Talent", title: "For New Yorkers By New Yorkers"), root_path, class: 'navbar-brand hidden-xs' %>
     </div>
 
     <ul class="nav navbar-nav">
@@ -107,11 +107,10 @@
         <a id="drop1" href="/implementation" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="glyphicon glyphicon-chevron-down"></span></a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
           <li><%=link_to 'DJ Pages', djs_path %></li>
-          <li><%= link_to 'Venue Pages', venues_path%></li>
           <li><%= link_to 'Party Pages', promoters_path%></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/about">About</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#contactModal" >
-      <div class="hover-mask bottom-mask mask-orange">Contact Us</div></a></li>
+      <div class="hover-mask bottom-mask mask-orange">DJ Signup</div></a></li>
           <% if logged_in? %>
        <li role="presentation" class="divider"></li>
         <li><%= link_to 'Logout', '/logout', method: "delete" %></li>
