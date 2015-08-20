@@ -12,6 +12,7 @@
   <br>
   <% inclues_array = [:neighborhood, :events, :comments] if @venues %>
   <% inclues_array = [:events, :comments] if @promoters%>
+  <% inclues_array = [:events, :genres] if @djs%>
 
   <% @resources.includes(inclues_array).each_with_index do |resource, i| %>
 
@@ -25,7 +26,9 @@
   <% if @venues %>
      <a href="/venues/<%=resource.slugify%>">
   <% elsif @promoters %>
-    <a href="/promoters/<%=resource.slugify%>">
+    <a href="/promoters/<%=resource.slugify%>"> 
+  <% elsif @djs %>
+    <a href="/djs/<%=resource.slugify%>">
   <%end%>
     <div class="row">
     <div class= "dj-header text-center col-md-10 col-md-offset-1">
@@ -58,8 +61,9 @@
   </div></a>
 
 <% end %> 
+</div>
         <br><br>
-<div id="infinite-scrolling">
+<div id="infinite-scrolling" class="col-md-12">
   <%= will_paginate @resources %>
 </div>
     <div class="col-md-12">

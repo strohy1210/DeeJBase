@@ -8,12 +8,13 @@ class DjsController < ApplicationController
     else
       @djs = Dj.is_dj.order('rated_at DESC').paginate(page: params[:page], per_page: 10)
     end
+    @resources = @djs
     respond_to do |format|  
-      format.html { render 'welcome/index' }
+      format.html { render 'venues/index' }
 # Here is where you can specify how to handle the request for "/djs.json"
       format.json { render :json => @djs.map(&:name) }
     end
-    
+
   end
  
 

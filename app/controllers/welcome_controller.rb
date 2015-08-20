@@ -8,6 +8,8 @@ class WelcomeController < ApplicationController
     else
       @djs = Dj.is_dj.order('rated_at DESC').paginate(page: params[:page], per_page: 10)
     end
+    @resources = @djs
+    render 'venes/index'
   end
 
   def dj_form
