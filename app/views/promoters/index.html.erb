@@ -1,7 +1,7 @@
 
   <div class="row header rate-music-header">
     <div class="title">
-    <h2 class="text-center" id="rate-the-music"> find dope partes </h2>
+    <h1 class="text-center" id="rate-the-music"> find dope partes </h1>
     </div>
 <!-- <div class="search-venues">
 
@@ -12,13 +12,13 @@
   <br>
 <% @promoters.includes([:events, :comments]).each_with_index do |promoter, i| %>
   <% if i%3 == 0  %>
-    <div class='dj-item grey-overlay'>
+    <div class='dj-item col-md-3 grey-overlay'>
   
   <%elsif i%3 == 1%>
-    <div class='dj-item red-overlay'>
+    <div class='dj-item col-md-3 red-overlay'>
   <%else%>
 
-    <div class='dj-item brown-overlay'>
+    <div class='dj-item col-md-3 brown-overlay'>
 
   <%end%>
      <a href="/promoters/<%=promoter.slugify%>">

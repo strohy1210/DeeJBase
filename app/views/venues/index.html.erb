@@ -10,41 +10,48 @@
 <div class="venue-list container-fluid">
 <div id="results">
   <br>
-<% @venues.includes([:neighborhood, :events, :comments]).each_with_index do |venue, i| %>
+  <% inclues_array = [:neighborhood, :events, :comments] if @venues %>
+  <% inclues_array = [:events, :comments] if @promoters%>
+
+  <% @resources.includes(inclues_array).each_with_index do |resource, i| %>
+
   <% if i%3 == 0  %>
-    <div class='dj-item grey-overlay'> 
+    <div class='dj-item col-md-3 grey-overlay'> 
   <%elsif i%3 == 1%>
-    <div class='dj-item red-overlay'>
+    <div class='dj-item col-md-3 red-overlay'>
   <%else%>
-    <div class='dj-item brown-overlay'>
+    <div class='dj-item col-md-3 brown-overlay'>
   <%end%>
-     <a href="/venues/<%=venue.slugify%>">
+  <% if @venues %>
+     <a href="/venues/<%=resource.slugify%>">
+  <% elsif @promoters %>
+    <a href="/promoters/<%=resource.slugify%>">
+  <%end%>
     <div class="row">
-    <div class= "dj-header col-md-4 col-md-offset-1">
-      <h2 class="index-title"><%=venue.name%></h2>
-      <div id="star<%=venue.id%>" class="djb" data-score=<%= venue.average_rating%>>
+    <div class= "dj-header text-center col-md-10 col-md-offset-1">
+      <h2 class="index-title"><%=resource.name%></h2>
+      <div id="star<%=resource.id%>" class="djb" data-score=<%= resource.average_rating%>>
          
       </div>
-        <% if !venue.neighborhood.blank? %>     
-          <h4 class="index-hood"><%= venue.neighborhood.name %></h4>
+        <% if @venues && !resource.neighborhood.blank? %>     
+          <h4 class="index-hood"><%= resource.neighborhood.name %></h4>
         <% end%>
         <div class='overlay'>
-        <div class="index-category"><%= venue.category.singularize if venue.category %></div> 
+        <div class="index-category"><%= resource.category.singularize if @venues && resource.category %></div> 
         
 
 
        </div>        
     </div>
 
-        <div class="preview col-md-5 col-md-offset-1">
-          <% comments = venue.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if venue.comments.any?  %>
+<!--         <div class="preview col-md-5 col-md-offset-1">
+          <% comments = resource.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if resource.comments.any?  %> -->
           <% if comments && comments.any? %>
-        <em><%=truncate(comments.last.body, length: 300, separator: " ") %></em>
+        <!-- <em><%=truncate(comments.last.body, length: 300, separator: " ") %></em> -->
         <%else%>
-          <em>Be the first to review <%=venue.name%>'s music.</em>
+          <!-- <em>Be the first to review <%=resource.name%>'s music.</em> -->
         <%end%>
-      </div>
-</h6>
+      <!-- </div> -->
     </div>
 
 
@@ -53,7 +60,7 @@
 <% end %> 
         <br><br>
 <div id="infinite-scrolling">
-  <%= will_paginate @venues %>
+  <%= will_paginate @resources %>
 </div>
     <div class="col-md-12">
       <div class="form-group col-md-4 col-md-offset-4">
@@ -66,8 +73,8 @@
     </div>
 
 <script type="text/javascript">
-  <% @venues.each do |venue| %>
-   $("#star<%=venue.id%>").raty({
+  <% @resources.each do |resource| %>
+   $("#star<%=resource.id%>").raty({
       readOnly: true,
       score: function() {
         return $(this).attr('data-score');

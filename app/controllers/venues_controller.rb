@@ -3,6 +3,7 @@ class VenuesController < ApplicationController
   
   def index
     set_venue_params
+    @resources = @venues
   end
 
   def show

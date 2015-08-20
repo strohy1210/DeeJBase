@@ -126,8 +126,10 @@ iframe {
 .dj-item {
   border-bottom: 1px solid #3A3434;
   border-radius: 7px;
-  margin-bottom: 1%;
-  padding: 50px;
+  padding: 20px;
+  margin: 1.66%;
+  width: 30%;
+  min-height: 260px;
 }
 
 
@@ -289,12 +291,12 @@ li { cursor: pointer; }
   width: auto;
   margin-left: 10px;
   border-radius: 30px;
-
 }
 
 .venue-info {
   margin-left: 15px;
 }
+
 .map .btn {
   margin-left: 38px;
 }
@@ -460,6 +462,7 @@ a#drop1 {
 
 .rate-music-header {
   margin-bottom: -30px;
+  padding: 3%;
 }
 
 .venue-show .title {
@@ -628,6 +631,10 @@ a#drop1 {
     .navbar {
       height: 80px;
       font-size: 23px;
+    }
+
+    .dj-item {
+      width: 100%;
     }
 
 
