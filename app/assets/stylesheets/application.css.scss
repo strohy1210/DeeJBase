@@ -130,8 +130,26 @@ iframe {
   margin: 1.66%;
   width: 30%;
   min-height: 260px;
+  /*background-size:100% auto;*/
+  image-rendering: pixelated;
+  color:#FFFFFF;
+  overflow:hidden;
+/*  background: rgba(54, 25, 25, .2);*/
 }
 
+.dj-item .transparency  {  
+    opacity:0.2;  
+    filter:alpha(opacity=20);  
+    -moz-opacity:0.2;  
+    position:absolute;  
+    top:0px;  
+    left:0px;  
+    z-index:-1;
+}
+
+.dj-item .row {
+   position:relative;
+}
 
 
 a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, .preview:hover, .djb:hover {

@@ -17,11 +17,11 @@
   <% @resources.includes(inclues_array).each_with_index do |resource, i| %>
 
   <% if i%3 == 0  %>
-    <div class='dj-item col-md-3 grey-overlay'> 
+    <div class='dj-item col-md-3 grey-overlay' style='background-image: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url(<%=resource.image_url%>);'> 
   <%elsif i%3 == 1%>
-    <div class='dj-item col-md-3 red-overlay'>
+    <div class='dj-item col-md-3 red-overlay' style="background-image: url(<%=resource.image_url%>);">
   <%else%>
-    <div class='dj-item col-md-3 brown-overlay'>
+    <div class='dj-item col-md-3 brown-overlay' style="background-image: url(<%=resource.image_url%>);">
   <%end%>
   <% if @venues %>
      <a href="/venues/<%=resource.slugify%>">
@@ -30,6 +30,9 @@
   <% elsif @djs %>
     <a href="/djs/<%=resource.slugify%>">
   <%end%>
+     <div class="transparency">  
+           
+    </div> 
     <div class="row">
     <div class= "dj-header text-center col-md-10 col-md-offset-1">
       <h2 class="index-title"><%=resource.name%></h2>
