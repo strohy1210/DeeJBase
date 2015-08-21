@@ -17,11 +17,11 @@
   <% @resources.includes(inclues_array).each_with_index do |resource, i| %>
 
   <% if i%3 == 0  %>
-    <div class='dj-item col-md-3 grey-overlay' style='background-image: linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)), url(<%=resource.image_url%>);'> 
+    <div class='dj-item col-md-3 grey-overlay'> 
   <%elsif i%3 == 1%>
-    <div class='dj-item col-md-3 red-overlay' style="background-image: url(<%=resource.image_url%>);">
+    <div class='dj-item col-md-3 red-overlay'>
   <%else%>
-    <div class='dj-item col-md-3 brown-overlay' style="background-image: url(<%=resource.image_url%>);">
+    <div class='dj-item col-md-3 brown-overlay'>
   <%end%>
   <% if @venues %>
      <a href="/venues/<%=resource.slugify%>">
@@ -30,12 +30,9 @@
   <% elsif @djs %>
     <a href="/djs/<%=resource.slugify%>">
   <%end%>
-     <div class="transparency">  
-           
-    </div> 
     <div class="row">
     <div class= "dj-header text-center col-md-10 col-md-offset-1">
-      <h2 class="index-title"><%=resource.name%></h2>
+      <h2 class="index-title" style="color:white;"><%=resource.name%></h2>
       <div id="star<%=resource.id%>" class="djb" data-score=<%= resource.average_rating%>>
          
       </div>
@@ -44,12 +41,9 @@
         <% end%>
         <div class='overlay'>
         <div class="index-category"><%= resource.category.singularize if @venues && resource.category %></div> 
-        
-
-
        </div>        
     </div>
-
+<img class="dj-index-image" src=<%=resource.image_url%>>
 <!--         <div class="preview col-md-5 col-md-offset-1">
           <% comments = resource.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if resource.comments.any?  %> -->
           <% if comments && comments.any? %>
@@ -59,10 +53,7 @@
         <%end%>
       <!-- </div> -->
     </div>
-
-
   </div></a>
-
 <% end %> 
 </div>
         <br><br>

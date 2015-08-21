@@ -124,31 +124,33 @@ iframe {
 }
 
 .dj-item {
-  border-bottom: 1px solid #3A3434;
+/*  border-bottom: 1px solid #3A3434;*/
   border-radius: 7px;
   padding: 20px;
   margin: 1.66%;
   width: 30%;
   min-height: 260px;
-  /*background-size:100% auto;*/
-  image-rendering: pixelated;
-  color:#FFFFFF;
-  overflow:hidden;
-/*  background: rgba(54, 25, 25, .2);*/
+  background-size:100% auto;
+/*  image-rendering: pixelated;*/
+  position: relative;
+  overflow: hidden;
 }
 
-.dj-item .transparency  {  
-    opacity:0.2;  
-    filter:alpha(opacity=20);  
-    -moz-opacity:0.2;  
-    position:absolute;  
-    top:0px;  
-    left:0px;  
-    z-index:-1;
+.dj-item {
+  h2, h3, h4, p {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
 }
 
-.dj-item .row {
-   position:relative;
+.dj-item .dj-index-image {  
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0.12;
 }
 
 
