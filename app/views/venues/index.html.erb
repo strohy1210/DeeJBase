@@ -43,7 +43,13 @@
         <div class="index-category"><%= resource.category.singularize if @venues && resource.category %></div> 
        </div>        
     </div>
+<% if @djs %>
 <img class="dj-index-image" src=<%=resource.image_url%>>
+<%else%>
+    <% image = resource.events.where.not(photo_file_name: nil).last.photo.url if resource.events.where.not(photo_file_name: nil).any? %>
+    <% image ||= resource.image_url %>
+<%= image_tag (image), class: "dj-index-image" %>
+<%end%>
 <!--         <div class="preview col-md-5 col-md-offset-1">
           <% comments = resource.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0} if resource.comments.any?  %> -->
           <% if comments && comments.any? %>

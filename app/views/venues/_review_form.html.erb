@@ -14,7 +14,8 @@
             <%= hidden_field_tag :venue_id, @venue.id if @venue%>
             <%= hidden_field_tag :promoter_id, @promoter.id if @promoter%>
             <%= hidden_field_tag :festival_id, @festival.id if @festival%>
-            <%= hidden_field_tag :rating_id, @new_rating.id %>
+            <%= hidden_field_tag :rating_id, @new_rating.id %><br>
+            Add photo (recommended)
             <%= file_field_tag :photo, as: :file %>
             </div>
               <div class='col-md-5 dj-autocomplete'>
