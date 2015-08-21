@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   # before_action :authorize
   # before_action :prepare_for_mobile
 
-
   def logged_in?
    !!current_user
   end
@@ -86,7 +85,6 @@ class ApplicationController < ActionController::Base
     @new_rating = Rating.create(user_id: current_user.id, score: 0)
     @comment = Comment.create(rating: @new_rating)
   end
-
 
   private
 
