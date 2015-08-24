@@ -2,6 +2,8 @@ class FestivalsController < ApplicationController
   layout 'promoters'
   def index
     @festivals = Festival.order('rated_at DESC')
+    @resources = @festivals
+    render 'venues/index'
   end
 
   def show
