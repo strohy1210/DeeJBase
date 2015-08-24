@@ -60,9 +60,9 @@
       <li><%= link_to 'Venues', venues_path%></li>
       <li><%= link_to 'Parties', promoters_path%></li>
       <li><%= link_to 'DJs', djs_path%></li>
-      <!-- <li><%= link_to 'Festivals', festivals_path%></li> -->
+      <li><%= link_to 'Festivals', festivals_path%></li>
 
-
+    <% if @promoters %>
     <li class="navbar-form navbar-collapse">
     <%= form_tag(search_promoters_path, method: 'get', role: "search") do %>
       <div class="input-group col-sm-12">
@@ -73,7 +73,7 @@
       </div>
       <% end %>
     </li>
-
+    <%end%>
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <% if !logged_in? %>
