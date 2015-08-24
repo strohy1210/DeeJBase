@@ -14,15 +14,18 @@ class SearchesController < ApplicationController
         redirect_to dj_path(@dj.slugify)
       else
         flash.now[:success] = @dj_results.size.to_s + ' result(s) for "' +name+'." Click for more info.'
-        render 'welcome/index'
+        @resources = @djs
+        render 'venues/index', layout: "application"
       end
     elsif params[:genre_id]
       @genre= Genre.find(params[:genre_id])
       @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 6).order('created_at DESC')
-      render 'welcome/index'
+      @resources = @djs
+      render 'venues/index', layout: "application"
     else
       @djs = Dj.where.is_dj.paginate(page: params[:page], per_page: 6).order('created_at DESC')
-      render 'welcome/index'
+      @resources = @djs
+      render 'venues/index', layout: "application"
     end
   end
 
@@ -40,6 +43,7 @@ class SearchesController < ApplicationController
       else
         @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC')
         flash.now[:success] = @venue_results.size.to_s + ' venue(s) matching "' +name+'". Click for more info.'
+        @resources = @venues
         render 'venues/index', layout: "venues"
       end
     else
@@ -61,7 +65,8 @@ class SearchesController < ApplicationController
       else
         @promoters = Promoter.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC') || Promoter.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC')
         flash.now[:success] = @promoter_results.size.to_s + ' promoter(s) matching "' +name+'". Click for more info.'
-        render 'promoters/index', layout: "promoters"
+        @resources = @promoters
+        render 'venues/index', layout: "promoters"
       end
     else
      redirect_to promoters_path
