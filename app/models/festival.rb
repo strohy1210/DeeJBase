@@ -5,6 +5,11 @@ class Festival < ActiveRecord::Base
   has_many :comments, through: :ratings
   before_save :update_slug
   validates_uniqueness_of :name
+  after_create :default_values
+
+  def default_values
+    update(rated_at: 6.months.ago)
+  end
 
   def slugify
     name.gsub(" ", "-").gsub(".", "").downcase
