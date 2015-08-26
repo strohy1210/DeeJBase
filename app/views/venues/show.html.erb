@@ -25,7 +25,10 @@
 
   <div class="dj-info venue-info col-md-6">   
     <div class="other-info">
-      <h2> <%= @resource.name %>  </h2>
+      <% if @resource.link.present? %>
+      <a target="_blank" href= <%= @resource.link %> >
+      <%end%>
+      <h2> <%= @resource.name %>  </h2></a>
       <div id='star'>
    
       </div>
