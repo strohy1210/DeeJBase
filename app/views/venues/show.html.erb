@@ -21,14 +21,12 @@
 <div class="dj-profile">
 <div class="row">
 <div id="dj-profile">
-<!--   
-  <div class="profile-pic col-md-2">
-  <%= image = image_tag (@image), class: "profile-image" %>
-  </div> -->
+  
+
   <div class="dj-info venue-info col-md-6">   
     <div class="other-info">
-        <h2> <%= @resource.name %>  </h2>
-        <div id='star'>
+      <h2> <%= @resource.name %>  </h2>
+      <div id='star'>
    
       </div>
       <% if @resource.instance_of?(Venue) %>
@@ -37,6 +35,9 @@
         <span class="category"><%= @resource.category %><br></span>
       <%end%>
     </div>
+<!--     <div class="profile-pic col-md-2">
+      <%= image = image_tag (@image), class: "profile-image" %>
+    </div> -->
   
   <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@resource.name%></div>
 

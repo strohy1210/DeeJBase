@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824194915) do
+ActiveRecord::Schema.define(version: 20150826212142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20150824194915) do
     t.string   "image_url"
     t.datetime "rated_at"
     t.string   "location"
+    t.string   "link"
   end
 
   create_table "genres", force: true do |t|
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(version: 20150824194915) do
     t.string   "image_url"
     t.datetime "rated_at"
     t.string   "url"
+    t.string   "link"
   end
 
   create_table "ratings", force: true do |t|
@@ -180,6 +182,7 @@ ActiveRecord::Schema.define(version: 20150824194915) do
     t.datetime "rated_at"
     t.string   "slug"
     t.integer  "priority"
+    t.string   "link"
   end
 
 end
