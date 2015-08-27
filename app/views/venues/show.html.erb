@@ -37,12 +37,23 @@
         <span class="category"><%= @resource.category %><br></span>
       <%end%>
     </div>
-  <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@resource.name%></div>
+    <% if @resource.instance_of?(Venue) %>
+
+  <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@resource.name%></div><br><br>
+  <div class="map">
+    <br>
+<!--   <button class="show-map btn btn-xs btn-info btn-block center-block">Show map</button>
+  <button class='hide-map btn-xs btn btn-info btn-block center-block'>Hide Map</button> -->
+  <div id="map" style="height: 200px; width: 280px;" data-lat="<%= @venue.latitude %>" data-lng="<%= @venue.longitude %>"></div>
+
+
+</div>
+<%end%>
 
   <div class="rate-dj">
 
     <% if logged_in? %>
-         <%= render :partial => '/venues/review_form' %> 
+      <%= render :partial => '/venues/review_form' %> 
     <%elsif !logged_in?%>
       <div class="bg-warning">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><strong> You must be logged in to add a rating.</strong>      
@@ -53,27 +64,22 @@
  
   </div><br>
 </div>
-<% if @image %>
-  <div class="profile-pic col-md-3">
+<% if @image && @image2 %>
+  <div class="profile-pic col-md-2 col-md-offset-1">
     <%= image = image_tag (@image), class: "profile-image" %>
   </div>
-  <div class="profile-pic col-md-3">
+  <div class="profile-pic col-md-2">
+    <%= image = image_tag (@image), class: "profile-image" %>
+  </div>
+<%elsif @image %>
+  <div class="profile-pic col-md-2 col-md-offset-3">
     <%= image = image_tag (@image), class: "profile-image" %>
   </div>
 <%end%>
-<% if @resource.instance_of?(Venue) %>
-<div class="map col-md-3 col-md-offset-2">
-  <br>
-<!--   <button class="show-map btn btn-xs btn-info btn-block center-block">Show map</button>
-  <button class='hide-map btn-xs btn btn-info btn-block center-block'>Hide Map</button> -->
-  <div id="map" style="height: 200px; width: 280px; border-radius: 30px; margin-left:20px;" data-lat="<%= @venue.latitude %>" data-lng="<%= @venue.longitude %>"></div>
-
 
 </div>
-<%end%>
 </div>
-</div>
-    <br>
+
 
   <% if @comments %>
      <h5 class="row venue-comments-title">Reviews</h5>

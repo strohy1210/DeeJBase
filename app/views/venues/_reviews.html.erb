@@ -21,11 +21,11 @@
 
 
   <div class="row">
-    <div class= "user-image text-center col-md-1">
+    <div class= "user-image col-xs-1 col-md-1">
       <%= link_to(image_tag(@user.image_url), user_path(@user))%>
-      <%= @user.first_name %>
+      <div class="user-name text-center"><%= @user.first_name %></div>
     </div>
-    <div class= "comment col-md-9">
+    <div class= "comment col-xs-12 col-md-9">
       <div class="user-rating">
         Rating: <%= comment.rating.score.to_i %>/5 
           <% if comment.event && comment.event.date %>
@@ -48,7 +48,7 @@
     </div>
   <%if comment.event && comment.event.dj %>
   <% dj=comment.event.dj%>
-    <div class="claim-event user-image col-md-2">
+    <div class="claim-event user-image col-md-2 col-xs-12 ">
       <%= link_to image_tag(dj.image_url), dj_path(dj.slugify) %><br>
       <span class="link-dj text-center"><%= link_to dj.name, dj_path(dj.slugify) %> spun<span>
     </div>
