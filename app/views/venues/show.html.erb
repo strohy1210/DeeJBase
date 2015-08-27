@@ -22,8 +22,7 @@
 <div class="row">
 <div id="dj-profile">
   
-
-  <div class="dj-info venue-info col-md-6">   
+  <div class="dj-info venue-info col-md-6">
     <div class="other-info">
       <% if @resource.link.present? %>
       <a target="_blank" href= <%= @resource.link %> >
@@ -38,10 +37,6 @@
         <span class="category"><%= @resource.category %><br></span>
       <%end%>
     </div>
-<!--     <div class="profile-pic col-md-2">
-      <%= image = image_tag (@image), class: "profile-image" %>
-    </div> -->
-  
   <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@resource.name%></div>
 
   <div class="rate-dj">
@@ -58,6 +53,9 @@
  
   </div><br>
 </div>
+<!-- <div class="profile-pic col-md-2">
+      <%= image = image_tag (@image), class: "profile-image" %>
+</div> -->
 <% if @resource.instance_of?(Venue) %>
 <div class="map col-md-3 col-md-offset-2">
   <br>

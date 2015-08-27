@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826212142) do
+ActiveRecord::Schema.define(version: 20150827150025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,9 @@ ActiveRecord::Schema.define(version: 20150826212142) do
     t.datetime "rated_at"
     t.string   "location"
     t.string   "link"
+    t.string   "fbpage_id"
+    t.string   "about"
+    t.string   "fb_photo"
   end
 
   create_table "genres", force: true do |t|
@@ -123,6 +126,9 @@ ActiveRecord::Schema.define(version: 20150826212142) do
     t.datetime "rated_at"
     t.string   "url"
     t.string   "link"
+    t.string   "fbpage_id"
+    t.string   "about"
+    t.string   "fb_photo"
   end
 
   create_table "ratings", force: true do |t|
@@ -183,6 +189,9 @@ ActiveRecord::Schema.define(version: 20150826212142) do
     t.string   "slug"
     t.integer  "priority"
     t.string   "link"
+    t.string   "fbpage_id"
+    t.string   "about"
+    t.string   "fb_photo"
   end
 
 end
