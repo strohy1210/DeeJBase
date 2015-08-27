@@ -81,17 +81,14 @@ h4 a {
   border-color: transparent;
 }
 
-.index-image img, .profile-pic img {
-    height: 150px;
-    width: auto;
-    max-width: 225px;
-    border-radius: 30px;
-}
 
 .profile-pic img {
-    height: 200px;
-    width: auto;
-    max-width: 250px;
+  height: 220px;
+  width: auto;
+  max-width: 300px;
+  padding: 20px 0px 20px 0px;
+  border-radius: 7px;
+  overflow: hidden;
 }
 
 .edit-dj, .hire-dj, .contact, .cancel-message {
@@ -242,8 +239,9 @@ font-size: 16px;
   border-bottom: 2px solid #3A3434;
   border-radius: 20px;
   margin-bottom: 1px;
-  padding: 8px;
+  padding: 20px;
   background-color: #2D2818;
+  padding-bottom: 50px;
 }
 
 .bio:hover {
@@ -605,6 +603,10 @@ a#drop1 {
 
 .bio h4, .bio h5, .bio h6 {
   color: #EBEBE7;
+}
+
+#user_star {
+  margin-left: 1%;
 }
 
   @media (max-device-width : 480px) {

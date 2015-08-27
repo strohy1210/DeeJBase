@@ -256,6 +256,9 @@ $('.close-contact').click(function(){
 $('.rate-button').click(function(){
   $(".rate-dj").toggle();
   $('.other-info').toggle();
+  $('.dj-info').removeClass('col-md-6');
+  $('.dj-info').addClass('col-md-12');
+  $('.profile-pic').toggle();
   $(this).toggle();
 })
 
@@ -263,6 +266,9 @@ $('.done-rating').click(function(){
   $(".other-info").toggle();
   $('.rate-dj').toggle();
   $('.rate-button').toggle();
+  $('.dj-info').addClass('col-md-6');
+  $('.dj-info').removeClass('col-md-12');
+  $('.profile-pic').toggle();
 })
 var map = $('#map');
 var mapButton = $('.show-map');

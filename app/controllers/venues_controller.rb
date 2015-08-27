@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
  skip_before_action :authorize
-  
+   layout 'promoters'
   def index
     set_venue_params
     @resources = @venues

@@ -5,27 +5,27 @@
 
         </div></p>
         <%= simple_form_for(@comment, url: comment_path(@comment),:html => { :multipart => true }, method: "patch") do |f| %>
-      
-          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How was your music experience? Write about the artist, the production quality, and overall vibes. This is not the place to review food, drinks, or the hot bartender - go to Yelp for that (min 40 characters).", input_html: { minlength: 40, rows: 10,  class: "form-control comment" }%>
+          <div class="col-md-7">
+          <%= f.input :body, label: "Rate above. Comment (at least 1-2 sentences) below.", required: false, hint: " ", placeholder: "How was your music experience? Write about the artist, the production quality, and overall vibes. This is not the place to review food, drinks, or the hot bartender - go to Yelp for that (min 40 characters).", input_html: { minlength: 40, rows: 8,  class: "form-control comment" }%>
+          </div>
           <div class="row">
-            <div class="date-select col-md-6">
+            <div class="date-select col-md-5">
             <%= label_tag :event_date %><br>
             <%= text_field_tag :date, "mm-dd-yyyy", {class: "text-center datepicker"} %>
             <%= hidden_field_tag :venue_id, @venue.id if @venue%>
             <%= hidden_field_tag :promoter_id, @promoter.id if @promoter%>
             <%= hidden_field_tag :festival_id, @festival.id if @festival%>
             <%= hidden_field_tag :rating_id, @new_rating.id %><br>
-            Add photo (recommended)
+            Add photo (Recommended)
             <%= file_field_tag :photo, as: :file %>
-            </div>
-              <div class='col-md-5 dj-autocomplete'>
+            </div><br>
+            <div class='col-md-5 dj-autocomplete'>
               DJ (Optional)<br>
               <input id="select_origin" title="Enter ONE DJ's soundcloud name to tie their score to your review" class="form-control" placeholder="Dj's Soundcloud name here"/>
-            <input id="link_dj" name="dj_name" type="hidden"/>
-          </div>
+              <input id="link_dj" name="dj_name" type="hidden"/>
+            </div>
         </div><br>
-          <%= f.button :submit, "Submit Comment", class: "disabled btn btn-default submit-comment"%>
+        <a href="#"><div class="done-rating cancel-comment col-md-10" title="To delete your comment, cancel your rating or text body and hit 'update comment' above." style="color: red;">Cancel</div></a>
+          <%= f.button :submit, "Submit", class: "disabled btn btn-default submit-comment col-md-2"%>
         <%end%>
-        <br>
-        <a href="#"><div class="done-rating cancel-comment" title="To delete your comment, cancel your rating or text body and hit 'update comment' above." style="color: red;">Cancel</div></a>
       </div>

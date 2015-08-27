@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% if @promoter %>
-  <title><%= @promoter.name %>'s Profile - DeeJBase</title>
-  <% else %>
+  <% if @resource %>
+  <title><%= @resource.name %>'s Profile - DeeJBase</title>
+  <%else%>
   <title>DeeJBase - Find Dope Live Music</title>
   <%end%>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -62,7 +62,7 @@
       <li><%= link_to 'DJs', djs_path%></li>
       <li><%= link_to 'Festivals', festivals_path%></li>
 
-    <% if @promoters %>
+    <% if @promoters || @promoter %>
     <li class="navbar-form navbar-collapse">
     <%= form_tag(search_promoters_path, method: 'get', role: "search") do %>
       <div class="input-group col-sm-12">
@@ -74,6 +74,40 @@
       <% end %>
     </li>
     <%end%>
+     <li class="navbar-form navbar-collapse">
+    <%= form_tag(search_venues_path, method: 'get', role: "search") do %>
+      <div class="input-group col-sm-12">
+          <input type="text" class="form-control" placeholder="venue name here" name="name">
+          <div class='input-group-btn'>       
+          <button class="btn" id="venue-search-btn" type="submit"> <i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+      <% end %>
+    </li>
+<%if @venues || @venue %>
+<% @categories=["Music Venues", "Dance Clubs", "Bars", "Lounges", "Cocktail Bars", "Dive Bars", "Pubs", "Adult Entertainment", "Champagne Bars", "Gay Bars", "Hookah Bars", "Hotels",["All categories", "all"]] %>
+
+  <% if @neighborhood %>
+  <li><form class="navbar-form col-xs-2">
+   <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] }<< ["NYC Neighborhoods", 'all'], @neighborhood.id), class: "form-control",:onchange => 'this.form.submit()') %>
+  
+  </li>
+  <% else %>
+  <li><form class="navbar-form col-xs-2">
+    <%= select_tag(:neighborhood_id, options_for_select(Neighborhood.order('name ASC').map {|n| [n.name, n.id] } << ["NYC Neighborhoods", 'all'], 'all'), class: "form-control",:onchange => 'this.form.submit()') %>
+  </li>
+  <%end%>
+  <% if @category != "all" && @category != nil%>
+  <li class="navbar-form col-xs-2 hidden-xs">
+    <%= select_tag(:category, options_for_select(@categories, @category), class: "form-control hidden-xs",:onchange => 'this.form.submit()') %>
+  </li></form>
+  <%elsif @category == nil || @category == "all"%>
+  <li class="navbar-form col-xs-2 hidden-xs">
+    <%= select_tag(:category, options_for_select(@categories, "all"), class: "form-control hidden-xs",:onchange => 'this.form.submit()') %>
+  </li></form>
+
+  <%end%>
+<%end%> 
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <% if !logged_in? %>
@@ -141,8 +175,8 @@
             <%= label_tag(:dj_true, "I hire DJs.") %><br>
             <%= radio_button_tag(:dj_status, false) %>
             <%= label_tag(:dj_false, "I just want to know more.") %> <br>
-                </div>
-              </div>
+            </div>
+          </div>
 
               <div class="modal-footer">
                 <div class='text-center'>
@@ -183,7 +217,6 @@
     </script>
   <script>
 
-
 $(".update-form").hide();
 
 $(".rate-dj").hide();
@@ -193,8 +226,8 @@ $('.edit-dj').click(function(){
   $("#dj-profile").toggle();
   $(this).toggle();
   $('.tracks').hide();
-   $('.review').toggle();
-   $('.comments-title').toggle();
+  $('.review').toggle();
+  $('.comments-title').toggle();
 })
 
 $('.cancel-edit').click(function(){
@@ -245,6 +278,10 @@ $('.close-contact').click(function(){
 $('.rate-button').click(function(){
   $(".rate-dj").toggle();
   $('.other-info').toggle();
+  $('.dj-info').removeClass('col-md-6');
+  $('.dj-info').addClass('col-md-11');
+  $('.profile-pic').toggle();
+  $('.map').toggle();
   $(this).toggle();
 })
 
@@ -252,6 +289,10 @@ $('.done-rating').click(function(){
   $(".other-info").toggle();
   $('.rate-dj').toggle();
   $('.rate-button').toggle();
+  $('.dj-info').removeClass('col-md-11');
+  $('.dj-info').addClass('col-md-6');
+  $('.profile-pic').toggle();
+  $('.map').toggle();
 })
 var map = $('#map');
 var mapButton = $('.show-map');

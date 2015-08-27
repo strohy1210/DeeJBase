@@ -53,10 +53,10 @@ $(function(){
     if ($('#comment_body').val().length <= 39 || $('#date').val() === "mm-dd-yyyy") {
       $('.submit-comment').addClass('disabled');
       if ($('#comment_body').val().length <= 39) {
-        $('.submit-comment').val("Type a few more lines to submit");
+        $('.submit-comment').val("Type a few more lines!");
       }
       else {
-        $('.submit-comment').val("Choose date to submit");
+        $('.submit-comment').val("Choose date!");
       }
     }
   })

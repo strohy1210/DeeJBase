@@ -53,9 +53,14 @@
  
   </div><br>
 </div>
-<!-- <div class="profile-pic col-md-2">
-      <%= image = image_tag (@image), class: "profile-image" %>
-</div> -->
+<% if @image %>
+  <div class="profile-pic col-md-3">
+    <%= image = image_tag (@image), class: "profile-image" %>
+  </div>
+  <div class="profile-pic col-md-3">
+    <%= image = image_tag (@image), class: "profile-image" %>
+  </div>
+<%end%>
 <% if @resource.instance_of?(Venue) %>
 <div class="map col-md-3 col-md-offset-2">
   <br>
@@ -102,7 +107,6 @@
     path: '/assets'
   });
 
-
   $('#user_star').raty({
     score: <%= @new_rating.score %>,
     cancel: true,
@@ -115,7 +119,5 @@
       });
     }
   });
-
-
 
 </script>
