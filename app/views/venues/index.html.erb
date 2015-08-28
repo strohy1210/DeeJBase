@@ -43,6 +43,7 @@
   <img class="dj-index-image" src=<%=resource.image_url%>>
 <%else%>
 <% image = resource.events.where.not(photo_file_name: nil).last.photo.url if resource.events.where.not(photo_file_name: nil).any? %>
+<% image ||= resource.fb_photo %>
 <% image ||= resource.image_url %>
 <% image ||= "concert.jpg" %>
   <%= image_tag (image), class: "dj-index-image" %>
