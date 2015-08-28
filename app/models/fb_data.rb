@@ -81,7 +81,6 @@ class FbData
     resource.update(about: about, link: link, fb_photo: fb_photo)
   end
 
-
   def facebook_searchify(resource)
     resource.name.gsub(" ", "+")
   end
