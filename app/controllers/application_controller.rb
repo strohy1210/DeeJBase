@@ -39,6 +39,12 @@ class ApplicationController < ActionController::Base
     end    
   end
 
+  def find_image(resource)
+    @image = @resource.events.where.not(photo_file_name: nil).last.photo.url if @resource.events.where.not(photo_file_name: nil).any?
+    @image ||= @resource.fb_photo
+    @image ||= @resource.image_url
+  end
+
   def set_params
     @filter = params[:filter]
     if params[:genre_id] && params[:genre_id] != 'all'

@@ -10,8 +10,7 @@ class FestivalsController < ApplicationController
     @festival = Festival.find_by(slug: params[:slug])
     @comments = @festival.comments.select {|c| c.is_valid? && c.valid? && c.rating.valid? && c.rating.score != 0}
     @comments = nil unless @comments.any?
-    @image = @festival.events.where.not(photo_file_name: nil).last.photo.url if @festival.events.where.not(photo_file_name: nil).any?
-    @image ||= @festival.image_url
+    find_image(@festival)
     if @comments
       @users = @comments.map {|comment| comment.user}
       comments_by_user = @users.map {|user| user.comments & @comments }
