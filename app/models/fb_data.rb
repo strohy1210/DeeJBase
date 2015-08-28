@@ -27,13 +27,13 @@ class FbData
     # Dj.is_dj.where.not(fbpage_id: nil).where(fb_likes: nil).each do |dj|
     #   fb.get_fb_attributes(dj)    
     # end
-    Promoter.where.not(fbpage_id: nil).where(fb_photo: nil).each do |promoter|
+    Promoter.where.not(fbpage_id: nil).where(fb_photo: nil).all.each do |promoter|
       fb.get_fb_attributes(promoter)
     end
-    Festival.where.not(fbpage_id: nil).where(fb_photo: nil).each do |festival|
+    Festival.where.not(fbpage_id: nil).where(fb_photo: nil).all.each do |festival|
       fb.get_fb_attributes(festival)
     end
-    Venue.where.not(fbpage_id: nil).where(fb_photo: nil).each do |venue|
+    Venue.where.not(fbpage_id: nil).where(fb_photo: nil).all.each do |venue|
       fb.get_fb_attributes(venue)
     end
   end
@@ -71,7 +71,7 @@ class FbData
     elsif profile["description"]
       about = profile["description"]
     end
-    if profile["cover"]["source"]
+    if profile["cover"] && profile["cover"]["source"]
       fb_photo = profile["cover"]["source"]
     end
     link = profile["link"]
