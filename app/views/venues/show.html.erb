@@ -37,21 +37,18 @@
         <span class="category"><%= @resource.category %><br></span>
       <%end%>
     </div>
+    <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@resource.name%></div><br><br>
     <% if @resource.instance_of?(Venue) %>
 
-  <div class='rate-button btn-lg btn-default col-md-6'>Review <%=@resource.name%></div><br><br>
-  <div class="map">
-    <br>
-<!--   <button class="show-map btn btn-xs btn-info btn-block center-block">Show map</button>
-  <button class='hide-map btn-xs btn btn-info btn-block center-block'>Hide Map</button> -->
-  <div id="map" style="height: 200px; width: 280px;" data-lat="<%= @venue.latitude %>" data-lng="<%= @venue.longitude %>"></div>
-
-
-</div>
-<%end%>
+      <div class="map">
+        <br>
+    <!--   <button class="show-map btn btn-xs btn-info btn-block center-block">Show map</button>
+      <button class='hide-map btn-xs btn btn-info btn-block center-block'>Hide Map</button> -->
+      <div id="map" style="height: 200px; width: 280px;" data-lat="<%= @venue.latitude %>" data-lng="<%= @venue.longitude %>"></div>
+      </div>
+    <%end%>
 
   <div class="rate-dj">
-
     <% if logged_in? %>
       <%= render :partial => '/venues/review_form' %> 
     <%elsif !logged_in?%>
@@ -60,8 +57,7 @@
       <h4><%= link_to 'Sign in with Facebook', '/auth/facebook'%>
       | <%= link_to 'Back', '#', class: 'text-center done-rating'%></h4>
       </div>
-     <%end%> 
- 
+     <%end%>
   </div><br>
 </div>
 <% if @image && @image2 %>
