@@ -92,21 +92,21 @@ class ApplicationController < ActionController::Base
     @comment = Comment.create(rating: @new_rating)
   end
 
-  # private
+  private
 
-  # def mobile_device?
-  #   if session[:mobile_param]
-  #     session[:mobile_param] == "1"
-  #   else
-  #     request.user_agent =~ /Mobile|webOS/
-  #   end
-  # end
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      request.user_agent =~ /Mobile|webOS/
+    end
+  end
 
-  #   def prepare_for_mobile
-  #     session[:mobile_param] = params[:mobile] if params[:mobile]
-  #     request.format = :mobile if mobile_device?
-  #   end
+    def prepare_for_mobile
+      session[:mobile_param] = params[:mobile] if params[:mobile]
+      request.format = :mobile if mobile_device?
+    end
 
 
-  helper_method :current_user, :logged_in?, :set_params, :current_dj, :set_venue_params
+  helper_method :current_user, :logged_in?, :set_params, :current_dj, :set_venue_params, :prepare_ratings, :mobile_device?
 end
