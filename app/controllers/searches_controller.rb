@@ -44,7 +44,7 @@ class SearchesController < ApplicationController
         @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC')
         flash.now[:success] = @venue_results.size.to_s + ' venue(s) matching "' +name+'". Click for more info.'
         @resources = @venues
-        render 'venues/index', layout: "venues"
+        render 'venues/index', layout: "promoters"
       end
     else
      redirect_to venues_path
