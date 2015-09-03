@@ -35,8 +35,7 @@ html {
 body { 
   font-family: 'Karla', sans-serif;
   font-size: 16px;
-  padding-top: 70px;
-  background-image: linear-gradient(to bottom, #f8f8f8 0%, #ccc 100%);
+  /*padding-top: 70px;*/
   background: #241f10;
 
     -webkit-background-size: 100%;
@@ -189,8 +188,9 @@ a:hover, .dj-item:hover, .dj-item h4:hover, .dj-header h2:hover, .bio h4:hover, 
 }
 
 .venue-show{
- 
+  padding-top: 70px;
 }
+
 .select-genre {
   margin-right: 5px;
 }
@@ -303,6 +303,10 @@ li { cursor: pointer; }
   max-width: 170px
 }
 
+.navbar-form {
+  margin-right: 10px;
+}
+
 
 .youtube iframe {
   width: 420px;
@@ -354,13 +358,10 @@ li { cursor: pointer; }
 }
 
 .navbar-default {
-  background: transparent;
-  background: rgba(191, 216, 235, 0.5);
+  /*background: rgb(113, 124, 125);*/
+  background: rgba(113, 114, 125, 0.68);
 }
 
-.header {
-  padding: 15px;
-}
 
 .pagination ul:active {
   background: black;
@@ -480,7 +481,8 @@ a#drop1 {
 
 .rate-music-header {
   margin-bottom: -30px;
-  padding: 3%;
+  padding-bottom: 3%;
+  padding-top: 3%;
 }
 
 .venue-show .title {
@@ -489,6 +491,7 @@ a#drop1 {
 
 .about-djbase{
   color: #EBEBE7;
+  padding-top: 70px;
 }
 
 .datepicker, .bg-warning, .dj-autocomplete input {
@@ -497,6 +500,7 @@ a#drop1 {
 
 .alert {
   margin-top: -1%;
+  padding-left: 3%;
 }
 
 .dj-autocomplete {
@@ -607,6 +611,30 @@ a#drop1 {
 
 #user_star {
   margin-left: 1%;
+}
+
+.directive {
+  background-color: rgba(191, 216, 235, 0.32);
+  background-color: rgba(102, 115, 149, 0.28);
+  font-family: Helvetica, Arial, sans-serif;
+  padding-top: 10%;
+  padding-left: 3%;
+  .title {
+    color: #D8DEE5;
+    text-shadow: 1px 1px 5px #333;
+  }
+
+  #rate-the-music {
+    color: #D8DEE5;
+    margin-left: 1%;
+    font-size: 45px;
+  }
+}
+
+.alert-success {
+  background-color: #95AD94;
+  border-color: #3E4C33;
+  color: #274C2C;
 }
 
   @media (max-device-width : 480px) {

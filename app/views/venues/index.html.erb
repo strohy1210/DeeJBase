@@ -1,11 +1,19 @@
 
-  <div class="row header rate-music-header">
+  <div class="row header rate-music-header directive">
     <div class="title">
-    <h2 class="text-center" id="rate-the-music"> find dope live music </h2><h3 class="text-center" id="rate-the-music"></h3> 
+      <h1 id="rate-the-music"> Find dope live music. </h1> 
     </div>
-<!-- <div class="search-venues">
-
-</div> -->
+  </div>
+  <br>
+  <div class="row header rate-music-header">
+      <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> error-top">
+      <%= value.html_safe %>
+    </div>
+    <% end %>
+    <div class="title">
+      <h2 class="text-center" id="rate-the-music"> top <%=@resources.first.class.name.downcase%>s </h2> 
+    </div>
   </div>
 <div class="venue-list container-fluid">
 <div id="results">

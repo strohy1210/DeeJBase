@@ -129,11 +129,6 @@
 
 
   <div class="container-fluid venue-index" id="wrap">
-    <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %> error-top">
-      <%= value.html_safe %>
-    </div>
-    <% end %>
 
   
 <%= yield %>
