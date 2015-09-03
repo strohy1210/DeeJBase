@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   skip_before_action :authorize
-
+  layout 'promoters'
   def index
 
     if params[:filter]
@@ -41,11 +41,10 @@ class WelcomeController < ApplicationController
   def about
     if params[:genre_id]
       set_params
-      render 'welcome/index', layout: "venues"
+      render 'welcome/index'
     end
     @user = User.find_by(id: 15)
     @user ||= User.find(7)
-    render layout: "venues"
   end
 
   def contact_us
