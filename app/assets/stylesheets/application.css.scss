@@ -641,14 +641,24 @@ a#drop1 {
   height: 220px;
   margin-top: 20px;
   padding: 3px;
-  background-color: #58575A;
-  border: 1px solid #1C180C;
+  background-color: #C0C0C0;
+  border: none;
+  width: 100%;
+  height: auto;
+  max-width: 370px;
 }
 
 #links a {
   padding: 0px;
 }
 
+.img-thumbnail:hover {
+  position:relative;
+  width:110%;
+  height:auto;
+  z-index:999;
+  max-width: 400px;
+}
   @media (max-device-width : 480px) {
     .navbar-fixed-top {
       position: absolute;
