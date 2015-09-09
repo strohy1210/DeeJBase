@@ -637,6 +637,18 @@ a#drop1 {
   color: #274C2C;
 }
 
+.img-thumbnail {
+  height: 220px;
+  margin-top: 20px;
+  padding: 3px;
+  background-color: #58575A;
+  border: 1px solid #1C180C;
+}
+
+#links a {
+  padding: 0px;
+}
+
   @media (max-device-width : 480px) {
     .navbar-fixed-top {
       position: absolute;

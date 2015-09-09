@@ -97,36 +97,22 @@ $(function(){
      e.preventDefault();
      $('.fix-comment').toggle();
    })
+  var columns = $("#links img").length;
+  $("#links img").each(function() {
+      var src = $(this).attr('src');
+      var a = $('<a/>').attr('href', src);
+      $(this).wrap(a);
+      $(this).addClass("img-thumbnail");
+      if (columns === 2){
+        $('#links').removeClass("col-md-8");
+        $('#links').addClass("col-md-6 col-md-offset-2");
+      }
+      $(this).parent().addClass("text-right col-md-"+(12/columns).toString());
+  });
 
-
+    //count images and add col-md-12/count
   // $("#select_origin").tooltip();
 
-
-  // $('meta')[6] gets meta description
-
-  // $('.datepicker').click(function(){
-  //   $('td').click(function(){
-  //     if ($('#comment_body').val().length > 39 && $('#date').val() != "mm-dd-yyyy" ) {
-  //       $('.submit-comment').removeClass('disabled');
-  //       $('.submit-comment').val("Submit");
-  //     }
-
-  //   })
-  // })
-  // $('.datepicker').on('click','#date',function() {
-  //   if ($('#comment_body').val().length > 39 && $('#date').val() != "mm-dd-yyyy" ) {
-  //     $('.submit-comment').removeClass('disabled');
-  //     $('.submit-comment').val("Submit");
-  //   } 
-  //   if ($('#comment_body').val().length <= 39 || $('#date').val() === "mm-dd-yyyy") {
-  //     $('.submit-comment').addClass('disabled');
-  //     $('.submit-comment').val("Choose date and/or type a few more lines to submit");
-  //   }
-  // })
-    // $('.submit-comment').click(function(){
-    //   var date = $('.datepicker').attr(value);
-    //   $('.datepicker').attr('type', 'date');
-    // })
 
 });
 

@@ -22,7 +22,7 @@
 <div class="row">
 <div id="dj-profile">
   
-  <div class="dj-info venue-info col-md-6">
+  <div class="dj-info venue-info col-md-4">
     <div class="other-info">
       <% if @resource.link.present? %>
       <a target="_blank" href= <%= @resource.link %> >
@@ -60,18 +60,25 @@
      <%end%>
   </div><br>
 </div>
-<% if @image && @image2 %>
-  <div class="profile-pic col-md-2 col-md-offset-1">
-    <%= image = image_tag (@image), class: "profile-image" %>
-  </div>
-  <div class="profile-pic col-md-2">
-    <%= image = image_tag (@image), class: "profile-image" %>
-  </div>
-<%elsif @image %>
-  <div class="profile-pic col-md-2 col-md-offset-3">
-    <%= image = image_tag (@image), class: "profile-image" %>
-  </div>
-<%end%>
+
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<div id="links" class="col-md-8">
+
+        <%= image_tag (@image) if @image%>
+        <%= image_tag (@image) if @image %>
+        <%= image_tag (@image3) if @image3 %>
+
+</div>
+
 
 </div>
 </div>
@@ -120,5 +127,14 @@
       });
     }
   });
+
+  document.getElementById('links').onclick = function (event) {
+      event = event || window.event;
+      var target = event.target || event.srcElement,
+          link = target.src ? target.parentNode : target,
+          options = {index: link, event: event},
+          links = this.getElementsByTagName('a');
+      blueimp.Gallery(links, options);
+  };
 
 </script>
