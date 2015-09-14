@@ -451,7 +451,7 @@ a#drop1 {
 
 #rate-the-music {
   color: rgba(155, 151, 151, 0.6);
-  margin: -5px;
+  margin-left: 4%;
 }
 
 .preview {
@@ -479,11 +479,6 @@ a#drop1 {
   background-color: rgba(251, 232, 201, 0.25);
 }
 
-.rate-music-header {
-  margin-bottom: -30px;
-  padding-bottom: 3%;
-  padding-top: 3%;
-}
 
 .venue-show .title {
   color: #F3F2EC
@@ -617,8 +612,9 @@ a#drop1 {
   background-color: rgba(191, 216, 235, 0.32);
   background-color: rgba(102, 115, 149, 0.28);
   font-family: Helvetica, Arial, sans-serif;
-  padding-top: 10%;
+  padding-top: 8%;
   padding-left: 3%;
+  padding-bottom: 4%;
   .title {
     color: #fff;
     text-shadow: 1px 1px 5px #333;
@@ -626,7 +622,6 @@ a#drop1 {
 
   #rate-the-music {
     color: #D8DEE5;
-    margin-left: 1%;
     font-size: 45px;
   }
 }
@@ -664,6 +659,14 @@ a#drop1 {
 
 .map {
   padding-top: 1%;
+}
+
+.sign-up-btn {
+  font-size: 170%;
+  color: #D8DEE5;
+  background-color: #182849;
+  border-color: #cccccc;
+  margin-left: -6%;
 }
   @media (max-device-width : 480px) {
     .navbar-fixed-top {

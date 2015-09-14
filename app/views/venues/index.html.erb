@@ -1,7 +1,20 @@
 
   <div class="row header rate-music-header directive">
+
     <div class="title">
-      <h1 id="rate-the-music"> Find dope live music. </h1> 
+      <h1 > Find dope live music. </h1> 
+    <% if @resources.first.instance_of?(Dj) %>
+    <br>
+    <div class="col-md-2">
+    <a href="#" data-toggle="modal" data-target="#contactModal" >
+      <span class="hover-mask bottom-mask mask-orange">
+        <div class="btn-lg btn-default text-center sign-up-btn">
+         DJ Sign Up
+        </div>
+      </span>
+    </a>
+    </div>
+    <%end%>
     </div>
   </div>
   <br>
@@ -12,7 +25,7 @@
     </div>
     <% end %>
     <div class="title">
-      <h2 class="text-center" id="rate-the-music"> top <%=@resources.first.class.name.downcase%>s </h2> 
+      <h2 id="rate-the-music"> top <%=@resources.first.class.name.downcase%>s </h2> 
     </div>
   </div>
 <div class="venue-list container-fluid">
