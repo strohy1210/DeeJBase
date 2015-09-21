@@ -6,6 +6,14 @@ class FbData
     @graph = Koala::Facebook::API.new(token)
   end
 
+
+  def self.get_fb_info(token, resource)
+    fb = FbData.new(token)
+    fb.get_fbpage_id(resource)
+    fb.get_fb_attributes(resource) if resource.fbpage_id.present?
+  end
+  
+
   def self.get_fbpage_ids(token)
     fb = FbData.new(token)
     # Dj.is_dj.where(fbpage_id: nil).each do |dj|

@@ -5,10 +5,15 @@ class Festival < ActiveRecord::Base
   has_many :comments, through: :ratings
   before_save :update_slug
   validates_uniqueness_of :name
-  after_create :default_values
+  after_create :default_values, :data_reminder
 
   def default_values
     update(rated_at: 6.months.ago)
+  end
+
+  def data_reminder
+    puts 'get token here: https://developers.facebook.com/tools/explorer/145634995501895/'
+    puts 'and call FbData.get_fb_info(token, resource)'
   end
 
   def slugify
