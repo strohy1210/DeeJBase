@@ -41,7 +41,7 @@ class SearchesController < ApplicationController
         @venue = @venue_results.first
         redirect_to venue_path(@venue.slugify)
       else
-        @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC')
+        @venues = Venue.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 45).order('name ASC') || Venue.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 45).order('name ASC')
         flash.now[:success] = @venue_results.size.to_s + ' venue(s) matching "' +name+'". Click for more info.'
         @resources = @venues
         render 'venues/index', layout: "promoters"
@@ -63,7 +63,7 @@ class SearchesController < ApplicationController
         @promoter = @promoter_results.first
         redirect_to promoter_path(@promoter.slugify)
       else
-        @promoters = Promoter.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC') || Promoter.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 20).order('name ASC')
+        @promoters = Promoter.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 45).order('name ASC') || Promoter.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 45).order('name ASC')
         flash.now[:success] = @promoter_results.size.to_s + ' promoter(s) matching "' +name+'". Click for more info.'
         @resources = @promoters
         render 'venues/index', layout: "promoters"

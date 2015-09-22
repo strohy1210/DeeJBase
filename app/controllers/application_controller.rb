@@ -49,13 +49,13 @@ class ApplicationController < ActionController::Base
     @filter = params[:filter]
     if params[:genre_id] && params[:genre_id] != 'all'
       @genre= Genre.find(params[:genre_id])
-      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 30).order('sdcl_followers ASC') if @filter=="scld_asc"
-      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 30).order('sdcl_followers DESC') if @filter=="scld_desc"
-      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 30).order('rated_at DESC') if @filter=="recent_desc"
+      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 45).order('sdcl_followers ASC') if @filter=="scld_asc"
+      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 45).order('sdcl_followers DESC') if @filter=="scld_desc"
+      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 45).order('rated_at DESC') if @filter=="recent_desc"
     else
-      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 30).order('sdcl_followers ASC') if @filter=="scld_asc"
-      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 30).order('sdcl_followers DESC') if @filter=="scld_desc"
-      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 30).order('rated_at DESC') if @filter=="recent_desc"
+      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 45).order('sdcl_followers ASC') if @filter=="scld_asc"
+      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 45).order('sdcl_followers DESC') if @filter=="scld_desc"
+      @djs = Dj.is_dj.paginate(page: params[:page], per_page: 45).order('rated_at DESC') if @filter=="recent_desc"
     end
   end
 
@@ -63,18 +63,18 @@ class ApplicationController < ActionController::Base
     @category = params["category"]
     if params["category"] && params["category"] != "all" && params[:neighborhood_id] != "all"
       @neighborhood = Neighborhood.find(params[:neighborhood_id])
-      @venues = Venue.where(neighborhood_id: @neighborhood.id, category: @category).paginate(page: params[:page], per_page: 30).order('priority').order('rated_at DESC')
+      @venues = Venue.where(neighborhood_id: @neighborhood.id, category: @category).paginate(page: params[:page], per_page: 45).order('priority').order('rated_at DESC')
       if @venues.blank?
         flash.now[:warning] = "No venues matching both the neighborhood and category, so here's the results for the hood."
-        @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 30).order('priority').order('rated_at DESC')
+        @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 45).order('priority').order('rated_at DESC')
       end
     elsif params["category"] && params["category"] != "all" && params[:neighborhood_id] == "all"
-      @venues = Venue.where(category: @category).paginate(page: params[:page], per_page: 30).order('priority').order('rated_at DESC')
+      @venues = Venue.where(category: @category).paginate(page: params[:page], per_page: 45).order('priority').order('rated_at DESC')
     elsif params["category"] == "all" && params[:neighborhood_id] && params[:neighborhood_id] != "all"
       @neighborhood = Neighborhood.find(params[:neighborhood_id])
-      @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 30).order('priority').order('rated_at DESC')
+      @venues = Venue.where(neighborhood_id: @neighborhood.id).paginate(page: params[:page], per_page: 45).order('priority').order('rated_at DESC')
     else
-      @venues = Venue.paginate(page: params[:page], per_page: 30).order('priority').order('rated_at DESC')
+      @venues = Venue.paginate(page: params[:page], per_page: 45).order('priority').order('rated_at DESC')
     end
 
   end
