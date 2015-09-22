@@ -412,7 +412,7 @@ a .bio h5, a .djb{
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #403D3D;
+  color: #262424;
 }
 .navbar-brand > img {
   margin-top: 5px;
@@ -487,8 +487,13 @@ a#drop1 {
   padding-top: 70px;
 }
 
-.datepicker, .bg-warning, .dj-autocomplete input {
+.datepicker, .dj-autocomplete input {
   color: black;
+}
+
+.bg-warning, .bg-warning a {
+  color: black;
+  padding: 1%;
 }
 
 .alert {
