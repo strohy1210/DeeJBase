@@ -1,7 +1,7 @@
 class PromotersController < ApplicationController
 
   def index
-    @promoters = Promoter.order('rated_at DESC').paginate(page: params[:page], per_page: 30)
+    @promoters = Promoter.order('rated_at DESC').paginate(page: params[:page], per_page: 36)
     @resources = @promoters
     render 'venues/index'
   end

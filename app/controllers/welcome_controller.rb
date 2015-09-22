@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
     if params[:filter]
       set_params
     else
-      @djs = Dj.is_dj.order('rated_at DESC').paginate(page: params[:page], per_page: 45)
+      @djs = Dj.is_dj.order('rated_at DESC').paginate(page: params[:page], per_page: 36)
     end
     @resources = @djs
     render 'venes/index'

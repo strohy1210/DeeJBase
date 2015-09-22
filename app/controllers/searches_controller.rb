@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
     if params[:name]
       name = params[:name].strip
       @dj_results= Dj.is_dj.where('lower(name) LIKE ?', "%#{name.downcase}%") || Dj.is_dj.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%")
-      @djs = Dj.is_dj.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC') || Dj.is_dj.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 6).order('updated_at DESC')
+      @djs = Dj.is_dj.where('lower(name) LIKE ?', "%#{name.downcase}%").paginate(page: params[:page], per_page: 36).order('updated_at DESC') || Dj.is_dj.where('lower(name) LIKE ?', "%#{name.titleize.downcase}%").paginate(page: params[:page], per_page: 36).order('updated_at DESC')
       if @djs.size == 0
         link = ActionController::Base.helpers.link_to('here', root_path)
         flash[:warning] = 'Sorry, no one by that name... so here\'s everyone. Search venues ' + link + '.'
@@ -19,11 +19,11 @@ class SearchesController < ApplicationController
       end
     elsif params[:genre_id]
       @genre= Genre.find(params[:genre_id])
-      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 6).order('created_at DESC')
+      @djs = @genre.djs.is_dj.paginate(page: params[:page], per_page: 36).order('created_at DESC')
       @resources = @djs
       render 'venues/index', layout: "application"
     else
-      @djs = Dj.where.is_dj.paginate(page: params[:page], per_page: 6).order('created_at DESC')
+      @djs = Dj.where.is_dj.paginate(page: params[:page], per_page: 36).order('created_at DESC')
       @resources = @djs
       render 'venues/index', layout: "application"
     end

@@ -1,7 +1,7 @@
 class FestivalsController < ApplicationController
   layout 'promoters'
   def index
-    @festivals = Festival.order('rated_at DESC').paginate(page: params[:page], per_page: 30)
+    @festivals = Festival.order('rated_at DESC').paginate(page: params[:page], per_page: 36)
     @resources = @festivals
     render 'venues/index'
   end
