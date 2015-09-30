@@ -18,12 +18,6 @@
 @import "bootstrap-social.css";
 @import "font-awesome";
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic");
-@import url("fonts.googleapis.com/css?family=Hammersmith+One:400,700");
-@import url("fonts.googleapis.com/css?family=Muli");
-@import url("fonts.googleapis.com/css?family=Montserrat");
-@import url("fonts.googleapis.com/css?family=Karla");
-@import url("fonts.googleapis.com/css?family=Exo+2:400,500");
-@import url("fonts.googleapis.com/css?family=Permanent+Marker");
 
 html {  
   -webkit-background-size: cover;
@@ -289,11 +283,12 @@ li { cursor: pointer; }
 }
 
 .review {
+  font-weight: 300;
   border-radius: 5px;
   padding: 5px;
   margin-top: 8px;
-  /*font-size: 15px;*/
-  background: rgba(26, 22, 11, 0.77);
+  font-size: 17px;
+  background: rgba(61, 59, 51, 0.77);
   color: #EBEBE7;
   border: 1px solid #231616;
 }
