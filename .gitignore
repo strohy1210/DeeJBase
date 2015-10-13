@@ -19,3 +19,6 @@
 /config/application.yml
 
 /README.rdoc
+
+# Ignore old code
+/old_code
