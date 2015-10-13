@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   def find_image(resource)
     @image = resource.events.where.not(photo_file_name: nil).last.photo.url if resource.events.where.not(photo_file_name: nil).any?
     @image2 = resource.fb_photo
-    @image3 = resource.image_url
+    @image3 = resource.events.where.not(photo_file_name: nil).first.photo.url if resource.events.where.not(photo_file_name: nil).any?
   end
 
   def set_params
