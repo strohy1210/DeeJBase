@@ -3,7 +3,7 @@
 
     <div class="title">
       <h1 > Find dope live music. </h1> 
-    <% if @resources.first.instance_of?(Dj) %>
+    <% if @resources && @resources.first.instance_of?(Dj) %>
     <br>
     <div class="col-md-2">
     <a href="#" data-toggle="modal" data-target="#contactModal" >
