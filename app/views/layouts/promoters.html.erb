@@ -22,6 +22,16 @@
   ga('send', 'pageview');
 
 </script>
+
+<script type="text/javascript">
+    window.doorbellOptions = {
+        appKey: 'G76zCi4hI4hH6uR7839hB7132WUDuZwyWNh5hhPxq1FWBLvpZamH6OxZQoLNyCOs'
+    };
+    (function(d, t) {
+        var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://embed.doorbell.io/button/2460?t='+(new Date().getTime());(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g);
+    }(document, 'script'));
+</script>
+
 </head>
 <body>
 <div id="fb-root"></div>
@@ -190,19 +200,8 @@
   <footer class="row">
 
 <div class="fb-like" data-href="https://www.facebook.com/pages/DeeJBase/361049373981028" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
-<div class="controlls pull-right">
-  <a href="#" data-toggle="modal" data-target="#contactModal" >
-      <span class="hover-mask bottom-mask mask-orange">
-        DJ Sign Up |
-      </span>
-  </a>
-  <a href="#" data-toggle="modal" data-target="#contactModal" >
-      <span class="hover-mask bottom-mask mask-orange">
-       Contact Us | 
-      </span>
-      </a>
-      <%=link_to "About", about_path %> | 
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.deejbase.com/venues" data-text="Go Out. Rate the DJ. Repeat.">Tweet About Us</a>
+
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.deejbase.com/venues" data-text="Go Out. Rate the DJ. Repeat.">Tweet</a>
 
 </div>
   </footer>
