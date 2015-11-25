@@ -126,6 +126,17 @@
     }
   });
 
+  <% @comments_uniq_by_user.each do |comment| %>
+   $("#star<%=comment.id%>").raty({
+      readOnly: true,
+      score: function() {
+        return $(this).attr('data-score');
+      },
+      path: '/assets'
+    });
+  <%end%>
+
+
   document.getElementById('links').onclick = function (event) {
       event = event || window.event;
       var target = event.target || event.srcElement,

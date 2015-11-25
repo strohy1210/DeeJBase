@@ -27,7 +27,9 @@
     </div>
     <div class= "comment col-xs-12 col-md-9">
       <div class="user-rating">
-        Rating: <%= comment.rating.score.to_i %>/5 
+      <div id="star<%=comment.id%>" data-score=<%= comment.rating.score.to_i %>>
+         
+      </div>
           <% if comment.event && comment.event.date %>
           (based on event on <%= comment.event.date.strftime("%A, %B %d, %Y")%>
             <%if @resource.instance_of?(Venue) && comment.event.promoter%>

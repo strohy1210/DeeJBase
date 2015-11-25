@@ -45,6 +45,9 @@ class ApplicationController < ActionController::Base
     @image3 = resource.events.where.not(photo_file_name: nil).first.photo.url if resource.events.where.not(photo_file_name: nil).size > 1
   end
 
+  # def recent_image(resource)
+  # end
+
   def set_params
     @filter = params[:filter]
     if params[:genre_id] && params[:genre_id] != 'all'

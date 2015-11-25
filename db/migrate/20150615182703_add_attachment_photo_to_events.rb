@@ -3,8 +3,6 @@ class AddAttachmentPhotoToEvents < ActiveRecord::Migration
     change_table :events do |t|
       t.attachment :photo
     end
-    remove_attachment :festivals, :photo
-    remove_attachment :venues, :photo
   end
 
   def self.down
