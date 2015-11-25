@@ -126,6 +126,7 @@
     }
   });
 
+<% if @comments_uniq_by_user %>
   <% @comments_uniq_by_user.each do |comment| %>
    $("#star<%=comment.id%>").raty({
       readOnly: true,
@@ -135,7 +136,7 @@
       path: '/assets'
     });
   <%end%>
-
+<%end%>
 
   document.getElementById('links').onclick = function (event) {
       event = event || window.event;
