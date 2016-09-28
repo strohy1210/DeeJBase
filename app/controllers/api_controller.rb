@@ -14,10 +14,4 @@ class ApiController < ApplicationController
     render json: {data: @dj} 
   end
 
-  def justin
-
-  end
-
-
-
 end
